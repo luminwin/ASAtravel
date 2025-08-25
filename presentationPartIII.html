@@ -1,0 +1,3853 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="presentationPartIII_files/libs/clipboard/clipboard.min.js"></script>
+<script src="presentationPartIII_files/libs/quarto-html/tabby.min.js"></script>
+<script src="presentationPartIII_files/libs/quarto-html/popper.min.js"></script>
+<script src="presentationPartIII_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="presentationPartIII_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="presentationPartIII_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="presentationPartIII_files/libs/quarto-html/quarto-syntax-highlighting-d2bbf9acb00b033fb60fab8fa7f66143.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+<meta name="author" content="Hemant Ishwaran and Min Lu   University of Miami">
+<title>Tree-Based Machine Learning Methods for Prediction and Variable Selection</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="presentationPartIII_files/libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="presentationPartIII_files/libs/revealjs/dist/reveal.css">
+<style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #cbccc6; background-color: #1f2430; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #cbccc6; } /* Normal */
+    code span.al { color: #ff3333; background-color: #332430; font-weight: bold; } /* Alert */
+    code span.an { color: #ffe6b3; } /* Annotation */
+    code span.at { color: #73d0ff; } /* Attribute */
+    code span.bn { color: #ffcc66; } /* BaseN */
+    code span.bu { color: #95e6cb; } /* BuiltIn */
+    code span.cf { color: #ffa759; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #95e6cb; } /* Char */
+    code span.cn { color: #d4bfff; } /* Constant */
+    code span.co { color: #5c6773; font-style: italic; } /* Comment */
+    code span.cv { color: #d4bfff; } /* CommentVar */
+    code span.do { color: #5c6773; } /* Documentation */
+    code span.dt { color: #ffa759; } /* DataType */
+    code span.dv { color: #ffcc66; } /* DecVal */
+    code span.er { color: #ff3333; text-decoration: underline; } /* Error */
+    code span.ex { color: #73d0ff; font-weight: bold; } /* Extension */
+    code span.fl { color: #ffcc66; } /* Float */
+    code span.fu { color: #ffd580; } /* Function */
+    code span.im { color: #bae67e; } /* Import */
+    code span.in { color: #ffcc66; } /* Information */
+    code span.kw { color: #ffa759; font-weight: bold; } /* Keyword */
+    code span.op { color: #f29e74; } /* Operator */
+    code span.ot { color: #5ccfe6; } /* Other */
+    code span.pp { color: #f28779; } /* Preprocessor */
+    code span.re { color: #73d0ff; background-color: #2a4254; } /* RegionMarker */
+    code span.sc { color: #95e6cb; } /* SpecialChar */
+    code span.ss { color: #95e6cb; } /* SpecialString */
+    code span.st { color: #bae67e; } /* String */
+    code span.va { color: #5ccfe6; } /* Variable */
+    code span.vs { color: #bae67e; } /* VerbatimString */
+    code span.wa { color: #f28779; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+<link rel="stylesheet" href="presentationPartIII_files/libs/revealjs/dist/theme/quarto-63ed876a746becf3fe36bcecd5a116b8.css">
+<link rel="stylesheet" href="styles.css">
+<link href="presentationPartIII_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="presentationPartIII_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="presentationPartIII_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="presentationPartIII_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="presentationPartIII_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="presentationPartIII_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="images/forest_mathextra_book.jpg" data-background-opacity="0.95" class="quarto-title-block center"><h1 class="title">Tree-Based Machine Learning Methods for Prediction and Variable Selection</h1>
+  <p class="subtitle">Part III</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Hemant Ishwaran and Min Lu <br> University of Miami 
+</div>
+</div>
+</div>
+
+</section><section id="variable-selection" class="slide level2"><h2>Variable selection</h2>
+<p>We will discuss 4 different methods</p>
+<ol type="1">
+<li>Permutation Variable Importance (VIMP)</li>
+<li>Subsampling for Confidence Intervals</li>
+<li>Minimal Depth</li>
+<li>VarPro</li>
+</ol></section><section id="permutation-importance" class="slide level2 smaller"><h2>Permutation importance</h2>
+<div class="goals">
+<div class="goals-header">
+<p>Idea</p>
+</div>
+<div class="goals-container">
+<p>In the OOB cases for a tree, randomly permute all values of the <span class="math inline">\(j\)</span>th variable. Put these new covariate values down the tree and compute a new internal error rate. The amount by which this new error exceeds the original OOB error is defined as the importance of the <span class="math inline">\(j\)</span>th variable for the tree. Averaging over the forest yields VIMP. <br><br></p>
+<div style="text-align: right; font-size: 80%">
+<p>— Measure 1 (Manual On Setting Up, Using, And Understanding Random Forests V3.1</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<p>Learn more <span class="citation" data-cites="HemantVIMP">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span>: <a href="http://randomforestsrc.org/articles/vimp.html">hhttp://randomforestsrc.org/articles/vimp.html</a></p>
+</div>
+</section><section id="oob-explanation" class="slide level2 smaller"><h2>OOB explanation</h2>
+<p>The tree OOB error rate is <span class="math display">\[
+\frac{1}{\# O_{ib}}\sum_{i\in O_{ib}} L(Y_i,h^*_b(\mathbf{x}_i))
+\]</span></p>
+<p>Permute (perturb) the <span class="math inline">\(j\)</span> covariate feature for <span class="math inline">\(i\)</span> to obtain <span class="math inline">\(\mathbf{x}^{*(j)}_i\)</span></p>
+<p>The tree VIMP is therefore <span class="math display">\[
+\frac{1}{\# O_{ib}}\sum_{i\in O_{ib}} L(Y_i,h^*_b(\mathbf{x}^{*(j)}_i))
+-
+\frac{1}{\# O_{ib}}\sum_{i\in O_{ib}} L(Y_i,h^*_b(\mathbf{x}_i))
+\]</span></p>
+<p>Averaging over trees gives VIMP. Large values identify important variables (negative values can occur!)</p>
+</section><section id="oob-explanation-1" class="slide level2"><h2>OOB explanation</h2>
+<center>
+<img data-src="pic/illustration_vimp.png" style="width:70.0%">
+</center>
+</section><section id="different-vimp-in-the-package" class="slide level2"><h2>Different VIMP in the package</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource verbatim number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href=""></a>importance = c("anti", "permute", "random")</span>
+<span id="cb1-2"><a href=""></a></span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a></span>
+<span id="cb1-5"><a href=""></a>importance = TRUE       --&gt;   anti-VIMP</span>
+<span id="cb1-6"><a href=""></a>importance = "permute"  --&gt;   Breiman-Cutler</span>
+<span id="cb1-7"><a href=""></a>importance = "random"   --&gt;   random-VIMP</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="obtaining-vimp-using-the-package" class="slide level2 small"><h2>Obtaining VIMP using the package</h2>
+<p>During training:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource verbatim fragment number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href=""></a>rfsrc(mpg~., importance="permute")$importance </span>
+<span id="cb2-2"><a href=""></a>rfsrc(mpg~., importance="permute", block.size=10)$importance </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using restore:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource verbatim fragment number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href=""></a>predict(obj, importance="permute")$importance </span>
+<span id="cb3-2"><a href=""></a>predict(obj, importance="permute", block.size=10)$importance  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using <code>vimp</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource verbatim fragment number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href=""></a>vimp(obj, importance="permute") </span>
+<span id="cb4-2"><a href=""></a>vimp(obj, importance="permute", block.size=10)$importance  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>vimp</code> also permits joint VIMP</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource verbatim fragment number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href=""></a>## paired permutation vimp</span>
+<span id="cb5-2"><a href=""></a>obj &lt;- rfsrc(Species~., data=iris)</span>
+<span id="cb5-3"><a href=""></a>vimp(obj, obj.xvar.names[1:2], importance="permute", joint=TRUE)$importance</span>
+<span id="cb5-4"><a href=""></a>vimp(obj, obj.xvar.names[3:4], importance="permute", joint=TRUE)$importance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="general-call-to-vimp" class="slide level2 smaller"><h2>General call to vimp</h2>
+<div class="fragment fade-left">
+<p><img data-src="pic/vimp.png" style="width:100.0%"></p>
+</div>
+<div class="fragment fade-left">
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="do">## VIMP for all variables </span></span>
+<span id="cb6-2"><a href=""></a>iris.obj <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(Species <span class="sc">~</span> ., <span class="at">data =</span> iris)</span>
+<span id="cb6-3"><a href=""></a><span class="fu">print</span>(<span class="fu">vimp</span>(iris.obj)<span class="sc">$</span>importance)</span>
+<span id="cb6-4"><a href=""></a><span class="sc">&gt;</span>                     all     setosa versicolor   virginica</span>
+<span id="cb6-5"><a href=""></a><span class="sc">&gt;</span> Sepal.Length <span class="fl">0.06857263</span> <span class="fl">0.09785815</span> <span class="fl">0.42079003</span> <span class="fl">0.034794007</span></span>
+<span id="cb6-6"><a href=""></a><span class="sc">&gt;</span> Sepal.Width  <span class="fl">0.02520082</span> <span class="fl">0.11525515</span> <span class="fl">0.08481039</span> <span class="fl">0.003261938</span></span>
+<span id="cb6-7"><a href=""></a><span class="sc">&gt;</span> Petal.Length <span class="fl">0.55673198</span> <span class="fl">1.44395131</span> <span class="fl">1.80602645</span> <span class="fl">1.241711139</span></span>
+<span id="cb6-8"><a href=""></a><span class="sc">&gt;</span> Petal.Width  <span class="fl">0.60811332</span> <span class="fl">1.75601006</span> <span class="fl">2.00391736</span> <span class="fl">1.144940306</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr style="margin: 2px; visibility:hidden;">
+<div class="fragment fade-left">
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="do">## joint VIMP </span></span>
+<span id="cb7-2"><a href=""></a><span class="fu">print</span>(<span class="fu">vimp</span>(iris.obj, <span class="fu">c</span>(<span class="st">"Petal.Length"</span>, <span class="st">"Petal.Width"</span>), <span class="at">joint =</span> <span class="cn">TRUE</span>)<span class="sc">$</span>importance)</span>
+<span id="cb7-3"><a href=""></a><span class="sc">&gt;</span>             all   setosa versicolor virginica</span>
+<span id="cb7-4"><a href=""></a><span class="sc">&gt;</span> joint <span class="fl">0.9336724</span> <span class="fl">2.593241</span>   <span class="fl">2.447541</span>  <span class="fl">2.489946</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="vimp-illustration-using-peakvo2" class="slide level2 smaller"><h2>VIMP illustration using peakVO2</h2>
+<p>We have <span class="math inline">\(n=2231\)</span> cardiovascular patients with systolic heart failure and all underwent cardiopulmonary stress testing. The outcome is all cause mortality (mean follow-up of 5 years, 742 patients died). Baseline characteristics and exercise stress test results were recorded (<span class="math inline">\(p=39\)</span>).</p>
+<center>
+<img data-src="pic/peakVIMP.png" style="width:53.0%">
+</center>
+<div class="footer">
+
+</div>
+</section><section id="vimp-illustration-using-peakvo2-1" class="slide level2 smaller"><h2>VIMP illustration using peakVO2</h2>
+<center>
+<img data-src="pic/peakVIMP.png" style="width:73.0%">
+</center>
+<div class="footer">
+
+</div>
+</section><section id="confidence-intervals-for-vimp" class="slide level2 smaller"><h2>Confidence intervals for VIMP</h2>
+<p>VIMP standard error and CI are obtained using subsampling</p>
+<p>Subsampling samples data <em>without replacement</em> where the subsample size <span class="math inline">\(m\)</span> is substantially smaller than <span class="math inline">\(n\)</span>; eg: <span class="math display">\[
+m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
+\]</span></p>
+<p>CI are obtained using normal approximations <span class="math display">\[
+\texttt{vimp} \pm z_{\alpha/2} \hat{\sigma}
+\]</span> where <span class="math inline">\(\hat{\sigma}\)</span> is the subsampled standard error estimator<span class="citation" data-cites="ishwaran2019standard033 politis1994">[<a href="#/references" role="doc-biblioref" onclick="">2</a>, <a href="#/references" role="doc-biblioref" onclick="">3</a>]</span></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="do">## example using peakVO2</span></span>
+<span id="cb8-2"><a href=""></a><span class="fu">data</span>(peakVO2, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb8-3"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
+<span id="cb8-4"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
+<span id="cb8-5"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="vimp-for-regression-iowa-housing" class="slide level2 smaller"><h2>VIMP for regression: Iowa housing</h2>
+<p><img data-src="pic/housing_ci.png" height="600"></p>
+<div class="footer">
+
+</div>
+</section><section id="vimp-for-classification-example-glioma" class="slide level2 smaller"><h2>VIMP for classification example: Glioma</h2>
+<p><img data-src="pic/gliomaVIMP.png" height="600"></p>
+<div class="footer">
+
+</div>
+</section><section id="general-call-to-subsample" class="slide level2"><h2>General call to subsample</h2>
+<div class="fragment fade-left">
+<p><img data-src="pic/subsample.png" style="width:100.0%"></p>
+</div>
+</section><section id="minimal-depth" class="slide level2 smaller"><h2>Minimal depth</h2>
+<p>Measures importance of a variable by how close it splits to the root</p>
+<p>Pros:</p>
+<ol type="1">
+<li>Much faster</li>
+<li>Works in all settings for any type of tree</li>
+<li>Doesn’t depend on prediction error</li>
+</ol>
+<p>Cons:</p>
+<ol type="1">
+<li>Threshold value can be sensitive and relies on assumptions</li>
+</ol>
+<div class="footer">
+<p>Learn more <span class="citation" data-cites="HemantMinimal">[<a href="#/references" role="doc-biblioref" onclick="">4</a>]</span>: <a href="https://www.randomforestsrc.org/articles/minidep.html">https://www.randomforestsrc.org/articles/minidep.html</a></p>
+</div>
+</section><section id="minimal-depth-1" class="slide level2"><h2>Minimal depth</h2>
+<center>
+<p><img data-src="pic/minimal_depth.png" style="width:70.0%"></p>
+</center></section><section id="general-call-to-max.subtree" class="slide level2"><h2>General call to max.subtree</h2>
+<div class="fragment fade-left">
+<p><img data-src="pic/maxSubtree.png" style="width:100.0%"></p>
+</div>
+</section><section id="minimal-depth-illustration-using-peakvo2" class="slide level2 smaller"><h2>Minimal depth illustration using peakVO2</h2>
+<div class="sourceCode" id="cb9" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>md <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(o)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
+<span id="cb9-2"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(md), </span>
+<span id="cb9-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment fade-left">
+<center>
+<img data-src="pic/peakMinimalDepth.png" style="width:60.0%">
+</center>
+</div>
+</section><section id="minimal-depth-illustration-using-peakvo2-1" class="slide level2 smaller"><h2>Minimal depth illustration using peakVO2</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>md <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(o)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
+<span id="cb10-2"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(md), </span>
+<span id="cb10-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<br><br><center>
+<img data-src="pic/peakMinimalDepth.png" style="width:90.0%">
+</center>
+</div><div class="column fragment fade-left" style="width:50%;">
+<div class="sourceCode" id="cb11" data-code-line-numbers="1-4|5-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="do">## guide random feature selection with number of times variable splits</span></span>
+<span id="cb11-2"><a href=""></a>xvar.used <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, </span>
+<span id="cb11-3"><a href=""></a>               <span class="at">var.used=</span><span class="st">"all.trees"</span>)<span class="sc">$</span>var.used</span>
+<span id="cb11-4"><a href=""></a>os <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">xvar.wt =</span> xvar.used)</span>
+<span id="cb11-5"><a href=""></a>mds <span class="ot">&lt;-</span> <span class="fu">max.subtree</span>(os)<span class="sc">$</span>order[, <span class="dv">1</span>]</span>
+<span id="cb11-6"><a href=""></a><span class="fu">barplot</span>(<span class="fu">sort</span>(mds), </span>
+<span id="cb11-7"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"cadetblue3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment fade-left">
+<center>
+<img data-src="pic/peakMinimalDepths.png" style="width:90.0%">
+</center>
+</div>
+</div></div>
+<div class="footer">
+
+</div>
+</section><section id="varpro" class="slide level2"><h2>VarPro</h2>
+<p>Permutation VIMP creates “artificial” data which can impact performance in correlated settings</p>
+</section><section id="varpro-1" class="slide level2 small"><h2>VarPro</h2>
+<p>Permutation VIMP creates “artificial” data which can impact performance in correlated settings</p>
+<h4 id="consider-a-patient-in-the-peakvo2-dataset">Consider a patient in the peakVO2 dataset</h4>
+<div class="columns">
+<div class="column" style="width:80%;">
+<div class="cell">
+<div class="cell-output-display">
+<div id="yaliolzkya" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yaliolzkya table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#yaliolzkya thead, #yaliolzkya tbody, #yaliolzkya tfoot, #yaliolzkya tr, #yaliolzkya td, #yaliolzkya th {
+  border-style: none;
+}
+
+#yaliolzkya p {
+  margin: 0;
+  padding: 0;
+}
+
+#yaliolzkya .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#yaliolzkya .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yaliolzkya .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yaliolzkya .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#yaliolzkya .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yaliolzkya .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yaliolzkya .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yaliolzkya .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yaliolzkya .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yaliolzkya .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#yaliolzkya .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yaliolzkya .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yaliolzkya .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yaliolzkya .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yaliolzkya .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yaliolzkya .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#yaliolzkya .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#yaliolzkya .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yaliolzkya .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yaliolzkya .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#yaliolzkya .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yaliolzkya .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yaliolzkya .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yaliolzkya .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yaliolzkya .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yaliolzkya .gt_left {
+  text-align: left;
+}
+
+#yaliolzkya .gt_center {
+  text-align: center;
+}
+
+#yaliolzkya .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yaliolzkya .gt_font_normal {
+  font-weight: normal;
+}
+
+#yaliolzkya .gt_font_bold {
+  font-weight: bold;
+}
+
+#yaliolzkya .gt_font_italic {
+  font-style: italic;
+}
+
+#yaliolzkya .gt_super {
+  font-size: 65%;
+}
+
+#yaliolzkya .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#yaliolzkya .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#yaliolzkya .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#yaliolzkya .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#yaliolzkya .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#yaliolzkya .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#yaliolzkya .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#yaliolzkya .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#yaliolzkya div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings header">
+<th id="age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">age</th>
+<th id="betablok" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">betablok</th>
+<th id="dilver" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">dilver</th>
+<th id="nifed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">nifed</th>
+<th id="acei" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">acei</th>
+<th id="angioten.II" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">angioten.II</th>
+<th id="anti.arrhy" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">anti.arrhy</th>
+<th id="anti.coag" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">anti.coag</th>
+<th id="aspirin" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">aspirin</th>
+<th id="digoxin" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">digoxin</th>
+<th id="nitrates" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">nitrates</th>
+<th id="vasodilator" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">vasodilator</th>
+<th id="diuretic.loop" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">diuretic.loop</th>
+<th id="diuretic.thiazide" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">diuretic.thiazide</th>
+<th id="diuretic.potassium.spar" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">diuretic.potassium.spar</th>
+<th id="lipidrx.statin" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">lipidrx.statin</th>
+<th id="insulin" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">insulin</th>
+<th id="surgery.pacemaker" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">surgery.pacemaker</th>
+<th id="surgery.cabg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">surgery.cabg</th>
+<th id="surgery.pci" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">surgery.pci</th>
+<th id="surgery.aicd.implant" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">surgery.aicd.implant</th>
+<th id="resting.systolic.bp" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">resting.systolic.bp</th>
+<th id="resting.hr" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">resting.hr</th>
+<th id="smknow" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">smknow</th>
+<th id="q.wave.mi" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">q.wave.mi</th>
+<th id="bmi" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">bmi</th>
+<th id="niddm" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">niddm</th>
+<th id="lvef.metabl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">lvef.metabl</th>
+<th id="peak.rer" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">peak.rer</th>
+<th id="peak.vo2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">peak.vo2</th>
+<th id="interval" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">interval</th>
+<th id="cad" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cad</th>
+<th id="died" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">died</th>
+<th id="ttodead" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ttodead</th>
+<th id="bun" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">bun</th>
+<th id="sodium" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sodium</th>
+<th id="hgb" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hgb</th>
+<th id="glucose" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">glucose</th>
+<th id="male" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">male</th>
+<th id="black" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">black</th>
+<th id="crcl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">crcl</th>
+</tr></thead>
+<tbody class="gt_table_body"><tr class="odd">
+<td class="gt_row gt_right" headers="age">61</td>
+<td class="gt_row gt_right" headers="betablok">1</td>
+<td class="gt_row gt_right" headers="dilver">0</td>
+<td class="gt_row gt_right" headers="nifed">1</td>
+<td class="gt_row gt_right" headers="acei">1</td>
+<td class="gt_row gt_right" headers="angioten.II">0</td>
+<td class="gt_row gt_right" headers="anti.arrhy">0</td>
+<td class="gt_row gt_right" headers="anti.coag">0</td>
+<td class="gt_row gt_right" headers="aspirin">1</td>
+<td class="gt_row gt_right" headers="digoxin">0</td>
+<td class="gt_row gt_right" headers="nitrates">1</td>
+<td class="gt_row gt_right" headers="vasodilator">0</td>
+<td class="gt_row gt_right" headers="diuretic.loop">0</td>
+<td class="gt_row gt_right" headers="diuretic.thiazide">1</td>
+<td class="gt_row gt_right" headers="diuretic.potassium.spar">0</td>
+<td class="gt_row gt_right" headers="lipidrx.statin">1</td>
+<td class="gt_row gt_right" headers="insulin">0</td>
+<td class="gt_row gt_right" headers="surgery.pacemaker">0</td>
+<td class="gt_row gt_right" headers="surgery.cabg">1</td>
+<td class="gt_row gt_right" headers="surgery.pci">1</td>
+<td class="gt_row gt_right" headers="surgery.aicd.implant">0</td>
+<td class="gt_row gt_right" headers="resting.systolic.bp">100</td>
+<td class="gt_row gt_right" headers="resting.hr">75</td>
+<td class="gt_row gt_right" headers="smknow">0</td>
+<td class="gt_row gt_right" headers="q.wave.mi">1</td>
+<td class="gt_row gt_right" headers="bmi">28.68956</td>
+<td class="gt_row gt_right" headers="niddm">0</td>
+<td class="gt_row gt_right" headers="lvef.metabl">30</td>
+<td class="gt_row gt_right" headers="peak.rer">0.97</td>
+<td class="gt_row gt_right" headers="peak.vo2" style="background-color: #ADD8E6">4.2</td>
+<td class="gt_row gt_right" headers="interval">360</td>
+<td class="gt_row gt_right" headers="cad">1</td>
+<td class="gt_row gt_right" headers="died">0</td>
+<td class="gt_row gt_right" headers="ttodead">2.354552</td>
+<td class="gt_row gt_right" headers="bun">20</td>
+<td class="gt_row gt_right" headers="sodium">141</td>
+<td class="gt_row gt_right" headers="hgb">14.3</td>
+<td class="gt_row gt_right" headers="glucose">90</td>
+<td class="gt_row gt_right" headers="male">1</td>
+<td class="gt_row gt_right" headers="black">0</td>
+<td class="gt_row gt_right" headers="crcl">71.24107</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:20%;">
+<div class="cell">
+<div class="cell-output-display">
+<div id="gxwnclyngr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gxwnclyngr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#gxwnclyngr thead, #gxwnclyngr tbody, #gxwnclyngr tfoot, #gxwnclyngr tr, #gxwnclyngr td, #gxwnclyngr th {
+  border-style: none;
+}
+
+#gxwnclyngr p {
+  margin: 0;
+  padding: 0;
+}
+
+#gxwnclyngr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#gxwnclyngr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#gxwnclyngr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#gxwnclyngr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#gxwnclyngr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#gxwnclyngr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#gxwnclyngr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#gxwnclyngr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#gxwnclyngr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#gxwnclyngr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#gxwnclyngr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#gxwnclyngr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#gxwnclyngr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#gxwnclyngr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#gxwnclyngr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gxwnclyngr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#gxwnclyngr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#gxwnclyngr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#gxwnclyngr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gxwnclyngr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#gxwnclyngr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gxwnclyngr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#gxwnclyngr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gxwnclyngr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#gxwnclyngr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#gxwnclyngr .gt_left {
+  text-align: left;
+}
+
+#gxwnclyngr .gt_center {
+  text-align: center;
+}
+
+#gxwnclyngr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#gxwnclyngr .gt_font_normal {
+  font-weight: normal;
+}
+
+#gxwnclyngr .gt_font_bold {
+  font-weight: bold;
+}
+
+#gxwnclyngr .gt_font_italic {
+  font-style: italic;
+}
+
+#gxwnclyngr .gt_super {
+  font-size: 65%;
+}
+
+#gxwnclyngr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#gxwnclyngr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#gxwnclyngr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#gxwnclyngr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#gxwnclyngr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#gxwnclyngr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#gxwnclyngr .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#gxwnclyngr .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#gxwnclyngr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings header">
+<th id="bun" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">bun</th>
+<th id="interval" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">interval</th>
+<th id="peak.vo2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">peak.vo2</th>
+</tr></thead>
+<tbody class="gt_table_body"><tr class="odd">
+<td class="gt_row gt_right" headers="bun">20</td>
+<td class="gt_row gt_right" headers="interval">360</td>
+<td class="gt_row gt_right" headers="peak.vo2" style="background-color: #ADD8E6">4.2</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<h4 id="suppose-peak.vo2-is-permuted-for-calculating-vimp">Suppose peak.vo2 is permuted for calculating VIMP</h4>
+<div class="columns">
+<div class="column" style="width:80%;">
+<div class="cell">
+<div class="cell-output-display">
+<div id="mgvfaqejgd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mgvfaqejgd table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mgvfaqejgd thead, #mgvfaqejgd tbody, #mgvfaqejgd tfoot, #mgvfaqejgd tr, #mgvfaqejgd td, #mgvfaqejgd th {
+  border-style: none;
+}
+
+#mgvfaqejgd p {
+  margin: 0;
+  padding: 0;
+}
+
+#mgvfaqejgd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mgvfaqejgd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mgvfaqejgd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mgvfaqejgd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mgvfaqejgd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mgvfaqejgd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mgvfaqejgd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mgvfaqejgd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mgvfaqejgd .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mgvfaqejgd .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mgvfaqejgd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mgvfaqejgd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mgvfaqejgd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mgvfaqejgd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mgvfaqejgd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgvfaqejgd .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mgvfaqejgd .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mgvfaqejgd .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mgvfaqejgd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgvfaqejgd .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mgvfaqejgd .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgvfaqejgd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mgvfaqejgd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgvfaqejgd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mgvfaqejgd .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mgvfaqejgd .gt_left {
+  text-align: left;
+}
+
+#mgvfaqejgd .gt_center {
+  text-align: center;
+}
+
+#mgvfaqejgd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mgvfaqejgd .gt_font_normal {
+  font-weight: normal;
+}
+
+#mgvfaqejgd .gt_font_bold {
+  font-weight: bold;
+}
+
+#mgvfaqejgd .gt_font_italic {
+  font-style: italic;
+}
+
+#mgvfaqejgd .gt_super {
+  font-size: 65%;
+}
+
+#mgvfaqejgd .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mgvfaqejgd .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mgvfaqejgd .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mgvfaqejgd .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mgvfaqejgd .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mgvfaqejgd .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mgvfaqejgd .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#mgvfaqejgd .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mgvfaqejgd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings header">
+<th id="age" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">age</th>
+<th id="betablok" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">betablok</th>
+<th id="dilver" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">dilver</th>
+<th id="nifed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">nifed</th>
+<th id="acei" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">acei</th>
+<th id="angioten.II" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">angioten.II</th>
+<th id="anti.arrhy" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">anti.arrhy</th>
+<th id="anti.coag" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">anti.coag</th>
+<th id="aspirin" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">aspirin</th>
+<th id="digoxin" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">digoxin</th>
+<th id="nitrates" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">nitrates</th>
+<th id="vasodilator" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">vasodilator</th>
+<th id="diuretic.loop" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">diuretic.loop</th>
+<th id="diuretic.thiazide" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">diuretic.thiazide</th>
+<th id="diuretic.potassium.spar" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">diuretic.potassium.spar</th>
+<th id="lipidrx.statin" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">lipidrx.statin</th>
+<th id="insulin" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">insulin</th>
+<th id="surgery.pacemaker" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">surgery.pacemaker</th>
+<th id="surgery.cabg" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">surgery.cabg</th>
+<th id="surgery.pci" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">surgery.pci</th>
+<th id="surgery.aicd.implant" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">surgery.aicd.implant</th>
+<th id="resting.systolic.bp" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">resting.systolic.bp</th>
+<th id="resting.hr" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">resting.hr</th>
+<th id="smknow" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">smknow</th>
+<th id="q.wave.mi" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">q.wave.mi</th>
+<th id="bmi" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">bmi</th>
+<th id="niddm" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">niddm</th>
+<th id="lvef.metabl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">lvef.metabl</th>
+<th id="peak.rer" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">peak.rer</th>
+<th id="peak.vo2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">peak.vo2</th>
+<th id="interval" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">interval</th>
+<th id="cad" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">cad</th>
+<th id="died" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">died</th>
+<th id="ttodead" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">ttodead</th>
+<th id="bun" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">bun</th>
+<th id="sodium" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">sodium</th>
+<th id="hgb" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">hgb</th>
+<th id="glucose" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">glucose</th>
+<th id="male" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">male</th>
+<th id="black" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">black</th>
+<th id="crcl" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">crcl</th>
+</tr></thead>
+<tbody class="gt_table_body"><tr class="odd">
+<td class="gt_row gt_right" headers="age">61</td>
+<td class="gt_row gt_right" headers="betablok">1</td>
+<td class="gt_row gt_right" headers="dilver">0</td>
+<td class="gt_row gt_right" headers="nifed">1</td>
+<td class="gt_row gt_right" headers="acei">1</td>
+<td class="gt_row gt_right" headers="angioten.II">0</td>
+<td class="gt_row gt_right" headers="anti.arrhy">0</td>
+<td class="gt_row gt_right" headers="anti.coag">0</td>
+<td class="gt_row gt_right" headers="aspirin">1</td>
+<td class="gt_row gt_right" headers="digoxin">0</td>
+<td class="gt_row gt_right" headers="nitrates">1</td>
+<td class="gt_row gt_right" headers="vasodilator">0</td>
+<td class="gt_row gt_right" headers="diuretic.loop">0</td>
+<td class="gt_row gt_right" headers="diuretic.thiazide">1</td>
+<td class="gt_row gt_right" headers="diuretic.potassium.spar">0</td>
+<td class="gt_row gt_right" headers="lipidrx.statin">1</td>
+<td class="gt_row gt_right" headers="insulin">0</td>
+<td class="gt_row gt_right" headers="surgery.pacemaker">0</td>
+<td class="gt_row gt_right" headers="surgery.cabg">1</td>
+<td class="gt_row gt_right" headers="surgery.pci">1</td>
+<td class="gt_row gt_right" headers="surgery.aicd.implant">0</td>
+<td class="gt_row gt_right" headers="resting.systolic.bp">100</td>
+<td class="gt_row gt_right" headers="resting.hr">75</td>
+<td class="gt_row gt_right" headers="smknow">0</td>
+<td class="gt_row gt_right" headers="q.wave.mi">1</td>
+<td class="gt_row gt_right" headers="bmi">28.68956</td>
+<td class="gt_row gt_right" headers="niddm">0</td>
+<td class="gt_row gt_right" headers="lvef.metabl">30</td>
+<td class="gt_row gt_right" headers="peak.rer">0.97</td>
+<td class="gt_row gt_right" headers="peak.vo2" style="background-color: #ADD8E6">43.8</td>
+<td class="gt_row gt_right" headers="interval">360</td>
+<td class="gt_row gt_right" headers="cad">1</td>
+<td class="gt_row gt_right" headers="died">0</td>
+<td class="gt_row gt_right" headers="ttodead">2.354552</td>
+<td class="gt_row gt_right" headers="bun">20</td>
+<td class="gt_row gt_right" headers="sodium">141</td>
+<td class="gt_row gt_right" headers="hgb">14.3</td>
+<td class="gt_row gt_right" headers="glucose">90</td>
+<td class="gt_row gt_right" headers="male">1</td>
+<td class="gt_row gt_right" headers="black">0</td>
+<td class="gt_row gt_right" headers="crcl">71.24107</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:20%;">
+<div class="cell">
+<div class="cell-output-display">
+<div id="pppknfudwv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pppknfudwv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pppknfudwv thead, #pppknfudwv tbody, #pppknfudwv tfoot, #pppknfudwv tr, #pppknfudwv td, #pppknfudwv th {
+  border-style: none;
+}
+
+#pppknfudwv p {
+  margin: 0;
+  padding: 0;
+}
+
+#pppknfudwv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pppknfudwv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pppknfudwv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pppknfudwv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pppknfudwv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pppknfudwv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pppknfudwv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pppknfudwv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pppknfudwv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pppknfudwv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pppknfudwv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pppknfudwv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pppknfudwv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pppknfudwv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pppknfudwv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pppknfudwv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pppknfudwv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pppknfudwv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pppknfudwv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pppknfudwv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pppknfudwv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pppknfudwv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pppknfudwv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pppknfudwv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pppknfudwv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pppknfudwv .gt_left {
+  text-align: left;
+}
+
+#pppknfudwv .gt_center {
+  text-align: center;
+}
+
+#pppknfudwv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pppknfudwv .gt_font_normal {
+  font-weight: normal;
+}
+
+#pppknfudwv .gt_font_bold {
+  font-weight: bold;
+}
+
+#pppknfudwv .gt_font_italic {
+  font-style: italic;
+}
+
+#pppknfudwv .gt_super {
+  font-size: 65%;
+}
+
+#pppknfudwv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pppknfudwv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pppknfudwv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pppknfudwv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pppknfudwv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pppknfudwv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pppknfudwv .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#pppknfudwv .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pppknfudwv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings header">
+<th id="bun" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">bun</th>
+<th id="interval" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">interval</th>
+<th id="peak.vo2" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">peak.vo2</th>
+</tr></thead>
+<tbody class="gt_table_body"><tr class="odd">
+<td class="gt_row gt_right" headers="bun">20</td>
+<td class="gt_row gt_right" headers="interval">360</td>
+<td class="gt_row gt_right" headers="peak.vo2" style="background-color: #ADD8E6">43.8</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">summary</span>(peakVO2[,<span class="fu">c</span>(<span class="st">"bun"</span>,<span class="st">"interval"</span>, <span class="st">"peak.vo2"</span>)])</span>
+<span id="cb12-2"><a href=""></a>      bun             interval         peak.vo2    </span>
+<span id="cb12-3"><a href=""></a> Min.   <span class="sc">:</span>  <span class="fl">4.322</span>   Min.   <span class="sc">:</span>  <span class="fl">21.0</span>   Min.   <span class="sc">:</span> <span class="fl">4.20</span>  </span>
+<span id="cb12-4"><a href=""></a> <span class="dv">1</span>st Qu.<span class="sc">:</span> <span class="fl">17.000</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span> <span class="fl">345.0</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">12.80</span>  </span>
+<span id="cb12-5"><a href=""></a> Median <span class="sc">:</span> <span class="fl">23.000</span>   Median <span class="sc">:</span> <span class="fl">480.0</span>   Median <span class="sc">:</span><span class="fl">15.70</span>  </span>
+<span id="cb12-6"><a href=""></a> Mean   <span class="sc">:</span> <span class="fl">25.278</span>   Mean   <span class="sc">:</span> <span class="fl">503.3</span>   Mean   <span class="sc">:</span><span class="fl">16.27</span>  </span>
+<span id="cb12-7"><a href=""></a> <span class="dv">3</span>rd Qu.<span class="sc">:</span> <span class="fl">29.334</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span> <span class="fl">641.0</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">19.30</span>  </span>
+<span id="cb12-8"><a href=""></a> Max.   <span class="sc">:</span><span class="fl">129.000</span>   Max.   <span class="sc">:</span><span class="fl">1415.0</span>   Max.   <span class="sc">:</span><span class="fl">43.80</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr style="margin: 10px; visibility:hidden;">
+<div class="fragment">
+<h4 id="permuting-the-data-can-create-implausible-values">Permuting the data can create implausible values</h4>
+</div>
+</section><section id="varpro-2" class="slide level2"><h2>VarPro</h2>
+<p>Permutation VIMP creates “artificial” data which can impact performance in correlated settings</p>
+<hr style="margin: 10px; visibility:hidden;">
+<p>VarPro works directly with the observed data creating a test statistic</p>
+<hr style="margin: 10px; visibility:hidden;">
+<div class="fragment">
+<p>For each tree branch (a rule), the rule is <em>released</em> along the coordinate <span class="math inline">\(j\)</span>. Importance equals the difference between the test statistic for the original rule to the released rule</p>
+</div>
+</section><section id="varpro-pros-and-cons" class="slide level2 smaller"><h2>VarPro: pros and cons</h2>
+<p>Pros:</p>
+<ol type="1">
+<li>Much faster</li>
+<li>Much better for correlated problems</li>
+<li>User specified test statistics</li>
+<li>Doesn’t depend on prediction error</li>
+<li>Tree guided rules can be specified by the user</li>
+<li>Sparsity property</li>
+</ol>
+<p>Cons:</p>
+<ol type="1">
+<li>Importance value does not have an intuitive interpretation</li>
+</ol></section><section id="general-call-to-varpro" class="slide level2"><h2>General call to varpro</h2>
+<div class="fragment fade-left">
+<p><img data-src="pic/varpro.png" style="width:100.0%"></p>
+</div>
+</section><section id="varpro-canonical-illustration" class="slide level2 smaller"><h2>VarPro canonical illustration</h2>
+<div class="sourceCode" id="cb13" data-code-line-numbers="1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="do">## varpro canonical call</span></span>
+<span id="cb13-2"><a href=""></a>o <span class="ot">&lt;-</span><span class="fu">varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb13-3"><a href=""></a><span class="fu">importance</span>(o)</span>
+<span id="cb13-4"><a href=""></a></span>
+<span id="cb13-5"><a href=""></a><span class="do">## cv.varpro canonical call</span></span>
+<span id="cb13-6"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb13-7"><a href=""></a>o.cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">importance</span>(o)</span>
+<span id="cb14-2"><a href=""></a>                            mean          std          z    zcenter selected</span>
+<span id="cb14-3"><a href=""></a>bun                 <span class="fl">0.4978149504</span> <span class="fl">0.0337152554</span> <span class="fl">14.7652730</span> <span class="fl">12.7652730</span>        <span class="dv">1</span></span>
+<span id="cb14-4"><a href=""></a>interval            <span class="fl">0.3185356007</span> <span class="fl">0.0295842524</span> <span class="fl">10.7670661</span>  <span class="fl">8.7670661</span>        <span class="dv">1</span></span>
+<span id="cb14-5"><a href=""></a>peak.vo2            <span class="fl">0.4312874502</span> <span class="fl">0.0402880827</span> <span class="fl">10.7050875</span>  <span class="fl">8.7050875</span>        <span class="dv">1</span></span>
+<span id="cb14-6"><a href=""></a>male                <span class="fl">0.3505938059</span> <span class="fl">0.0538524448</span>  <span class="fl">6.5102672</span>  <span class="fl">4.5102672</span>        <span class="dv">1</span></span>
+<span id="cb14-7"><a href=""></a>age                 <span class="fl">0.2446044542</span> <span class="fl">0.0396020571</span>  <span class="fl">6.1765593</span>  <span class="fl">4.1765593</span>        <span class="dv">1</span></span>
+<span id="cb14-8"><a href=""></a>betablok            <span class="fl">0.2686558074</span> <span class="fl">0.0479230810</span>  <span class="fl">5.6059794</span>  <span class="fl">3.6059794</span>        <span class="dv">1</span></span>
+<span id="cb14-9"><a href=""></a>sodium              <span class="fl">0.2528347809</span> <span class="fl">0.0512493678</span>  <span class="fl">4.9334224</span>  <span class="fl">2.9334224</span>        <span class="dv">1</span></span>
+<span id="cb14-10"><a href=""></a>crcl                <span class="fl">0.1797879324</span> <span class="fl">0.0437915811</span>  <span class="fl">4.1055365</span>  <span class="fl">2.1055365</span>        <span class="dv">1</span></span>
+<span id="cb14-11"><a href=""></a>lvef.metabl         <span class="fl">0.2381646158</span> <span class="fl">0.0611984740</span>  <span class="fl">3.8916757</span>  <span class="fl">1.8916757</span>        <span class="dv">1</span></span>
+<span id="cb14-12"><a href=""></a>hgb                 <span class="fl">0.1725410259</span> <span class="fl">0.0542089828</span>  <span class="fl">3.1828862</span>  <span class="fl">1.1828862</span>        <span class="dv">1</span></span>
+<span id="cb14-13"><a href=""></a>resting.systolic.bp <span class="fl">0.1968886781</span> <span class="fl">0.0678923150</span>  <span class="fl">2.9000142</span>  <span class="fl">0.9000142</span>        <span class="dv">1</span></span>
+<span id="cb14-14"><a href=""></a>resting.hr          <span class="fl">0.1597187409</span> <span class="fl">0.0691719891</span>  <span class="fl">2.3090089</span>  <span class="fl">0.3090089</span>        <span class="dv">1</span></span>
+<span id="cb14-15"><a href=""></a>digoxin             <span class="fl">0.0775483548</span> <span class="fl">0.1211743434</span>  <span class="fl">0.6399734</span> <span class="sc">-</span><span class="fl">1.3600266</span>        <span class="dv">0</span></span>
+<span id="cb14-16"><a href=""></a>peak.rer            <span class="fl">0.0398680722</span> <span class="fl">0.0692507796</span>  <span class="fl">0.5757058</span> <span class="sc">-</span><span class="fl">1.4242942</span>        <span class="dv">0</span></span>
+<span id="cb14-17"><a href=""></a>glucose             <span class="fl">0.0290473617</span> <span class="fl">0.0652009690</span>  <span class="fl">0.4455051</span> <span class="sc">-</span><span class="fl">1.5544949</span>        <span class="dv">0</span></span>
+<span id="cb14-18"><a href=""></a>diuretic.thiazide   <span class="fl">0.0002443196</span> <span class="fl">0.0007146353</span>  <span class="fl">0.3418801</span> <span class="sc">-</span><span class="fl">1.6581199</span>        <span class="dv">0</span></span>
+<span id="cb14-19"><a href=""></a>aspirin             <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
+<span id="cb14-20"><a href=""></a>bmi                 <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
+<span id="cb14-21"><a href=""></a>cad                 <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span>
+<span id="cb14-22"><a href=""></a>insulin             <span class="fl">0.0000000000</span> <span class="fl">0.0000000000</span>        <span class="cn">NaN</span>        <span class="cn">NaN</span>        <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+
+</div>
+</section><section id="varpro-canonical-illustration-1" class="slide level2 smaller"><h2>VarPro canonical illustration</h2>
+<div class="sourceCode" id="cb15" data-code-line-numbers="1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="do">## cv.varpro canonical call</span></span>
+<span id="cb15-2"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb15-3"><a href=""></a>o.cv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16" data-code-line-numbers="2-14|16-27|29-44|46-61"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="sc">&gt;</span> o.cv</span>
+<span id="cb16-2"><a href=""></a><span class="sc">$</span>imp</span>
+<span id="cb16-3"><a href=""></a>      variable         z</span>
+<span id="cb16-4"><a href=""></a><span class="dv">1</span>          bun <span class="fl">12.765690</span></span>
+<span id="cb16-5"><a href=""></a><span class="dv">2</span>     interval  <span class="fl">9.084990</span></span>
+<span id="cb16-6"><a href=""></a><span class="dv">3</span>     peak.vo2  <span class="fl">8.284743</span></span>
+<span id="cb16-7"><a href=""></a><span class="dv">4</span>         male  <span class="fl">5.918617</span></span>
+<span id="cb16-8"><a href=""></a><span class="dv">5</span>          age  <span class="fl">5.537937</span></span>
+<span id="cb16-9"><a href=""></a><span class="dv">6</span>     betablok  <span class="fl">3.600902</span></span>
+<span id="cb16-10"><a href=""></a><span class="dv">7</span>       sodium  <span class="fl">3.408508</span></span>
+<span id="cb16-11"><a href=""></a><span class="dv">8</span>  lvef.metabl  <span class="fl">2.776717</span></span>
+<span id="cb16-12"><a href=""></a><span class="dv">9</span>   resting.hr  <span class="fl">2.590353</span></span>
+<span id="cb16-13"><a href=""></a><span class="dv">10</span>        crcl  <span class="fl">2.476236</span></span>
+<span id="cb16-14"><a href=""></a><span class="dv">11</span>     digoxin  <span class="fl">1.289895</span></span>
+<span id="cb16-15"><a href=""></a></span>
+<span id="cb16-16"><a href=""></a><span class="sc">$</span>imp.conserve</span>
+<span id="cb16-17"><a href=""></a>      variable         z</span>
+<span id="cb16-18"><a href=""></a><span class="dv">1</span>          bun <span class="fl">12.765690</span></span>
+<span id="cb16-19"><a href=""></a><span class="dv">2</span>     interval  <span class="fl">9.084990</span></span>
+<span id="cb16-20"><a href=""></a><span class="dv">3</span>     peak.vo2  <span class="fl">8.284743</span></span>
+<span id="cb16-21"><a href=""></a><span class="dv">4</span>         male  <span class="fl">5.918617</span></span>
+<span id="cb16-22"><a href=""></a><span class="dv">5</span>          age  <span class="fl">5.537937</span></span>
+<span id="cb16-23"><a href=""></a><span class="dv">6</span>     betablok  <span class="fl">3.600902</span></span>
+<span id="cb16-24"><a href=""></a><span class="dv">7</span>       sodium  <span class="fl">3.408508</span></span>
+<span id="cb16-25"><a href=""></a><span class="dv">8</span>  lvef.metabl  <span class="fl">2.776717</span></span>
+<span id="cb16-26"><a href=""></a><span class="dv">9</span>   resting.hr  <span class="fl">2.590353</span></span>
+<span id="cb16-27"><a href=""></a><span class="dv">10</span>        crcl  <span class="fl">2.476236</span></span>
+<span id="cb16-28"><a href=""></a></span>
+<span id="cb16-29"><a href=""></a><span class="sc">$</span>imp.liberal</span>
+<span id="cb16-30"><a href=""></a>              variable          z</span>
+<span id="cb16-31"><a href=""></a><span class="dv">1</span>                  bun <span class="fl">12.7656902</span></span>
+<span id="cb16-32"><a href=""></a><span class="dv">2</span>             interval  <span class="fl">9.0849901</span></span>
+<span id="cb16-33"><a href=""></a><span class="dv">3</span>             peak.vo2  <span class="fl">8.2847426</span></span>
+<span id="cb16-34"><a href=""></a><span class="dv">4</span>                 male  <span class="fl">5.9186167</span></span>
+<span id="cb16-35"><a href=""></a><span class="dv">5</span>                  age  <span class="fl">5.5379366</span></span>
+<span id="cb16-36"><a href=""></a><span class="dv">6</span>             betablok  <span class="fl">3.6009023</span></span>
+<span id="cb16-37"><a href=""></a><span class="dv">7</span>               sodium  <span class="fl">3.4085085</span></span>
+<span id="cb16-38"><a href=""></a><span class="dv">8</span>          lvef.metabl  <span class="fl">2.7767175</span></span>
+<span id="cb16-39"><a href=""></a><span class="dv">9</span>           resting.hr  <span class="fl">2.5903526</span></span>
+<span id="cb16-40"><a href=""></a><span class="dv">10</span>                crcl  <span class="fl">2.4762361</span></span>
+<span id="cb16-41"><a href=""></a><span class="dv">11</span>             digoxin  <span class="fl">1.2898949</span></span>
+<span id="cb16-42"><a href=""></a><span class="dv">12</span> resting.systolic.bp  <span class="fl">1.2290245</span></span>
+<span id="cb16-43"><a href=""></a><span class="dv">13</span>                 hgb  <span class="fl">0.7475712</span></span>
+<span id="cb16-44"><a href=""></a><span class="dv">14</span>   diuretic.thiazide  <span class="fl">0.4964589</span></span>
+<span id="cb16-45"><a href=""></a></span>
+<span id="cb16-46"><a href=""></a><span class="sc">$</span>err</span>
+<span id="cb16-47"><a href=""></a>          zcut nvar       err          sd</span>
+<span id="cb16-48"><a href=""></a>[<span class="dv">1</span>,] <span class="fl">0.1000000</span>   <span class="dv">14</span> <span class="fl">0.3120663</span> <span class="fl">0.007186951</span></span>
+<span id="cb16-49"><a href=""></a>[<span class="dv">2</span>,] <span class="fl">0.5265306</span>   <span class="dv">13</span> <span class="fl">0.3137940</span> <span class="fl">0.004717065</span></span>
+<span id="cb16-50"><a href=""></a>[<span class="dv">3</span>,] <span class="fl">0.7591837</span>   <span class="dv">12</span> <span class="fl">0.3141295</span> <span class="fl">0.004068593</span></span>
+<span id="cb16-51"><a href=""></a>[<span class="dv">4</span>,] <span class="fl">1.2632653</span>   <span class="dv">11</span> <span class="fl">0.3099739</span> <span class="fl">0.003270832</span></span>
+<span id="cb16-52"><a href=""></a>[<span class="dv">5</span>,] <span class="fl">1.3020408</span>   <span class="dv">10</span> <span class="fl">0.3123732</span> <span class="fl">0.004680203</span></span>
+<span id="cb16-53"><a href=""></a></span>
+<span id="cb16-54"><a href=""></a><span class="sc">$</span>zcut</span>
+<span id="cb16-55"><a href=""></a>[<span class="dv">1</span>] <span class="fl">1.263265</span></span>
+<span id="cb16-56"><a href=""></a></span>
+<span id="cb16-57"><a href=""></a><span class="sc">$</span>zcut.conserve</span>
+<span id="cb16-58"><a href=""></a>[<span class="dv">1</span>] <span class="fl">1.302041</span></span>
+<span id="cb16-59"><a href=""></a></span>
+<span id="cb16-60"><a href=""></a><span class="sc">$</span>zcut.liberal</span>
+<span id="cb16-61"><a href=""></a>[<span class="dv">1</span>] <span class="fl">0.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+
+</div>
+</section><section id="varpro-canonical-illustration-2" class="slide level2 smaller"><h2>VarPro canonical illustration</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="vimp">VIMP</h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
+<span id="cb17-2"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
+<span id="cb17-3"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<center>
+<img data-src="pic/peakVIMP.png" style="width:100.0%">
+</center>
+</div><div class="column fragment fade-left" style="width:50%;">
+<h4 id="varpro-3">VarPro</h4>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb18-2"><a href=""></a><span class="fu">barplot</span>(o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>z, <span class="at">names.arg=</span>o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>variable,</span>
+<span id="cb18-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"coral2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<center>
+<img data-src="pic/peakVarPro.png" style="width:80.0%">
+</center>
+</div></div>
+</section><section id="varpro-canonical-illustration-3" class="slide level2 smaller"><h2>VarPro canonical illustration</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="vimp-1">VIMP</h4>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2, <span class="at">importance=</span><span class="st">"permute"</span>)</span>
+<span id="cb19-2"><a href=""></a>oo <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o)</span>
+<span id="cb19-3"><a href=""></a><span class="fu">plot.vimp.ci</span>(oo, <span class="at">alpha=</span>.<span class="dv">05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<br><center>
+<img data-src="pic/peakVIMPzoom.png" style="width:100.0%">
+</center>
+</div><div class="column" style="width:50%;">
+<h4 id="varpro-4">VarPro</h4>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>o.cv <span class="ot">&lt;-</span> <span class="fu">cv.varpro</span>(<span class="fu">Surv</span>(ttodead, died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb20-2"><a href=""></a><span class="fu">barplot</span>(o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>z, <span class="at">names.arg=</span>o.cv<span class="sc">$</span>imp.liberal<span class="sc">$</span>variable,</span>
+<span id="cb20-3"><a href=""></a>        <span class="at">las=</span><span class="dv">2</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"coral2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<center>
+<img data-src="pic/peakVarPro.png" style="width:80.0%">
+</center>
+</div></div>
+</section><section id="varpro-high-dimensional-example" class="slide level2 smaller"><h2>VarPro high-dimensional example</h2>
+<h4 id="van-de-vijver-microarray-breast-cancer">van de Vijver Microarray Breast Cancer</h4>
+<p>Gene expression profiling for predicting clinical outcome of breast cancer <span class="citation" data-cites="van2002gene">[<a href="#/references" role="doc-biblioref" onclick="">5</a>]</span>. Microarray breast cancer data set of 4707 expression values on 78 patients with survival information</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="cnaxxkmncb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cnaxxkmncb table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#cnaxxkmncb thead, #cnaxxkmncb tbody, #cnaxxkmncb tfoot, #cnaxxkmncb tr, #cnaxxkmncb td, #cnaxxkmncb th {
+  border-style: none;
+}
+
+#cnaxxkmncb p {
+  margin: 0;
+  padding: 0;
+}
+
+#cnaxxkmncb .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#cnaxxkmncb .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#cnaxxkmncb .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#cnaxxkmncb .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#cnaxxkmncb .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#cnaxxkmncb .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#cnaxxkmncb .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#cnaxxkmncb .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#cnaxxkmncb .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#cnaxxkmncb .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#cnaxxkmncb .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#cnaxxkmncb .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#cnaxxkmncb .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#cnaxxkmncb .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#cnaxxkmncb .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnaxxkmncb .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#cnaxxkmncb .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#cnaxxkmncb .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#cnaxxkmncb .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnaxxkmncb .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#cnaxxkmncb .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnaxxkmncb .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#cnaxxkmncb .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnaxxkmncb .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#cnaxxkmncb .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#cnaxxkmncb .gt_left {
+  text-align: left;
+}
+
+#cnaxxkmncb .gt_center {
+  text-align: center;
+}
+
+#cnaxxkmncb .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#cnaxxkmncb .gt_font_normal {
+  font-weight: normal;
+}
+
+#cnaxxkmncb .gt_font_bold {
+  font-weight: bold;
+}
+
+#cnaxxkmncb .gt_font_italic {
+  font-style: italic;
+}
+
+#cnaxxkmncb .gt_super {
+  font-size: 65%;
+}
+
+#cnaxxkmncb .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#cnaxxkmncb .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#cnaxxkmncb .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#cnaxxkmncb .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#cnaxxkmncb .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#cnaxxkmncb .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#cnaxxkmncb .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#cnaxxkmncb .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#cnaxxkmncb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead><tr class="gt_col_headings header">
+<th id="Time" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Time</th>
+<th id="Censoring" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Censoring</th>
+<th id="AA555029_RC" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AA555029_RC</th>
+<th id="AA598803_RC" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AA598803_RC</th>
+<th id="AB002301" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002301</th>
+<th id="AB002308" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002308</th>
+<th id="AB002331" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002331</th>
+<th id="AB002351" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002351</th>
+<th id="AB002445" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002445</th>
+<th id="AB002448" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB002448</th>
+<th id="AB004064" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB004064</th>
+<th id="AB004857" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB004857</th>
+<th id="AB006625" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB006625</th>
+<th id="AB006628" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB006628</th>
+<th id="AB006746" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB006746</th>
+<th id="AB007458" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB007458</th>
+<th id="AB007855" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB007855</th>
+<th id="AB007857" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB007857</th>
+<th id="AB007883" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB007883</th>
+<th id="AB007888" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">AB007888</th>
+</tr></thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Time">12.53</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.5049331</td>
+<td class="gt_row gt_right" headers="AA598803_RC">-0.2425008</td>
+<td class="gt_row gt_right" headers="AB002301">-0.199315682</td>
+<td class="gt_row gt_right" headers="AB002308">0.90024251</td>
+<td class="gt_row gt_right" headers="AB002331">0.6311663</td>
+<td class="gt_row gt_right" headers="AB002351">-0.6012690</td>
+<td class="gt_row gt_right" headers="AB002445">0.44181645</td>
+<td class="gt_row gt_right" headers="AB002448">-0.26575425</td>
+<td class="gt_row gt_right" headers="AB004064">-2.80370736</td>
+<td class="gt_row gt_right" headers="AB004857">0.13287713</td>
+<td class="gt_row gt_right" headers="AB006625">-1.1427432</td>
+<td class="gt_row gt_right" headers="AB006628">-0.52818656</td>
+<td class="gt_row gt_right" headers="AB006746">-0.97000301</td>
+<td class="gt_row gt_right" headers="AB007458">0.32222703</td>
+<td class="gt_row gt_right" headers="AB007855">0.41856295</td>
+<td class="gt_row gt_right" headers="AB007857">1.1294556</td>
+<td class="gt_row gt_right" headers="AB007883">0.4218849</td>
+<td class="gt_row gt_right" headers="AB007888">-0.16941833</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Time">6.44</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.5879813</td>
+<td class="gt_row gt_right" headers="AA598803_RC">0.4384945</td>
+<td class="gt_row gt_right" headers="AB002301">-0.621200562</td>
+<td class="gt_row gt_right" headers="AB002308">0.09301399</td>
+<td class="gt_row gt_right" headers="AB002331">0.9500715</td>
+<td class="gt_row gt_right" headers="AB002351">-1.4849019</td>
+<td class="gt_row gt_right" headers="AB002445">0.21924725</td>
+<td class="gt_row gt_right" headers="AB002448">0.14616483</td>
+<td class="gt_row gt_right" headers="AB004064">0.08637013</td>
+<td class="gt_row gt_right" headers="AB004857">0.59130323</td>
+<td class="gt_row gt_right" headers="AB006625">1.1859283</td>
+<td class="gt_row gt_right" headers="AB006628">-0.70424873</td>
+<td class="gt_row gt_right" headers="AB006746">-0.62120056</td>
+<td class="gt_row gt_right" headers="AB007458">0.33883667</td>
+<td class="gt_row gt_right" headers="AB007855">0.05979471</td>
+<td class="gt_row gt_right" headers="AB007857">0.1129456</td>
+<td class="gt_row gt_right" headers="AB007883">0.4484603</td>
+<td class="gt_row gt_right" headers="AB007888">-0.05979471</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Time">10.66</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.3521244</td>
+<td class="gt_row gt_right" headers="AA598803_RC">-0.2258911</td>
+<td class="gt_row gt_right" headers="AB002301">0.006643856</td>
+<td class="gt_row gt_right" headers="AB002308">0.13952097</td>
+<td class="gt_row gt_right" headers="AB002331">-0.7275022</td>
+<td class="gt_row gt_right" headers="AB002351">-1.0430855</td>
+<td class="gt_row gt_right" headers="AB002445">-0.27572003</td>
+<td class="gt_row gt_right" headers="AB002448">-0.49496728</td>
+<td class="gt_row gt_right" headers="AB004064">0.56140584</td>
+<td class="gt_row gt_right" headers="AB004857">0.71089262</td>
+<td class="gt_row gt_right" headers="AB006625">1.2424011</td>
+<td class="gt_row gt_right" headers="AB006628">-0.77068734</td>
+<td class="gt_row gt_right" headers="AB006746">1.12613368</td>
+<td class="gt_row gt_right" headers="AB007458">-0.38534367</td>
+<td class="gt_row gt_right" headers="AB007855">-0.23253496</td>
+<td class="gt_row gt_right" headers="AB007857">-0.6079128</td>
+<td class="gt_row gt_right" headers="AB007883">-0.6909611</td>
+<td class="gt_row gt_right" headers="AB007888">-1.13609946</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Time">13.00</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.4750357</td>
+<td class="gt_row gt_right" headers="AA598803_RC">0.5016111</td>
+<td class="gt_row gt_right" headers="AB002301">-0.671029449</td>
+<td class="gt_row gt_right" headers="AB002308">0.76404345</td>
+<td class="gt_row gt_right" headers="AB002331">-0.9234960</td>
+<td class="gt_row gt_right" headers="AB002351">-1.9267184</td>
+<td class="gt_row gt_right" headers="AB002445">-0.01993157</td>
+<td class="gt_row gt_right" headers="AB002448">0.09301399</td>
+<td class="gt_row gt_right" headers="AB004064">0.41524100</td>
+<td class="gt_row gt_right" headers="AB004857">0.24250075</td>
+<td class="gt_row gt_right" headers="AB006625">-0.9002425</td>
+<td class="gt_row gt_right" headers="AB006628">0.07972627</td>
+<td class="gt_row gt_right" headers="AB006746">-0.43517259</td>
+<td class="gt_row gt_right" headers="AB007458">0.05315085</td>
+<td class="gt_row gt_right" headers="AB007855">-1.56795001</td>
+<td class="gt_row gt_right" headers="AB007857">-0.9102083</td>
+<td class="gt_row gt_right" headers="AB007883">-0.2823639</td>
+<td class="gt_row gt_right" headers="AB007888">-0.12623326</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Time">11.98</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.1660964</td>
+<td class="gt_row gt_right" headers="AA598803_RC">0.1361991</td>
+<td class="gt_row gt_right" headers="AB002301">0.989934564</td>
+<td class="gt_row gt_right" headers="AB002308">0.62452251</td>
+<td class="gt_row gt_right" headers="AB002331">0.9168522</td>
+<td class="gt_row gt_right" headers="AB002351">-1.4550045</td>
+<td class="gt_row gt_right" headers="AB002445">0.07972627</td>
+<td class="gt_row gt_right" headers="AB002448">0.77733117</td>
+<td class="gt_row gt_right" headers="AB004064">0.19267184</td>
+<td class="gt_row gt_right" headers="AB004857">-0.37205595</td>
+<td class="gt_row gt_right" headers="AB006625">-0.9700030</td>
+<td class="gt_row gt_right" headers="AB006628">-0.41856295</td>
+<td class="gt_row gt_right" headers="AB006746">-0.07640435</td>
+<td class="gt_row gt_right" headers="AB007458">-0.20263761</td>
+<td class="gt_row gt_right" headers="AB007855">0.54147428</td>
+<td class="gt_row gt_right" headers="AB007857">-0.1926718</td>
+<td class="gt_row gt_right" headers="AB007883">0.4584261</td>
+<td class="gt_row gt_right" headers="AB007888">0.71089262</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Time">11.16</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.8935987</td>
+<td class="gt_row gt_right" headers="AA598803_RC">-0.1361991</td>
+<td class="gt_row gt_right" headers="AB002301">0.438494503</td>
+<td class="gt_row gt_right" headers="AB002308">0.56140584</td>
+<td class="gt_row gt_right" headers="AB002331">-0.4551041</td>
+<td class="gt_row gt_right" headers="AB002351">-1.5679500</td>
+<td class="gt_row gt_right" headers="AB002445">-0.42852873</td>
+<td class="gt_row gt_right" headers="AB002448">0.28568581</td>
+<td class="gt_row gt_right" headers="AB004064">-0.25911039</td>
+<td class="gt_row gt_right" headers="AB004857">0.47835764</td>
+<td class="gt_row gt_right" headers="AB006625">2.2356577</td>
+<td class="gt_row gt_right" headers="AB006628">-0.59130323</td>
+<td class="gt_row gt_right" headers="AB006746">-0.83712590</td>
+<td class="gt_row gt_right" headers="AB007458">0.48500150</td>
+<td class="gt_row gt_right" headers="AB007855">-0.03321928</td>
+<td class="gt_row gt_right" headers="AB007857">1.2457230</td>
+<td class="gt_row gt_right" headers="AB007883">-0.1195894</td>
+<td class="gt_row gt_right" headers="AB007888">-0.27239811</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Time">10.14</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.4916454</td>
+<td class="gt_row gt_right" headers="AA598803_RC">-0.5746936</td>
+<td class="gt_row gt_right" headers="AB002301">-0.289007753</td>
+<td class="gt_row gt_right" headers="AB002308">0.16941833</td>
+<td class="gt_row gt_right" headers="AB002331">0.9135302</td>
+<td class="gt_row gt_right" headers="AB002351">-0.1129456</td>
+<td class="gt_row gt_right" headers="AB002445">0.20928147</td>
+<td class="gt_row gt_right" headers="AB002448">-0.47171378</td>
+<td class="gt_row gt_right" headers="AB004064">0.52818656</td>
+<td class="gt_row gt_right" headers="AB004857">0.03321928</td>
+<td class="gt_row gt_right" headers="AB006625">-0.8138724</td>
+<td class="gt_row gt_right" headers="AB006628">-0.68431717</td>
+<td class="gt_row gt_right" headers="AB006746">-0.52486461</td>
+<td class="gt_row gt_right" headers="AB007458">0.07640435</td>
+<td class="gt_row gt_right" headers="AB007855">0.69096106</td>
+<td class="gt_row gt_right" headers="AB007857">1.3686343</td>
+<td class="gt_row gt_right" headers="AB007883">-0.1959938</td>
+<td class="gt_row gt_right" headers="AB007888">-0.19599375</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Time">8.80</td>
+<td class="gt_row gt_right" headers="Censoring">0</td>
+<td class="gt_row gt_right" headers="AA555029_RC">-0.4650699</td>
+<td class="gt_row gt_right" headers="AA598803_RC">-0.2956516</td>
+<td class="gt_row gt_right" headers="AB002301">-0.385343671</td>
+<td class="gt_row gt_right" headers="AB002308">-0.26907617</td>
+<td class="gt_row gt_right" headers="AB002331">-0.3587682</td>
+<td class="gt_row gt_right" headers="AB002351">-1.4815799</td>
+<td class="gt_row gt_right" headers="AB002445">-0.97664684</td>
+<td class="gt_row gt_right" headers="AB002448">-0.87366706</td>
+<td class="gt_row gt_right" headers="AB004064">0.60126901</td>
+<td class="gt_row gt_right" headers="AB004857">-0.42188486</td>
+<td class="gt_row gt_right" headers="AB006625">-1.6543202</td>
+<td class="gt_row gt_right" headers="AB006628">-0.57137161</td>
+<td class="gt_row gt_right" headers="AB006746">1.12613368</td>
+<td class="gt_row gt_right" headers="AB007458">-0.57137161</td>
+<td class="gt_row gt_right" headers="AB007855">-0.98661262</td>
+<td class="gt_row gt_right" headers="AB007857">-1.3088397</td>
+<td class="gt_row gt_right" headers="AB007883">-1.0497292</td>
+<td class="gt_row gt_right" headers="AB007888">-0.52486461</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sourceCode" id="cb21" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)  </span>
+<span id="cb21-2"><a href=""></a><span class="fu">dim</span>(vdv)  </span>
+<span id="cb21-3"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">78</span>  <span class="dv">4707</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="varpro-high-dimensional-example-1" class="slide level2 smaller"><h2>VarPro high-dimensional example</h2>
+<div class="sourceCode" id="cb22" data-code-line-numbers="1-5|6-29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="do">## van de Vijver Microarray Breast Cancer</span></span>
+<span id="cb22-2"><a href=""></a><span class="do">## high dimensional survival example using different split-weights</span></span>
+<span id="cb22-3"><a href=""></a><span class="do">## illustrates guided trees </span></span>
+<span id="cb22-4"><a href=""></a></span>
+<span id="cb22-5"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb22-6"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
+<span id="cb22-7"><a href=""></a>     </span>
+<span id="cb22-8"><a href=""></a><span class="do">## lasso only</span></span>
+<span id="cb22-9"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
+<span id="cb22-10"><a href=""></a></span>
+<span id="cb22-11"><a href=""></a><span class="do">## lasso and vimp</span></span>
+<span id="cb22-12"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
+<span id="cb22-13"><a href=""></a></span>
+<span id="cb22-14"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
+<span id="cb22-15"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
+<span id="cb22-16"><a href=""></a></span>
+<span id="cb22-17"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
+<span id="cb22-18"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
+<span id="cb22-19"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
+<span id="cb22-20"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb22-21"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
+<span id="cb22-22"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
+<span id="cb22-23"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
+<span id="cb22-24"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb22-25"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
+<span id="cb22-26"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
+<span id="cb22-27"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
+<span id="cb22-28"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
+<span id="cb22-29"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="varpro-high-dimensional-example-2" class="slide level2 smaller"><h2>VarPro high-dimensional example</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<hr style="margin: 23px; visibility:hidden;">
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">data</span>(vdv, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb23-2"><a href=""></a>f <span class="ot">&lt;-</span> <span class="fu">as.formula</span>(<span class="fu">Surv</span>(Time, Censoring)<span class="sc">~</span>.)</span>
+<span id="cb23-3"><a href=""></a>     </span>
+<span id="cb23-4"><a href=""></a><span class="do">## lasso only</span></span>
+<span id="cb23-5"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>))</span>
+<span id="cb23-6"><a href=""></a></span>
+<span id="cb23-7"><a href=""></a><span class="do">## lasso and vimp</span></span>
+<span id="cb23-8"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>))</span>
+<span id="cb23-9"><a href=""></a></span>
+<span id="cb23-10"><a href=""></a><span class="do">## lasso, vimp and shallow trees</span></span>
+<span id="cb23-11"><a href=""></a><span class="fu">importance</span>(<span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>))</span>
+<span id="cb23-12"><a href=""></a></span>
+<span id="cb23-13"><a href=""></a><span class="do">## store the original vdv 70 gene signature in object nms</span></span>
+<span id="cb23-14"><a href=""></a><span class="do">## compare methods using 25 runs:</span></span>
+<span id="cb23-15"><a href=""></a>rO <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>, <span class="cf">function</span>(b) {</span>
+<span id="cb23-16"><a href=""></a>  <span class="fu">cat</span>(<span class="st">"replication:"</span>, b, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb23-17"><a href=""></a>  o1 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso"</span>)</span>
+<span id="cb23-18"><a href=""></a>  o2 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>)</span>
+<span id="cb23-19"><a href=""></a>  o3 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp tree"</span>)</span>
+<span id="cb23-20"><a href=""></a>  o4 <span class="ot">&lt;-</span> <span class="fu">varpro</span>(f, vdv, <span class="at">split.weight.method =</span> <span class="st">"lasso vimp"</span>, <span class="at">sparse =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb23-21"><a href=""></a>  <span class="fu">list</span>(<span class="st">"lasso"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o1)<span class="sc">$</span>variable),</span>
+<span id="cb23-22"><a href=""></a>       <span class="st">"lasso.vimp"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o2)<span class="sc">$</span>variable),</span>
+<span id="cb23-23"><a href=""></a>       <span class="st">"lasso.vimp.tree"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o3)<span class="sc">$</span>variable),</span>
+<span id="cb23-24"><a href=""></a>       <span class="st">"lasso.vimp.sparseoff"</span><span class="ot">=</span><span class="fu">intersect</span>(nms,<span class="fu">get.orgvimp</span>(o4)<span class="sc">$</span>variable))</span>
+<span id="cb23-25"><a href=""></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment fade-left" style="width:50%;">
+<h4 id="intersection-with-vdv-70-gene-signature">Intersection with VDV 70 gene signature</h4>
+<div class="sourceCode" id="cb24" data-code-line-numbers="1-23|25-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="sc">$</span>lasso</span>
+<span id="cb24-2"><a href=""></a>[<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AL080059"</span>      </span>
+<span id="cb24-3"><a href=""></a>[<span class="dv">3</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
+<span id="cb24-4"><a href=""></a>[<span class="dv">5</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb24-5"><a href=""></a>[<span class="dv">7</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
+<span id="cb24-6"><a href=""></a>[<span class="dv">9</span>] <span class="st">"NM_020974"</span>     </span>
+<span id="cb24-7"><a href=""></a></span>
+<span id="cb24-8"><a href=""></a><span class="sc">$</span>lasso.vimp</span>
+<span id="cb24-9"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AL137718"</span>       <span class="st">"Contig25991"</span>   </span>
+<span id="cb24-10"><a href=""></a> [<span class="dv">3</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig51464_RC"</span></span>
+<span id="cb24-11"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig55377_RC"</span> <span class="st">"NM_000436"</span>     </span>
+<span id="cb24-12"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb24-13"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006681"</span>     </span>
+<span id="cb24-14"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_016448"</span>      <span class="st">"NM_020974"</span>     </span>
+<span id="cb24-15"><a href=""></a></span>
+<span id="cb24-16"><a href=""></a><span class="sc">$</span>lasso.vimp.tree</span>
+<span id="cb24-17"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AA555029_RC"</span>    <span class="st">"AF201951"</span>      </span>
+<span id="cb24-18"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"Contig25991"</span>   </span>
+<span id="cb24-19"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig28552_RC"</span> <span class="st">"Contig55377_RC"</span></span>
+<span id="cb24-20"><a href=""></a> [<span class="dv">7</span>] <span class="st">"NM_000436"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb24-21"><a href=""></a> [<span class="dv">9</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
+<span id="cb24-22"><a href=""></a>[<span class="dv">11</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
+<span id="cb24-23"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_020974"</span>     </span>
+<span id="cb24-24"><a href=""></a></span>
+<span id="cb24-25"><a href=""></a><span class="sc">$</span>lasso.vimp.sparseoff</span>
+<span id="cb24-26"><a href=""></a> [<span class="dv">1</span>] <span class="st">"AF201951"</span>       <span class="st">"AF257175"</span>      </span>
+<span id="cb24-27"><a href=""></a> [<span class="dv">3</span>] <span class="st">"AL080059"</span>       <span class="st">"AL137718"</span>      </span>
+<span id="cb24-28"><a href=""></a> [<span class="dv">5</span>] <span class="st">"Contig25991"</span>    <span class="st">"Contig28552_RC"</span></span>
+<span id="cb24-29"><a href=""></a> [<span class="dv">7</span>] <span class="st">"Contig40831_RC"</span> <span class="st">"Contig48328_RC"</span></span>
+<span id="cb24-30"><a href=""></a> [<span class="dv">9</span>] <span class="st">"Contig51464_RC"</span> <span class="st">"Contig55377_RC"</span></span>
+<span id="cb24-31"><a href=""></a>[<span class="dv">11</span>] <span class="st">"Contig63102_RC"</span> <span class="st">"NM_002916"</span>     </span>
+<span id="cb24-32"><a href=""></a>[<span class="dv">13</span>] <span class="st">"NM_003239"</span>      <span class="st">"NM_003748"</span>     </span>
+<span id="cb24-33"><a href=""></a>[<span class="dv">15</span>] <span class="st">"NM_005915"</span>      <span class="st">"NM_006117"</span>     </span>
+<span id="cb24-34"><a href=""></a>[<span class="dv">17</span>] <span class="st">"NM_006681"</span>      <span class="st">"NM_016448"</span>     </span>
+<span id="cb24-35"><a href=""></a>[<span class="dv">19</span>] <span class="st">"NM_020974"</span>     </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section><section id="outline" class="slide level2 smaller" data-background-color="azure"><h2>Outline</h2>
+<div class="columns">
+<div class="column" style="width:47.5%;">
+<h4 id="part-i-training"><a href="https://luminwin.github.io/shortCourse/presentationPartI.html">Part I: Training</a></h4>
+<ol type="1">
+<li>Quick start</li>
+<li>Data structures allowed</li>
+<li>Training (grow) with examples <br>(regression, classification, survival)</li>
+</ol>
+<h4 id="part-ii-inference-and-prediction"><a href="https://luminwin.github.io/shortCourse/presentationPartII.html">Part II: Inference and Prediction</a></h4>
+<ol type="1">
+<li>Inference (OOB)</li>
+<li>Prediction Error</li>
+<li>Prediction</li>
+<li>Restore</li>
+<li>Partial Plots</li>
+</ol>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:47.5%;">
+<h4 id="part-iii-variable-selection"><a href="https://luminwin.github.io/shortCourse/presentationPartIII.html">Part III: Variable Selection</a></h4>
+<ol type="1">
+<li>VIMP</li>
+<li>Subsampling (Confidence Intervals)</li>
+<li>Minimal Depth</li>
+<li>VarPro</li>
+</ol>
+<h4 id="part-iv-advanced-examples"><a href="https://luminwin.github.io/shortCourse/presentationPartIV.html">Part IV: Advanced Examples</a></h4>
+<ol type="1">
+<li>Class Imbalanced Data</li>
+<li>Competing Risks</li>
+<li>Multivariate Forests</li>
+<li>Missing data imputation</li>
+</ol>
+</div></div>
+</section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>
+
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-HemantVIMP" class="csl-entry" role="listitem">
+1. Ishwaran H, Lu M, Kogalur UB. <span class="nocase">randomForestSRC</span>: Variable importance <span>(VIMP)</span> with subsampling inference vignette. 2021. <a href="http://randomforestsrc.org/articles/vimp.html">http://randomforestsrc.org/articles/vimp.html</a>.
+</div>
+<div id="ref-ishwaran2019standard033" class="csl-entry" role="listitem">
+2. Ishwaran H, Lu M. Standard errors and confidence intervals for variable importance in random forest regression, classification, and survival. Statistics in medicine. 2019;38:558–82. <a href="https://ishwaran.org/papers/IL.StatMed.2019.pdf">https://ishwaran.org/papers/IL.StatMed.2019.pdf</a>.
+</div>
+<div id="ref-politis1994" class="csl-entry" role="listitem">
+3. Politis DN, Romano JP. Large sample confidence regions based on subsamples under minimal assumptions. The Annals of Statistics. 1994;22:2031–50.
+</div>
+<div id="ref-HemantMinimal" class="csl-entry" role="listitem">
+4. Ishwaran H, Chen X, Minn AJ, Lu M, Lauer MS, Kogalur UB. <span class="nocase">randomForestSRC</span>: Minimal depth vignette. 2021. <a href="http://randomforestsrc.org/articles/minidep.html">http://randomforestsrc.org/articles/minidep.html</a>.
+</div>
+<div id="ref-van2002gene" class="csl-entry" role="listitem">
+5. Van’t Veer LJ, Dai H, Van De Vijver MJ, He YD, Hart AA, Mao M, et al. Gene expression profiling predicts clinical outcome of breast cancer. Nature. 2002;415:530–6.
+</div>
+</div>
+</section>
+</div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/rfsrc.svg" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://randomforestsrc.org" class="uri">https://randomforestsrc.org</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="presentationPartIII_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="presentationPartIII_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="presentationPartIII_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="presentationPartIII_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="presentationPartIII_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="presentationPartIII_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="presentationPartIII_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="presentationPartIII_files/libs/revealjs/plugin/notes/notes.js"></script><script src="presentationPartIII_files/libs/revealjs/plugin/search/search.js"></script><script src="presentationPartIII_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="presentationPartIII_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+
+
+</body></html>
