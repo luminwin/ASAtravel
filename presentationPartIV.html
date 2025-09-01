@@ -226,9 +226,10 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 
 </section><section id="advanced-examples" class="slide level2"><h2>Advanced examples</h2>
 <ol type="1">
-<li>Class imbalanced data</li>
+<li>Class Imbalanced Data</li>
 <li>Competing Risks</li>
 <li>Multivariate Forests</li>
+<li>Missing data imputation</li>
 </ol></section><section id="imbalanced-classification" class="slide level2 smaller"><h2>Imbalanced classification</h2>
 <p><br></p>
 <table class="table-striped border small table-sm caption-top">
@@ -676,23 +677,23 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </section><section id="competing-risk-example-pbc-mayo-clinic" class="slide level2 smaller"><h2>Competing risk example: PBC Mayo Clinic</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="juujkxpwsh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#juujkxpwsh table {
+<div id="iyeypbtnlf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iyeypbtnlf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#juujkxpwsh thead, #juujkxpwsh tbody, #juujkxpwsh tfoot, #juujkxpwsh tr, #juujkxpwsh td, #juujkxpwsh th {
+#iyeypbtnlf thead, #iyeypbtnlf tbody, #iyeypbtnlf tfoot, #iyeypbtnlf tr, #iyeypbtnlf td, #iyeypbtnlf th {
   border-style: none;
 }
 
-#juujkxpwsh p {
+#iyeypbtnlf p {
   margin: 0;
   padding: 0;
 }
 
-#juujkxpwsh .gt_table {
+#iyeypbtnlf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -718,12 +719,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-left-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_caption {
+#iyeypbtnlf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#juujkxpwsh .gt_title {
+#iyeypbtnlf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -735,7 +736,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-width: 0;
 }
 
-#juujkxpwsh .gt_subtitle {
+#iyeypbtnlf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -747,7 +748,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-width: 0;
 }
 
-#juujkxpwsh .gt_heading {
+#iyeypbtnlf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -759,13 +760,13 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_bottom_border {
+#iyeypbtnlf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_col_headings {
+#iyeypbtnlf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -780,7 +781,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_col_heading {
+#iyeypbtnlf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -800,7 +801,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#juujkxpwsh .gt_column_spanner_outer {
+#iyeypbtnlf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -812,15 +813,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 4px;
 }
 
-#juujkxpwsh .gt_column_spanner_outer:first-child {
+#iyeypbtnlf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#juujkxpwsh .gt_column_spanner_outer:last-child {
+#iyeypbtnlf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#juujkxpwsh .gt_column_spanner {
+#iyeypbtnlf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -832,11 +833,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   width: 100%;
 }
 
-#juujkxpwsh .gt_spanner_row {
+#iyeypbtnlf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#juujkxpwsh .gt_group_heading {
+#iyeypbtnlf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -862,7 +863,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   text-align: left;
 }
 
-#juujkxpwsh .gt_empty_group_heading {
+#iyeypbtnlf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -877,15 +878,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: middle;
 }
 
-#juujkxpwsh .gt_from_md > :first-child {
+#iyeypbtnlf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#juujkxpwsh .gt_from_md > :last-child {
+#iyeypbtnlf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#juujkxpwsh .gt_row {
+#iyeypbtnlf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -904,7 +905,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#juujkxpwsh .gt_stub {
+#iyeypbtnlf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -917,7 +918,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#juujkxpwsh .gt_stub_row_group {
+#iyeypbtnlf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -931,15 +932,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: top;
 }
 
-#juujkxpwsh .gt_row_group_first td {
+#iyeypbtnlf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#juujkxpwsh .gt_row_group_first th {
+#iyeypbtnlf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#juujkxpwsh .gt_summary_row {
+#iyeypbtnlf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -949,16 +950,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#juujkxpwsh .gt_first_summary_row {
+#iyeypbtnlf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_first_summary_row.thick {
+#iyeypbtnlf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#juujkxpwsh .gt_last_summary_row {
+#iyeypbtnlf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -968,7 +969,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_grand_summary_row {
+#iyeypbtnlf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -978,7 +979,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#juujkxpwsh .gt_first_grand_summary_row {
+#iyeypbtnlf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -988,7 +989,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_last_grand_summary_row_top {
+#iyeypbtnlf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -998,11 +999,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_striped {
+#iyeypbtnlf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#juujkxpwsh .gt_table_body {
+#iyeypbtnlf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1011,7 +1012,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_footnotes {
+#iyeypbtnlf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1025,7 +1026,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_footnote {
+#iyeypbtnlf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1034,7 +1035,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#juujkxpwsh .gt_sourcenotes {
+#iyeypbtnlf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1048,7 +1049,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#juujkxpwsh .gt_sourcenote {
+#iyeypbtnlf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1056,72 +1057,72 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#juujkxpwsh .gt_left {
+#iyeypbtnlf .gt_left {
   text-align: left;
 }
 
-#juujkxpwsh .gt_center {
+#iyeypbtnlf .gt_center {
   text-align: center;
 }
 
-#juujkxpwsh .gt_right {
+#iyeypbtnlf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#juujkxpwsh .gt_font_normal {
+#iyeypbtnlf .gt_font_normal {
   font-weight: normal;
 }
 
-#juujkxpwsh .gt_font_bold {
+#iyeypbtnlf .gt_font_bold {
   font-weight: bold;
 }
 
-#juujkxpwsh .gt_font_italic {
+#iyeypbtnlf .gt_font_italic {
   font-style: italic;
 }
 
-#juujkxpwsh .gt_super {
+#iyeypbtnlf .gt_super {
   font-size: 65%;
 }
 
-#juujkxpwsh .gt_footnote_marks {
+#iyeypbtnlf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#juujkxpwsh .gt_asterisk {
+#iyeypbtnlf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#juujkxpwsh .gt_indent_1 {
+#iyeypbtnlf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#juujkxpwsh .gt_indent_2 {
+#iyeypbtnlf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#juujkxpwsh .gt_indent_3 {
+#iyeypbtnlf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#juujkxpwsh .gt_indent_4 {
+#iyeypbtnlf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#juujkxpwsh .gt_indent_5 {
+#iyeypbtnlf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#juujkxpwsh .katex-display {
+#iyeypbtnlf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#juujkxpwsh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#iyeypbtnlf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1564,23 +1565,23 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <p>Study the effects of five diet treatments on 21 liver lipids and 120 hepatic gene expression in wild-type and PPAR-alpha deficient mice. We regress gene expression, diet and genotype (x-variables) on lipid expressions (multivariate y-responses) <span class="citation" data-cites="martin2007novel">[<a href="#/references" role="doc-biblioref" onclick="">4</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="swensozoln" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#swensozoln table {
+<div id="epdgqbwowd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#epdgqbwowd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#swensozoln thead, #swensozoln tbody, #swensozoln tfoot, #swensozoln tr, #swensozoln td, #swensozoln th {
+#epdgqbwowd thead, #epdgqbwowd tbody, #epdgqbwowd tfoot, #epdgqbwowd tr, #epdgqbwowd td, #epdgqbwowd th {
   border-style: none;
 }
 
-#swensozoln p {
+#epdgqbwowd p {
   margin: 0;
   padding: 0;
 }
 
-#swensozoln .gt_table {
+#epdgqbwowd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1606,12 +1607,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-left-color: #D3D3D3;
 }
 
-#swensozoln .gt_caption {
+#epdgqbwowd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#swensozoln .gt_title {
+#epdgqbwowd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1623,7 +1624,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-width: 0;
 }
 
-#swensozoln .gt_subtitle {
+#epdgqbwowd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1635,7 +1636,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-width: 0;
 }
 
-#swensozoln .gt_heading {
+#epdgqbwowd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1647,13 +1648,13 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#swensozoln .gt_bottom_border {
+#epdgqbwowd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#swensozoln .gt_col_headings {
+#epdgqbwowd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1668,7 +1669,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#swensozoln .gt_col_heading {
+#epdgqbwowd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1688,7 +1689,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#swensozoln .gt_column_spanner_outer {
+#epdgqbwowd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1700,15 +1701,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 4px;
 }
 
-#swensozoln .gt_column_spanner_outer:first-child {
+#epdgqbwowd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#swensozoln .gt_column_spanner_outer:last-child {
+#epdgqbwowd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#swensozoln .gt_column_spanner {
+#epdgqbwowd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1720,11 +1721,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   width: 100%;
 }
 
-#swensozoln .gt_spanner_row {
+#epdgqbwowd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#swensozoln .gt_group_heading {
+#epdgqbwowd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1750,7 +1751,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   text-align: left;
 }
 
-#swensozoln .gt_empty_group_heading {
+#epdgqbwowd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1765,15 +1766,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: middle;
 }
 
-#swensozoln .gt_from_md > :first-child {
+#epdgqbwowd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#swensozoln .gt_from_md > :last-child {
+#epdgqbwowd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#swensozoln .gt_row {
+#epdgqbwowd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1792,7 +1793,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#swensozoln .gt_stub {
+#epdgqbwowd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1805,7 +1806,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#swensozoln .gt_stub_row_group {
+#epdgqbwowd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1819,15 +1820,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: top;
 }
 
-#swensozoln .gt_row_group_first td {
+#epdgqbwowd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#swensozoln .gt_row_group_first th {
+#epdgqbwowd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#swensozoln .gt_summary_row {
+#epdgqbwowd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1837,16 +1838,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#swensozoln .gt_first_summary_row {
+#epdgqbwowd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#swensozoln .gt_first_summary_row.thick {
+#epdgqbwowd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#swensozoln .gt_last_summary_row {
+#epdgqbwowd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1856,7 +1857,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#swensozoln .gt_grand_summary_row {
+#epdgqbwowd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1866,7 +1867,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#swensozoln .gt_first_grand_summary_row {
+#epdgqbwowd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1876,7 +1877,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-color: #D3D3D3;
 }
 
-#swensozoln .gt_last_grand_summary_row_top {
+#epdgqbwowd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1886,11 +1887,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#swensozoln .gt_striped {
+#epdgqbwowd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#swensozoln .gt_table_body {
+#epdgqbwowd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1899,7 +1900,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#swensozoln .gt_footnotes {
+#epdgqbwowd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1913,7 +1914,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#swensozoln .gt_footnote {
+#epdgqbwowd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1922,7 +1923,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#swensozoln .gt_sourcenotes {
+#epdgqbwowd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1936,7 +1937,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#swensozoln .gt_sourcenote {
+#epdgqbwowd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1944,72 +1945,72 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#swensozoln .gt_left {
+#epdgqbwowd .gt_left {
   text-align: left;
 }
 
-#swensozoln .gt_center {
+#epdgqbwowd .gt_center {
   text-align: center;
 }
 
-#swensozoln .gt_right {
+#epdgqbwowd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#swensozoln .gt_font_normal {
+#epdgqbwowd .gt_font_normal {
   font-weight: normal;
 }
 
-#swensozoln .gt_font_bold {
+#epdgqbwowd .gt_font_bold {
   font-weight: bold;
 }
 
-#swensozoln .gt_font_italic {
+#epdgqbwowd .gt_font_italic {
   font-style: italic;
 }
 
-#swensozoln .gt_super {
+#epdgqbwowd .gt_super {
   font-size: 65%;
 }
 
-#swensozoln .gt_footnote_marks {
+#epdgqbwowd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#swensozoln .gt_asterisk {
+#epdgqbwowd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#swensozoln .gt_indent_1 {
+#epdgqbwowd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#swensozoln .gt_indent_2 {
+#epdgqbwowd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#swensozoln .gt_indent_3 {
+#epdgqbwowd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#swensozoln .gt_indent_4 {
+#epdgqbwowd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#swensozoln .gt_indent_5 {
+#epdgqbwowd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#swensozoln .katex-display {
+#epdgqbwowd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#swensozoln div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#epdgqbwowd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
