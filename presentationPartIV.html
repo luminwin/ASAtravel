@@ -6,9 +6,9 @@
 <script src="presentationPartIV_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="presentationPartIV_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="presentationPartIV_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="presentationPartIV_files/libs/quarto-html/quarto-syntax-highlighting-d2bbf9acb00b033fb60fab8fa7f66143.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="presentationPartIV_files/libs/quarto-html/quarto-syntax-highlighting-f06e18ba1ac294546b00b08c9de61a75.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.42">
+<meta name="generator" content="quarto-1.7.32">
 <meta name="author" content="Hemant Ishwaran and Min Lu   University of Miami">
 <title>Tree-Based Machine Learning Methods for Prediction and Variable Selection</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -29,8 +29,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -113,7 +114,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-<link rel="stylesheet" href="presentationPartIV_files/libs/revealjs/dist/theme/quarto-63ed876a746becf3fe36bcecd5a116b8.css">
+<link rel="stylesheet" href="presentationPartIV_files/libs/revealjs/dist/theme/quarto-0002dd071f1ed71b05d2df9417d3edb7.css">
 <link rel="stylesheet" href="styles.css">
 <link href="presentationPartIV_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="presentationPartIV_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -278,14 +279,12 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 </tbody>
 </table></section><section id="class-imbalanced-data" class="slide level2 smaller"><h2>Class imbalanced data</h2>
 <p>In many real world applications, a common problem is the occurrence of imbalanced data where one class outcome (majority class, 0) is observed far more frequently than the other (minority class, 1)</p>
-<div>
 <ol type="1">
 <li class="fragment">Business analytics: customer churn data</li>
 <li class="fragment">Software and text recognition: spam filtering, detecting coding errors</li>
 <li class="fragment">Fault detection and quality control in industrial systems</li>
 <li class="fragment">Biomedical data when prevelance of target group is relatively small or event measured over short interval</li>
 </ol>
-</div>
 <div class="footer">
 <p>Learn more <span class="citation" data-cites="HemantRFQv">[<a href="#/references" role="doc-biblioref" onclick="">1</a>]</span>: <a href="https://www.randomforestsrc.org/articles/imbalance.html">https://www.randomforestsrc.org/articles/imbalance.html</a></p>
 </div>
@@ -677,23 +676,23 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </section><section id="competing-risk-example-pbc-mayo-clinic" class="slide level2 smaller"><h2>Competing risk example: PBC Mayo Clinic</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="iyeypbtnlf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iyeypbtnlf table {
+<div id="bmvuahbhrj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bmvuahbhrj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iyeypbtnlf thead, #iyeypbtnlf tbody, #iyeypbtnlf tfoot, #iyeypbtnlf tr, #iyeypbtnlf td, #iyeypbtnlf th {
+#bmvuahbhrj thead, #bmvuahbhrj tbody, #bmvuahbhrj tfoot, #bmvuahbhrj tr, #bmvuahbhrj td, #bmvuahbhrj th {
   border-style: none;
 }
 
-#iyeypbtnlf p {
+#bmvuahbhrj p {
   margin: 0;
   padding: 0;
 }
 
-#iyeypbtnlf .gt_table {
+#bmvuahbhrj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -719,12 +718,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-left-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_caption {
+#bmvuahbhrj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iyeypbtnlf .gt_title {
+#bmvuahbhrj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -736,7 +735,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-width: 0;
 }
 
-#iyeypbtnlf .gt_subtitle {
+#bmvuahbhrj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -748,7 +747,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-width: 0;
 }
 
-#iyeypbtnlf .gt_heading {
+#bmvuahbhrj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -760,13 +759,13 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_bottom_border {
+#bmvuahbhrj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_col_headings {
+#bmvuahbhrj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -781,7 +780,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_col_heading {
+#bmvuahbhrj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -801,7 +800,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#iyeypbtnlf .gt_column_spanner_outer {
+#bmvuahbhrj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -813,15 +812,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 4px;
 }
 
-#iyeypbtnlf .gt_column_spanner_outer:first-child {
+#bmvuahbhrj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iyeypbtnlf .gt_column_spanner_outer:last-child {
+#bmvuahbhrj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iyeypbtnlf .gt_column_spanner {
+#bmvuahbhrj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -833,11 +832,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   width: 100%;
 }
 
-#iyeypbtnlf .gt_spanner_row {
+#bmvuahbhrj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iyeypbtnlf .gt_group_heading {
+#bmvuahbhrj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -863,7 +862,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   text-align: left;
 }
 
-#iyeypbtnlf .gt_empty_group_heading {
+#bmvuahbhrj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -878,15 +877,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: middle;
 }
 
-#iyeypbtnlf .gt_from_md > :first-child {
+#bmvuahbhrj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iyeypbtnlf .gt_from_md > :last-child {
+#bmvuahbhrj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iyeypbtnlf .gt_row {
+#bmvuahbhrj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -905,7 +904,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#iyeypbtnlf .gt_stub {
+#bmvuahbhrj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -918,7 +917,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#iyeypbtnlf .gt_stub_row_group {
+#bmvuahbhrj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -932,15 +931,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: top;
 }
 
-#iyeypbtnlf .gt_row_group_first td {
+#bmvuahbhrj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iyeypbtnlf .gt_row_group_first th {
+#bmvuahbhrj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iyeypbtnlf .gt_summary_row {
+#bmvuahbhrj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -950,16 +949,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#iyeypbtnlf .gt_first_summary_row {
+#bmvuahbhrj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_first_summary_row.thick {
+#bmvuahbhrj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iyeypbtnlf .gt_last_summary_row {
+#bmvuahbhrj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -969,7 +968,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_grand_summary_row {
+#bmvuahbhrj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -979,7 +978,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#iyeypbtnlf .gt_first_grand_summary_row {
+#bmvuahbhrj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -989,7 +988,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_last_grand_summary_row_top {
+#bmvuahbhrj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -999,11 +998,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_striped {
+#bmvuahbhrj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iyeypbtnlf .gt_table_body {
+#bmvuahbhrj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1012,7 +1011,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_footnotes {
+#bmvuahbhrj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1026,7 +1025,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_footnote {
+#bmvuahbhrj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1035,7 +1034,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#iyeypbtnlf .gt_sourcenotes {
+#bmvuahbhrj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1049,7 +1048,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#iyeypbtnlf .gt_sourcenote {
+#bmvuahbhrj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1057,72 +1056,72 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#iyeypbtnlf .gt_left {
+#bmvuahbhrj .gt_left {
   text-align: left;
 }
 
-#iyeypbtnlf .gt_center {
+#bmvuahbhrj .gt_center {
   text-align: center;
 }
 
-#iyeypbtnlf .gt_right {
+#bmvuahbhrj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iyeypbtnlf .gt_font_normal {
+#bmvuahbhrj .gt_font_normal {
   font-weight: normal;
 }
 
-#iyeypbtnlf .gt_font_bold {
+#bmvuahbhrj .gt_font_bold {
   font-weight: bold;
 }
 
-#iyeypbtnlf .gt_font_italic {
+#bmvuahbhrj .gt_font_italic {
   font-style: italic;
 }
 
-#iyeypbtnlf .gt_super {
+#bmvuahbhrj .gt_super {
   font-size: 65%;
 }
 
-#iyeypbtnlf .gt_footnote_marks {
+#bmvuahbhrj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iyeypbtnlf .gt_asterisk {
+#bmvuahbhrj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iyeypbtnlf .gt_indent_1 {
+#bmvuahbhrj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iyeypbtnlf .gt_indent_2 {
+#bmvuahbhrj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iyeypbtnlf .gt_indent_3 {
+#bmvuahbhrj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iyeypbtnlf .gt_indent_4 {
+#bmvuahbhrj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iyeypbtnlf .gt_indent_5 {
+#bmvuahbhrj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#iyeypbtnlf .katex-display {
+#bmvuahbhrj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#iyeypbtnlf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#bmvuahbhrj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1565,23 +1564,23 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <p>Study the effects of five diet treatments on 21 liver lipids and 120 hepatic gene expression in wild-type and PPAR-alpha deficient mice. We regress gene expression, diet and genotype (x-variables) on lipid expressions (multivariate y-responses) <span class="citation" data-cites="martin2007novel">[<a href="#/references" role="doc-biblioref" onclick="">4</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="epdgqbwowd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#epdgqbwowd table {
+<div id="xkbtjrseix" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xkbtjrseix table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#epdgqbwowd thead, #epdgqbwowd tbody, #epdgqbwowd tfoot, #epdgqbwowd tr, #epdgqbwowd td, #epdgqbwowd th {
+#xkbtjrseix thead, #xkbtjrseix tbody, #xkbtjrseix tfoot, #xkbtjrseix tr, #xkbtjrseix td, #xkbtjrseix th {
   border-style: none;
 }
 
-#epdgqbwowd p {
+#xkbtjrseix p {
   margin: 0;
   padding: 0;
 }
 
-#epdgqbwowd .gt_table {
+#xkbtjrseix .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1607,12 +1606,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-left-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_caption {
+#xkbtjrseix .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#epdgqbwowd .gt_title {
+#xkbtjrseix .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1624,7 +1623,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-width: 0;
 }
 
-#epdgqbwowd .gt_subtitle {
+#xkbtjrseix .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1636,7 +1635,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-width: 0;
 }
 
-#epdgqbwowd .gt_heading {
+#xkbtjrseix .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1648,13 +1647,13 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_bottom_border {
+#xkbtjrseix .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_col_headings {
+#xkbtjrseix .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1669,7 +1668,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_col_heading {
+#xkbtjrseix .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1689,7 +1688,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#epdgqbwowd .gt_column_spanner_outer {
+#xkbtjrseix .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1701,15 +1700,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 4px;
 }
 
-#epdgqbwowd .gt_column_spanner_outer:first-child {
+#xkbtjrseix .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#epdgqbwowd .gt_column_spanner_outer:last-child {
+#xkbtjrseix .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#epdgqbwowd .gt_column_spanner {
+#xkbtjrseix .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1721,11 +1720,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   width: 100%;
 }
 
-#epdgqbwowd .gt_spanner_row {
+#xkbtjrseix .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#epdgqbwowd .gt_group_heading {
+#xkbtjrseix .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1751,7 +1750,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   text-align: left;
 }
 
-#epdgqbwowd .gt_empty_group_heading {
+#xkbtjrseix .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1766,15 +1765,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: middle;
 }
 
-#epdgqbwowd .gt_from_md > :first-child {
+#xkbtjrseix .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#epdgqbwowd .gt_from_md > :last-child {
+#xkbtjrseix .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#epdgqbwowd .gt_row {
+#xkbtjrseix .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1793,7 +1792,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#epdgqbwowd .gt_stub {
+#xkbtjrseix .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1806,7 +1805,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#epdgqbwowd .gt_stub_row_group {
+#xkbtjrseix .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1820,15 +1819,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: top;
 }
 
-#epdgqbwowd .gt_row_group_first td {
+#xkbtjrseix .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#epdgqbwowd .gt_row_group_first th {
+#xkbtjrseix .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#epdgqbwowd .gt_summary_row {
+#xkbtjrseix .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1838,16 +1837,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#epdgqbwowd .gt_first_summary_row {
+#xkbtjrseix .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_first_summary_row.thick {
+#xkbtjrseix .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#epdgqbwowd .gt_last_summary_row {
+#xkbtjrseix .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1857,7 +1856,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_grand_summary_row {
+#xkbtjrseix .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1867,7 +1866,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#epdgqbwowd .gt_first_grand_summary_row {
+#xkbtjrseix .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1877,7 +1876,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_last_grand_summary_row_top {
+#xkbtjrseix .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1887,11 +1886,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_striped {
+#xkbtjrseix .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#epdgqbwowd .gt_table_body {
+#xkbtjrseix .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1900,7 +1899,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_footnotes {
+#xkbtjrseix .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1914,7 +1913,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_footnote {
+#xkbtjrseix .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1923,7 +1922,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#epdgqbwowd .gt_sourcenotes {
+#xkbtjrseix .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1937,7 +1936,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#epdgqbwowd .gt_sourcenote {
+#xkbtjrseix .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1945,72 +1944,72 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#epdgqbwowd .gt_left {
+#xkbtjrseix .gt_left {
   text-align: left;
 }
 
-#epdgqbwowd .gt_center {
+#xkbtjrseix .gt_center {
   text-align: center;
 }
 
-#epdgqbwowd .gt_right {
+#xkbtjrseix .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#epdgqbwowd .gt_font_normal {
+#xkbtjrseix .gt_font_normal {
   font-weight: normal;
 }
 
-#epdgqbwowd .gt_font_bold {
+#xkbtjrseix .gt_font_bold {
   font-weight: bold;
 }
 
-#epdgqbwowd .gt_font_italic {
+#xkbtjrseix .gt_font_italic {
   font-style: italic;
 }
 
-#epdgqbwowd .gt_super {
+#xkbtjrseix .gt_super {
   font-size: 65%;
 }
 
-#epdgqbwowd .gt_footnote_marks {
+#xkbtjrseix .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#epdgqbwowd .gt_asterisk {
+#xkbtjrseix .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#epdgqbwowd .gt_indent_1 {
+#xkbtjrseix .gt_indent_1 {
   text-indent: 5px;
 }
 
-#epdgqbwowd .gt_indent_2 {
+#xkbtjrseix .gt_indent_2 {
   text-indent: 10px;
 }
 
-#epdgqbwowd .gt_indent_3 {
+#xkbtjrseix .gt_indent_3 {
   text-indent: 15px;
 }
 
-#epdgqbwowd .gt_indent_4 {
+#xkbtjrseix .gt_indent_4 {
   text-indent: 20px;
 }
 
-#epdgqbwowd .gt_indent_5 {
+#xkbtjrseix .gt_indent_5 {
   text-indent: 25px;
 }
 
-#epdgqbwowd .katex-display {
+#xkbtjrseix .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#epdgqbwowd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#xkbtjrseix div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2414,7 +2413,86 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <div class="sourceCode" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="fu">data</span>(housing, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
 <span id="cb33-2"><a href=""></a>housing.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>housing, <span class="at">mf.q=</span>.<span class="dv">5</span>)</span>
 <span id="cb33-3"><a href=""></a>housing.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>housing, <span class="at">mf.q=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section><section id="outline" class="slide level2 smaller" data-background-color="azure"><h2><a href="index.html">Outline</a></h2>
+</section><section id="ecosystem" class="slide level2 smaller"><h2>Ecosystem</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>RF-SRC</strong> <code>randomForestSRC</code> - Random Forests: classification, regression, survival (RSF &amp; competing risks) - OOB error, permutation VIMP, partial dependence/effect, proximities, imputation - OpenMP compute backend</p>
+<p><strong>VarPro</strong> <code>varPro</code> - <strong>Supervised</strong> model-independent variable selection (Variable Priority) - Produces VI scores under supervision; complements permutation VIMP</p>
+</div><div class="column" style="width:50%;">
+<p><strong>SGT</strong> <code>randomForestSGT</code> - Super Greedy Trees with multivariate geometric splits - Currently emphasizes regression</p>
+<p><strong>RHF</strong> <code>randomForestRHF</code> - Random Hazard Forest for time-dependent hazard estimation - Extends RSF to <strong>time-varying covariates</strong></p>
+</div></div>
+<div class="footer">
+
+</div>
+</section><section id="statistical-families-problem-types" class="slide level2 smaller"><h2>Statistical Families (Problem Types)</h2>
+<table class="table-striped border small table-sm caption-top">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 6%">
+<col style="width: 29%">
+<col style="width: 16%">
+<col style="width: 23%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">Family</th>
+<th style="text-align: center;">RF-SRC</th>
+<th style="text-align: left;">VarPro</th>
+<th style="text-align: left;">SGT</th>
+<th style="text-align: left;">RHF</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Binary / Multiclass Classification</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">Supervised VI for classification</td>
+<td style="text-align: left;">Planned<sup>1</sup>
+</td>
+<td style="text-align: left;">Indirect (hazard focus)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Continuous Regression</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">Supervised VI for regression</td>
+<td style="text-align: left;">Yes (primary)</td>
+<td style="text-align: left;">Risk scores derived</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Right-censored Survival (RSF)</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">Supervised VI for survival</td>
+<td style="text-align: left;">Not primary</td>
+<td style="text-align: left;">Yes (via hazard forest)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Competing Risks</td>
+<td style="text-align: center;">Yes</td>
+<td style="text-align: left;">Supervised VI</td>
+<td style="text-align: left;">Not primary</td>
+<td style="text-align: left;">Per-cause hazards<sup>2</sup>
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Time-varying Covariates</td>
+<td style="text-align: center;">Limited (baseline RSF)</td>
+<td style="text-align: left;">N/A</td>
+<td style="text-align: left;">Not primary</td>
+<td style="text-align: left;"><strong>Core capability</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Unsupervised Feature Selection / VI</td>
+<td style="text-align: center;">Heuristics (proximities)</td>
+<td style="text-align: left;">
+<strong>UVarPro</strong> (unsupervised VI via release-based workflow)</td>
+<td style="text-align: left;">Not core</td>
+<td style="text-align: left;">Not core</td>
+</tr>
+</tbody>
+</table>
+<div class="footer">
+
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>SGT currently emphasizes regression; classification support is on the roadmap.</p></li><li id="fn2"><p>RHF focuses on time-dependent hazard estimation; competing risks support <br> depends on modeling hazards per cause.</p></li></ol></aside></section><section id="outline" class="slide level2 smaller" data-background-color="azure"><h2><a href="index.html">Outline</a></h2>
 <div class="columns">
 <div class="column" style="width:47.5%;">
 <h4 id="part-i-training"><a href="presentationPartI.html">Part I: Training</a></h4>
@@ -2702,190 +2780,172 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 
       })();
     </script><script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
             }
           }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          return false;
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
             }
-          }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
         }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
               }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
 
 
 </body></html>
