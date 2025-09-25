@@ -323,26 +323,33 @@ F_{\!\text{ens}}^{(i)}
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">print</span>(<span class="fu">mean</span>((o<span class="sc">$</span>yvar <span class="sc">-</span> o<span class="sc">$</span>predicted.oob)<span class="sc">^</span><span class="dv">2</span>))</span>
 <span id="cb2-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">0.01688687</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section><section id="key-quantities-for-classification" class="slide level2 smaller"><h2>Key quantities for classification</h2>
+<p>The key quantities returned by the package are</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href=""></a>o$predicted     ---&gt;   inbag estimated probabilities</span>
+<span id="cb3-2"><a href=""></a>o$predicted.oob ---&gt;   OOB estimated probabilities</span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a>o$class         ---&gt;   inbag class predictions</span>
+<span id="cb3-5"><a href=""></a>o$class.oob     ---&gt;   OOB class predictions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="oob-classification-example-glioma" class="slide level2 smaller"><h2>OOB classification example: Glioma</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="inhzstkylv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#inhzstkylv table {
+<div id="vdeqdcidql" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vdeqdcidql table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#inhzstkylv thead, #inhzstkylv tbody, #inhzstkylv tfoot, #inhzstkylv tr, #inhzstkylv td, #inhzstkylv th {
+#vdeqdcidql thead, #vdeqdcidql tbody, #vdeqdcidql tfoot, #vdeqdcidql tr, #vdeqdcidql td, #vdeqdcidql th {
   border-style: none;
 }
 
-#inhzstkylv p {
+#vdeqdcidql p {
   margin: 0;
   padding: 0;
 }
 
-#inhzstkylv .gt_table {
+#vdeqdcidql .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -368,12 +375,12 @@ F_{\!\text{ens}}^{(i)}
   border-left-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_caption {
+#vdeqdcidql .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#inhzstkylv .gt_title {
+#vdeqdcidql .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -385,7 +392,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-width: 0;
 }
 
-#inhzstkylv .gt_subtitle {
+#vdeqdcidql .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -397,7 +404,7 @@ F_{\!\text{ens}}^{(i)}
   border-top-width: 0;
 }
 
-#inhzstkylv .gt_heading {
+#vdeqdcidql .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -409,13 +416,13 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_bottom_border {
+#vdeqdcidql .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_col_headings {
+#vdeqdcidql .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -430,7 +437,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_col_heading {
+#vdeqdcidql .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -450,7 +457,7 @@ F_{\!\text{ens}}^{(i)}
   overflow-x: hidden;
 }
 
-#inhzstkylv .gt_column_spanner_outer {
+#vdeqdcidql .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -462,15 +469,15 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 4px;
 }
 
-#inhzstkylv .gt_column_spanner_outer:first-child {
+#vdeqdcidql .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#inhzstkylv .gt_column_spanner_outer:last-child {
+#vdeqdcidql .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#inhzstkylv .gt_column_spanner {
+#vdeqdcidql .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -482,11 +489,11 @@ F_{\!\text{ens}}^{(i)}
   width: 100%;
 }
 
-#inhzstkylv .gt_spanner_row {
+#vdeqdcidql .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#inhzstkylv .gt_group_heading {
+#vdeqdcidql .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -512,7 +519,7 @@ F_{\!\text{ens}}^{(i)}
   text-align: left;
 }
 
-#inhzstkylv .gt_empty_group_heading {
+#vdeqdcidql .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -527,15 +534,15 @@ F_{\!\text{ens}}^{(i)}
   vertical-align: middle;
 }
 
-#inhzstkylv .gt_from_md > :first-child {
+#vdeqdcidql .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#inhzstkylv .gt_from_md > :last-child {
+#vdeqdcidql .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#inhzstkylv .gt_row {
+#vdeqdcidql .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -554,7 +561,7 @@ F_{\!\text{ens}}^{(i)}
   overflow-x: hidden;
 }
 
-#inhzstkylv .gt_stub {
+#vdeqdcidql .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -567,7 +574,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#inhzstkylv .gt_stub_row_group {
+#vdeqdcidql .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -581,15 +588,15 @@ F_{\!\text{ens}}^{(i)}
   vertical-align: top;
 }
 
-#inhzstkylv .gt_row_group_first td {
+#vdeqdcidql .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#inhzstkylv .gt_row_group_first th {
+#vdeqdcidql .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#inhzstkylv .gt_summary_row {
+#vdeqdcidql .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -599,16 +606,16 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#inhzstkylv .gt_first_summary_row {
+#vdeqdcidql .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_first_summary_row.thick {
+#vdeqdcidql .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#inhzstkylv .gt_last_summary_row {
+#vdeqdcidql .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -618,7 +625,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_grand_summary_row {
+#vdeqdcidql .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -628,7 +635,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#inhzstkylv .gt_first_grand_summary_row {
+#vdeqdcidql .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -638,7 +645,7 @@ F_{\!\text{ens}}^{(i)}
   border-top-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_last_grand_summary_row_top {
+#vdeqdcidql .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -648,11 +655,11 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_striped {
+#vdeqdcidql .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#inhzstkylv .gt_table_body {
+#vdeqdcidql .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -661,7 +668,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_footnotes {
+#vdeqdcidql .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -675,7 +682,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_footnote {
+#vdeqdcidql .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -684,7 +691,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#inhzstkylv .gt_sourcenotes {
+#vdeqdcidql .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -698,7 +705,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#inhzstkylv .gt_sourcenote {
+#vdeqdcidql .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -706,72 +713,72 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#inhzstkylv .gt_left {
+#vdeqdcidql .gt_left {
   text-align: left;
 }
 
-#inhzstkylv .gt_center {
+#vdeqdcidql .gt_center {
   text-align: center;
 }
 
-#inhzstkylv .gt_right {
+#vdeqdcidql .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#inhzstkylv .gt_font_normal {
+#vdeqdcidql .gt_font_normal {
   font-weight: normal;
 }
 
-#inhzstkylv .gt_font_bold {
+#vdeqdcidql .gt_font_bold {
   font-weight: bold;
 }
 
-#inhzstkylv .gt_font_italic {
+#vdeqdcidql .gt_font_italic {
   font-style: italic;
 }
 
-#inhzstkylv .gt_super {
+#vdeqdcidql .gt_super {
   font-size: 65%;
 }
 
-#inhzstkylv .gt_footnote_marks {
+#vdeqdcidql .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#inhzstkylv .gt_asterisk {
+#vdeqdcidql .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#inhzstkylv .gt_indent_1 {
+#vdeqdcidql .gt_indent_1 {
   text-indent: 5px;
 }
 
-#inhzstkylv .gt_indent_2 {
+#vdeqdcidql .gt_indent_2 {
   text-indent: 10px;
 }
 
-#inhzstkylv .gt_indent_3 {
+#vdeqdcidql .gt_indent_3 {
   text-indent: 15px;
 }
 
-#inhzstkylv .gt_indent_4 {
+#vdeqdcidql .gt_indent_4 {
   text-indent: 20px;
 }
 
-#inhzstkylv .gt_indent_5 {
+#vdeqdcidql .gt_indent_5 {
   text-indent: 25px;
 }
 
-#inhzstkylv .katex-display {
+#vdeqdcidql .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#inhzstkylv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vdeqdcidql div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -854,13 +861,6 @@ F_{\!\text{ens}}^{(i)}
 </div>
 </div>
 </div>
-<h4 id="the-key-quantities-returned-by-the-package-are">The key quantities returned by the package are</h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href=""></a>o$predicted     ---&gt;   inbag estimated probabilities</span>
-<span id="cb3-2"><a href=""></a>o$predicted.oob ---&gt;   OOB estimated probabilities</span>
-<span id="cb3-3"><a href=""></a></span>
-<span id="cb3-4"><a href=""></a>o$class         ---&gt;   inbag class predictions</span>
-<span id="cb3-5"><a href=""></a>o$class.oob     ---&gt;   OOB class predictions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br></p>
 <div class="fragment fade-left">
 <div class="sourceCode" id="cb4" data-code-line-numbers="1-2|3-4|5-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>., <span class="at">data =</span> glioma)</span>
 <span id="cb4-2"><a href=""></a><span class="fu">mean</span>(o<span class="sc">$</span>class<span class="sc">!=</span>o<span class="sc">$</span>yvar)</span>
@@ -876,7 +876,6 @@ F_{\!\text{ens}}^{(i)}
 <span id="cb5-3"><a href=""></a></span>
 <span id="cb5-4"><a href=""></a>o$class         ---&gt;   inbag class predictions</span>
 <span id="cb5-5"><a href=""></a>o$class.oob     ---&gt;   OOB class predictions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
 <div class="sourceCode" id="cb6" data-code-line-numbers="1-7|8-14|16-17|19-20|"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>o<span class="sc">$</span>predicted[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,]     <span class="co"># ---&gt;   inbag estimated probabilities</span></span>
 <span id="cb6-2"><a href=""></a><span class="sc">&gt;</span>      Classic<span class="sc">-</span>like Codel G<span class="sc">-</span>CIMP<span class="sc">-</span>high G<span class="sc">-</span>CIMP<span class="sc">-</span>low LGm6<span class="sc">-</span>GBM Mesenchymal<span class="sc">-</span>like PA<span class="sc">-</span>like</span>
 <span id="cb6-3"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>,]        <span class="fl">0.006</span> <span class="fl">0.002</span>       <span class="fl">0.000</span>      <span class="fl">0.004</span>    <span class="fl">0.084</span>            <span class="fl">0.892</span>   <span class="fl">0.012</span></span>
@@ -899,7 +898,6 @@ F_{\!\text{ens}}^{(i)}
 <span id="cb6-20"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] Mesenchymal<span class="sc">-</span>like Mesenchymal<span class="sc">-</span>like Mesenchymal<span class="sc">-</span>like Classic<span class="sc">-</span>like     Classic<span class="sc">-</span>like  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 
-</div>
 </div>
 </section><section id="oob-classification-example-glioma-1" class="slide level2 smaller"><h2>OOB classification example: Glioma</h2>
 <p><span style="color:#00589b; font-size:50px;font-weight: bold;">Tune <span class="fragment highlight-blue" data-fragment-index="1">nodesize</span></span></p>
@@ -959,35 +957,47 @@ F_{\!\text{ens}}^{(i)}
 <div class="footer">
 
 </div>
+</section><section id="key-quantities-for-survival" class="slide level2"><h2>Key quantities for survival</h2>
+<p>The key quantities returned by the package are</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href=""></a>o$time.interest ---&gt;   event times (everything keys off this)</span>
+<span id="cb9-2"><a href=""></a></span>
+<span id="cb9-3"><a href=""></a>o$predicted     ---&gt;   inbag estimated mortality</span>
+<span id="cb9-4"><a href=""></a>o$predicted.oob ---&gt;   OOB estimated mortality</span>
+<span id="cb9-5"><a href=""></a></span>
+<span id="cb9-6"><a href=""></a>o$survival      ---&gt;   inbag survival estimator for each case</span>
+<span id="cb9-7"><a href=""></a>o$survival.oob  ---&gt;   OOB survival estimator for each case</span>
+<span id="cb9-8"><a href=""></a></span>
+<span id="cb9-9"><a href=""></a>o$chf          ---&gt;    inbag CHF estimator for each case</span>
+<span id="cb9-10"><a href=""></a>o$chf.oob      ---&gt;    OOB CHF estimator for each case</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="oob-survival-example-pbc-mayo-clinic" class="slide level2 smaller"><h2>OOB survival example: PBC Mayo Clinic</h2>
 <div class="fragment fade-left">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb9-1"><a href=""></a>o$survival      ---&gt;   inbag survival estimator for each case</span>
-<span id="cb9-2"><a href=""></a>o$survival.oob  ---&gt;   OOB survival estimator for each case</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href=""></a>o$survival      ---&gt;   inbag survival estimator for each case</span>
+<span id="cb10-2"><a href=""></a>o$survival.oob  ---&gt;   OOB survival estimator for each case</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
 <div class="column fragment fade-left" style="width:40%;">
-<div class="sourceCode" id="cb10" data-code-line-numbers="14,18,21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="do">## load the PBC data</span></span>
-<span id="cb10-2"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package=</span><span class="st">"survival"</span>)</span>
-<span id="cb10-3"><a href=""></a></span>
-<span id="cb10-4"><a href=""></a><span class="do">## remove the ID</span></span>
-<span id="cb10-5"><a href=""></a>pbc<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb10-6"><a href=""></a></span>
-<span id="cb10-7"><a href=""></a><span class="do">## convert to right-censoring with death as the event</span></span>
-<span id="cb10-8"><a href=""></a>pbc<span class="sc">$</span>status[pbc<span class="sc">$</span>status <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb10-9"><a href=""></a></span>
-<span id="cb10-10"><a href=""></a><span class="do">## default RSF call</span></span>
-<span id="cb10-11"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(time, status)<span class="sc">~</span>., pbc)</span>
-<span id="cb10-12"><a href=""></a></span>
-<span id="cb10-13"><a href=""></a><span class="do">## choose some cases</span></span>
-<span id="cb10-14"><a href=""></a>idx <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="dv">34</span>,<span class="dv">60</span>)</span>
-<span id="cb10-15"><a href=""></a></span>
-<span id="cb10-16"><a href=""></a><span class="do">## plot the curves</span></span>
-<span id="cb10-17"><a href=""></a><span class="fu">matplot</span>(o<span class="sc">$</span>time.interest, </span>
-<span id="cb10-18"><a href=""></a>        <span class="fu">t</span>(o<span class="sc">$</span>survival[idx,]), <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="dv">3</span>,</span>
-<span id="cb10-19"><a href=""></a>        <span class="at">xlab =</span> <span class="st">"Days"</span>, <span class="at">ylab =</span> <span class="st">"Survival"</span>)</span>
-<span id="cb10-20"><a href=""></a><span class="fu">matlines</span>(o<span class="sc">$</span>time.interest, </span>
-<span id="cb10-21"><a href=""></a>        <span class="fu">t</span>(o<span class="sc">$</span>survival.oob[idx,]), <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
-<span id="cb10-22"><a href=""></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"inbag"</span>, <span class="st">"oob"</span>), <span class="at">fill =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11" data-code-line-numbers="14,18,21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="do">## load the PBC data</span></span>
+<span id="cb11-2"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package=</span><span class="st">"survival"</span>)</span>
+<span id="cb11-3"><a href=""></a></span>
+<span id="cb11-4"><a href=""></a><span class="do">## remove the ID</span></span>
+<span id="cb11-5"><a href=""></a>pbc<span class="sc">$</span>id <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb11-6"><a href=""></a></span>
+<span id="cb11-7"><a href=""></a><span class="do">## convert to right-censoring with death as the event</span></span>
+<span id="cb11-8"><a href=""></a>pbc<span class="sc">$</span>status[pbc<span class="sc">$</span>status <span class="sc">&gt;</span> <span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb11-9"><a href=""></a></span>
+<span id="cb11-10"><a href=""></a><span class="do">## default RSF call</span></span>
+<span id="cb11-11"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(time, status)<span class="sc">~</span>., pbc)</span>
+<span id="cb11-12"><a href=""></a></span>
+<span id="cb11-13"><a href=""></a><span class="do">## choose some cases</span></span>
+<span id="cb11-14"><a href=""></a>idx <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">11</span>,<span class="dv">34</span>,<span class="dv">60</span>)</span>
+<span id="cb11-15"><a href=""></a></span>
+<span id="cb11-16"><a href=""></a><span class="do">## plot the curves</span></span>
+<span id="cb11-17"><a href=""></a><span class="fu">matplot</span>(o<span class="sc">$</span>time.interest, </span>
+<span id="cb11-18"><a href=""></a>        <span class="fu">t</span>(o<span class="sc">$</span>survival[idx,]), <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col=</span><span class="dv">4</span>, <span class="at">lwd=</span><span class="dv">3</span>,</span>
+<span id="cb11-19"><a href=""></a>        <span class="at">xlab =</span> <span class="st">"Days"</span>, <span class="at">ylab =</span> <span class="st">"Survival"</span>)</span>
+<span id="cb11-20"><a href=""></a><span class="fu">matlines</span>(o<span class="sc">$</span>time.interest, </span>
+<span id="cb11-21"><a href=""></a>        <span class="fu">t</span>(o<span class="sc">$</span>survival.oob[idx,]), <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col=</span><span class="dv">2</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb11-22"><a href=""></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"inbag"</span>, <span class="st">"oob"</span>), <span class="at">fill =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment fade-left" style="width:60%;">
 <p><img data-src="pic/inbag_oob_survival.png" style="width:105.0%"></p>
 </div></div>
@@ -995,102 +1005,102 @@ F_{\!\text{ens}}^{(i)}
 
 </div>
 </section><section id="key-quantities-1" class="slide level2 smaller"><h2>Key quantities</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb11-1"><a href=""></a>o$time.interest ---&gt;   event times (everything keys off this)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href=""></a>o$time.interest ---&gt;   event times (everything keys off this)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>o<span class="sc">$</span>time.interest[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb12-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">41</span>  <span class="dv">51</span>  <span class="dv">71</span>  <span class="dv">77</span> <span class="dv">110</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>o<span class="sc">$</span>time.interest[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb13-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">41</span>  <span class="dv">51</span>  <span class="dv">71</span>  <span class="dv">77</span> <span class="dv">110</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><br></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb13-1"><a href=""></a>o$predicted     ---&gt;   inbag estimated mortality</span>
-<span id="cb13-2"><a href=""></a>o$predicted.oob ---&gt;   OOB estimated mortality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb14-1"><a href=""></a>o$predicted     ---&gt;   inbag estimated mortality</span>
+<span id="cb14-2"><a href=""></a>o$predicted.oob ---&gt;   OOB estimated mortality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb14" data-code-line-numbers="1-2|4-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>o<span class="sc">$</span>predicted[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb14-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">200.83450</span>  <span class="fl">17.07501</span>  <span class="fl">76.31131</span>  <span class="fl">57.77577</span>  <span class="fl">79.27206</span></span>
-<span id="cb14-3"><a href=""></a></span>
-<span id="cb14-4"><a href=""></a>o<span class="sc">$</span>predicted.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb14-5"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">190.04590</span>  <span class="fl">28.05044</span>  <span class="fl">66.25447</span>  <span class="fl">55.03181</span>  <span class="fl">72.55308</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15" data-code-line-numbers="1-2|4-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>o<span class="sc">$</span>predicted[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb15-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">200.83450</span>  <span class="fl">17.07501</span>  <span class="fl">76.31131</span>  <span class="fl">57.77577</span>  <span class="fl">79.27206</span></span>
+<span id="cb15-3"><a href=""></a></span>
+<span id="cb15-4"><a href=""></a>o<span class="sc">$</span>predicted.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb15-5"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">190.04590</span>  <span class="fl">28.05044</span>  <span class="fl">66.25447</span>  <span class="fl">55.03181</span>  <span class="fl">72.55308</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><br></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href=""></a>o$survival      ---&gt;   inbag survival estimator for each case</span>
-<span id="cb15-2"><a href=""></a>o$survival.oob  ---&gt;   OOB survival estimator for each case</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a href=""></a>o$survival      ---&gt;   inbag survival estimator for each case</span>
+<span id="cb16-2"><a href=""></a>o$survival.oob  ---&gt;   OOB survival estimator for each case</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb16" data-code-line-numbers="1-4|5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>yvar) <span class="do">## sample size (complete cases) n = 276</span></span>
-<span id="cb16-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span>   <span class="dv">2</span></span>
-<span id="cb16-3"><a href=""></a><span class="fu">length</span>(o<span class="sc">$</span>time.interest)</span>
-<span id="cb16-4"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">127</span></span>
-<span id="cb16-5"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>survival)      <span class="co"># ---&gt;   inbag survival estimator for each case</span></span>
-<span id="cb16-6"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
-<span id="cb16-7"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>survival.oob)  <span class="co"># ---&gt;   OOB survival estimator for each case</span></span>
-<span id="cb16-8"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17" data-code-line-numbers="1-4|5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>yvar) <span class="do">## sample size (complete cases) n = 276</span></span>
+<span id="cb17-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span>   <span class="dv">2</span></span>
+<span id="cb17-3"><a href=""></a><span class="fu">length</span>(o<span class="sc">$</span>time.interest)</span>
+<span id="cb17-4"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">127</span></span>
+<span id="cb17-5"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>survival)      <span class="co"># ---&gt;   inbag survival estimator for each case</span></span>
+<span id="cb17-6"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
+<span id="cb17-7"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>survival.oob)  <span class="co"># ---&gt;   OOB survival estimator for each case</span></span>
+<span id="cb17-8"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 
 </div>
 </div>
 </section><section id="key-quantities-2" class="slide level2 smaller"><h2>Key quantities</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb17-1"><a href=""></a>o$survival      ---&gt;   inbag survival estimator for each case</span>
-<span id="cb17-2"><a href=""></a>o$survival.oob  ---&gt;   OOB survival estimator for each case</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb18-1"><a href=""></a>o$survival      ---&gt;   inbag survival estimator for each case</span>
+<span id="cb18-2"><a href=""></a>o$survival.oob  ---&gt;   OOB survival estimator for each case</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb18" data-code-line-numbers="6-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>survival)      <span class="co"># ---&gt;   inbag survival estimator for each case</span></span>
-<span id="cb18-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
-<span id="cb18-3"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>survival.oob)  <span class="co"># ---&gt;   OOB survival estimator for each case</span></span>
-<span id="cb18-4"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
-<span id="cb18-5"><a href=""></a></span>
-<span id="cb18-6"><a href=""></a>o<span class="sc">$</span>survival[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb18-7"><a href=""></a><span class="sc">&gt;</span>           [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]</span>
-<span id="cb18-8"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>,] <span class="fl">0.9600951</span> <span class="fl">0.9125329</span> <span class="fl">0.9002843</span> <span class="fl">0.8725504</span> <span class="fl">0.8423145</span></span>
-<span id="cb18-9"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">2</span>,] <span class="fl">1.0000000</span> <span class="fl">0.9999167</span> <span class="fl">0.9997543</span> <span class="fl">0.9996710</span> <span class="fl">0.9995136</span></span>
-<span id="cb18-10"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">3</span>,] <span class="fl">0.9959351</span> <span class="fl">0.9921702</span> <span class="fl">0.9877700</span> <span class="fl">0.9782302</span> <span class="fl">0.9768478</span></span>
-<span id="cb18-11"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">4</span>,] <span class="fl">0.9954334</span> <span class="fl">0.9906795</span> <span class="fl">0.9871662</span> <span class="fl">0.9857532</span> <span class="fl">0.9841598</span></span>
-<span id="cb18-12"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">5</span>,] <span class="fl">1.0000000</span> <span class="fl">0.9998401</span> <span class="fl">0.9967281</span> <span class="fl">0.9947621</span> <span class="fl">0.9946241</span></span>
-<span id="cb18-13"><a href=""></a>o<span class="sc">$</span>survival.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb18-14"><a href=""></a><span class="sc">&gt;</span>           [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]</span>
-<span id="cb18-15"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>,] <span class="fl">0.9655403</span> <span class="fl">0.9160407</span> <span class="fl">0.9050698</span> <span class="fl">0.8755058</span> <span class="fl">0.8428749</span></span>
-<span id="cb18-16"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">2</span>,] <span class="fl">1.0000000</span> <span class="fl">1.0000000</span> <span class="fl">0.9995281</span> <span class="fl">0.9995281</span> <span class="fl">0.9995281</span></span>
-<span id="cb18-17"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">3</span>,] <span class="fl">0.9957842</span> <span class="fl">0.9926934</span> <span class="fl">0.9881592</span> <span class="fl">0.9768084</span> <span class="fl">0.9752430</span></span>
-<span id="cb18-18"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">4</span>,] <span class="fl">0.9942668</span> <span class="fl">0.9873056</span> <span class="fl">0.9850606</span> <span class="fl">0.9838238</span> <span class="fl">0.9819504</span></span>
-<span id="cb18-19"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">5</span>,] <span class="fl">1.0000000</span> <span class="fl">1.0000000</span> <span class="fl">0.9962979</span> <span class="fl">0.9942830</span> <span class="fl">0.9939347</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19" data-code-line-numbers="6-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>survival)      <span class="co"># ---&gt;   inbag survival estimator for each case</span></span>
+<span id="cb19-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
+<span id="cb19-3"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>survival.oob)  <span class="co"># ---&gt;   OOB survival estimator for each case</span></span>
+<span id="cb19-4"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
+<span id="cb19-5"><a href=""></a></span>
+<span id="cb19-6"><a href=""></a>o<span class="sc">$</span>survival[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb19-7"><a href=""></a><span class="sc">&gt;</span>           [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]</span>
+<span id="cb19-8"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>,] <span class="fl">0.9600951</span> <span class="fl">0.9125329</span> <span class="fl">0.9002843</span> <span class="fl">0.8725504</span> <span class="fl">0.8423145</span></span>
+<span id="cb19-9"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">2</span>,] <span class="fl">1.0000000</span> <span class="fl">0.9999167</span> <span class="fl">0.9997543</span> <span class="fl">0.9996710</span> <span class="fl">0.9995136</span></span>
+<span id="cb19-10"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">3</span>,] <span class="fl">0.9959351</span> <span class="fl">0.9921702</span> <span class="fl">0.9877700</span> <span class="fl">0.9782302</span> <span class="fl">0.9768478</span></span>
+<span id="cb19-11"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">4</span>,] <span class="fl">0.9954334</span> <span class="fl">0.9906795</span> <span class="fl">0.9871662</span> <span class="fl">0.9857532</span> <span class="fl">0.9841598</span></span>
+<span id="cb19-12"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">5</span>,] <span class="fl">1.0000000</span> <span class="fl">0.9998401</span> <span class="fl">0.9967281</span> <span class="fl">0.9947621</span> <span class="fl">0.9946241</span></span>
+<span id="cb19-13"><a href=""></a>o<span class="sc">$</span>survival.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb19-14"><a href=""></a><span class="sc">&gt;</span>           [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]</span>
+<span id="cb19-15"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>,] <span class="fl">0.9655403</span> <span class="fl">0.9160407</span> <span class="fl">0.9050698</span> <span class="fl">0.8755058</span> <span class="fl">0.8428749</span></span>
+<span id="cb19-16"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">2</span>,] <span class="fl">1.0000000</span> <span class="fl">1.0000000</span> <span class="fl">0.9995281</span> <span class="fl">0.9995281</span> <span class="fl">0.9995281</span></span>
+<span id="cb19-17"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">3</span>,] <span class="fl">0.9957842</span> <span class="fl">0.9926934</span> <span class="fl">0.9881592</span> <span class="fl">0.9768084</span> <span class="fl">0.9752430</span></span>
+<span id="cb19-18"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">4</span>,] <span class="fl">0.9942668</span> <span class="fl">0.9873056</span> <span class="fl">0.9850606</span> <span class="fl">0.9838238</span> <span class="fl">0.9819504</span></span>
+<span id="cb19-19"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">5</span>,] <span class="fl">1.0000000</span> <span class="fl">1.0000000</span> <span class="fl">0.9962979</span> <span class="fl">0.9942830</span> <span class="fl">0.9939347</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment" style="width:50%;">
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="do">## plot survival curves for first 10 individuals </span></span>
-<span id="cb19-2"><a href=""></a><span class="fu">matplot</span>(o<span class="sc">$</span>time.interest, </span>
-<span id="cb19-3"><a href=""></a>        <span class="dv">100</span> <span class="sc">*</span> <span class="fu">t</span>(o<span class="sc">$</span>survival.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]),</span>
-<span id="cb19-4"><a href=""></a>        <span class="at">xlab =</span> <span class="st">"Time"</span>, <span class="at">ylab =</span> <span class="st">"Survival"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="do">## plot survival curves for first 10 individuals </span></span>
+<span id="cb20-2"><a href=""></a><span class="fu">matplot</span>(o<span class="sc">$</span>time.interest, </span>
+<span id="cb20-3"><a href=""></a>        <span class="dv">100</span> <span class="sc">*</span> <span class="fu">t</span>(o<span class="sc">$</span>survival.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]),</span>
+<span id="cb20-4"><a href=""></a>        <span class="at">xlab =</span> <span class="st">"Time"</span>, <span class="at">ylab =</span> <span class="st">"Survival"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <center>
 <img data-src="pic/pbcSurv.png" class="fragment" style="width:80.0%">
 </center>
 </div></div>
 </section><section id="key-quantities-3" class="slide level2 smaller"><h2>Key quantities</h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb20-1"><a href=""></a>o$chf          ---&gt;    inbag CHF estimator for each case</span>
-<span id="cb20-2"><a href=""></a>o$chf.oob      ---&gt;    OOB CHF estimator for each case</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb21-1"><a href=""></a>o$chf          ---&gt;    inbag CHF estimator for each case</span>
+<span id="cb21-2"><a href=""></a>o$chf.oob      ---&gt;    OOB CHF estimator for each case</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb21" data-code-line-numbers="1-4|6-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>chf) </span>
-<span id="cb21-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
-<span id="cb21-3"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>chf.oob) </span>
-<span id="cb21-4"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
-<span id="cb21-5"><a href=""></a>o<span class="sc">$</span>chf[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb21-6"><a href=""></a><span class="sc">&gt;</span>             [,<span class="dv">1</span>]         [,<span class="dv">2</span>]        [,<span class="dv">3</span>]         [,<span class="dv">4</span>]         [,<span class="dv">5</span>]</span>
-<span id="cb21-7"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>,] <span class="fl">0.039904941</span> <span class="fl">8.981063e-02</span> <span class="fl">0.103197429</span> <span class="fl">0.1338071668</span> <span class="fl">0.1686493781</span></span>
-<span id="cb21-8"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">2</span>,] <span class="fl">0.000000000</span> <span class="fl">8.333333e-05</span> <span class="fl">0.000245671</span> <span class="fl">0.0003326275</span> <span class="fl">0.0004976107</span></span>
-<span id="cb21-9"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">3</span>,] <span class="fl">0.004064919</span> <span class="fl">7.977572e-03</span> <span class="fl">0.012491370</span> <span class="fl">0.0227012085</span> <span class="fl">0.0244150195</span></span>
-<span id="cb21-10"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">4</span>,] <span class="fl">0.004566626</span> <span class="fl">9.643876e-03</span> <span class="fl">0.013209059</span> <span class="fl">0.0146954141</span> <span class="fl">0.0163487486</span></span>
-<span id="cb21-11"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">5</span>,] <span class="fl">0.000000000</span> <span class="fl">1.598746e-04</span> <span class="fl">0.003271896</span> <span class="fl">0.0052661647</span> <span class="fl">0.0054040957</span></span>
-<span id="cb21-12"><a href=""></a>o<span class="sc">$</span>chf.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb21-13"><a href=""></a><span class="sc">&gt;</span>             [,<span class="dv">1</span>]        [,<span class="dv">2</span>]         [,<span class="dv">3</span>]         [,<span class="dv">4</span>]         [,<span class="dv">5</span>]</span>
-<span id="cb21-14"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>,] <span class="fl">0.034459694</span> <span class="fl">0.085894243</span> <span class="fl">0.0978252512</span> <span class="fl">0.1301985027</span> <span class="fl">0.1682733452</span></span>
-<span id="cb21-15"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">2</span>,] <span class="fl">0.000000000</span> <span class="fl">0.000000000</span> <span class="fl">0.0004719118</span> <span class="fl">0.0004719118</span> <span class="fl">0.0004719118</span></span>
-<span id="cb21-16"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">3</span>,] <span class="fl">0.004215783</span> <span class="fl">0.007519603</span> <span class="fl">0.0122166452</span> <span class="fl">0.0244321624</span> <span class="fl">0.0264688132</span></span>
-<span id="cb21-17"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">4</span>,] <span class="fl">0.005733225</span> <span class="fl">0.013259881</span> <span class="fl">0.0155376855</span> <span class="fl">0.0168153866</span> <span class="fl">0.0187680623</span></span>
-<span id="cb21-18"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">5</span>,] <span class="fl">0.000000000</span> <span class="fl">0.000000000</span> <span class="fl">0.0037021133</span> <span class="fl">0.0057619372</span> <span class="fl">0.0061102479</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22" data-code-line-numbers="1-4|6-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>chf) </span>
+<span id="cb22-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
+<span id="cb22-3"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>chf.oob) </span>
+<span id="cb22-4"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
+<span id="cb22-5"><a href=""></a>o<span class="sc">$</span>chf[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb22-6"><a href=""></a><span class="sc">&gt;</span>             [,<span class="dv">1</span>]         [,<span class="dv">2</span>]        [,<span class="dv">3</span>]         [,<span class="dv">4</span>]         [,<span class="dv">5</span>]</span>
+<span id="cb22-7"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>,] <span class="fl">0.039904941</span> <span class="fl">8.981063e-02</span> <span class="fl">0.103197429</span> <span class="fl">0.1338071668</span> <span class="fl">0.1686493781</span></span>
+<span id="cb22-8"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">2</span>,] <span class="fl">0.000000000</span> <span class="fl">8.333333e-05</span> <span class="fl">0.000245671</span> <span class="fl">0.0003326275</span> <span class="fl">0.0004976107</span></span>
+<span id="cb22-9"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">3</span>,] <span class="fl">0.004064919</span> <span class="fl">7.977572e-03</span> <span class="fl">0.012491370</span> <span class="fl">0.0227012085</span> <span class="fl">0.0244150195</span></span>
+<span id="cb22-10"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">4</span>,] <span class="fl">0.004566626</span> <span class="fl">9.643876e-03</span> <span class="fl">0.013209059</span> <span class="fl">0.0146954141</span> <span class="fl">0.0163487486</span></span>
+<span id="cb22-11"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">5</span>,] <span class="fl">0.000000000</span> <span class="fl">1.598746e-04</span> <span class="fl">0.003271896</span> <span class="fl">0.0052661647</span> <span class="fl">0.0054040957</span></span>
+<span id="cb22-12"><a href=""></a>o<span class="sc">$</span>chf.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb22-13"><a href=""></a><span class="sc">&gt;</span>             [,<span class="dv">1</span>]        [,<span class="dv">2</span>]         [,<span class="dv">3</span>]         [,<span class="dv">4</span>]         [,<span class="dv">5</span>]</span>
+<span id="cb22-14"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>,] <span class="fl">0.034459694</span> <span class="fl">0.085894243</span> <span class="fl">0.0978252512</span> <span class="fl">0.1301985027</span> <span class="fl">0.1682733452</span></span>
+<span id="cb22-15"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">2</span>,] <span class="fl">0.000000000</span> <span class="fl">0.000000000</span> <span class="fl">0.0004719118</span> <span class="fl">0.0004719118</span> <span class="fl">0.0004719118</span></span>
+<span id="cb22-16"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">3</span>,] <span class="fl">0.004215783</span> <span class="fl">0.007519603</span> <span class="fl">0.0122166452</span> <span class="fl">0.0244321624</span> <span class="fl">0.0264688132</span></span>
+<span id="cb22-17"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">4</span>,] <span class="fl">0.005733225</span> <span class="fl">0.013259881</span> <span class="fl">0.0155376855</span> <span class="fl">0.0168153866</span> <span class="fl">0.0187680623</span></span>
+<span id="cb22-18"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">5</span>,] <span class="fl">0.000000000</span> <span class="fl">0.000000000</span> <span class="fl">0.0037021133</span> <span class="fl">0.0057619372</span> <span class="fl">0.0061102479</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment" style="width:50%;">
-<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="do">## plot survival curves for first 10 individuals </span></span>
-<span id="cb22-2"><a href=""></a><span class="fu">matplot</span>(o<span class="sc">$</span>time.interest, </span>
-<span id="cb22-3"><a href=""></a>        <span class="dv">100</span> <span class="sc">*</span> <span class="fu">t</span>(o<span class="sc">$</span>chf.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]),</span>
-<span id="cb22-4"><a href=""></a>        <span class="at">xlab =</span> <span class="st">"Time"</span>, <span class="at">ylab =</span> <span class="st">"Cumulative hazard"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="do">## plot survival curves for first 10 individuals </span></span>
+<span id="cb23-2"><a href=""></a><span class="fu">matplot</span>(o<span class="sc">$</span>time.interest, </span>
+<span id="cb23-3"><a href=""></a>        <span class="dv">100</span> <span class="sc">*</span> <span class="fu">t</span>(o<span class="sc">$</span>chf.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]),</span>
+<span id="cb23-4"><a href=""></a>        <span class="at">xlab =</span> <span class="st">"Time"</span>, <span class="at">ylab =</span> <span class="st">"Cumulative hazard"</span>, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <center>
 <img data-src="pic/pbcCHF.png" class="fragment" style="width:80.0%">
 </center>
@@ -1098,8 +1108,8 @@ F_{\!\text{ens}}^{(i)}
 </section><section id="key-quantities-4" class="slide level2 smaller"><h2>Key quantities</h2>
 <p>Connection between mortality and the CHF</p>
 <p>Mortality for a case i equals the expected number of deaths if all patients were the same as case i. Mortality is obtained by summing the CHF</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">plot</span>(o<span class="sc">$</span>predicted.oob, <span class="fu">rowSums</span>(o<span class="sc">$</span>chf.oob), <span class="at">xlab=</span><span class="st">"OOB Mortality"</span>, <span class="at">ylab=</span><span class="st">"Sum of OOB CHF"</span>)</span>
-<span id="cb23-2"><a href=""></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="fu">plot</span>(o<span class="sc">$</span>predicted.oob, <span class="fu">rowSums</span>(o<span class="sc">$</span>chf.oob), <span class="at">xlab=</span><span class="st">"OOB Mortality"</span>, <span class="at">ylab=</span><span class="st">"Sum of OOB CHF"</span>)</span>
+<span id="cb24-2"><a href=""></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <center>
 <img data-src="pic/predicted_chf.png" class="fragment" style="width:45.0%">
 </center>
@@ -1156,37 +1166,37 @@ F_{\!\text{ens}}^{(i)}
 </li>
 </ol></section><section id="classification-example-glioma" class="slide level2 smaller"><h2>Classification example: Glioma</h2>
 <h4 id="different-prediction-measures">Different prediction measures</h4>
-<div class="sourceCode" id="cb24" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02333115</span></span>
-<span id="cb24-2"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.19053769</span></span>
-<span id="cb24-3"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99304797</span></span>
-<span id="cb24-4"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.34115074</span></span>
-<span id="cb24-5"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.07061503</span>, <span class="fl">0.06756757</span>, <span class="fl">0.01149425</span>, <span class="fl">0.00803213</span>, <span class="fl">0.52</span>, <span class="fl">0.53658537</span>, <span class="fl">0.04651163</span>, <span class="fl">0.11538462</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="fu">tail</span>(o<span class="sc">$</span>err.rate, <span class="dv">1</span>)</span>
-<span id="cb25-2"><a href=""></a></span>
-<span id="cb25-3"><a href=""></a><span class="sc">&gt;</span>               all   Classic<span class="sc">-</span>like      Codel G<span class="sc">-</span>CIMP<span class="sc">-</span>high G<span class="sc">-</span>CIMP<span class="sc">-</span>low  LGm6<span class="sc">-</span>GBM   Mesenchymal<span class="sc">-</span>like   PA<span class="sc">-</span>like</span>
-<span id="cb25-4"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">500</span>,] <span class="fl">0.07403189</span>   <span class="fl">0.07061503</span>, <span class="fl">0.06756757</span>, <span class="fl">0.01149425</span>, <span class="fl">0.00803213</span>, <span class="fl">0.52</span>, <span class="fl">0.53658537</span>, <span class="fl">0.04651163</span>, <span class="fl">0.11538462</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02333115</span></span>
+<span id="cb25-2"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.19053769</span></span>
+<span id="cb25-3"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99304797</span></span>
+<span id="cb25-4"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.34115074</span></span>
+<span id="cb25-5"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.07061503</span>, <span class="fl">0.06756757</span>, <span class="fl">0.01149425</span>, <span class="fl">0.00803213</span>, <span class="fl">0.52</span>, <span class="fl">0.53658537</span>, <span class="fl">0.04651163</span>, <span class="fl">0.11538462</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="fu">tail</span>(o<span class="sc">$</span>err.rate, <span class="dv">1</span>)</span>
+<span id="cb26-2"><a href=""></a></span>
+<span id="cb26-3"><a href=""></a><span class="sc">&gt;</span>               all   Classic<span class="sc">-</span>like      Codel G<span class="sc">-</span>CIMP<span class="sc">-</span>high G<span class="sc">-</span>CIMP<span class="sc">-</span>low  LGm6<span class="sc">-</span>GBM   Mesenchymal<span class="sc">-</span>like   PA<span class="sc">-</span>like</span>
+<span id="cb26-4"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">500</span>,] <span class="fl">0.07403189</span>   <span class="fl">0.07061503</span>, <span class="fl">0.06756757</span>, <span class="fl">0.01149425</span>, <span class="fl">0.00803213</span>, <span class="fl">0.52</span>, <span class="fl">0.53658537</span>, <span class="fl">0.04651163</span>, <span class="fl">0.11538462</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="classification-example-glioma-1" class="slide level2 smaller"><h2>Classification example: Glioma</h2>
 <h4 id="different-prediction-measures-1">Different prediction measures</h4>
 <div class="r-stack">
 <div class="cell">
 <div class="cell-output-display">
-<div id="mqrlgxcupq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mqrlgxcupq table {
+<div id="lwfoctiece" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lwfoctiece table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mqrlgxcupq thead, #mqrlgxcupq tbody, #mqrlgxcupq tfoot, #mqrlgxcupq tr, #mqrlgxcupq td, #mqrlgxcupq th {
+#lwfoctiece thead, #lwfoctiece tbody, #lwfoctiece tfoot, #lwfoctiece tr, #lwfoctiece td, #lwfoctiece th {
   border-style: none;
 }
 
-#mqrlgxcupq p {
+#lwfoctiece p {
   margin: 0;
   padding: 0;
 }
 
-#mqrlgxcupq .gt_table {
+#lwfoctiece .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1212,12 +1222,12 @@ F_{\!\text{ens}}^{(i)}
   border-left-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_caption {
+#lwfoctiece .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mqrlgxcupq .gt_title {
+#lwfoctiece .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1229,7 +1239,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-width: 0;
 }
 
-#mqrlgxcupq .gt_subtitle {
+#lwfoctiece .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1241,7 +1251,7 @@ F_{\!\text{ens}}^{(i)}
   border-top-width: 0;
 }
 
-#mqrlgxcupq .gt_heading {
+#lwfoctiece .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1253,13 +1263,13 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_bottom_border {
+#lwfoctiece .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_col_headings {
+#lwfoctiece .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1274,7 +1284,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_col_heading {
+#lwfoctiece .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1294,7 +1304,7 @@ F_{\!\text{ens}}^{(i)}
   overflow-x: hidden;
 }
 
-#mqrlgxcupq .gt_column_spanner_outer {
+#lwfoctiece .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1306,15 +1316,15 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 4px;
 }
 
-#mqrlgxcupq .gt_column_spanner_outer:first-child {
+#lwfoctiece .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mqrlgxcupq .gt_column_spanner_outer:last-child {
+#lwfoctiece .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mqrlgxcupq .gt_column_spanner {
+#lwfoctiece .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1326,11 +1336,11 @@ F_{\!\text{ens}}^{(i)}
   width: 100%;
 }
 
-#mqrlgxcupq .gt_spanner_row {
+#lwfoctiece .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mqrlgxcupq .gt_group_heading {
+#lwfoctiece .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1356,7 +1366,7 @@ F_{\!\text{ens}}^{(i)}
   text-align: left;
 }
 
-#mqrlgxcupq .gt_empty_group_heading {
+#lwfoctiece .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1371,15 +1381,15 @@ F_{\!\text{ens}}^{(i)}
   vertical-align: middle;
 }
 
-#mqrlgxcupq .gt_from_md > :first-child {
+#lwfoctiece .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mqrlgxcupq .gt_from_md > :last-child {
+#lwfoctiece .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mqrlgxcupq .gt_row {
+#lwfoctiece .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1398,7 +1408,7 @@ F_{\!\text{ens}}^{(i)}
   overflow-x: hidden;
 }
 
-#mqrlgxcupq .gt_stub {
+#lwfoctiece .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1411,7 +1421,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#mqrlgxcupq .gt_stub_row_group {
+#lwfoctiece .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1425,15 +1435,15 @@ F_{\!\text{ens}}^{(i)}
   vertical-align: top;
 }
 
-#mqrlgxcupq .gt_row_group_first td {
+#lwfoctiece .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mqrlgxcupq .gt_row_group_first th {
+#lwfoctiece .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mqrlgxcupq .gt_summary_row {
+#lwfoctiece .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1443,16 +1453,16 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#mqrlgxcupq .gt_first_summary_row {
+#lwfoctiece .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_first_summary_row.thick {
+#lwfoctiece .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mqrlgxcupq .gt_last_summary_row {
+#lwfoctiece .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1462,7 +1472,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_grand_summary_row {
+#lwfoctiece .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1472,7 +1482,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#mqrlgxcupq .gt_first_grand_summary_row {
+#lwfoctiece .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1482,7 +1492,7 @@ F_{\!\text{ens}}^{(i)}
   border-top-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_last_grand_summary_row_top {
+#lwfoctiece .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1492,11 +1502,11 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_striped {
+#lwfoctiece .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mqrlgxcupq .gt_table_body {
+#lwfoctiece .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1505,7 +1515,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_footnotes {
+#lwfoctiece .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1519,7 +1529,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_footnote {
+#lwfoctiece .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1528,7 +1538,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#mqrlgxcupq .gt_sourcenotes {
+#lwfoctiece .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1542,7 +1552,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#mqrlgxcupq .gt_sourcenote {
+#lwfoctiece .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1550,72 +1560,72 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#mqrlgxcupq .gt_left {
+#lwfoctiece .gt_left {
   text-align: left;
 }
 
-#mqrlgxcupq .gt_center {
+#lwfoctiece .gt_center {
   text-align: center;
 }
 
-#mqrlgxcupq .gt_right {
+#lwfoctiece .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mqrlgxcupq .gt_font_normal {
+#lwfoctiece .gt_font_normal {
   font-weight: normal;
 }
 
-#mqrlgxcupq .gt_font_bold {
+#lwfoctiece .gt_font_bold {
   font-weight: bold;
 }
 
-#mqrlgxcupq .gt_font_italic {
+#lwfoctiece .gt_font_italic {
   font-style: italic;
 }
 
-#mqrlgxcupq .gt_super {
+#lwfoctiece .gt_super {
   font-size: 65%;
 }
 
-#mqrlgxcupq .gt_footnote_marks {
+#lwfoctiece .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mqrlgxcupq .gt_asterisk {
+#lwfoctiece .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mqrlgxcupq .gt_indent_1 {
+#lwfoctiece .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mqrlgxcupq .gt_indent_2 {
+#lwfoctiece .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mqrlgxcupq .gt_indent_3 {
+#lwfoctiece .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mqrlgxcupq .gt_indent_4 {
+#lwfoctiece .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mqrlgxcupq .gt_indent_5 {
+#lwfoctiece .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mqrlgxcupq .katex-display {
+#lwfoctiece .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mqrlgxcupq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lwfoctiece div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1704,35 +1714,14 @@ F_{\!\text{ens}}^{(i)}
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb26" data-code-line-numbers="2,21"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>., <span class="at">data =</span> glioma,</span>
-<span id="cb26-2"><a href=""></a>           <span class="at">perf.type =</span> <span class="st">"misclass"</span>) <span class="do">## default</span></span>
-<span id="cb26-3"><a href=""></a>o</span>
-<span id="cb26-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">878</span></span>
-<span id="cb26-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">148</span>, <span class="dv">174</span>, <span class="dv">249</span>, <span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">215</span>, <span class="dv">26</span></span>
-<span id="cb26-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb26-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb26-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">74.302</span></span>
-<span id="cb26-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
-<span id="cb26-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
-<span id="cb26-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb26-12"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">555</span></span>
-<span id="cb26-13"><a href=""></a>                            Analysis<span class="sc">:</span> RF<span class="sc">-</span>C</span>
-<span id="cb26-14"><a href=""></a>                              Family<span class="sc">:</span> class</span>
-<span id="cb26-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> gini <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb26-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb26-17"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02333115</span></span>
-<span id="cb26-18"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.19053769</span></span>
-<span id="cb26-19"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99304797</span></span>
-<span id="cb26-20"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.34115074</span></span>
-<span id="cb26-21"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.07061503</span>, <span class="fl">0.06756757</span>, <span class="fl">0.01149425</span>, <span class="fl">0.00803213</span>, <span class="fl">0.52</span>, <span class="fl">0.53658537</span>, <span class="fl">0.04651163</span>, <span class="fl">0.11538462</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb27" data-code-line-numbers="2,21"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>., <span class="at">data =</span> glioma,</span>
-<span id="cb27-2"><a href=""></a>           <span class="at">perf.type =</span> <span class="st">"brier"</span>) </span>
+<span id="cb27-2"><a href=""></a>           <span class="at">perf.type =</span> <span class="st">"misclass"</span>) <span class="do">## default</span></span>
 <span id="cb27-3"><a href=""></a>o</span>
 <span id="cb27-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">878</span></span>
 <span id="cb27-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">148</span>, <span class="dv">174</span>, <span class="dv">249</span>, <span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">215</span>, <span class="dv">26</span></span>
 <span id="cb27-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
 <span id="cb27-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb27-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">74.088</span></span>
+<span id="cb27-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">74.302</span></span>
 <span id="cb27-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
 <span id="cb27-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
 <span id="cb27-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
@@ -1741,40 +1730,61 @@ F_{\!\text{ens}}^{(i)}
 <span id="cb27-14"><a href=""></a>                              Family<span class="sc">:</span> class</span>
 <span id="cb27-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> gini <span class="sc">*</span>random<span class="sc">*</span></span>
 <span id="cb27-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb27-17"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02315138</span></span>
-<span id="cb27-18"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.18906962</span></span>
-<span id="cb27-19"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99397374</span></span>
-<span id="cb27-20"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.33892075</span></span>
-<span id="cb27-21"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.18906962</span>, <span class="fl">0.0402637</span>, <span class="fl">0.01401861</span>, <span class="fl">0.02455222</span>, <span class="fl">0.01455572</span>, <span class="fl">0.02340584</span>, <span class="fl">0.06200621</span>, <span class="fl">0.01026732</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-17"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02333115</span></span>
+<span id="cb27-18"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.19053769</span></span>
+<span id="cb27-19"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99304797</span></span>
+<span id="cb27-20"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.34115074</span></span>
+<span id="cb27-21"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.07061503</span>, <span class="fl">0.06756757</span>, <span class="fl">0.01149425</span>, <span class="fl">0.00803213</span>, <span class="fl">0.52</span>, <span class="fl">0.53658537</span>, <span class="fl">0.04651163</span>, <span class="fl">0.11538462</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28" data-code-line-numbers="2,21"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>., <span class="at">data =</span> glioma,</span>
+<span id="cb28-2"><a href=""></a>           <span class="at">perf.type =</span> <span class="st">"brier"</span>) </span>
+<span id="cb28-3"><a href=""></a>o</span>
+<span id="cb28-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">878</span></span>
+<span id="cb28-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">148</span>, <span class="dv">174</span>, <span class="dv">249</span>, <span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">215</span>, <span class="dv">26</span></span>
+<span id="cb28-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
+<span id="cb28-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb28-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">74.088</span></span>
+<span id="cb28-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
+<span id="cb28-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
+<span id="cb28-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
+<span id="cb28-12"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">555</span></span>
+<span id="cb28-13"><a href=""></a>                            Analysis<span class="sc">:</span> RF<span class="sc">-</span>C</span>
+<span id="cb28-14"><a href=""></a>                              Family<span class="sc">:</span> class</span>
+<span id="cb28-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> gini <span class="sc">*</span>random<span class="sc">*</span></span>
+<span id="cb28-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb28-17"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02315138</span></span>
+<span id="cb28-18"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.18906962</span></span>
+<span id="cb28-19"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99397374</span></span>
+<span id="cb28-20"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.33892075</span></span>
+<span id="cb28-21"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.18906962</span>, <span class="fl">0.0402637</span>, <span class="fl">0.01401861</span>, <span class="fl">0.02455222</span>, <span class="fl">0.01455572</span>, <span class="fl">0.02340584</span>, <span class="fl">0.06200621</span>, <span class="fl">0.01026732</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="classification-example-glioma-2" class="slide level2 smaller"><h2>Classification example: Glioma</h2>
 <p>We can use the OOB ensemble to construct different kind of prediction error</p>
-<div class="sourceCode" id="cb28" data-code-line-numbers="1-5,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>err <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">brier=</span><span class="fu">get.brier.error</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>predicted.oob,<span class="cn">FALSE</span>),</span>
-<span id="cb28-2"><a href=""></a>                  <span class="at">brier.norm=</span><span class="fu">get.brier.error</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>predicted.oob),</span>
-<span id="cb28-3"><a href=""></a>                  <span class="at">log.loss=</span><span class="fu">get.logloss</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>predicted.oob),</span>
-<span id="cb28-4"><a href=""></a>                  <span class="at">auc=</span><span class="fu">get.auc</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>predicted.oob),</span>
-<span id="cb28-5"><a href=""></a>                  <span class="at">misclass=</span><span class="fu">mean</span>(o<span class="sc">$</span>yvar<span class="sc">!=</span>o<span class="sc">$</span>class.oob))</span>
-<span id="cb28-6"><a href=""></a><span class="fu">rownames</span>(err) <span class="ot">&lt;-</span> <span class="st">"error"</span></span>
-<span id="cb28-7"><a href=""></a></span>
-<span id="cb28-8"><a href=""></a>err.cond <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">rbind</span>(</span>
-<span id="cb28-9"><a href=""></a>  <span class="fu">c</span>(err<span class="sc">$</span>brier.norm, <span class="fu">get.brier.error</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>predicted.oob,<span class="cn">TRUE</span>,<span class="cn">TRUE</span>)),</span>
-<span id="cb28-10"><a href=""></a>  <span class="fu">c</span>(err<span class="sc">$</span>misclass, <span class="fu">get.misclass.error</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>class.oob))))</span>
-<span id="cb28-11"><a href=""></a><span class="fu">colnames</span>(err.cond) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"err."</span>, <span class="fu">colnames</span>(o<span class="sc">$</span>err.rate))</span>
-<span id="cb28-12"><a href=""></a>err.cond <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">metric=</span><span class="fu">c</span>(<span class="st">"brier.norm"</span>, <span class="st">"misclass"</span>), err.cond)</span>
-<span id="cb28-13"><a href=""></a><span class="fu">rownames</span>(err.cond) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29" data-code-line-numbers="1-5,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>err <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">brier=</span><span class="fu">get.brier.error</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>predicted.oob,<span class="cn">FALSE</span>),</span>
+<span id="cb29-2"><a href=""></a>                  <span class="at">brier.norm=</span><span class="fu">get.brier.error</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>predicted.oob),</span>
+<span id="cb29-3"><a href=""></a>                  <span class="at">log.loss=</span><span class="fu">get.logloss</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>predicted.oob),</span>
+<span id="cb29-4"><a href=""></a>                  <span class="at">auc=</span><span class="fu">get.auc</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>predicted.oob),</span>
+<span id="cb29-5"><a href=""></a>                  <span class="at">misclass=</span><span class="fu">mean</span>(o<span class="sc">$</span>yvar<span class="sc">!=</span>o<span class="sc">$</span>class.oob))</span>
+<span id="cb29-6"><a href=""></a><span class="fu">rownames</span>(err) <span class="ot">&lt;-</span> <span class="st">"error"</span></span>
+<span id="cb29-7"><a href=""></a></span>
+<span id="cb29-8"><a href=""></a>err.cond <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">rbind</span>(</span>
+<span id="cb29-9"><a href=""></a>  <span class="fu">c</span>(err<span class="sc">$</span>brier.norm, <span class="fu">get.brier.error</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>predicted.oob,<span class="cn">TRUE</span>,<span class="cn">TRUE</span>)),</span>
+<span id="cb29-10"><a href=""></a>  <span class="fu">c</span>(err<span class="sc">$</span>misclass, <span class="fu">get.misclass.error</span>(o<span class="sc">$</span>yvar,o<span class="sc">$</span>class.oob))))</span>
+<span id="cb29-11"><a href=""></a><span class="fu">colnames</span>(err.cond) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"err."</span>, <span class="fu">colnames</span>(o<span class="sc">$</span>err.rate))</span>
+<span id="cb29-12"><a href=""></a>err.cond <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">metric=</span><span class="fu">c</span>(<span class="st">"brier.norm"</span>, <span class="st">"misclass"</span>), err.cond)</span>
+<span id="cb29-13"><a href=""></a><span class="fu">rownames</span>(err.cond) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<div class="sourceCode" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a><span class="fu">print</span>(<span class="fu">t</span>(err))</span>
-<span id="cb29-2"><a href=""></a>                error</span>
-<span id="cb29-3"><a href=""></a>brier      <span class="fl">0.02315138</span></span>
-<span id="cb29-4"><a href=""></a>brier.norm <span class="fl">0.18906962</span></span>
-<span id="cb29-5"><a href=""></a>log.loss   <span class="fl">0.33892075</span></span>
-<span id="cb29-6"><a href=""></a>auc        <span class="fl">0.99397374</span></span>
-<span id="cb29-7"><a href=""></a>misclass   <span class="fl">0.07517084</span></span>
-<span id="cb29-8"><a href=""></a></span>
-<span id="cb29-9"><a href=""></a><span class="fu">print</span>(err.cond)</span>
-<span id="cb29-10"><a href=""></a>      metric    err.all err.Classic.like  err.Codel err.G.CIMP.high err.G.CIMP.low err.LGm6.GBM err.Mesenchymal.like err.PA.like</span>
-<span id="cb29-11"><a href=""></a><span class="dv">1</span> brier.norm <span class="fl">0.18906962</span>       <span class="fl">0.04026370</span> <span class="fl">0.01401861</span>      <span class="fl">0.02455222</span>     <span class="fl">0.01455572</span>   <span class="fl">0.02340584</span>           <span class="fl">0.06200621</span>  <span class="fl">0.01026732</span></span>
-<span id="cb29-12"><a href=""></a><span class="dv">2</span>   misclass <span class="fl">0.07517084</span>       <span class="fl">0.05405405</span> <span class="fl">0.01724138</span>      <span class="fl">0.01204819</span>     <span class="fl">0.60000000</span>   <span class="fl">0.53658537</span>           <span class="fl">0.05116279</span>  <span class="fl">0.15384615</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="fu">print</span>(<span class="fu">t</span>(err))</span>
+<span id="cb30-2"><a href=""></a>                error</span>
+<span id="cb30-3"><a href=""></a>brier      <span class="fl">0.02315138</span></span>
+<span id="cb30-4"><a href=""></a>brier.norm <span class="fl">0.18906962</span></span>
+<span id="cb30-5"><a href=""></a>log.loss   <span class="fl">0.33892075</span></span>
+<span id="cb30-6"><a href=""></a>auc        <span class="fl">0.99397374</span></span>
+<span id="cb30-7"><a href=""></a>misclass   <span class="fl">0.07517084</span></span>
+<span id="cb30-8"><a href=""></a></span>
+<span id="cb30-9"><a href=""></a><span class="fu">print</span>(err.cond)</span>
+<span id="cb30-10"><a href=""></a>      metric    err.all err.Classic.like  err.Codel err.G.CIMP.high err.G.CIMP.low err.LGm6.GBM err.Mesenchymal.like err.PA.like</span>
+<span id="cb30-11"><a href=""></a><span class="dv">1</span> brier.norm <span class="fl">0.18906962</span>       <span class="fl">0.04026370</span> <span class="fl">0.01401861</span>      <span class="fl">0.02455222</span>     <span class="fl">0.01455572</span>   <span class="fl">0.02340584</span>           <span class="fl">0.06200621</span>  <span class="fl">0.01026732</span></span>
+<span id="cb30-12"><a href=""></a><span class="dv">2</span>   misclass <span class="fl">0.07517084</span>       <span class="fl">0.05405405</span> <span class="fl">0.01724138</span>      <span class="fl">0.01204819</span>     <span class="fl">0.60000000</span>   <span class="fl">0.53658537</span>           <span class="fl">0.05116279</span>  <span class="fl">0.15384615</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="prediction-error-for-survival" class="slide level2 smaller"><h2>Prediction error for survival</h2>
 <h4 id="harrells-c-error-rate">1. Harrell’s C-error rate</h4>
@@ -1835,23 +1845,23 @@ F_{\!\text{ens}}^{(i)}
 <p>Randomized trial of two treatment regimens for lung cancer <span class="citation" data-cites="kalbfleisch2011statistical">[<a href="#/references" role="doc-biblioref" onclick="">2</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ribfsefqsf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ribfsefqsf table {
+<div id="kwgcptusct" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kwgcptusct table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ribfsefqsf thead, #ribfsefqsf tbody, #ribfsefqsf tfoot, #ribfsefqsf tr, #ribfsefqsf td, #ribfsefqsf th {
+#kwgcptusct thead, #kwgcptusct tbody, #kwgcptusct tfoot, #kwgcptusct tr, #kwgcptusct td, #kwgcptusct th {
   border-style: none;
 }
 
-#ribfsefqsf p {
+#kwgcptusct p {
   margin: 0;
   padding: 0;
 }
 
-#ribfsefqsf .gt_table {
+#kwgcptusct .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1877,12 +1887,12 @@ F_{\!\text{ens}}^{(i)}
   border-left-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_caption {
+#kwgcptusct .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ribfsefqsf .gt_title {
+#kwgcptusct .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1894,7 +1904,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-width: 0;
 }
 
-#ribfsefqsf .gt_subtitle {
+#kwgcptusct .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1906,7 +1916,7 @@ F_{\!\text{ens}}^{(i)}
   border-top-width: 0;
 }
 
-#ribfsefqsf .gt_heading {
+#kwgcptusct .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1918,13 +1928,13 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_bottom_border {
+#kwgcptusct .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_col_headings {
+#kwgcptusct .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1939,7 +1949,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_col_heading {
+#kwgcptusct .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1959,7 +1969,7 @@ F_{\!\text{ens}}^{(i)}
   overflow-x: hidden;
 }
 
-#ribfsefqsf .gt_column_spanner_outer {
+#kwgcptusct .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1971,15 +1981,15 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 4px;
 }
 
-#ribfsefqsf .gt_column_spanner_outer:first-child {
+#kwgcptusct .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ribfsefqsf .gt_column_spanner_outer:last-child {
+#kwgcptusct .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ribfsefqsf .gt_column_spanner {
+#kwgcptusct .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1991,11 +2001,11 @@ F_{\!\text{ens}}^{(i)}
   width: 100%;
 }
 
-#ribfsefqsf .gt_spanner_row {
+#kwgcptusct .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ribfsefqsf .gt_group_heading {
+#kwgcptusct .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2021,7 +2031,7 @@ F_{\!\text{ens}}^{(i)}
   text-align: left;
 }
 
-#ribfsefqsf .gt_empty_group_heading {
+#kwgcptusct .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2036,15 +2046,15 @@ F_{\!\text{ens}}^{(i)}
   vertical-align: middle;
 }
 
-#ribfsefqsf .gt_from_md > :first-child {
+#kwgcptusct .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ribfsefqsf .gt_from_md > :last-child {
+#kwgcptusct .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ribfsefqsf .gt_row {
+#kwgcptusct .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2063,7 +2073,7 @@ F_{\!\text{ens}}^{(i)}
   overflow-x: hidden;
 }
 
-#ribfsefqsf .gt_stub {
+#kwgcptusct .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2076,7 +2086,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#ribfsefqsf .gt_stub_row_group {
+#kwgcptusct .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2090,15 +2100,15 @@ F_{\!\text{ens}}^{(i)}
   vertical-align: top;
 }
 
-#ribfsefqsf .gt_row_group_first td {
+#kwgcptusct .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ribfsefqsf .gt_row_group_first th {
+#kwgcptusct .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ribfsefqsf .gt_summary_row {
+#kwgcptusct .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2108,16 +2118,16 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#ribfsefqsf .gt_first_summary_row {
+#kwgcptusct .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_first_summary_row.thick {
+#kwgcptusct .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ribfsefqsf .gt_last_summary_row {
+#kwgcptusct .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2127,7 +2137,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_grand_summary_row {
+#kwgcptusct .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2137,7 +2147,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#ribfsefqsf .gt_first_grand_summary_row {
+#kwgcptusct .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2147,7 +2157,7 @@ F_{\!\text{ens}}^{(i)}
   border-top-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_last_grand_summary_row_top {
+#kwgcptusct .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2157,11 +2167,11 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_striped {
+#kwgcptusct .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ribfsefqsf .gt_table_body {
+#kwgcptusct .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2170,7 +2180,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_footnotes {
+#kwgcptusct .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2184,7 +2194,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_footnote {
+#kwgcptusct .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2193,7 +2203,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#ribfsefqsf .gt_sourcenotes {
+#kwgcptusct .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2207,7 +2217,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#ribfsefqsf .gt_sourcenote {
+#kwgcptusct .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2215,72 +2225,72 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#ribfsefqsf .gt_left {
+#kwgcptusct .gt_left {
   text-align: left;
 }
 
-#ribfsefqsf .gt_center {
+#kwgcptusct .gt_center {
   text-align: center;
 }
 
-#ribfsefqsf .gt_right {
+#kwgcptusct .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ribfsefqsf .gt_font_normal {
+#kwgcptusct .gt_font_normal {
   font-weight: normal;
 }
 
-#ribfsefqsf .gt_font_bold {
+#kwgcptusct .gt_font_bold {
   font-weight: bold;
 }
 
-#ribfsefqsf .gt_font_italic {
+#kwgcptusct .gt_font_italic {
   font-style: italic;
 }
 
-#ribfsefqsf .gt_super {
+#kwgcptusct .gt_super {
   font-size: 65%;
 }
 
-#ribfsefqsf .gt_footnote_marks {
+#kwgcptusct .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ribfsefqsf .gt_asterisk {
+#kwgcptusct .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ribfsefqsf .gt_indent_1 {
+#kwgcptusct .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ribfsefqsf .gt_indent_2 {
+#kwgcptusct .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ribfsefqsf .gt_indent_3 {
+#kwgcptusct .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ribfsefqsf .gt_indent_4 {
+#kwgcptusct .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ribfsefqsf .gt_indent_5 {
+#kwgcptusct .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ribfsefqsf .katex-display {
+#kwgcptusct .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ribfsefqsf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kwgcptusct div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2401,100 +2411,100 @@ F_{\!\text{ens}}^{(i)}
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb30" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="fu">data</span>(veteran, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb30-2"><a href=""></a><span class="fu">dim</span>(veteran)</span>
-<span id="cb30-3"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">137</span>   <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="fu">data</span>(veteran, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb31-2"><a href=""></a><span class="fu">dim</span>(veteran)</span>
+<span id="cb31-3"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">137</span>   <span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="prediction-canonical-example-1" class="slide level2 smaller"><h2>Prediction: canonical example</h2>
-<div class="sourceCode" id="cb31" data-code-line-numbers="1-5|7-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="do">## veteran data (with factors)</span></span>
-<span id="cb31-2"><a href=""></a><span class="fu">data</span>(veteran, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb31-3"><a href=""></a>veteran2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">lapply</span>(veteran, factor))</span>
-<span id="cb31-4"><a href=""></a>veteran2<span class="sc">$</span>time <span class="ot">&lt;-</span> veteran<span class="sc">$</span>time</span>
-<span id="cb31-5"><a href=""></a>veteran2<span class="sc">$</span>status <span class="ot">&lt;-</span> veteran<span class="sc">$</span>status</span>
-<span id="cb31-6"><a href=""></a></span>
-<span id="cb31-7"><a href=""></a><span class="do">## split the data into unbalanced train/test data (25/75)</span></span>
-<span id="cb31-8"><a href=""></a><span class="do">## the train/test data have the same levels, but different labels</span></span>
-<span id="cb31-9"><a href=""></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(veteran2), <span class="fu">round</span>(<span class="fu">nrow</span>(veteran2) <span class="sc">*</span> .<span class="dv">25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">summary</span>(veteran2[train,])</span>
-<span id="cb32-2"><a href=""></a> trt    celltype      time            status           karno      diagtime       age     prior  </span>
-<span id="cb32-3"><a href=""></a> <span class="dv">1</span><span class="sc">:</span><span class="dv">18</span>   <span class="dv">1</span><span class="sc">:</span> <span class="dv">8</span>     Min.   <span class="sc">:</span>  <span class="fl">3.00</span>   Min.   <span class="sc">:</span><span class="fl">0.0000</span>   <span class="dv">60</span>     <span class="sc">:</span><span class="dv">7</span>   <span class="dv">3</span>      <span class="sc">:</span> <span class="dv">7</span>   <span class="dv">60</span>     <span class="sc">:</span> <span class="dv">3</span>   <span class="dv">0</span> <span class="sc">:</span><span class="dv">27</span>  </span>
-<span id="cb32-4"><a href=""></a> <span class="dv">2</span><span class="sc">:</span><span class="dv">16</span>   <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>     <span class="dv">1</span>st Qu.<span class="sc">:</span> <span class="fl">29.25</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">1.0000</span>   <span class="dv">40</span>     <span class="sc">:</span><span class="dv">6</span>   <span class="dv">2</span>      <span class="sc">:</span> <span class="dv">6</span>   <span class="dv">66</span>     <span class="sc">:</span> <span class="dv">3</span>   <span class="dv">10</span><span class="sc">:</span> <span class="dv">7</span>  </span>
-<span id="cb32-5"><a href=""></a>        <span class="dv">3</span><span class="sc">:</span> <span class="dv">9</span>     Median <span class="sc">:</span> <span class="fl">53.50</span>   Median <span class="sc">:</span><span class="fl">1.0000</span>   <span class="dv">80</span>     <span class="sc">:</span><span class="dv">6</span>   <span class="dv">5</span>      <span class="sc">:</span> <span class="dv">3</span>   <span class="dv">67</span>     <span class="sc">:</span> <span class="dv">3</span>          </span>
-<span id="cb32-6"><a href=""></a>        <span class="dv">4</span><span class="sc">:</span> <span class="dv">7</span>     Mean   <span class="sc">:</span><span class="fl">104.29</span>   Mean   <span class="sc">:</span><span class="fl">0.9412</span>   <span class="dv">70</span>     <span class="sc">:</span><span class="dv">4</span>   <span class="dv">8</span>      <span class="sc">:</span> <span class="dv">3</span>   <span class="dv">69</span>     <span class="sc">:</span> <span class="dv">3</span>          </span>
-<span id="cb32-7"><a href=""></a>                 <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">140.25</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">1.0000</span>   <span class="dv">90</span>     <span class="sc">:</span><span class="dv">4</span>   <span class="dv">1</span>      <span class="sc">:</span> <span class="dv">2</span>   <span class="dv">38</span>     <span class="sc">:</span> <span class="dv">2</span>          </span>
-<span id="cb32-8"><a href=""></a>                 Max.   <span class="sc">:</span><span class="fl">389.00</span>   Max.   <span class="sc">:</span><span class="fl">1.0000</span>   <span class="dv">30</span>     <span class="sc">:</span><span class="dv">3</span>   <span class="dv">4</span>      <span class="sc">:</span> <span class="dv">2</span>   <span class="dv">48</span>     <span class="sc">:</span> <span class="dv">2</span>          </span>
-<span id="cb32-9"><a href=""></a>                                                   (Other)<span class="sc">:</span><span class="dv">4</span>   (Other)<span class="sc">:</span><span class="dv">11</span>   (Other)<span class="sc">:</span><span class="dv">18</span>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">summary</span>(veteran2[<span class="sc">-</span>train,])</span>
-<span id="cb33-2"><a href=""></a> trt    celltype      time           status          karno       diagtime       age     prior  </span>
-<span id="cb33-3"><a href=""></a> <span class="dv">1</span><span class="sc">:</span><span class="dv">51</span>   <span class="dv">1</span><span class="sc">:</span><span class="dv">27</span>     Min.   <span class="sc">:</span>  <span class="fl">1.0</span>   Min.   <span class="sc">:</span><span class="fl">0.000</span>   <span class="dv">60</span>     <span class="sc">:</span><span class="dv">20</span>   <span class="dv">4</span>      <span class="sc">:</span><span class="dv">17</span>   <span class="dv">63</span>     <span class="sc">:</span><span class="dv">10</span>   <span class="dv">0</span> <span class="sc">:</span><span class="dv">70</span>  </span>
-<span id="cb33-4"><a href=""></a> <span class="dv">2</span><span class="sc">:</span><span class="dv">52</span>   <span class="dv">2</span><span class="sc">:</span><span class="dv">38</span>     <span class="dv">1</span>st Qu.<span class="sc">:</span> <span class="fl">21.5</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">1.000</span>   <span class="dv">70</span>     <span class="sc">:</span><span class="dv">19</span>   <span class="dv">2</span>      <span class="sc">:</span><span class="dv">13</span>   <span class="dv">62</span>     <span class="sc">:</span> <span class="dv">8</span>   <span class="dv">10</span><span class="sc">:</span><span class="dv">33</span>  </span>
-<span id="cb33-5"><a href=""></a>        <span class="dv">3</span><span class="sc">:</span><span class="dv">18</span>     Median <span class="sc">:</span> <span class="fl">83.0</span>   Median <span class="sc">:</span><span class="fl">1.000</span>   <span class="dv">80</span>     <span class="sc">:</span><span class="dv">18</span>   <span class="dv">3</span>      <span class="sc">:</span><span class="dv">11</span>   <span class="dv">64</span>     <span class="sc">:</span> <span class="dv">7</span>          </span>
-<span id="cb33-6"><a href=""></a>        <span class="dv">4</span><span class="sc">:</span><span class="dv">20</span>     Mean   <span class="sc">:</span><span class="fl">127.3</span>   Mean   <span class="sc">:</span><span class="fl">0.932</span>   <span class="dv">30</span>     <span class="sc">:</span><span class="dv">11</span>   <span class="dv">5</span>      <span class="sc">:</span><span class="dv">11</span>   <span class="dv">65</span>     <span class="sc">:</span> <span class="dv">7</span>          </span>
-<span id="cb33-7"><a href=""></a>                 <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">147.5</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">1.000</span>   <span class="dv">50</span>     <span class="sc">:</span><span class="dv">11</span>   <span class="dv">11</span>     <span class="sc">:</span> <span class="dv">5</span>   <span class="dv">68</span>     <span class="sc">:</span> <span class="dv">5</span>          </span>
-<span id="cb33-8"><a href=""></a>                 Max.   <span class="sc">:</span><span class="fl">999.0</span>   Max.   <span class="sc">:</span><span class="fl">1.000</span>   <span class="dv">40</span>     <span class="sc">:</span><span class="dv">10</span>   <span class="dv">12</span>     <span class="sc">:</span> <span class="dv">5</span>   <span class="dv">70</span>     <span class="sc">:</span> <span class="dv">5</span>          </span>
-<span id="cb33-9"><a href=""></a>                                                 (Other)<span class="sc">:</span><span class="dv">14</span>   (Other)<span class="sc">:</span><span class="dv">41</span>   (Other)<span class="sc">:</span><span class="dv">61</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32" data-code-line-numbers="1-5|7-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="do">## veteran data (with factors)</span></span>
+<span id="cb32-2"><a href=""></a><span class="fu">data</span>(veteran, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb32-3"><a href=""></a>veteran2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">lapply</span>(veteran, factor))</span>
+<span id="cb32-4"><a href=""></a>veteran2<span class="sc">$</span>time <span class="ot">&lt;-</span> veteran<span class="sc">$</span>time</span>
+<span id="cb32-5"><a href=""></a>veteran2<span class="sc">$</span>status <span class="ot">&lt;-</span> veteran<span class="sc">$</span>status</span>
+<span id="cb32-6"><a href=""></a></span>
+<span id="cb32-7"><a href=""></a><span class="do">## split the data into unbalanced train/test data (25/75)</span></span>
+<span id="cb32-8"><a href=""></a><span class="do">## the train/test data have the same levels, but different labels</span></span>
+<span id="cb32-9"><a href=""></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(veteran2), <span class="fu">round</span>(<span class="fu">nrow</span>(veteran2) <span class="sc">*</span> .<span class="dv">25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">summary</span>(veteran2[train,])</span>
+<span id="cb33-2"><a href=""></a> trt    celltype      time            status           karno      diagtime       age     prior  </span>
+<span id="cb33-3"><a href=""></a> <span class="dv">1</span><span class="sc">:</span><span class="dv">18</span>   <span class="dv">1</span><span class="sc">:</span> <span class="dv">8</span>     Min.   <span class="sc">:</span>  <span class="fl">3.00</span>   Min.   <span class="sc">:</span><span class="fl">0.0000</span>   <span class="dv">60</span>     <span class="sc">:</span><span class="dv">7</span>   <span class="dv">3</span>      <span class="sc">:</span> <span class="dv">7</span>   <span class="dv">60</span>     <span class="sc">:</span> <span class="dv">3</span>   <span class="dv">0</span> <span class="sc">:</span><span class="dv">27</span>  </span>
+<span id="cb33-4"><a href=""></a> <span class="dv">2</span><span class="sc">:</span><span class="dv">16</span>   <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>     <span class="dv">1</span>st Qu.<span class="sc">:</span> <span class="fl">29.25</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">1.0000</span>   <span class="dv">40</span>     <span class="sc">:</span><span class="dv">6</span>   <span class="dv">2</span>      <span class="sc">:</span> <span class="dv">6</span>   <span class="dv">66</span>     <span class="sc">:</span> <span class="dv">3</span>   <span class="dv">10</span><span class="sc">:</span> <span class="dv">7</span>  </span>
+<span id="cb33-5"><a href=""></a>        <span class="dv">3</span><span class="sc">:</span> <span class="dv">9</span>     Median <span class="sc">:</span> <span class="fl">53.50</span>   Median <span class="sc">:</span><span class="fl">1.0000</span>   <span class="dv">80</span>     <span class="sc">:</span><span class="dv">6</span>   <span class="dv">5</span>      <span class="sc">:</span> <span class="dv">3</span>   <span class="dv">67</span>     <span class="sc">:</span> <span class="dv">3</span>          </span>
+<span id="cb33-6"><a href=""></a>        <span class="dv">4</span><span class="sc">:</span> <span class="dv">7</span>     Mean   <span class="sc">:</span><span class="fl">104.29</span>   Mean   <span class="sc">:</span><span class="fl">0.9412</span>   <span class="dv">70</span>     <span class="sc">:</span><span class="dv">4</span>   <span class="dv">8</span>      <span class="sc">:</span> <span class="dv">3</span>   <span class="dv">69</span>     <span class="sc">:</span> <span class="dv">3</span>          </span>
+<span id="cb33-7"><a href=""></a>                 <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">140.25</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">1.0000</span>   <span class="dv">90</span>     <span class="sc">:</span><span class="dv">4</span>   <span class="dv">1</span>      <span class="sc">:</span> <span class="dv">2</span>   <span class="dv">38</span>     <span class="sc">:</span> <span class="dv">2</span>          </span>
+<span id="cb33-8"><a href=""></a>                 Max.   <span class="sc">:</span><span class="fl">389.00</span>   Max.   <span class="sc">:</span><span class="fl">1.0000</span>   <span class="dv">30</span>     <span class="sc">:</span><span class="dv">3</span>   <span class="dv">4</span>      <span class="sc">:</span> <span class="dv">2</span>   <span class="dv">48</span>     <span class="sc">:</span> <span class="dv">2</span>          </span>
+<span id="cb33-9"><a href=""></a>                                                   (Other)<span class="sc">:</span><span class="dv">4</span>   (Other)<span class="sc">:</span><span class="dv">11</span>   (Other)<span class="sc">:</span><span class="dv">18</span>   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">summary</span>(veteran2[<span class="sc">-</span>train,])</span>
+<span id="cb34-2"><a href=""></a> trt    celltype      time           status          karno       diagtime       age     prior  </span>
+<span id="cb34-3"><a href=""></a> <span class="dv">1</span><span class="sc">:</span><span class="dv">51</span>   <span class="dv">1</span><span class="sc">:</span><span class="dv">27</span>     Min.   <span class="sc">:</span>  <span class="fl">1.0</span>   Min.   <span class="sc">:</span><span class="fl">0.000</span>   <span class="dv">60</span>     <span class="sc">:</span><span class="dv">20</span>   <span class="dv">4</span>      <span class="sc">:</span><span class="dv">17</span>   <span class="dv">63</span>     <span class="sc">:</span><span class="dv">10</span>   <span class="dv">0</span> <span class="sc">:</span><span class="dv">70</span>  </span>
+<span id="cb34-4"><a href=""></a> <span class="dv">2</span><span class="sc">:</span><span class="dv">52</span>   <span class="dv">2</span><span class="sc">:</span><span class="dv">38</span>     <span class="dv">1</span>st Qu.<span class="sc">:</span> <span class="fl">21.5</span>   <span class="dv">1</span>st Qu.<span class="sc">:</span><span class="fl">1.000</span>   <span class="dv">70</span>     <span class="sc">:</span><span class="dv">19</span>   <span class="dv">2</span>      <span class="sc">:</span><span class="dv">13</span>   <span class="dv">62</span>     <span class="sc">:</span> <span class="dv">8</span>   <span class="dv">10</span><span class="sc">:</span><span class="dv">33</span>  </span>
+<span id="cb34-5"><a href=""></a>        <span class="dv">3</span><span class="sc">:</span><span class="dv">18</span>     Median <span class="sc">:</span> <span class="fl">83.0</span>   Median <span class="sc">:</span><span class="fl">1.000</span>   <span class="dv">80</span>     <span class="sc">:</span><span class="dv">18</span>   <span class="dv">3</span>      <span class="sc">:</span><span class="dv">11</span>   <span class="dv">64</span>     <span class="sc">:</span> <span class="dv">7</span>          </span>
+<span id="cb34-6"><a href=""></a>        <span class="dv">4</span><span class="sc">:</span><span class="dv">20</span>     Mean   <span class="sc">:</span><span class="fl">127.3</span>   Mean   <span class="sc">:</span><span class="fl">0.932</span>   <span class="dv">30</span>     <span class="sc">:</span><span class="dv">11</span>   <span class="dv">5</span>      <span class="sc">:</span><span class="dv">11</span>   <span class="dv">65</span>     <span class="sc">:</span> <span class="dv">7</span>          </span>
+<span id="cb34-7"><a href=""></a>                 <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">147.5</span>   <span class="dv">3</span>rd Qu.<span class="sc">:</span><span class="fl">1.000</span>   <span class="dv">50</span>     <span class="sc">:</span><span class="dv">11</span>   <span class="dv">11</span>     <span class="sc">:</span> <span class="dv">5</span>   <span class="dv">68</span>     <span class="sc">:</span> <span class="dv">5</span>          </span>
+<span id="cb34-8"><a href=""></a>                 Max.   <span class="sc">:</span><span class="fl">999.0</span>   Max.   <span class="sc">:</span><span class="fl">1.000</span>   <span class="dv">40</span>     <span class="sc">:</span><span class="dv">10</span>   <span class="dv">12</span>     <span class="sc">:</span> <span class="dv">5</span>   <span class="dv">70</span>     <span class="sc">:</span> <span class="dv">5</span>          </span>
+<span id="cb34-9"><a href=""></a>                                                 (Other)<span class="sc">:</span><span class="dv">14</span>   (Other)<span class="sc">:</span><span class="dv">41</span>   (Other)<span class="sc">:</span><span class="dv">61</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="prediction-canonical-example-2" class="slide level2 smaller"><h2>Prediction: canonical example</h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="do">## train the forest and use this to predict on test data</span></span>
-<span id="cb34-2"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> ., veteran2[train, ]) </span>
-<span id="cb34-3"><a href=""></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, veteran2[<span class="sc">-</span>train , ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="do">## train the forest and use this to predict on test data</span></span>
+<span id="cb35-2"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> ., veteran2[train, ]) </span>
+<span id="cb35-3"><a href=""></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, veteran2[<span class="sc">-</span>train , ])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="columns">
 <div class="column fragment" style="width:50%;">
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">print</span>(o)</span>
-<span id="cb35-2"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">34</span></span>
-<span id="cb35-3"><a href=""></a>                    Number of deaths<span class="sc">:</span> <span class="dv">32</span></span>
-<span id="cb35-4"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb35-5"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">15</span></span>
-<span id="cb35-6"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb35-7"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">3</span></span>
-<span id="cb35-8"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">6</span></span>
-<span id="cb35-9"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb35-10"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">21</span></span>
-<span id="cb35-11"><a href=""></a>                            Analysis<span class="sc">:</span> RSF</span>
-<span id="cb35-12"><a href=""></a>                              Family<span class="sc">:</span> surv</span>
-<span id="cb35-13"><a href=""></a>                      Splitting rule<span class="sc">:</span> logrank <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb35-14"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb35-15"><a href=""></a>                          (OOB) CRPS<span class="sc">:</span> <span class="fl">57.73879973</span></span>
-<span id="cb35-16"><a href=""></a>                   (OOB) stand. CRPS<span class="sc">:</span> <span class="fl">0.14842879</span></span>
-<span id="cb35-17"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.88246269</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">print</span>(o)</span>
+<span id="cb36-2"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">34</span></span>
+<span id="cb36-3"><a href=""></a>                    Number of deaths<span class="sc">:</span> <span class="dv">32</span></span>
+<span id="cb36-4"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
+<span id="cb36-5"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">15</span></span>
+<span id="cb36-6"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb36-7"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">3</span></span>
+<span id="cb36-8"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">6</span></span>
+<span id="cb36-9"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
+<span id="cb36-10"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">21</span></span>
+<span id="cb36-11"><a href=""></a>                            Analysis<span class="sc">:</span> RSF</span>
+<span id="cb36-12"><a href=""></a>                              Family<span class="sc">:</span> surv</span>
+<span id="cb36-13"><a href=""></a>                      Splitting rule<span class="sc">:</span> logrank <span class="sc">*</span>random<span class="sc">*</span></span>
+<span id="cb36-14"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb36-15"><a href=""></a>                          (OOB) CRPS<span class="sc">:</span> <span class="fl">57.73879973</span></span>
+<span id="cb36-16"><a href=""></a>                   (OOB) stand. CRPS<span class="sc">:</span> <span class="fl">0.14842879</span></span>
+<span id="cb36-17"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.88246269</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment" style="width:50%;">
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">print</span>(pred)</span>
-<span id="cb36-2"><a href=""></a>  Sample size of <span class="fu">test</span> (predict) data<span class="sc">:</span> <span class="dv">103</span></span>
-<span id="cb36-3"><a href=""></a>                Number of grow trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb36-4"><a href=""></a>  Average no. of grow terminal nodes<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb36-5"><a href=""></a>         Total no. of grow variables<span class="sc">:</span> <span class="dv">6</span></span>
-<span id="cb36-6"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb36-7"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">21</span></span>
-<span id="cb36-8"><a href=""></a>                            Analysis<span class="sc">:</span> RSF</span>
-<span id="cb36-9"><a href=""></a>                              Family<span class="sc">:</span> surv</span>
-<span id="cb36-10"><a href=""></a>                                CRPS<span class="sc">:</span> <span class="fl">54.3104615</span></span>
-<span id="cb36-11"><a href=""></a>                         stand. CRPS<span class="sc">:</span> <span class="fl">0.13961558</span></span>
-<span id="cb36-12"><a href=""></a>         Requested performance error<span class="sc">:</span> <span class="fl">0.49749046</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">print</span>(pred)</span>
+<span id="cb37-2"><a href=""></a>  Sample size of <span class="fu">test</span> (predict) data<span class="sc">:</span> <span class="dv">103</span></span>
+<span id="cb37-3"><a href=""></a>                Number of grow trees<span class="sc">:</span> <span class="dv">500</span></span>
+<span id="cb37-4"><a href=""></a>  Average no. of grow terminal nodes<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb37-5"><a href=""></a>         Total no. of grow variables<span class="sc">:</span> <span class="dv">6</span></span>
+<span id="cb37-6"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
+<span id="cb37-7"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">21</span></span>
+<span id="cb37-8"><a href=""></a>                            Analysis<span class="sc">:</span> RSF</span>
+<span id="cb37-9"><a href=""></a>                              Family<span class="sc">:</span> surv</span>
+<span id="cb37-10"><a href=""></a>                                CRPS<span class="sc">:</span> <span class="fl">54.3104615</span></span>
+<span id="cb37-11"><a href=""></a>                         stand. CRPS<span class="sc">:</span> <span class="fl">0.13961558</span></span>
+<span id="cb37-12"><a href=""></a>         Requested performance error<span class="sc">:</span> <span class="fl">0.49749046</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section><section id="prediction-canonical-example-3" class="slide level2 smaller"><h2>Prediction: canonical example</h2>
-<div class="sourceCode" id="cb37" data-code-line-numbers="1-3|4|5-16|18-23"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a><span class="do">## even harder ... factor level not previously encountered in training</span></span>
-<span id="cb37-2"><a href=""></a>veteran3 <span class="ot">&lt;-</span> veteran2[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span>
-<span id="cb37-3"><a href=""></a>veteran3<span class="sc">$</span>celltype <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"newlevel"</span>, <span class="st">"1"</span>, <span class="st">"3"</span>))</span>
-<span id="cb37-4"><a href=""></a>pred2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, veteran3)</span>
-<span id="cb37-5"><a href=""></a><span class="fu">print</span>(pred2)</span>
-<span id="cb37-6"><a href=""></a><span class="sc">&gt;</span>   Sample size of <span class="fu">test</span> (predict) data<span class="sc">:</span> <span class="dv">3</span></span>
-<span id="cb37-7"><a href=""></a><span class="sc">&gt;</span>                 Number of grow trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb37-8"><a href=""></a><span class="sc">&gt;</span>   Average no. of grow terminal nodes<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb37-9"><a href=""></a><span class="sc">&gt;</span>          Total no. of grow variables<span class="sc">:</span> <span class="dv">6</span></span>
-<span id="cb37-10"><a href=""></a><span class="sc">&gt;</span>        Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb37-11"><a href=""></a><span class="sc">&gt;</span>     Resample size used to grow trees<span class="sc">:</span> <span class="dv">21</span></span>
-<span id="cb37-12"><a href=""></a><span class="sc">&gt;</span>                             Analysis<span class="sc">:</span> RSF</span>
-<span id="cb37-13"><a href=""></a><span class="sc">&gt;</span>                               Family<span class="sc">:</span> surv</span>
-<span id="cb37-14"><a href=""></a><span class="sc">&gt;</span>                                 CRPS<span class="sc">:</span> <span class="fl">60.6330452</span></span>
-<span id="cb37-15"><a href=""></a><span class="sc">&gt;</span>                          stand. CRPS<span class="sc">:</span> <span class="fl">0.15586901</span></span>
-<span id="cb37-16"><a href=""></a><span class="sc">&gt;</span>          Requested performance error<span class="sc">:</span> <span class="fl">0.5</span></span>
-<span id="cb37-17"><a href=""></a></span>
-<span id="cb37-18"><a href=""></a><span class="do">## the unusual level is treated like a missing value but is not removed</span></span>
-<span id="cb37-19"><a href=""></a><span class="fu">print</span>(pred2<span class="sc">$</span>xvar)</span>
-<span id="cb37-20"><a href=""></a><span class="sc">&gt;</span>   trt celltype karno diagtime age prior</span>
-<span id="cb37-21"><a href=""></a><span class="sc">&gt;</span> <span class="dv">1</span>   <span class="dv">1</span>     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>    <span class="dv">60</span>        <span class="dv">7</span>  <span class="dv">69</span>     <span class="dv">0</span></span>
-<span id="cb37-22"><a href=""></a><span class="sc">&gt;</span> <span class="dv">2</span>   <span class="dv">1</span>        <span class="dv">1</span>    <span class="dv">70</span>        <span class="dv">5</span>  <span class="dv">64</span>    <span class="dv">10</span></span>
-<span id="cb37-23"><a href=""></a><span class="sc">&gt;</span> <span class="dv">3</span>   <span class="dv">1</span>        <span class="dv">3</span>    <span class="dv">60</span>        <span class="dv">3</span>  <span class="dv">38</span>     <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb38" data-code-line-numbers="1-3|4|5-16|18-23"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="do">## even harder ... factor level not previously encountered in training</span></span>
+<span id="cb38-2"><a href=""></a>veteran3 <span class="ot">&lt;-</span> veteran2[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, ]</span>
+<span id="cb38-3"><a href=""></a>veteran3<span class="sc">$</span>celltype <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"newlevel"</span>, <span class="st">"1"</span>, <span class="st">"3"</span>))</span>
+<span id="cb38-4"><a href=""></a>pred2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, veteran3)</span>
+<span id="cb38-5"><a href=""></a><span class="fu">print</span>(pred2)</span>
+<span id="cb38-6"><a href=""></a><span class="sc">&gt;</span>   Sample size of <span class="fu">test</span> (predict) data<span class="sc">:</span> <span class="dv">3</span></span>
+<span id="cb38-7"><a href=""></a><span class="sc">&gt;</span>                 Number of grow trees<span class="sc">:</span> <span class="dv">500</span></span>
+<span id="cb38-8"><a href=""></a><span class="sc">&gt;</span>   Average no. of grow terminal nodes<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb38-9"><a href=""></a><span class="sc">&gt;</span>          Total no. of grow variables<span class="sc">:</span> <span class="dv">6</span></span>
+<span id="cb38-10"><a href=""></a><span class="sc">&gt;</span>        Resampling used to grow trees<span class="sc">:</span> swor</span>
+<span id="cb38-11"><a href=""></a><span class="sc">&gt;</span>     Resample size used to grow trees<span class="sc">:</span> <span class="dv">21</span></span>
+<span id="cb38-12"><a href=""></a><span class="sc">&gt;</span>                             Analysis<span class="sc">:</span> RSF</span>
+<span id="cb38-13"><a href=""></a><span class="sc">&gt;</span>                               Family<span class="sc">:</span> surv</span>
+<span id="cb38-14"><a href=""></a><span class="sc">&gt;</span>                                 CRPS<span class="sc">:</span> <span class="fl">60.6330452</span></span>
+<span id="cb38-15"><a href=""></a><span class="sc">&gt;</span>                          stand. CRPS<span class="sc">:</span> <span class="fl">0.15586901</span></span>
+<span id="cb38-16"><a href=""></a><span class="sc">&gt;</span>          Requested performance error<span class="sc">:</span> <span class="fl">0.5</span></span>
+<span id="cb38-17"><a href=""></a></span>
+<span id="cb38-18"><a href=""></a><span class="do">## the unusual level is treated like a missing value but is not removed</span></span>
+<span id="cb38-19"><a href=""></a><span class="fu">print</span>(pred2<span class="sc">$</span>xvar)</span>
+<span id="cb38-20"><a href=""></a><span class="sc">&gt;</span>   trt celltype karno diagtime age prior</span>
+<span id="cb38-21"><a href=""></a><span class="sc">&gt;</span> <span class="dv">1</span>   <span class="dv">1</span>     <span class="sc">&lt;</span><span class="cn">NA</span><span class="sc">&gt;</span>    <span class="dv">60</span>        <span class="dv">7</span>  <span class="dv">69</span>     <span class="dv">0</span></span>
+<span id="cb38-22"><a href=""></a><span class="sc">&gt;</span> <span class="dv">2</span>   <span class="dv">1</span>        <span class="dv">1</span>    <span class="dv">70</span>        <span class="dv">5</span>  <span class="dv">64</span>    <span class="dv">10</span></span>
+<span id="cb38-23"><a href=""></a><span class="sc">&gt;</span> <span class="dv">3</span>   <span class="dv">1</span>        <span class="dv">3</span>    <span class="dv">60</span>        <span class="dv">3</span>  <span class="dv">38</span>     <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="restore" class="slide level2 smaller"><h2>Restore</h2>
-<div class="sourceCode" id="cb38"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb38-1"><a href=""></a>predict(object, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb39-1"><a href=""></a>predict(object, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Useful feature of <code>predict</code> making it possible to restore the original training forest</p>
 <p>After tuning the forest, you can use <code>predict</code> to obtain: <span class="math display">\[
 \begin{array}{ll}
@@ -2523,23 +2533,23 @@ F_{\!\text{ens}}^{(i)}
 <div class="r-stack">
 <div class="cell">
 <div class="cell-output-display">
-<div id="ngosttjghi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ngosttjghi table {
+<div id="ytygquwgko" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ytygquwgko table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ngosttjghi thead, #ngosttjghi tbody, #ngosttjghi tfoot, #ngosttjghi tr, #ngosttjghi td, #ngosttjghi th {
+#ytygquwgko thead, #ytygquwgko tbody, #ytygquwgko tfoot, #ytygquwgko tr, #ytygquwgko td, #ytygquwgko th {
   border-style: none;
 }
 
-#ngosttjghi p {
+#ytygquwgko p {
   margin: 0;
   padding: 0;
 }
 
-#ngosttjghi .gt_table {
+#ytygquwgko .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2565,12 +2575,12 @@ F_{\!\text{ens}}^{(i)}
   border-left-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_caption {
+#ytygquwgko .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ngosttjghi .gt_title {
+#ytygquwgko .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2582,7 +2592,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-width: 0;
 }
 
-#ngosttjghi .gt_subtitle {
+#ytygquwgko .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2594,7 +2604,7 @@ F_{\!\text{ens}}^{(i)}
   border-top-width: 0;
 }
 
-#ngosttjghi .gt_heading {
+#ytygquwgko .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2606,13 +2616,13 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_bottom_border {
+#ytygquwgko .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_col_headings {
+#ytygquwgko .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2627,7 +2637,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_col_heading {
+#ytygquwgko .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2647,7 +2657,7 @@ F_{\!\text{ens}}^{(i)}
   overflow-x: hidden;
 }
 
-#ngosttjghi .gt_column_spanner_outer {
+#ytygquwgko .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2659,15 +2669,15 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 4px;
 }
 
-#ngosttjghi .gt_column_spanner_outer:first-child {
+#ytygquwgko .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ngosttjghi .gt_column_spanner_outer:last-child {
+#ytygquwgko .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ngosttjghi .gt_column_spanner {
+#ytygquwgko .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2679,11 +2689,11 @@ F_{\!\text{ens}}^{(i)}
   width: 100%;
 }
 
-#ngosttjghi .gt_spanner_row {
+#ytygquwgko .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ngosttjghi .gt_group_heading {
+#ytygquwgko .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2709,7 +2719,7 @@ F_{\!\text{ens}}^{(i)}
   text-align: left;
 }
 
-#ngosttjghi .gt_empty_group_heading {
+#ytygquwgko .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2724,15 +2734,15 @@ F_{\!\text{ens}}^{(i)}
   vertical-align: middle;
 }
 
-#ngosttjghi .gt_from_md > :first-child {
+#ytygquwgko .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ngosttjghi .gt_from_md > :last-child {
+#ytygquwgko .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ngosttjghi .gt_row {
+#ytygquwgko .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2751,7 +2761,7 @@ F_{\!\text{ens}}^{(i)}
   overflow-x: hidden;
 }
 
-#ngosttjghi .gt_stub {
+#ytygquwgko .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2764,7 +2774,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#ngosttjghi .gt_stub_row_group {
+#ytygquwgko .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2778,15 +2788,15 @@ F_{\!\text{ens}}^{(i)}
   vertical-align: top;
 }
 
-#ngosttjghi .gt_row_group_first td {
+#ytygquwgko .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ngosttjghi .gt_row_group_first th {
+#ytygquwgko .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ngosttjghi .gt_summary_row {
+#ytygquwgko .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2796,16 +2806,16 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#ngosttjghi .gt_first_summary_row {
+#ytygquwgko .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_first_summary_row.thick {
+#ytygquwgko .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ngosttjghi .gt_last_summary_row {
+#ytygquwgko .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2815,7 +2825,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_grand_summary_row {
+#ytygquwgko .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2825,7 +2835,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#ngosttjghi .gt_first_grand_summary_row {
+#ytygquwgko .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2835,7 +2845,7 @@ F_{\!\text{ens}}^{(i)}
   border-top-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_last_grand_summary_row_top {
+#ytygquwgko .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2845,11 +2855,11 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_striped {
+#ytygquwgko .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ngosttjghi .gt_table_body {
+#ytygquwgko .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2858,7 +2868,7 @@ F_{\!\text{ens}}^{(i)}
   border-bottom-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_footnotes {
+#ytygquwgko .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2872,7 +2882,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_footnote {
+#ytygquwgko .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2881,7 +2891,7 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#ngosttjghi .gt_sourcenotes {
+#ytygquwgko .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2895,7 +2905,7 @@ F_{\!\text{ens}}^{(i)}
   border-right-color: #D3D3D3;
 }
 
-#ngosttjghi .gt_sourcenote {
+#ytygquwgko .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2903,72 +2913,72 @@ F_{\!\text{ens}}^{(i)}
   padding-right: 5px;
 }
 
-#ngosttjghi .gt_left {
+#ytygquwgko .gt_left {
   text-align: left;
 }
 
-#ngosttjghi .gt_center {
+#ytygquwgko .gt_center {
   text-align: center;
 }
 
-#ngosttjghi .gt_right {
+#ytygquwgko .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ngosttjghi .gt_font_normal {
+#ytygquwgko .gt_font_normal {
   font-weight: normal;
 }
 
-#ngosttjghi .gt_font_bold {
+#ytygquwgko .gt_font_bold {
   font-weight: bold;
 }
 
-#ngosttjghi .gt_font_italic {
+#ytygquwgko .gt_font_italic {
   font-style: italic;
 }
 
-#ngosttjghi .gt_super {
+#ytygquwgko .gt_super {
   font-size: 65%;
 }
 
-#ngosttjghi .gt_footnote_marks {
+#ytygquwgko .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ngosttjghi .gt_asterisk {
+#ytygquwgko .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ngosttjghi .gt_indent_1 {
+#ytygquwgko .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ngosttjghi .gt_indent_2 {
+#ytygquwgko .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ngosttjghi .gt_indent_3 {
+#ytygquwgko .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ngosttjghi .gt_indent_4 {
+#ytygquwgko .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ngosttjghi .gt_indent_5 {
+#ytygquwgko .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ngosttjghi .katex-display {
+#ytygquwgko .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ngosttjghi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ytygquwgko div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3057,28 +3067,8 @@ F_{\!\text{ens}}^{(i)}
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>., <span class="at">data =</span> glioma) </span>
-<span id="cb39-2"><a href=""></a>o</span>
-<span id="cb39-3"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">878</span></span>
-<span id="cb39-4"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">148</span>, <span class="dv">174</span>, <span class="dv">249</span>, <span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">215</span>, <span class="dv">26</span></span>
-<span id="cb39-5"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb39-6"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb39-7"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">74.302</span></span>
-<span id="cb39-8"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
-<span id="cb39-9"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
-<span id="cb39-10"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb39-11"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">555</span></span>
-<span id="cb39-12"><a href=""></a>                            Analysis<span class="sc">:</span> RF<span class="sc">-</span>C</span>
-<span id="cb39-13"><a href=""></a>                              Family<span class="sc">:</span> class</span>
-<span id="cb39-14"><a href=""></a>                      Splitting rule<span class="sc">:</span> gini <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb39-15"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb39-16"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02333115</span></span>
-<span id="cb39-17"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.19053769</span></span>
-<span id="cb39-18"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99304797</span></span>
-<span id="cb39-19"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.34115074</span></span>
-<span id="cb39-20"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.07061503</span>, <span class="fl">0.06756757</span>, <span class="fl">0.01149425</span>, <span class="fl">0.00803213</span>, <span class="fl">0.52</span>, <span class="fl">0.53658537</span>, <span class="fl">0.04651163</span>, <span class="fl">0.11538462</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb40" data-code-line-numbers="1|20"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, <span class="at">perf.type =</span> <span class="st">"brier"</span>) </span>
-<span id="cb40-2"><a href=""></a>p</span>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>., <span class="at">data =</span> glioma) </span>
+<span id="cb40-2"><a href=""></a>o</span>
 <span id="cb40-3"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">878</span></span>
 <span id="cb40-4"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">148</span>, <span class="dv">174</span>, <span class="dv">249</span>, <span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">215</span>, <span class="dv">26</span></span>
 <span id="cb40-5"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
@@ -3096,43 +3086,63 @@ F_{\!\text{ens}}^{(i)}
 <span id="cb40-17"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.19053769</span></span>
 <span id="cb40-18"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99304797</span></span>
 <span id="cb40-19"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.34115074</span></span>
-<span id="cb40-20"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.18688257</span>, <span class="fl">0.03438887</span>, <span class="fl">0.01210945</span>, <span class="fl">0.02103588</span>, <span class="fl">0.01195455</span>, <span class="fl">0.01952019</span>, <span class="fl">0.05238402</span>, <span class="fl">0.0087921</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-20"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.07061503</span>, <span class="fl">0.06756757</span>, <span class="fl">0.01149425</span>, <span class="fl">0.00803213</span>, <span class="fl">0.52</span>, <span class="fl">0.53658537</span>, <span class="fl">0.04651163</span>, <span class="fl">0.11538462</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41" data-code-line-numbers="1|20"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, <span class="at">perf.type =</span> <span class="st">"brier"</span>) </span>
+<span id="cb41-2"><a href=""></a>p</span>
+<span id="cb41-3"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">878</span></span>
+<span id="cb41-4"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">148</span>, <span class="dv">174</span>, <span class="dv">249</span>, <span class="dv">25</span>, <span class="dv">41</span>, <span class="dv">215</span>, <span class="dv">26</span></span>
+<span id="cb41-5"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
+<span id="cb41-6"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb41-7"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">74.302</span></span>
+<span id="cb41-8"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
+<span id="cb41-9"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
+<span id="cb41-10"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
+<span id="cb41-11"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">555</span></span>
+<span id="cb41-12"><a href=""></a>                            Analysis<span class="sc">:</span> RF<span class="sc">-</span>C</span>
+<span id="cb41-13"><a href=""></a>                              Family<span class="sc">:</span> class</span>
+<span id="cb41-14"><a href=""></a>                      Splitting rule<span class="sc">:</span> gini <span class="sc">*</span>random<span class="sc">*</span></span>
+<span id="cb41-15"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb41-16"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02333115</span></span>
+<span id="cb41-17"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.19053769</span></span>
+<span id="cb41-18"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99304797</span></span>
+<span id="cb41-19"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.34115074</span></span>
+<span id="cb41-20"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.18688257</span>, <span class="fl">0.03438887</span>, <span class="fl">0.01210945</span>, <span class="fl">0.02103588</span>, <span class="fl">0.01195455</span>, <span class="fl">0.01952019</span>, <span class="fl">0.05238402</span>, <span class="fl">0.0087921</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="footer">
 
 </div>
 </section><section id="restore-2" class="slide level2 smaller"><h2>Restore</h2>
 <h3 id="create-your-own-estimator-for-regression">Create your own estimator for regression</h3>
-<div class="sourceCode" id="cb41" data-code-line-numbers="1-4|6-9|11-27|29-30"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a><span class="do">## create your own estimator for regression</span></span>
-<span id="cb41-2"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(mpg<span class="sc">~</span>.,mtcars)</span>
-<span id="cb41-3"><a href=""></a>fwt <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, <span class="at">forest.wt=</span><span class="st">"oob"</span>)<span class="sc">$</span>forest.wt</span>
-<span id="cb41-4"><a href=""></a>yhat <span class="ot">&lt;-</span> <span class="fu">c</span>(fwt <span class="sc">%*%</span> o<span class="sc">$</span>yvar)</span>
-<span id="cb41-5"><a href=""></a></span>
-<span id="cb41-6"><a href=""></a><span class="do">## compare to the OOB ensemble</span></span>
-<span id="cb41-7"><a href=""></a><span class="fu">print</span>(<span class="fu">summary</span>(yhat <span class="sc">-</span> o<span class="sc">$</span>predicted.oob))</span>
-<span id="cb41-8"><a href=""></a>      Min.    <span class="dv">1</span>st Qu.     Median       Mean    <span class="dv">3</span>rd Qu.       Max. </span>
-<span id="cb41-9"><a href=""></a><span class="sc">-</span><span class="fl">3.908e-14</span> <span class="sc">-</span><span class="fl">1.643e-14</span> <span class="sc">-</span><span class="fl">1.066e-14</span> <span class="sc">-</span><span class="fl">1.060e-14</span> <span class="sc">-</span><span class="fl">3.553e-15</span>  <span class="fl">1.066e-14</span></span>
-<span id="cb41-10"><a href=""></a>      </span>
-<span id="cb41-11"><a href=""></a><span class="do">## compare prediction error to OOB ensemble</span></span>
-<span id="cb41-12"><a href=""></a><span class="fu">print</span>(o)</span>
-<span id="cb41-13"><a href=""></a></span>
-<span id="cb41-14"><a href=""></a>                        Sample size<span class="sc">:</span> <span class="dv">32</span></span>
-<span id="cb41-15"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb41-16"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb41-17"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">3.476</span></span>
-<span id="cb41-18"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">4</span></span>
-<span id="cb41-19"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb41-20"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb41-21"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">20</span></span>
-<span id="cb41-22"><a href=""></a>                            Analysis<span class="sc">:</span> RF<span class="sc">-</span>R</span>
-<span id="cb41-23"><a href=""></a>                              Family<span class="sc">:</span> regr</span>
-<span id="cb41-24"><a href=""></a>                      Splitting rule<span class="sc">:</span> mse <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb41-25"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb41-26"><a href=""></a>                     (OOB) R squared<span class="sc">:</span> <span class="fl">0.76585425</span></span>
-<span id="cb41-27"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">8.50513415</span></span>
-<span id="cb41-28"><a href=""></a></span>
-<span id="cb41-29"><a href=""></a><span class="fu">print</span>(<span class="fu">mean</span>((yhat <span class="sc">-</span> o<span class="sc">$</span>yvar)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb41-30"><a href=""></a><span class="fl">8.505134</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42" data-code-line-numbers="1-4|6-9|11-27|29-30"><pre class="sourceCode numberSource r fragment number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="do">## create your own estimator for regression</span></span>
+<span id="cb42-2"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(mpg<span class="sc">~</span>.,mtcars)</span>
+<span id="cb42-3"><a href=""></a>fwt <span class="ot">&lt;-</span> <span class="fu">predict</span>(o, <span class="at">forest.wt=</span><span class="st">"oob"</span>)<span class="sc">$</span>forest.wt</span>
+<span id="cb42-4"><a href=""></a>yhat <span class="ot">&lt;-</span> <span class="fu">c</span>(fwt <span class="sc">%*%</span> o<span class="sc">$</span>yvar)</span>
+<span id="cb42-5"><a href=""></a></span>
+<span id="cb42-6"><a href=""></a><span class="do">## compare to the OOB ensemble</span></span>
+<span id="cb42-7"><a href=""></a><span class="fu">print</span>(<span class="fu">summary</span>(yhat <span class="sc">-</span> o<span class="sc">$</span>predicted.oob))</span>
+<span id="cb42-8"><a href=""></a>      Min.    <span class="dv">1</span>st Qu.     Median       Mean    <span class="dv">3</span>rd Qu.       Max. </span>
+<span id="cb42-9"><a href=""></a><span class="sc">-</span><span class="fl">3.908e-14</span> <span class="sc">-</span><span class="fl">1.643e-14</span> <span class="sc">-</span><span class="fl">1.066e-14</span> <span class="sc">-</span><span class="fl">1.060e-14</span> <span class="sc">-</span><span class="fl">3.553e-15</span>  <span class="fl">1.066e-14</span></span>
+<span id="cb42-10"><a href=""></a>      </span>
+<span id="cb42-11"><a href=""></a><span class="do">## compare prediction error to OOB ensemble</span></span>
+<span id="cb42-12"><a href=""></a><span class="fu">print</span>(o)</span>
+<span id="cb42-13"><a href=""></a></span>
+<span id="cb42-14"><a href=""></a>                        Sample size<span class="sc">:</span> <span class="dv">32</span></span>
+<span id="cb42-15"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
+<span id="cb42-16"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">5</span></span>
+<span id="cb42-17"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">3.476</span></span>
+<span id="cb42-18"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">4</span></span>
+<span id="cb42-19"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb42-20"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
+<span id="cb42-21"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">20</span></span>
+<span id="cb42-22"><a href=""></a>                            Analysis<span class="sc">:</span> RF<span class="sc">-</span>R</span>
+<span id="cb42-23"><a href=""></a>                              Family<span class="sc">:</span> regr</span>
+<span id="cb42-24"><a href=""></a>                      Splitting rule<span class="sc">:</span> mse <span class="sc">*</span>random<span class="sc">*</span></span>
+<span id="cb42-25"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb42-26"><a href=""></a>                     (OOB) R squared<span class="sc">:</span> <span class="fl">0.76585425</span></span>
+<span id="cb42-27"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">8.50513415</span></span>
+<span id="cb42-28"><a href=""></a></span>
+<span id="cb42-29"><a href=""></a><span class="fu">print</span>(<span class="fu">mean</span>((yhat <span class="sc">-</span> o<span class="sc">$</span>yvar)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb42-30"><a href=""></a><span class="fl">8.505134</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p>Learn more: <a href="https://www.randomforestsrc.org/articles/forestWgt.html">https://www.randomforestsrc.org/articles/forestWgt.html</a></p>
 </div>
@@ -3165,23 +3175,23 @@ i=1,\ldots,n\Bigg\}
 <p>The data involve 2231 patients with systolic heart failure who underwent cardiopulmonary stress testing at the Cleveland Clinic. The primary end point was all-cause death. In total, 39 variables were measured for each patient, including baseline clinical values and exercise stress test results. A key variable of interest is peak VO2 (mL/kg per min), the peak respiratory exchange ratio <span class="citation" data-cites="hsich2011identifying">[<a href="#/references" role="doc-biblioref" onclick="">3</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="hpdywikkon" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hpdywikkon table {
+<div id="mmvzfzvjuz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mmvzfzvjuz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hpdywikkon thead, #hpdywikkon tbody, #hpdywikkon tfoot, #hpdywikkon tr, #hpdywikkon td, #hpdywikkon th {
+#mmvzfzvjuz thead, #mmvzfzvjuz tbody, #mmvzfzvjuz tfoot, #mmvzfzvjuz tr, #mmvzfzvjuz td, #mmvzfzvjuz th {
   border-style: none;
 }
 
-#hpdywikkon p {
+#mmvzfzvjuz p {
   margin: 0;
   padding: 0;
 }
 
-#hpdywikkon .gt_table {
+#mmvzfzvjuz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3207,12 +3217,12 @@ i=1,\ldots,n\Bigg\}
   border-left-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_caption {
+#mmvzfzvjuz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hpdywikkon .gt_title {
+#mmvzfzvjuz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3224,7 +3234,7 @@ i=1,\ldots,n\Bigg\}
   border-bottom-width: 0;
 }
 
-#hpdywikkon .gt_subtitle {
+#mmvzfzvjuz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3236,7 +3246,7 @@ i=1,\ldots,n\Bigg\}
   border-top-width: 0;
 }
 
-#hpdywikkon .gt_heading {
+#mmvzfzvjuz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3248,13 +3258,13 @@ i=1,\ldots,n\Bigg\}
   border-right-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_bottom_border {
+#mmvzfzvjuz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_col_headings {
+#mmvzfzvjuz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3269,7 +3279,7 @@ i=1,\ldots,n\Bigg\}
   border-right-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_col_heading {
+#mmvzfzvjuz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3289,7 +3299,7 @@ i=1,\ldots,n\Bigg\}
   overflow-x: hidden;
 }
 
-#hpdywikkon .gt_column_spanner_outer {
+#mmvzfzvjuz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3301,15 +3311,15 @@ i=1,\ldots,n\Bigg\}
   padding-right: 4px;
 }
 
-#hpdywikkon .gt_column_spanner_outer:first-child {
+#mmvzfzvjuz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hpdywikkon .gt_column_spanner_outer:last-child {
+#mmvzfzvjuz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hpdywikkon .gt_column_spanner {
+#mmvzfzvjuz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3321,11 +3331,11 @@ i=1,\ldots,n\Bigg\}
   width: 100%;
 }
 
-#hpdywikkon .gt_spanner_row {
+#mmvzfzvjuz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hpdywikkon .gt_group_heading {
+#mmvzfzvjuz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3351,7 +3361,7 @@ i=1,\ldots,n\Bigg\}
   text-align: left;
 }
 
-#hpdywikkon .gt_empty_group_heading {
+#mmvzfzvjuz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3366,15 +3376,15 @@ i=1,\ldots,n\Bigg\}
   vertical-align: middle;
 }
 
-#hpdywikkon .gt_from_md > :first-child {
+#mmvzfzvjuz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hpdywikkon .gt_from_md > :last-child {
+#mmvzfzvjuz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hpdywikkon .gt_row {
+#mmvzfzvjuz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3393,7 +3403,7 @@ i=1,\ldots,n\Bigg\}
   overflow-x: hidden;
 }
 
-#hpdywikkon .gt_stub {
+#mmvzfzvjuz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3406,7 +3416,7 @@ i=1,\ldots,n\Bigg\}
   padding-right: 5px;
 }
 
-#hpdywikkon .gt_stub_row_group {
+#mmvzfzvjuz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3420,15 +3430,15 @@ i=1,\ldots,n\Bigg\}
   vertical-align: top;
 }
 
-#hpdywikkon .gt_row_group_first td {
+#mmvzfzvjuz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hpdywikkon .gt_row_group_first th {
+#mmvzfzvjuz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hpdywikkon .gt_summary_row {
+#mmvzfzvjuz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3438,16 +3448,16 @@ i=1,\ldots,n\Bigg\}
   padding-right: 5px;
 }
 
-#hpdywikkon .gt_first_summary_row {
+#mmvzfzvjuz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_first_summary_row.thick {
+#mmvzfzvjuz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hpdywikkon .gt_last_summary_row {
+#mmvzfzvjuz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3457,7 +3467,7 @@ i=1,\ldots,n\Bigg\}
   border-bottom-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_grand_summary_row {
+#mmvzfzvjuz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3467,7 +3477,7 @@ i=1,\ldots,n\Bigg\}
   padding-right: 5px;
 }
 
-#hpdywikkon .gt_first_grand_summary_row {
+#mmvzfzvjuz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3477,7 +3487,7 @@ i=1,\ldots,n\Bigg\}
   border-top-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_last_grand_summary_row_top {
+#mmvzfzvjuz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3487,11 +3497,11 @@ i=1,\ldots,n\Bigg\}
   border-bottom-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_striped {
+#mmvzfzvjuz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hpdywikkon .gt_table_body {
+#mmvzfzvjuz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3500,7 +3510,7 @@ i=1,\ldots,n\Bigg\}
   border-bottom-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_footnotes {
+#mmvzfzvjuz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3514,7 +3524,7 @@ i=1,\ldots,n\Bigg\}
   border-right-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_footnote {
+#mmvzfzvjuz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3523,7 +3533,7 @@ i=1,\ldots,n\Bigg\}
   padding-right: 5px;
 }
 
-#hpdywikkon .gt_sourcenotes {
+#mmvzfzvjuz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3537,7 +3547,7 @@ i=1,\ldots,n\Bigg\}
   border-right-color: #D3D3D3;
 }
 
-#hpdywikkon .gt_sourcenote {
+#mmvzfzvjuz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3545,72 +3555,72 @@ i=1,\ldots,n\Bigg\}
   padding-right: 5px;
 }
 
-#hpdywikkon .gt_left {
+#mmvzfzvjuz .gt_left {
   text-align: left;
 }
 
-#hpdywikkon .gt_center {
+#mmvzfzvjuz .gt_center {
   text-align: center;
 }
 
-#hpdywikkon .gt_right {
+#mmvzfzvjuz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hpdywikkon .gt_font_normal {
+#mmvzfzvjuz .gt_font_normal {
   font-weight: normal;
 }
 
-#hpdywikkon .gt_font_bold {
+#mmvzfzvjuz .gt_font_bold {
   font-weight: bold;
 }
 
-#hpdywikkon .gt_font_italic {
+#mmvzfzvjuz .gt_font_italic {
   font-style: italic;
 }
 
-#hpdywikkon .gt_super {
+#mmvzfzvjuz .gt_super {
   font-size: 65%;
 }
 
-#hpdywikkon .gt_footnote_marks {
+#mmvzfzvjuz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hpdywikkon .gt_asterisk {
+#mmvzfzvjuz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hpdywikkon .gt_indent_1 {
+#mmvzfzvjuz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hpdywikkon .gt_indent_2 {
+#mmvzfzvjuz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hpdywikkon .gt_indent_3 {
+#mmvzfzvjuz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hpdywikkon .gt_indent_4 {
+#mmvzfzvjuz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hpdywikkon .gt_indent_5 {
+#mmvzfzvjuz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hpdywikkon .katex-display {
+#mmvzfzvjuz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hpdywikkon div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mmvzfzvjuz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3747,33 +3757,33 @@ i=1,\ldots,n\Bigg\}
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb42" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="fu">data</span>(peakVO2, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>) </span>
-<span id="cb42-2"><a href=""></a><span class="fu">dim</span>(peakVO2)</span>
-<span id="cb42-3"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">2231</span>   <span class="dv">41</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb43" data-code-line-numbers="1|2-3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a><span class="fu">data</span>(peakVO2, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>) </span>
+<span id="cb43-2"><a href=""></a><span class="fu">dim</span>(peakVO2)</span>
+<span id="cb43-3"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">2231</span>   <span class="dv">41</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="survival-example-peakvo2-1" class="slide level2 smaller"><h2>Survival example: peakVO2</h2>
 <p>We can use <code>plot.variable</code> to visualize <span class="math inline">\(F_j(x)\)</span></p>
-<div class="sourceCode" id="cb43" data-code-line-numbers="3"><pre class="sourceCode numberSource r fragment fade-in-then-semi-out number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead,died)<span class="sc">~</span>., peakVO2)</span>
-<span id="cb43-2"><a href=""></a><span class="do">## partial effect for age</span></span>
-<span id="cb43-3"><a href=""></a><span class="fu">plot.variable</span>(o, <span class="at">surv.type =</span> <span class="st">"surv"</span>, <span class="at">xvar.names =</span> <span class="st">"age"</span>, </span>
-<span id="cb43-4"><a href=""></a>              <span class="at">time =</span> <span class="dv">2</span>, <span class="at">partial =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb44" data-code-line-numbers="3"><pre class="sourceCode numberSource r fragment fade-in-then-semi-out number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(ttodead,died)<span class="sc">~</span>., peakVO2)</span>
+<span id="cb44-2"><a href=""></a><span class="do">## partial effect for age</span></span>
+<span id="cb44-3"><a href=""></a><span class="fu">plot.variable</span>(o, <span class="at">surv.type =</span> <span class="st">"surv"</span>, <span class="at">xvar.names =</span> <span class="st">"age"</span>, </span>
+<span id="cb44-4"><a href=""></a>              <span class="at">time =</span> <span class="dv">2</span>, <span class="at">partial =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-left">
 <p><img data-src="pic/peakPartialAg.png" style="width:55.0%"></p>
 </div>
 </section><section id="survival-example-peakvo2-2" class="slide level2 smaller"><h2>Survival example: peakVO2</h2>
-<div class="sourceCode" id="cb44" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href=""></a></span>
-<span id="cb44-2"><a href=""></a><span class="do">## partial effect for age</span></span>
-<span id="cb44-3"><a href=""></a><span class="fu">plot.variable</span>(o, <span class="at">surv.type =</span> <span class="st">"surv"</span>, <span class="at">xvar.names =</span> <span class="st">"age"</span>, </span>
-<span id="cb44-4"><a href=""></a>              <span class="at">smooth.lines =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb44-5"><a href=""></a>              <span class="at">time =</span> <span class="dv">2</span>, <span class="at">partial =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a></span>
+<span id="cb45-2"><a href=""></a><span class="do">## partial effect for age</span></span>
+<span id="cb45-3"><a href=""></a><span class="fu">plot.variable</span>(o, <span class="at">surv.type =</span> <span class="st">"surv"</span>, <span class="at">xvar.names =</span> <span class="st">"age"</span>, </span>
+<span id="cb45-4"><a href=""></a>              <span class="at">smooth.lines =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb45-5"><a href=""></a>              <span class="at">time =</span> <span class="dv">2</span>, <span class="at">partial =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-left">
 <p><img data-src="pic/peakPartialAgs.png" style="width:55.0%"></p>
 </div>
 </section><section id="survival-example-peakvo2-3" class="slide level2 smaller"><h2>Survival example: peakVO2</h2>
-<div class="sourceCode" id="cb45" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a></span>
-<span id="cb45-2"><a href=""></a><span class="do">## partial effect for age</span></span>
-<span id="cb45-3"><a href=""></a><span class="fu">plot.variable</span>(o, <span class="at">surv.type =</span> <span class="st">"rel.freq"</span>, <span class="at">xvar.names =</span> <span class="st">"age"</span>, </span>
-<span id="cb45-4"><a href=""></a>              <span class="at">smooth.lines =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb45-5"><a href=""></a>              <span class="at">partial =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb46" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a></span>
+<span id="cb46-2"><a href=""></a><span class="do">## partial effect for age</span></span>
+<span id="cb46-3"><a href=""></a><span class="fu">plot.variable</span>(o, <span class="at">surv.type =</span> <span class="st">"rel.freq"</span>, <span class="at">xvar.names =</span> <span class="st">"age"</span>, </span>
+<span id="cb46-4"><a href=""></a>              <span class="at">smooth.lines =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb46-5"><a href=""></a>              <span class="at">partial =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-left">
 <p><img data-src="pic/peakPartialAgMs.png" style="width:50.0%"></p>
 </div>
@@ -3781,38 +3791,38 @@ i=1,\ldots,n\Bigg\}
 <p>We can use <code>partial</code> and <code>get.partial.plot.data</code> to obtain values of <span class="math inline">\(F_j(x)\)</span></p>
 <div class="columns">
 <div class="column" style="width:50%;">
-<div class="sourceCode" id="cb46" data-code-line-numbers="1-3|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a><span class="do">## partial effect of peak V02 on mortality</span></span>
-<span id="cb46-2"><a href=""></a></span>
-<span id="cb46-3"><a href=""></a>partial.o <span class="ot">&lt;-</span> <span class="fu">partial</span>(o,</span>
-<span id="cb46-4"><a href=""></a>                     <span class="at">partial.type =</span> <span class="st">"mort"</span>,</span>
-<span id="cb46-5"><a href=""></a>                     <span class="at">partial.xvar =</span> <span class="st">"peak.vo2"</span>,</span>
-<span id="cb46-6"><a href=""></a>                     <span class="at">partial.values =</span> o<span class="sc">$</span>xvar<span class="sc">$</span>peak.vo2,</span>
-<span id="cb46-7"><a href=""></a>                     <span class="at">partial.time =</span> o<span class="sc">$</span>time.interest)</span>
-<span id="cb46-8"><a href=""></a>pdta.m <span class="ot">&lt;-</span> <span class="fu">get.partial.plot.data</span>(partial.o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column fragment" style="width:50%;">
-<div class="sourceCode" id="cb47" data-code-line-numbers="1-2|3|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="do">## partial effect of peak V02 on survival</span></span>
-<span id="cb47-2"><a href=""></a>pvo2 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(o<span class="sc">$</span>xvar<span class="sc">$</span>peak.vo2)</span>
+<div class="sourceCode" id="cb47" data-code-line-numbers="1-3|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="do">## partial effect of peak V02 on mortality</span></span>
+<span id="cb47-2"><a href=""></a></span>
 <span id="cb47-3"><a href=""></a>partial.o <span class="ot">&lt;-</span> <span class="fu">partial</span>(o,</span>
-<span id="cb47-4"><a href=""></a>                     <span class="at">partial.type =</span> <span class="st">"surv"</span>,</span>
+<span id="cb47-4"><a href=""></a>                     <span class="at">partial.type =</span> <span class="st">"mort"</span>,</span>
 <span id="cb47-5"><a href=""></a>                     <span class="at">partial.xvar =</span> <span class="st">"peak.vo2"</span>,</span>
-<span id="cb47-6"><a href=""></a>                     <span class="at">partial.values =</span> pvo2,</span>
+<span id="cb47-6"><a href=""></a>                     <span class="at">partial.values =</span> o<span class="sc">$</span>xvar<span class="sc">$</span>peak.vo2,</span>
 <span id="cb47-7"><a href=""></a>                     <span class="at">partial.time =</span> o<span class="sc">$</span>time.interest)</span>
-<span id="cb47-8"><a href=""></a>pdta.s <span class="ot">&lt;-</span> <span class="fu">get.partial.plot.data</span>(partial.o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-8"><a href=""></a>pdta.m <span class="ot">&lt;-</span> <span class="fu">get.partial.plot.data</span>(partial.o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment" style="width:50%;">
+<div class="sourceCode" id="cb48" data-code-line-numbers="1-2|3|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a><span class="do">## partial effect of peak V02 on survival</span></span>
+<span id="cb48-2"><a href=""></a>pvo2 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(o<span class="sc">$</span>xvar<span class="sc">$</span>peak.vo2)</span>
+<span id="cb48-3"><a href=""></a>partial.o <span class="ot">&lt;-</span> <span class="fu">partial</span>(o,</span>
+<span id="cb48-4"><a href=""></a>                     <span class="at">partial.type =</span> <span class="st">"surv"</span>,</span>
+<span id="cb48-5"><a href=""></a>                     <span class="at">partial.xvar =</span> <span class="st">"peak.vo2"</span>,</span>
+<span id="cb48-6"><a href=""></a>                     <span class="at">partial.values =</span> pvo2,</span>
+<span id="cb48-7"><a href=""></a>                     <span class="at">partial.time =</span> o<span class="sc">$</span>time.interest)</span>
+<span id="cb48-8"><a href=""></a>pdta.s <span class="ot">&lt;-</span> <span class="fu">get.partial.plot.data</span>(partial.o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <p><br></p>
 <div class="columns">
 <div class="column fragment fade-left" style="width:45%;">
-<div class="sourceCode" id="cb48" data-code-line-numbers="4,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href=""></a><span class="do">## compare the two plots</span></span>
-<span id="cb48-2"><a href=""></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))    </span>
-<span id="cb48-3"><a href=""></a></span>
-<span id="cb48-4"><a href=""></a><span class="fu">plot</span>(<span class="fu">lowess</span>(pdta.m<span class="sc">$</span>x, pdta.m<span class="sc">$</span>yhat, <span class="at">f =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>),</span>
-<span id="cb48-5"><a href=""></a>     <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">xlab =</span> <span class="st">"peak VO2"</span>, <span class="at">ylab =</span> <span class="st">"adjusted mortality"</span>)</span>
-<span id="cb48-6"><a href=""></a><span class="fu">rug</span>(o<span class="sc">$</span>xvar<span class="sc">$</span>peak.vo2)</span>
-<span id="cb48-7"><a href=""></a></span>
-<span id="cb48-8"><a href=""></a><span class="fu">matplot</span>(pdta.s<span class="sc">$</span>partial.time, <span class="fu">t</span>(pdta.s<span class="sc">$</span>yhat), <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">1</span>,</span>
-<span id="cb48-9"><a href=""></a>        <span class="at">xlab =</span> <span class="st">"years"</span>, <span class="at">ylab =</span> <span class="st">"peak VO2 adjusted survival"</span>)</span>
-<span id="cb48-10"><a href=""></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>, <span class="at">legend =</span> <span class="fu">paste0</span>(<span class="st">"peak VO2 = "</span>, pvo2),</span>
-<span id="cb48-11"><a href=""></a>       <span class="at">bty =</span> <span class="st">"n"</span>, <span class="at">cex =</span> .<span class="dv">75</span>, <span class="at">fill =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49" data-code-line-numbers="4,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a><span class="do">## compare the two plots</span></span>
+<span id="cb49-2"><a href=""></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))    </span>
+<span id="cb49-3"><a href=""></a></span>
+<span id="cb49-4"><a href=""></a><span class="fu">plot</span>(<span class="fu">lowess</span>(pdta.m<span class="sc">$</span>x, pdta.m<span class="sc">$</span>yhat, <span class="at">f =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>),</span>
+<span id="cb49-5"><a href=""></a>     <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">xlab =</span> <span class="st">"peak VO2"</span>, <span class="at">ylab =</span> <span class="st">"adjusted mortality"</span>)</span>
+<span id="cb49-6"><a href=""></a><span class="fu">rug</span>(o<span class="sc">$</span>xvar<span class="sc">$</span>peak.vo2)</span>
+<span id="cb49-7"><a href=""></a></span>
+<span id="cb49-8"><a href=""></a><span class="fu">matplot</span>(pdta.s<span class="sc">$</span>partial.time, <span class="fu">t</span>(pdta.s<span class="sc">$</span>yhat), <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">1</span>,</span>
+<span id="cb49-9"><a href=""></a>        <span class="at">xlab =</span> <span class="st">"years"</span>, <span class="at">ylab =</span> <span class="st">"peak VO2 adjusted survival"</span>)</span>
+<span id="cb49-10"><a href=""></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>, <span class="at">legend =</span> <span class="fu">paste0</span>(<span class="st">"peak VO2 = "</span>, pvo2),</span>
+<span id="cb49-11"><a href=""></a>       <span class="at">bty =</span> <span class="st">"n"</span>, <span class="at">cex =</span> .<span class="dv">75</span>, <span class="at">fill =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment fade-left" style="width:55%;">
 <p><img data-src="pic/peakPartialPKV2.png" style="width:105.0%"></p>
 </div></div>
