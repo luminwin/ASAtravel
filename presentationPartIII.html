@@ -282,8 +282,8 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <p><code>vimp</code> also permits joint VIMP</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource verbatim fragment number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href=""></a>## paired permutation vimp</span>
 <span id="cb5-2"><a href=""></a>obj &lt;- rfsrc(Species~., data=iris)</span>
-<span id="cb5-3"><a href=""></a>vimp(obj, obj.xvar.names[1:2], importance="permute", joint=TRUE)$importance</span>
-<span id="cb5-4"><a href=""></a>vimp(obj, obj.xvar.names[3:4], importance="permute", joint=TRUE)$importance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href=""></a>vimp(obj, obj$xvar.names[1:2], importance="permute", joint=TRUE)$importance</span>
+<span id="cb5-4"><a href=""></a>vimp(obj, obj$xvar.names[3:4], importance="permute", joint=TRUE)$importance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="general-call-to-vimp" class="slide level2 smaller"><h2>General call to vimp</h2>
 <div class="fragment fade-left">
 <p><img data-src="pic/vimp.png" style="width:100.0%"></p>
