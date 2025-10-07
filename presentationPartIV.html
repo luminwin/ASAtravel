@@ -440,14 +440,14 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb1-15"><a href=""></a><span class="sc">&gt;</span>  <span class="dv">786</span>  <span class="dv">94</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="imbalanced-classification-glioma" class="slide level2 smaller"><h2>Imbalanced classification: Glioma</h2>
 <h4 id="standard-rf-classifier">standard RF classifier</h4>
-<div class="sourceCode" id="cb2" data-code-line-numbers="1-3|13-14|17|18-24|26-33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="do">## standard RF classifier</span></span>
+<div class="sourceCode" id="cb2" data-code-line-numbers="1-3|13-14|17|18-24|26-36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="do">## standard RF classifier</span></span>
 <span id="cb2-2"><a href=""></a>o1 <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>.,glioma2)</span>
 <span id="cb2-3"><a href=""></a><span class="fu">print</span>(o1)</span>
 <span id="cb2-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">880</span></span>
-<span id="cb2-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">786</span>, <span class="dv">94</span></span>
+<span id="cb2-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">0</span><span class="ot">=</span><span class="dv">786</span>, <span class="dv">1</span><span class="ot">=</span><span class="dv">94</span></span>
 <span id="cb2-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
 <span id="cb2-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb2-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">29.726</span></span>
+<span id="cb2-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">29.802</span></span>
 <span id="cb2-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
 <span id="cb2-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
 <span id="cb2-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
@@ -457,32 +457,35 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb2-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> gini <span class="sc">*</span>random<span class="sc">*</span></span>
 <span id="cb2-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
 <span id="cb2-17"><a href=""></a>                    Imbalanced ratio<span class="sc">:</span> <span class="fl">8.3617</span></span>
-<span id="cb2-18"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.03639723</span></span>
-<span id="cb2-19"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.1455889</span></span>
-<span id="cb2-20"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.98621488</span></span>
-<span id="cb2-21"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.1298745</span></span>
-<span id="cb2-22"><a href=""></a>                        (OOB) PR<span class="sc">-</span>AUC<span class="sc">:</span> <span class="fl">0.9170852</span></span>
-<span id="cb2-23"><a href=""></a>                        (OOB) G<span class="sc">-</span>mean<span class="sc">:</span> <span class="fl">0.72932496</span></span>
-<span id="cb2-24"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.05</span>, <span class="dv">0</span>, <span class="fl">0.46808511</span></span>
+<span id="cb2-18"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.03485757</span></span>
+<span id="cb2-19"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.13943029</span></span>
+<span id="cb2-20"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.98882031</span></span>
+<span id="cb2-21"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.12614254</span></span>
+<span id="cb2-22"><a href=""></a>                        (OOB) PR<span class="sc">-</span>AUC<span class="sc">:</span> <span class="fl">0.92976788</span></span>
+<span id="cb2-23"><a href=""></a>                        (OOB) G<span class="sc">-</span>mean<span class="sc">:</span> <span class="fl">0.750886</span></span>
+<span id="cb2-24"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.04659091</span>, <span class="dv">0</span>, <span class="fl">0.43617021</span></span>
 <span id="cb2-25"><a href=""></a></span>
 <span id="cb2-26"><a href=""></a>Confusion matrix<span class="sc">:</span></span>
 <span id="cb2-27"><a href=""></a></span>
 <span id="cb2-28"><a href=""></a>          predicted</span>
 <span id="cb2-29"><a href=""></a>  observed   <span class="dv">0</span>  <span class="dv">1</span> class.error</span>
 <span id="cb2-30"><a href=""></a>         <span class="dv">0</span> <span class="dv">786</span>  <span class="dv">0</span>      <span class="fl">0.0000</span></span>
-<span id="cb2-31"><a href=""></a>         <span class="dv">1</span>  <span class="dv">44</span> <span class="dv">50</span>      <span class="fl">0.4681</span></span>
+<span id="cb2-31"><a href=""></a>         <span class="dv">1</span>  <span class="dv">42</span> <span class="dv">52</span>      <span class="fl">0.4468</span></span>
 <span id="cb2-32"><a href=""></a></span>
-<span id="cb2-33"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.05</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-33"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.04772727</span></span>
+<span id="cb2-34"><a href=""></a></span>
+<span id="cb2-35"><a href=""></a>Random<span class="sc">-</span>classifier <span class="fu">baselines</span> (uniform)<span class="sc">:</span></span>
+<span id="cb2-36"><a href=""></a>   Brier<span class="sc">:</span> <span class="fl">0.25</span>   Normalized Brier<span class="sc">:</span> <span class="dv">1</span>   Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.69314718</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="imbalanced-classification-glioma-1" class="slide level2 smaller"><h2>Imbalanced classification: Glioma</h2>
 <h4 id="rfq-classifier">RFQ classifier</h4>
-<div class="sourceCode" id="cb3" data-code-line-numbers="1-3|13-14|17|18-24|26-33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="do">## RFQ classifier</span></span>
+<div class="sourceCode" id="cb3" data-code-line-numbers="1-3|13-14|17|18-24|26-36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="do">## RFQ classifier</span></span>
 <span id="cb3-2"><a href=""></a>o2 <span class="ot">&lt;-</span> <span class="fu">imbalanced</span>(y<span class="sc">~</span>.,glioma2)</span>
 <span id="cb3-3"><a href=""></a><span class="fu">print</span>(o2)</span>
 <span id="cb3-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">880</span></span>
-<span id="cb3-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">786</span>, <span class="dv">94</span></span>
+<span id="cb3-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">0</span><span class="ot">=</span><span class="dv">786</span>, <span class="dv">1</span><span class="ot">=</span><span class="dv">94</span></span>
 <span id="cb3-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">3000</span></span>
 <span id="cb3-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb3-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">26.557</span></span>
+<span id="cb3-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">26.6797</span></span>
 <span id="cb3-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
 <span id="cb3-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
 <span id="cb3-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
@@ -492,22 +495,25 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb3-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> auc <span class="sc">*</span>random<span class="sc">*</span></span>
 <span id="cb3-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
 <span id="cb3-17"><a href=""></a>                    Imbalanced ratio<span class="sc">:</span> <span class="fl">8.3617</span></span>
-<span id="cb3-18"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.03362459</span></span>
-<span id="cb3-19"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.13449834</span></span>
+<span id="cb3-18"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.03394608</span></span>
+<span id="cb3-19"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.13578431</span></span>
 <span id="cb3-20"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99057983</span></span>
-<span id="cb3-21"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.12037099</span></span>
-<span id="cb3-22"><a href=""></a>                        (OOB) PR<span class="sc">-</span>AUC<span class="sc">:</span> <span class="fl">0.94065642</span></span>
-<span id="cb3-23"><a href=""></a>                        (OOB) G<span class="sc">-</span>mean<span class="sc">:</span> <span class="fl">0.93830013</span></span>
-<span id="cb3-24"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.06169987</span></span>
+<span id="cb3-21"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.12099248</span></span>
+<span id="cb3-22"><a href=""></a>                        (OOB) PR<span class="sc">-</span>AUC<span class="sc">:</span> <span class="fl">0.94056031</span></span>
+<span id="cb3-23"><a href=""></a>                        (OOB) G<span class="sc">-</span>mean<span class="sc">:</span> <span class="fl">0.93762192</span></span>
+<span id="cb3-24"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.06237808</span></span>
 <span id="cb3-25"><a href=""></a></span>
 <span id="cb3-26"><a href=""></a>Confusion matrix<span class="sc">:</span></span>
 <span id="cb3-27"><a href=""></a></span>
 <span id="cb3-28"><a href=""></a>          predicted</span>
 <span id="cb3-29"><a href=""></a>  observed   <span class="dv">0</span>  <span class="dv">1</span> class.error</span>
-<span id="cb3-30"><a href=""></a>         <span class="dv">0</span> <span class="dv">692</span> <span class="dv">94</span>      <span class="fl">0.1196</span></span>
+<span id="cb3-30"><a href=""></a>         <span class="dv">0</span> <span class="dv">691</span> <span class="dv">95</span>      <span class="fl">0.1209</span></span>
 <span id="cb3-31"><a href=""></a>         <span class="dv">1</span>   <span class="dv">0</span> <span class="dv">94</span>      <span class="fl">0.0000</span></span>
 <span id="cb3-32"><a href=""></a></span>
-<span id="cb3-33"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.1068182</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-33"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.1079545</span></span>
+<span id="cb3-34"><a href=""></a></span>
+<span id="cb3-35"><a href=""></a>Random<span class="sc">-</span>classifier <span class="fu">baselines</span> (uniform)<span class="sc">:</span></span>
+<span id="cb3-36"><a href=""></a>   Brier<span class="sc">:</span> <span class="fl">0.25</span>   Normalized Brier<span class="sc">:</span> <span class="dv">1</span>   Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.69314718</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="imbalanced-classification-glioma-2" class="slide level2"><h2>Imbalanced classification: Glioma</h2>
 <h4 id="balanced-rf-brf">Balanced RF (BRF)</h4>
 <ol type="1">
@@ -516,14 +522,14 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <li>Surprisingly, BRF is actually an example of a quantile classifier and is <em>theoretically</em> equivalent to RFQ</li>
 <li>However, in finite samples it is less efficient</li>
 </ol></section><section id="imbalanced-classification-glioma-3" class="slide level2 smaller"><h2>Imbalanced classification: Glioma</h2>
-<div class="sourceCode" id="cb4" data-code-line-numbers="1-3|13-14|17|18-24|26-33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="do">## BRF classifier</span></span>
+<div class="sourceCode" id="cb4" data-code-line-numbers="1-3|13-14|17|18-24|26-36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="do">## BRF classifier</span></span>
 <span id="cb4-2"><a href=""></a>o3 <span class="ot">&lt;-</span> <span class="fu">imbalanced</span>(y<span class="sc">~</span>.,glioma2, <span class="at">method =</span> <span class="st">"brf"</span>)</span>
 <span id="cb4-3"><a href=""></a><span class="fu">print</span>(o3)</span>
 <span id="cb4-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">880</span></span>
-<span id="cb4-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">786</span>, <span class="dv">94</span></span>
+<span id="cb4-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">0</span><span class="ot">=</span><span class="dv">786</span>, <span class="dv">1</span><span class="ot">=</span><span class="dv">94</span></span>
 <span id="cb4-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">3000</span></span>
 <span id="cb4-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb4-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">15.1263</span></span>
+<span id="cb4-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">15.208</span></span>
 <span id="cb4-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
 <span id="cb4-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
 <span id="cb4-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swr</span>
@@ -533,33 +539,36 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb4-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> auc <span class="sc">*</span>random<span class="sc">*</span></span>
 <span id="cb4-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
 <span id="cb4-17"><a href=""></a>                    Imbalanced ratio<span class="sc">:</span> <span class="fl">8.3617</span></span>
-<span id="cb4-18"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.04844594</span></span>
-<span id="cb4-19"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.19378376</span></span>
-<span id="cb4-20"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.98658708</span></span>
-<span id="cb4-21"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.19773628</span></span>
-<span id="cb4-22"><a href=""></a>                        (OOB) PR<span class="sc">-</span>AUC<span class="sc">:</span> <span class="fl">0.92307335</span></span>
-<span id="cb4-23"><a href=""></a>                        (OOB) G<span class="sc">-</span>mean<span class="sc">:</span> <span class="fl">0.91219607</span></span>
-<span id="cb4-24"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.08780393</span></span>
+<span id="cb4-18"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.04790004</span></span>
+<span id="cb4-19"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.19160015</span></span>
+<span id="cb4-20"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.9861269</span></span>
+<span id="cb4-21"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.1954276</span></span>
+<span id="cb4-22"><a href=""></a>                        (OOB) PR<span class="sc">-</span>AUC<span class="sc">:</span> <span class="fl">0.91991245</span></span>
+<span id="cb4-23"><a href=""></a>                        (OOB) G<span class="sc">-</span>mean<span class="sc">:</span> <span class="fl">0.91159495</span></span>
+<span id="cb4-24"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.08840505</span></span>
 <span id="cb4-25"><a href=""></a></span>
 <span id="cb4-26"><a href=""></a>Confusion matrix<span class="sc">:</span></span>
 <span id="cb4-27"><a href=""></a></span>
 <span id="cb4-28"><a href=""></a>          predicted</span>
 <span id="cb4-29"><a href=""></a>  observed   <span class="dv">0</span>  <span class="dv">1</span> class.error</span>
-<span id="cb4-30"><a href=""></a>         <span class="dv">0</span> <span class="dv">759</span> <span class="dv">27</span>      <span class="fl">0.0344</span></span>
+<span id="cb4-30"><a href=""></a>         <span class="dv">0</span> <span class="dv">758</span> <span class="dv">28</span>      <span class="fl">0.0356</span></span>
 <span id="cb4-31"><a href=""></a>         <span class="dv">1</span>  <span class="dv">13</span> <span class="dv">81</span>      <span class="fl">0.1383</span></span>
 <span id="cb4-32"><a href=""></a></span>
-<span id="cb4-33"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.04545455</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-33"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.04659091</span></span>
+<span id="cb4-34"><a href=""></a></span>
+<span id="cb4-35"><a href=""></a>Random<span class="sc">-</span>classifier <span class="fu">baselines</span> (uniform)<span class="sc">:</span></span>
+<span id="cb4-36"><a href=""></a>   Brier<span class="sc">:</span> <span class="fl">0.25</span>   Normalized Brier<span class="sc">:</span> <span class="dv">1</span>   Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.69314718</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="imbalanced-classification-glioma-4" class="slide level2 smaller"><h2>Imbalanced classification: Glioma</h2>
-<div class="sourceCode" id="cb5" data-code-line-numbers="1-5|15-16|19|20-26|28-35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="do">## BRF - brute force</span></span>
+<div class="sourceCode" id="cb5" data-code-line-numbers="1-5|15-16|19|20-26|28-38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="do">## BRF - brute force</span></span>
 <span id="cb5-2"><a href=""></a>o4 <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>.,glioma2,</span>
 <span id="cb5-3"><a href=""></a>            <span class="at">case.wt =</span> randomForestSRC<span class="sc">:::</span><span class="fu">make.wt</span>(glioma2<span class="sc">$</span>y),</span>
 <span id="cb5-4"><a href=""></a>            <span class="at">sampsize =</span> randomForestSRC<span class="sc">:::</span><span class="fu">make.size</span>(glioma2<span class="sc">$</span>y))</span>
 <span id="cb5-5"><a href=""></a><span class="fu">print</span>(o4)</span>
 <span id="cb5-6"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">880</span></span>
-<span id="cb5-7"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">786</span>, <span class="dv">94</span></span>
+<span id="cb5-7"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">0</span><span class="ot">=</span><span class="dv">786</span>, <span class="dv">1</span><span class="ot">=</span><span class="dv">94</span></span>
 <span id="cb5-8"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
 <span id="cb5-9"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb5-10"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">19.234</span></span>
+<span id="cb5-10"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">19.308</span></span>
 <span id="cb5-11"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
 <span id="cb5-12"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
 <span id="cb5-13"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
@@ -569,22 +578,25 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb5-17"><a href=""></a>                      Splitting rule<span class="sc">:</span> gini <span class="sc">*</span>random<span class="sc">*</span></span>
 <span id="cb5-18"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
 <span id="cb5-19"><a href=""></a>                    Imbalanced ratio<span class="sc">:</span> <span class="fl">8.3617</span></span>
-<span id="cb5-20"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.05301977</span></span>
-<span id="cb5-21"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.21207909</span></span>
-<span id="cb5-22"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.98412376</span></span>
-<span id="cb5-23"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.20939848</span></span>
-<span id="cb5-24"><a href=""></a>                        (OOB) PR<span class="sc">-</span>AUC<span class="sc">:</span> <span class="fl">0.90805735</span></span>
-<span id="cb5-25"><a href=""></a>                        (OOB) G<span class="sc">-</span>mean<span class="sc">:</span> <span class="fl">0.90192259</span></span>
-<span id="cb5-26"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.06477273</span>, <span class="fl">0.05597964</span>, <span class="fl">0.13829787</span></span>
+<span id="cb5-20"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.05228461</span></span>
+<span id="cb5-21"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.20913846</span></span>
+<span id="cb5-22"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.985775</span></span>
+<span id="cb5-23"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.20764199</span></span>
+<span id="cb5-24"><a href=""></a>                        (OOB) PR<span class="sc">-</span>AUC<span class="sc">:</span> <span class="fl">0.92327639</span></span>
+<span id="cb5-25"><a href=""></a>                        (OOB) G<span class="sc">-</span>mean<span class="sc">:</span> <span class="fl">0.9413532</span></span>
+<span id="cb5-26"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.05454545</span>, <span class="fl">0.05343511</span>, <span class="fl">0.06382979</span></span>
 <span id="cb5-27"><a href=""></a></span>
 <span id="cb5-28"><a href=""></a>Confusion matrix<span class="sc">:</span></span>
 <span id="cb5-29"><a href=""></a></span>
 <span id="cb5-30"><a href=""></a>          predicted</span>
 <span id="cb5-31"><a href=""></a>  observed   <span class="dv">0</span>  <span class="dv">1</span> class.error</span>
-<span id="cb5-32"><a href=""></a>         <span class="dv">0</span> <span class="dv">742</span> <span class="dv">44</span>      <span class="fl">0.0560</span></span>
-<span id="cb5-33"><a href=""></a>         <span class="dv">1</span>  <span class="dv">13</span> <span class="dv">81</span>      <span class="fl">0.1383</span></span>
+<span id="cb5-32"><a href=""></a>         <span class="dv">0</span> <span class="dv">744</span> <span class="dv">42</span>      <span class="fl">0.0534</span></span>
+<span id="cb5-33"><a href=""></a>         <span class="dv">1</span>   <span class="dv">8</span> <span class="dv">86</span>      <span class="fl">0.0851</span></span>
 <span id="cb5-34"><a href=""></a></span>
-<span id="cb5-35"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.06477273</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-35"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.05681818</span></span>
+<span id="cb5-36"><a href=""></a></span>
+<span id="cb5-37"><a href=""></a>Random<span class="sc">-</span>classifier <span class="fu">baselines</span> (uniform)<span class="sc">:</span></span>
+<span id="cb5-38"><a href=""></a>   Brier<span class="sc">:</span> <span class="fl">0.25</span>   Normalized Brier<span class="sc">:</span> <span class="dv">1</span>   Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.69314718</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="imbalanced-classification-glioma-5" class="slide level2 smaller"><h2>Imbalanced classification: Glioma</h2>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="do">## gmean variable importance with ci</span></span>
 <span id="cb6-2"><a href=""></a>o2 <span class="ot">&lt;-</span> <span class="fu">imbalanced</span>(y<span class="sc">~</span>.,glioma2, <span class="at">importance=</span><span class="st">"permute"</span>, <span class="at">block.size=</span><span class="dv">20</span>)</span>
@@ -676,23 +688,23 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </section><section id="competing-risk-example-pbc-mayo-clinic" class="slide level2 smaller"><h2>Competing risk example: PBC Mayo Clinic</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="rbutasypkl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rbutasypkl table {
+<div id="oprjjpmffr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oprjjpmffr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rbutasypkl thead, #rbutasypkl tbody, #rbutasypkl tfoot, #rbutasypkl tr, #rbutasypkl td, #rbutasypkl th {
+#oprjjpmffr thead, #oprjjpmffr tbody, #oprjjpmffr tfoot, #oprjjpmffr tr, #oprjjpmffr td, #oprjjpmffr th {
   border-style: none;
 }
 
-#rbutasypkl p {
+#oprjjpmffr p {
   margin: 0;
   padding: 0;
 }
 
-#rbutasypkl .gt_table {
+#oprjjpmffr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -718,12 +730,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-left-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_caption {
+#oprjjpmffr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rbutasypkl .gt_title {
+#oprjjpmffr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -735,7 +747,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-width: 0;
 }
 
-#rbutasypkl .gt_subtitle {
+#oprjjpmffr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -747,7 +759,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-width: 0;
 }
 
-#rbutasypkl .gt_heading {
+#oprjjpmffr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -759,13 +771,13 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_bottom_border {
+#oprjjpmffr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_col_headings {
+#oprjjpmffr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -780,7 +792,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_col_heading {
+#oprjjpmffr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -800,7 +812,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#rbutasypkl .gt_column_spanner_outer {
+#oprjjpmffr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -812,15 +824,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 4px;
 }
 
-#rbutasypkl .gt_column_spanner_outer:first-child {
+#oprjjpmffr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rbutasypkl .gt_column_spanner_outer:last-child {
+#oprjjpmffr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rbutasypkl .gt_column_spanner {
+#oprjjpmffr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -832,11 +844,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   width: 100%;
 }
 
-#rbutasypkl .gt_spanner_row {
+#oprjjpmffr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rbutasypkl .gt_group_heading {
+#oprjjpmffr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -862,7 +874,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   text-align: left;
 }
 
-#rbutasypkl .gt_empty_group_heading {
+#oprjjpmffr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -877,15 +889,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: middle;
 }
 
-#rbutasypkl .gt_from_md > :first-child {
+#oprjjpmffr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rbutasypkl .gt_from_md > :last-child {
+#oprjjpmffr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rbutasypkl .gt_row {
+#oprjjpmffr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -904,7 +916,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#rbutasypkl .gt_stub {
+#oprjjpmffr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -917,7 +929,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#rbutasypkl .gt_stub_row_group {
+#oprjjpmffr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -931,15 +943,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: top;
 }
 
-#rbutasypkl .gt_row_group_first td {
+#oprjjpmffr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rbutasypkl .gt_row_group_first th {
+#oprjjpmffr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rbutasypkl .gt_summary_row {
+#oprjjpmffr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -949,16 +961,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#rbutasypkl .gt_first_summary_row {
+#oprjjpmffr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_first_summary_row.thick {
+#oprjjpmffr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rbutasypkl .gt_last_summary_row {
+#oprjjpmffr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -968,7 +980,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_grand_summary_row {
+#oprjjpmffr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -978,7 +990,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#rbutasypkl .gt_first_grand_summary_row {
+#oprjjpmffr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -988,7 +1000,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_last_grand_summary_row_top {
+#oprjjpmffr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -998,11 +1010,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_striped {
+#oprjjpmffr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rbutasypkl .gt_table_body {
+#oprjjpmffr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1011,7 +1023,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_footnotes {
+#oprjjpmffr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1025,7 +1037,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_footnote {
+#oprjjpmffr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1034,7 +1046,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#rbutasypkl .gt_sourcenotes {
+#oprjjpmffr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1048,7 +1060,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#rbutasypkl .gt_sourcenote {
+#oprjjpmffr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1056,72 +1068,72 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#rbutasypkl .gt_left {
+#oprjjpmffr .gt_left {
   text-align: left;
 }
 
-#rbutasypkl .gt_center {
+#oprjjpmffr .gt_center {
   text-align: center;
 }
 
-#rbutasypkl .gt_right {
+#oprjjpmffr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rbutasypkl .gt_font_normal {
+#oprjjpmffr .gt_font_normal {
   font-weight: normal;
 }
 
-#rbutasypkl .gt_font_bold {
+#oprjjpmffr .gt_font_bold {
   font-weight: bold;
 }
 
-#rbutasypkl .gt_font_italic {
+#oprjjpmffr .gt_font_italic {
   font-style: italic;
 }
 
-#rbutasypkl .gt_super {
+#oprjjpmffr .gt_super {
   font-size: 65%;
 }
 
-#rbutasypkl .gt_footnote_marks {
+#oprjjpmffr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rbutasypkl .gt_asterisk {
+#oprjjpmffr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rbutasypkl .gt_indent_1 {
+#oprjjpmffr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rbutasypkl .gt_indent_2 {
+#oprjjpmffr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rbutasypkl .gt_indent_3 {
+#oprjjpmffr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rbutasypkl .gt_indent_4 {
+#oprjjpmffr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rbutasypkl .gt_indent_5 {
+#oprjjpmffr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rbutasypkl .katex-display {
+#oprjjpmffr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rbutasypkl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#oprjjpmffr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1363,10 +1375,10 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb8-2"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> ., pbc)</span>
 <span id="cb8-3"><a href=""></a>o</span>
 <span id="cb8-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">276</span></span>
-<span id="cb8-5"><a href=""></a>                    Number of events<span class="sc">:</span> <span class="dv">18</span>, <span class="dv">111</span></span>
+<span id="cb8-5"><a href=""></a>                    Number of events<span class="sc">:</span> <span class="dv">1</span><span class="ot">=</span><span class="dv">18</span>, <span class="dv">2</span><span class="ot">=</span><span class="dv">111</span></span>
 <span id="cb8-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
 <span id="cb8-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">15</span></span>
-<span id="cb8-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">13.118</span></span>
+<span id="cb8-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">13.272</span></span>
 <span id="cb8-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">5</span></span>
 <span id="cb8-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">17</span></span>
 <span id="cb8-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
@@ -1375,7 +1387,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb8-14"><a href=""></a>                              Family<span class="sc">:</span> surv<span class="sc">-</span>CR</span>
 <span id="cb8-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> logrankCR <span class="sc">*</span>random<span class="sc">*</span></span>
 <span id="cb8-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb8-17"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.18408881</span>, <span class="fl">0.1666207</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-17"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.19981499</span>, <span class="fl">0.1685511</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1564,23 +1576,23 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <p>Study the effects of five diet treatments on 21 liver lipids and 120 hepatic gene expression in wild-type and PPAR-alpha deficient mice. We regress gene expression, diet and genotype (x-variables) on lipid expressions (multivariate y-responses) <span class="citation" data-cites="martin2007novel">[<a href="#/references" role="doc-biblioref" onclick="">4</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="lubsdirywl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lubsdirywl table {
+<div id="mkcxfitmri" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mkcxfitmri table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lubsdirywl thead, #lubsdirywl tbody, #lubsdirywl tfoot, #lubsdirywl tr, #lubsdirywl td, #lubsdirywl th {
+#mkcxfitmri thead, #mkcxfitmri tbody, #mkcxfitmri tfoot, #mkcxfitmri tr, #mkcxfitmri td, #mkcxfitmri th {
   border-style: none;
 }
 
-#lubsdirywl p {
+#mkcxfitmri p {
   margin: 0;
   padding: 0;
 }
 
-#lubsdirywl .gt_table {
+#mkcxfitmri .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1606,12 +1618,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-left-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_caption {
+#mkcxfitmri .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lubsdirywl .gt_title {
+#mkcxfitmri .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1623,7 +1635,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-width: 0;
 }
 
-#lubsdirywl .gt_subtitle {
+#mkcxfitmri .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1635,7 +1647,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-width: 0;
 }
 
-#lubsdirywl .gt_heading {
+#mkcxfitmri .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1647,13 +1659,13 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_bottom_border {
+#mkcxfitmri .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_col_headings {
+#mkcxfitmri .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1668,7 +1680,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_col_heading {
+#mkcxfitmri .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1688,7 +1700,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#lubsdirywl .gt_column_spanner_outer {
+#mkcxfitmri .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1700,15 +1712,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 4px;
 }
 
-#lubsdirywl .gt_column_spanner_outer:first-child {
+#mkcxfitmri .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lubsdirywl .gt_column_spanner_outer:last-child {
+#mkcxfitmri .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lubsdirywl .gt_column_spanner {
+#mkcxfitmri .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1720,11 +1732,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   width: 100%;
 }
 
-#lubsdirywl .gt_spanner_row {
+#mkcxfitmri .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lubsdirywl .gt_group_heading {
+#mkcxfitmri .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1750,7 +1762,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   text-align: left;
 }
 
-#lubsdirywl .gt_empty_group_heading {
+#mkcxfitmri .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1765,15 +1777,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: middle;
 }
 
-#lubsdirywl .gt_from_md > :first-child {
+#mkcxfitmri .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lubsdirywl .gt_from_md > :last-child {
+#mkcxfitmri .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lubsdirywl .gt_row {
+#mkcxfitmri .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1792,7 +1804,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#lubsdirywl .gt_stub {
+#mkcxfitmri .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1805,7 +1817,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#lubsdirywl .gt_stub_row_group {
+#mkcxfitmri .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1819,15 +1831,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: top;
 }
 
-#lubsdirywl .gt_row_group_first td {
+#mkcxfitmri .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lubsdirywl .gt_row_group_first th {
+#mkcxfitmri .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lubsdirywl .gt_summary_row {
+#mkcxfitmri .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1837,16 +1849,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#lubsdirywl .gt_first_summary_row {
+#mkcxfitmri .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_first_summary_row.thick {
+#mkcxfitmri .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lubsdirywl .gt_last_summary_row {
+#mkcxfitmri .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1856,7 +1868,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_grand_summary_row {
+#mkcxfitmri .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1866,7 +1878,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#lubsdirywl .gt_first_grand_summary_row {
+#mkcxfitmri .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1876,7 +1888,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_last_grand_summary_row_top {
+#mkcxfitmri .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1886,11 +1898,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_striped {
+#mkcxfitmri .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lubsdirywl .gt_table_body {
+#mkcxfitmri .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1899,7 +1911,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_footnotes {
+#mkcxfitmri .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1913,7 +1925,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_footnote {
+#mkcxfitmri .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1922,7 +1934,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#lubsdirywl .gt_sourcenotes {
+#mkcxfitmri .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1936,7 +1948,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#lubsdirywl .gt_sourcenote {
+#mkcxfitmri .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1944,72 +1956,72 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#lubsdirywl .gt_left {
+#mkcxfitmri .gt_left {
   text-align: left;
 }
 
-#lubsdirywl .gt_center {
+#mkcxfitmri .gt_center {
   text-align: center;
 }
 
-#lubsdirywl .gt_right {
+#mkcxfitmri .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lubsdirywl .gt_font_normal {
+#mkcxfitmri .gt_font_normal {
   font-weight: normal;
 }
 
-#lubsdirywl .gt_font_bold {
+#mkcxfitmri .gt_font_bold {
   font-weight: bold;
 }
 
-#lubsdirywl .gt_font_italic {
+#mkcxfitmri .gt_font_italic {
   font-style: italic;
 }
 
-#lubsdirywl .gt_super {
+#mkcxfitmri .gt_super {
   font-size: 65%;
 }
 
-#lubsdirywl .gt_footnote_marks {
+#mkcxfitmri .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lubsdirywl .gt_asterisk {
+#mkcxfitmri .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lubsdirywl .gt_indent_1 {
+#mkcxfitmri .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lubsdirywl .gt_indent_2 {
+#mkcxfitmri .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lubsdirywl .gt_indent_3 {
+#mkcxfitmri .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lubsdirywl .gt_indent_4 {
+#mkcxfitmri .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lubsdirywl .gt_indent_5 {
+#mkcxfitmri .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lubsdirywl .katex-display {
+#mkcxfitmri .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lubsdirywl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mkcxfitmri div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2179,23 +2191,20 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb19-10"><a href=""></a>            <span class="at">importance=</span><span class="cn">TRUE</span>, <span class="at">nsplit =</span> <span class="dv">10</span>,</span>
 <span id="cb19-11"><a href=""></a>            <span class="at">splitrule =</span> <span class="st">"mahalanobis"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-up">
-<div class="sourceCode" id="cb20" data-code-line-numbers="1,12-13|16-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">print</span>(o)</span>
+<div class="sourceCode" id="cb20" data-code-line-numbers="1,10-11|14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="sc">&gt;</span> <span class="fu">print</span>(o)</span>
 <span id="cb20-2"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">40</span></span>
 <span id="cb20-3"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
 <span id="cb20-4"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb20-5"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">4.776</span></span>
+<span id="cb20-5"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">4.774</span></span>
 <span id="cb20-6"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">41</span></span>
 <span id="cb20-7"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">122</span></span>
-<span id="cb20-8"><a href=""></a>              Total no. of responses<span class="sc">:</span> <span class="dv">21</span></span>
-<span id="cb20-9"><a href=""></a>         User has requested response<span class="sc">:</span> C14<span class="fl">.0</span></span>
-<span id="cb20-10"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb20-11"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">25</span></span>
-<span id="cb20-12"><a href=""></a>                            Analysis<span class="sc">:</span> mRF<span class="sc">-</span>R</span>
-<span id="cb20-13"><a href=""></a>                              Family<span class="sc">:</span> regr<span class="sc">+</span></span>
-<span id="cb20-14"><a href=""></a>                      Splitting rule<span class="sc">:</span> mahalanobis <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb20-15"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb20-16"><a href=""></a>                     (OOB) R squared<span class="sc">:</span> <span class="fl">0.13227364</span></span>
-<span id="cb20-17"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.55613339</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-8"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
+<span id="cb20-9"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">25</span></span>
+<span id="cb20-10"><a href=""></a>                            Analysis<span class="sc">:</span> mRF<span class="sc">-</span>R</span>
+<span id="cb20-11"><a href=""></a>                              Family<span class="sc">:</span> regr<span class="sc">+</span></span>
+<span id="cb20-12"><a href=""></a>                      Splitting rule<span class="sc">:</span> mahalanobis <span class="sc">*</span>random<span class="sc">*</span></span>
+<span id="cb20-13"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb20-14"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">9.828</span>, <span class="fl">0.554</span>, <span class="fl">8.29</span>, <span class="fl">4.695</span>, <span class="fl">0.059</span>, <span class="fl">7.816</span>, <span class="fl">42.496</span>, <span class="fl">9.231</span>, <span class="fl">0.015</span>, <span class="fl">0.434</span>, <span class="fl">63.52</span>, <span class="fl">0.765</span>, <span class="fl">0.034</span>, <span class="fl">0.158</span>, <span class="fl">16.66</span>, <span class="fl">0.058</span>, <span class="fl">0.392</span>, <span class="fl">30.194</span>, <span class="fl">0.029</span>, <span class="fl">4.556</span>, <span class="fl">0.632</span>, <span class="fl">15.793</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="multivariate-example-nutrigenomic-study-2" class="slide level2 smaller"><h2>Multivariate example: Nutrigenomic Study</h2>
 <div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="do">## acquire the error rate for each of the 21-coordinates </span></span>
@@ -2277,7 +2286,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </tbody>
 </table></section><section id="split-rules" class="slide level2 smaller"><h2>Split rules</h2>
 <h4 id="mahalanobis-splitting">mahalanobis splitting</h4>
-<div class="sourceCode" id="cb25" data-code-line-numbers="4,18|20-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">get.mv.formula</span>(<span class="fu">colnames</span>(ydta)),</span>
+<div class="sourceCode" id="cb25" data-code-line-numbers="4,16|18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">get.mv.formula</span>(<span class="fu">colnames</span>(ydta)),</span>
 <span id="cb25-2"><a href=""></a>             <span class="fu">data.frame</span>(ydta, xdta),</span>
 <span id="cb25-3"><a href=""></a>             <span class="at">importance=</span><span class="cn">TRUE</span>, <span class="at">nsplit =</span> <span class="dv">10</span>,</span>
 <span id="cb25-4"><a href=""></a>             <span class="at">splitrule =</span> <span class="st">"mahalanobis"</span>)</span>
@@ -2285,22 +2294,19 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb25-6"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">40</span></span>
 <span id="cb25-7"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
 <span id="cb25-8"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb25-9"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">4.776</span></span>
+<span id="cb25-9"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">4.754</span></span>
 <span id="cb25-10"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">41</span></span>
 <span id="cb25-11"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">122</span></span>
-<span id="cb25-12"><a href=""></a>              Total no. of responses<span class="sc">:</span> <span class="dv">21</span></span>
-<span id="cb25-13"><a href=""></a>         User has requested response<span class="sc">:</span> C14<span class="fl">.0</span></span>
-<span id="cb25-14"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb25-15"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">25</span></span>
-<span id="cb25-16"><a href=""></a>                            Analysis<span class="sc">:</span> mRF<span class="sc">-</span>R</span>
-<span id="cb25-17"><a href=""></a>                              Family<span class="sc">:</span> regr<span class="sc">+</span></span>
-<span id="cb25-18"><a href=""></a>                      Splitting rule<span class="sc">:</span> mahalanobis <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb25-19"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb25-20"><a href=""></a>                     (OOB) R squared<span class="sc">:</span> <span class="fl">0.13227364</span></span>
-<span id="cb25-21"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.55613339</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-12"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
+<span id="cb25-13"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">25</span></span>
+<span id="cb25-14"><a href=""></a>                            Analysis<span class="sc">:</span> mRF<span class="sc">-</span>R</span>
+<span id="cb25-15"><a href=""></a>                              Family<span class="sc">:</span> regr<span class="sc">+</span></span>
+<span id="cb25-16"><a href=""></a>                      Splitting rule<span class="sc">:</span> mahalanobis <span class="sc">*</span>random<span class="sc">*</span></span>
+<span id="cb25-17"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb25-18"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">9.68</span>, <span class="fl">0.553</span>, <span class="fl">8.162</span>, <span class="fl">4.763</span>, <span class="fl">0.06</span>, <span class="fl">7.737</span>, <span class="fl">42.574</span>, <span class="fl">9.289</span>, <span class="fl">0.015</span>, <span class="fl">0.442</span>, <span class="fl">61.226</span>, <span class="fl">0.766</span>, <span class="fl">0.033</span>, <span class="fl">0.156</span>, <span class="fl">16.106</span>, <span class="fl">0.054</span>, <span class="fl">0.383</span>, <span class="fl">30.393</span>, <span class="fl">0.03</span>, <span class="fl">4.733</span>, <span class="fl">0.609</span>, <span class="fl">15.203</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="split-rules-1" class="slide level2 smaller"><h2>Split rules</h2>
 <h4 id="default-composite-independence-splitting">default composite (independence) splitting</h4>
-<div class="sourceCode" id="cb26" data-code-line-numbers="4,18|20-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>o2 <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">get.mv.formula</span>(<span class="fu">colnames</span>(ydta)),</span>
+<div class="sourceCode" id="cb26" data-code-line-numbers="4,16|18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>o2 <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">get.mv.formula</span>(<span class="fu">colnames</span>(ydta)),</span>
 <span id="cb26-2"><a href=""></a>              <span class="fu">data.frame</span>(ydta, xdta),</span>
 <span id="cb26-3"><a href=""></a>              <span class="at">importance=</span><span class="cn">TRUE</span>, <span class="at">nsplit =</span> <span class="dv">10</span>)</span>
 <span id="cb26-4"><a href=""></a>              </span>
@@ -2308,19 +2314,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb26-6"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">40</span></span>
 <span id="cb26-7"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
 <span id="cb26-8"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb26-9"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">4.45</span></span>
+<span id="cb26-9"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">4.454</span></span>
 <span id="cb26-10"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">41</span></span>
 <span id="cb26-11"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">122</span></span>
-<span id="cb26-12"><a href=""></a>              Total no. of responses<span class="sc">:</span> <span class="dv">21</span></span>
-<span id="cb26-13"><a href=""></a>         User has requested response<span class="sc">:</span> C14<span class="fl">.0</span></span>
-<span id="cb26-14"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb26-15"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">25</span></span>
-<span id="cb26-16"><a href=""></a>                            Analysis<span class="sc">:</span> mRF<span class="sc">-</span>R</span>
-<span id="cb26-17"><a href=""></a>                              Family<span class="sc">:</span> regr<span class="sc">+</span></span>
-<span id="cb26-18"><a href=""></a>                      Splitting rule<span class="sc">:</span> mv <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb26-19"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb26-20"><a href=""></a>                     (OOB) R squared<span class="sc">:</span> <span class="fl">0.38963538</span></span>
-<span id="cb26-21"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.39118801</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-12"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
+<span id="cb26-13"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">25</span></span>
+<span id="cb26-14"><a href=""></a>                            Analysis<span class="sc">:</span> mRF<span class="sc">-</span>R</span>
+<span id="cb26-15"><a href=""></a>                              Family<span class="sc">:</span> regr<span class="sc">+</span></span>
+<span id="cb26-16"><a href=""></a>                      Splitting rule<span class="sc">:</span> mv <span class="sc">*</span>random<span class="sc">*</span></span>
+<span id="cb26-17"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb26-18"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">7.119</span>, <span class="fl">0.387</span>, <span class="fl">6.725</span>, <span class="fl">3.527</span>, <span class="fl">0.044</span>, <span class="fl">5.519</span>, <span class="fl">29.603</span>, <span class="fl">5.488</span>, <span class="fl">0.016</span>, <span class="fl">0.28</span>, <span class="fl">41.112</span>, <span class="fl">0.757</span>, <span class="fl">0.023</span>, <span class="fl">0.101</span>, <span class="fl">10.656</span>, <span class="fl">0.036</span>, <span class="fl">0.312</span>, <span class="fl">27.217</span>, <span class="fl">0.027</span>, <span class="fl">3.551</span>, <span class="fl">0.52</span>, <span class="fl">13.606</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="split-rules-2" class="slide level2 smaller"><h2>Split rules</h2>
 <h4 id="compare-vimp-under-the-two-split-rules">compare VIMP under the two split rules</h4>
 <div class="sourceCode" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="do">## compare standardized VIMP for top 25 variables</span></span>
