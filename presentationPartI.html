@@ -226,8 +226,49 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 </div>
 </div>
 
-</section><section id="brief-overview" class="slide level2"><h2>Brief Overview</h2>
-<p>This cover covers the following R packages</p>
+</section><section id="brief-overview-ecosystem" class="slide level2 smaller"><h2>Brief Overview: Ecosystem</h2>
+<div style="display:flex; gap:3%; margin-top:0.5em; font-size:0.78em;">
+<div style="display:flex; flex-direction:column; gap:3%; width:48%;">
+<div style="background:#2E86AB; color:white; padding:0.9em 1.2em; border-radius:8px;">
+<p><strong>RF-SRC</strong> — randomForestSRC</p>
+<ul>
+<li>Random Forests: classification, regression, survival (RSF &amp; competing risks)</li>
+<li>OOB error, permutation VIMP, partial dependence/effect, proximities, imputation</li>
+<li>OpenMP compute backend</li>
+</ul>
+</div>
+<div style="background:#E8A838; color:white; padding:0.9em 1.2em; border-radius:8px;">
+<p><strong>SGT</strong> — randomForestSGT</p>
+<ul>
+<li>Super Greedy Trees with multivariate geometric splits</li>
+<li>Currently emphasizes regression</li>
+</ul>
+</div>
+</div>
+<div style="display:flex; flex-direction:column; gap:3%; width:48%;">
+<div style="background:#6DBF67; color:white; padding:0.9em 1.2em; border-radius:8px;">
+<p><strong>VarPro</strong> — varPro</p>
+<ul>
+<li>
+<strong>Supervised</strong> model-independent variable selection (Variable Priority)</li>
+<li>Produces VI scores under supervision; complements permutation VIMP</li>
+</ul>
+</div>
+<br><div style="background:#7B68EE; color:white; padding:0.9em 1.2em; border-radius:8px;">
+<p><strong>RHF</strong> — randomForestRHF</p>
+<ul>
+<li>Random Hazard Forest for time-dependent hazard estimation</li>
+<li>Extends RSF to <strong>time-varying covariates</strong>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer">
+
+</div>
+</section><section id="brief-overview" class="slide level2 smaller"><h2>Brief Overview</h2>
+<p>This course covers the following R packages</p>
 <ol type="1">
 <li>
 <code>randomForestSRC</code>: Fast Unified Random Forests for Survival, Regression, and Classification <a href="https://cran.r-project.org/package=randomForestSRC">(CRAN link)</a>
@@ -236,7 +277,13 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <code>randomForestSRC.run</code>: Integrated visualization for the <code>randomForestSRC</code> package <a href="https://github.com/kogalur/randomForestSRC.run">(Github link)</a>
 </li>
 <li>
-<code>varPro</code>: Model-Independent Variable Selection via the Rule-Based Variable Priority <a href="https://github.com/kogalur/varPro">(Github link)</a>
+<code>varPro</code>: Model-Independent Variable Selection via the Rule-Based Variable Priority <a href="https://cran.r-project.org/package=varPro">(CRAN link)</a> <a href="https://github.com/kogalur/varPro">(Github link)</a>
+</li>
+<li>
+<code>randomForestSGT</code>: Super Greedy Trees with multivariate geometric splits <a href="https://cran.r-project.org/package=randomForestSGT">(CRAN link)</a> <a href="https://github.com/kogalur/randomForestSGT">(Github link)</a>
+</li>
+<li>
+<code>randomForestRHF</code>: Random Hazard Forest for time-dependent hazard estimation <a href="https://cran.r-project.org/package=randomForestRHF">(CRAN link)</a> <a href="https://github.com/kogalur/randomForestRHF">(Github link)</a>
 </li>
 </ol></section><section id="outline" class="slide level2 smaller"><h2><a href="index.html">Outline</a></h2>
 <div class="columns">
@@ -344,23 +391,23 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <p>Data from the Ames Assessor’s Office used in assessing values of individual residential properties sold in Ames, Iowa from 2006 to 2010. This is a regression problem and the goal is to predict “SalePrice” which records the price of a home in thousands of dollars <span class="citation" data-cites="de2011ames">[<a href="#/references" role="doc-biblioref" onclick="">3</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="xpolptkmfn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xpolptkmfn table {
+<div id="lhhvlvfbux" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lhhvlvfbux table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xpolptkmfn thead, #xpolptkmfn tbody, #xpolptkmfn tfoot, #xpolptkmfn tr, #xpolptkmfn td, #xpolptkmfn th {
+#lhhvlvfbux thead, #lhhvlvfbux tbody, #lhhvlvfbux tfoot, #lhhvlvfbux tr, #lhhvlvfbux td, #lhhvlvfbux th {
   border-style: none;
 }
 
-#xpolptkmfn p {
+#lhhvlvfbux p {
   margin: 0;
   padding: 0;
 }
 
-#xpolptkmfn .gt_table {
+#lhhvlvfbux .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -386,12 +433,12 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-left-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_caption {
+#lhhvlvfbux .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xpolptkmfn .gt_title {
+#lhhvlvfbux .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -403,7 +450,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-bottom-width: 0;
 }
 
-#xpolptkmfn .gt_subtitle {
+#lhhvlvfbux .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -415,7 +462,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-top-width: 0;
 }
 
-#xpolptkmfn .gt_heading {
+#lhhvlvfbux .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -427,13 +474,13 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-right-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_bottom_border {
+#lhhvlvfbux .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_col_headings {
+#lhhvlvfbux .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -448,7 +495,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-right-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_col_heading {
+#lhhvlvfbux .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -468,7 +515,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   overflow-x: hidden;
 }
 
-#xpolptkmfn .gt_column_spanner_outer {
+#lhhvlvfbux .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -480,15 +527,15 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 4px;
 }
 
-#xpolptkmfn .gt_column_spanner_outer:first-child {
+#lhhvlvfbux .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xpolptkmfn .gt_column_spanner_outer:last-child {
+#lhhvlvfbux .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xpolptkmfn .gt_column_spanner {
+#lhhvlvfbux .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -500,11 +547,11 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   width: 100%;
 }
 
-#xpolptkmfn .gt_spanner_row {
+#lhhvlvfbux .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xpolptkmfn .gt_group_heading {
+#lhhvlvfbux .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -530,7 +577,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   text-align: left;
 }
 
-#xpolptkmfn .gt_empty_group_heading {
+#lhhvlvfbux .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -545,15 +592,15 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   vertical-align: middle;
 }
 
-#xpolptkmfn .gt_from_md > :first-child {
+#lhhvlvfbux .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xpolptkmfn .gt_from_md > :last-child {
+#lhhvlvfbux .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xpolptkmfn .gt_row {
+#lhhvlvfbux .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -572,7 +619,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   overflow-x: hidden;
 }
 
-#xpolptkmfn .gt_stub {
+#lhhvlvfbux .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -585,7 +632,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 5px;
 }
 
-#xpolptkmfn .gt_stub_row_group {
+#lhhvlvfbux .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -599,15 +646,15 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   vertical-align: top;
 }
 
-#xpolptkmfn .gt_row_group_first td {
+#lhhvlvfbux .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xpolptkmfn .gt_row_group_first th {
+#lhhvlvfbux .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xpolptkmfn .gt_summary_row {
+#lhhvlvfbux .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -617,16 +664,16 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 5px;
 }
 
-#xpolptkmfn .gt_first_summary_row {
+#lhhvlvfbux .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_first_summary_row.thick {
+#lhhvlvfbux .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xpolptkmfn .gt_last_summary_row {
+#lhhvlvfbux .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -636,7 +683,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-bottom-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_grand_summary_row {
+#lhhvlvfbux .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -646,7 +693,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 5px;
 }
 
-#xpolptkmfn .gt_first_grand_summary_row {
+#lhhvlvfbux .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -656,7 +703,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-top-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_last_grand_summary_row_top {
+#lhhvlvfbux .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -666,11 +713,11 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-bottom-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_striped {
+#lhhvlvfbux .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xpolptkmfn .gt_table_body {
+#lhhvlvfbux .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -679,7 +726,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-bottom-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_footnotes {
+#lhhvlvfbux .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -693,7 +740,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-right-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_footnote {
+#lhhvlvfbux .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -702,7 +749,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 5px;
 }
 
-#xpolptkmfn .gt_sourcenotes {
+#lhhvlvfbux .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -716,7 +763,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-right-color: #D3D3D3;
 }
 
-#xpolptkmfn .gt_sourcenote {
+#lhhvlvfbux .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -724,72 +771,72 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 5px;
 }
 
-#xpolptkmfn .gt_left {
+#lhhvlvfbux .gt_left {
   text-align: left;
 }
 
-#xpolptkmfn .gt_center {
+#lhhvlvfbux .gt_center {
   text-align: center;
 }
 
-#xpolptkmfn .gt_right {
+#lhhvlvfbux .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xpolptkmfn .gt_font_normal {
+#lhhvlvfbux .gt_font_normal {
   font-weight: normal;
 }
 
-#xpolptkmfn .gt_font_bold {
+#lhhvlvfbux .gt_font_bold {
   font-weight: bold;
 }
 
-#xpolptkmfn .gt_font_italic {
+#lhhvlvfbux .gt_font_italic {
   font-style: italic;
 }
 
-#xpolptkmfn .gt_super {
+#lhhvlvfbux .gt_super {
   font-size: 65%;
 }
 
-#xpolptkmfn .gt_footnote_marks {
+#lhhvlvfbux .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xpolptkmfn .gt_asterisk {
+#lhhvlvfbux .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xpolptkmfn .gt_indent_1 {
+#lhhvlvfbux .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xpolptkmfn .gt_indent_2 {
+#lhhvlvfbux .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xpolptkmfn .gt_indent_3 {
+#lhhvlvfbux .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xpolptkmfn .gt_indent_4 {
+#lhhvlvfbux .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xpolptkmfn .gt_indent_5 {
+#lhhvlvfbux .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xpolptkmfn .katex-display {
+#lhhvlvfbux .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xpolptkmfn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lhhvlvfbux div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1978,23 +2025,23 @@ Corresponding input (arguments)
 <p>Subset of the data used in Ceccarelli et al.&nbsp;(2016) for molecular profiling of adult diffuse gliomas. It contains 1206 probes from 880 tissues, clinical data and other molecular data. The outcome has class labels: Classic-like, Codel, G-CIMP-high, G-CIMP-low, LGm6-GBM, Mesenchymal-like and PA-like <span class="citation" data-cites="ceccarelli2016molecular">[<a href="#/references" role="doc-biblioref" onclick="">4</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="grcbcroajx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#grcbcroajx table {
+<div id="arehpnuncy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#arehpnuncy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#grcbcroajx thead, #grcbcroajx tbody, #grcbcroajx tfoot, #grcbcroajx tr, #grcbcroajx td, #grcbcroajx th {
+#arehpnuncy thead, #arehpnuncy tbody, #arehpnuncy tfoot, #arehpnuncy tr, #arehpnuncy td, #arehpnuncy th {
   border-style: none;
 }
 
-#grcbcroajx p {
+#arehpnuncy p {
   margin: 0;
   padding: 0;
 }
 
-#grcbcroajx .gt_table {
+#arehpnuncy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2020,12 +2067,12 @@ Corresponding input (arguments)
   border-left-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_caption {
+#arehpnuncy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#grcbcroajx .gt_title {
+#arehpnuncy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2037,7 +2084,7 @@ Corresponding input (arguments)
   border-bottom-width: 0;
 }
 
-#grcbcroajx .gt_subtitle {
+#arehpnuncy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2049,7 +2096,7 @@ Corresponding input (arguments)
   border-top-width: 0;
 }
 
-#grcbcroajx .gt_heading {
+#arehpnuncy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2061,13 +2108,13 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_bottom_border {
+#arehpnuncy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_col_headings {
+#arehpnuncy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2082,7 +2129,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_col_heading {
+#arehpnuncy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2102,7 +2149,7 @@ Corresponding input (arguments)
   overflow-x: hidden;
 }
 
-#grcbcroajx .gt_column_spanner_outer {
+#arehpnuncy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2114,15 +2161,15 @@ Corresponding input (arguments)
   padding-right: 4px;
 }
 
-#grcbcroajx .gt_column_spanner_outer:first-child {
+#arehpnuncy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#grcbcroajx .gt_column_spanner_outer:last-child {
+#arehpnuncy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#grcbcroajx .gt_column_spanner {
+#arehpnuncy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2134,11 +2181,11 @@ Corresponding input (arguments)
   width: 100%;
 }
 
-#grcbcroajx .gt_spanner_row {
+#arehpnuncy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#grcbcroajx .gt_group_heading {
+#arehpnuncy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2164,7 +2211,7 @@ Corresponding input (arguments)
   text-align: left;
 }
 
-#grcbcroajx .gt_empty_group_heading {
+#arehpnuncy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2179,15 +2226,15 @@ Corresponding input (arguments)
   vertical-align: middle;
 }
 
-#grcbcroajx .gt_from_md > :first-child {
+#arehpnuncy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#grcbcroajx .gt_from_md > :last-child {
+#arehpnuncy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#grcbcroajx .gt_row {
+#arehpnuncy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2206,7 +2253,7 @@ Corresponding input (arguments)
   overflow-x: hidden;
 }
 
-#grcbcroajx .gt_stub {
+#arehpnuncy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2219,7 +2266,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#grcbcroajx .gt_stub_row_group {
+#arehpnuncy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2233,15 +2280,15 @@ Corresponding input (arguments)
   vertical-align: top;
 }
 
-#grcbcroajx .gt_row_group_first td {
+#arehpnuncy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#grcbcroajx .gt_row_group_first th {
+#arehpnuncy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#grcbcroajx .gt_summary_row {
+#arehpnuncy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2251,16 +2298,16 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#grcbcroajx .gt_first_summary_row {
+#arehpnuncy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_first_summary_row.thick {
+#arehpnuncy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#grcbcroajx .gt_last_summary_row {
+#arehpnuncy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2270,7 +2317,7 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_grand_summary_row {
+#arehpnuncy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2280,7 +2327,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#grcbcroajx .gt_first_grand_summary_row {
+#arehpnuncy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2290,7 +2337,7 @@ Corresponding input (arguments)
   border-top-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_last_grand_summary_row_top {
+#arehpnuncy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2300,11 +2347,11 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_striped {
+#arehpnuncy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#grcbcroajx .gt_table_body {
+#arehpnuncy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2313,7 +2360,7 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_footnotes {
+#arehpnuncy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2327,7 +2374,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_footnote {
+#arehpnuncy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2336,7 +2383,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#grcbcroajx .gt_sourcenotes {
+#arehpnuncy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2350,7 +2397,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#grcbcroajx .gt_sourcenote {
+#arehpnuncy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2358,72 +2405,72 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#grcbcroajx .gt_left {
+#arehpnuncy .gt_left {
   text-align: left;
 }
 
-#grcbcroajx .gt_center {
+#arehpnuncy .gt_center {
   text-align: center;
 }
 
-#grcbcroajx .gt_right {
+#arehpnuncy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#grcbcroajx .gt_font_normal {
+#arehpnuncy .gt_font_normal {
   font-weight: normal;
 }
 
-#grcbcroajx .gt_font_bold {
+#arehpnuncy .gt_font_bold {
   font-weight: bold;
 }
 
-#grcbcroajx .gt_font_italic {
+#arehpnuncy .gt_font_italic {
   font-style: italic;
 }
 
-#grcbcroajx .gt_super {
+#arehpnuncy .gt_super {
   font-size: 65%;
 }
 
-#grcbcroajx .gt_footnote_marks {
+#arehpnuncy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#grcbcroajx .gt_asterisk {
+#arehpnuncy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#grcbcroajx .gt_indent_1 {
+#arehpnuncy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#grcbcroajx .gt_indent_2 {
+#arehpnuncy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#grcbcroajx .gt_indent_3 {
+#arehpnuncy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#grcbcroajx .gt_indent_4 {
+#arehpnuncy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#grcbcroajx .gt_indent_5 {
+#arehpnuncy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#grcbcroajx .katex-display {
+#arehpnuncy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#grcbcroajx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#arehpnuncy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2815,23 +2862,23 @@ Corresponding input (arguments)
 <p>This data is from the Mayo Clinic trial in Primary Biliary Cirrhosis (PBC) conducted between 1974 and 1984. Among the total 424 PBC patients, the first 312 cases participated in a randomized placebo controlled trial of the drug D-penicillamine with largely complete data. The additional 112 cases did not participate in the clinical trial, but consented to have basic measurements and to be followed for survival <span class="citation" data-cites="Therneau2000modeling">[<a href="#/references" role="doc-biblioref" onclick="">8</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="jgvfcgqzma" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jgvfcgqzma table {
+<div id="tbtpppcpoa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tbtpppcpoa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jgvfcgqzma thead, #jgvfcgqzma tbody, #jgvfcgqzma tfoot, #jgvfcgqzma tr, #jgvfcgqzma td, #jgvfcgqzma th {
+#tbtpppcpoa thead, #tbtpppcpoa tbody, #tbtpppcpoa tfoot, #tbtpppcpoa tr, #tbtpppcpoa td, #tbtpppcpoa th {
   border-style: none;
 }
 
-#jgvfcgqzma p {
+#tbtpppcpoa p {
   margin: 0;
   padding: 0;
 }
 
-#jgvfcgqzma .gt_table {
+#tbtpppcpoa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2857,12 +2904,12 @@ Corresponding input (arguments)
   border-left-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_caption {
+#tbtpppcpoa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jgvfcgqzma .gt_title {
+#tbtpppcpoa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2874,7 +2921,7 @@ Corresponding input (arguments)
   border-bottom-width: 0;
 }
 
-#jgvfcgqzma .gt_subtitle {
+#tbtpppcpoa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2886,7 +2933,7 @@ Corresponding input (arguments)
   border-top-width: 0;
 }
 
-#jgvfcgqzma .gt_heading {
+#tbtpppcpoa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2898,13 +2945,13 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_bottom_border {
+#tbtpppcpoa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_col_headings {
+#tbtpppcpoa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2919,7 +2966,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_col_heading {
+#tbtpppcpoa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2939,7 +2986,7 @@ Corresponding input (arguments)
   overflow-x: hidden;
 }
 
-#jgvfcgqzma .gt_column_spanner_outer {
+#tbtpppcpoa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2951,15 +2998,15 @@ Corresponding input (arguments)
   padding-right: 4px;
 }
 
-#jgvfcgqzma .gt_column_spanner_outer:first-child {
+#tbtpppcpoa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jgvfcgqzma .gt_column_spanner_outer:last-child {
+#tbtpppcpoa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jgvfcgqzma .gt_column_spanner {
+#tbtpppcpoa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2971,11 +3018,11 @@ Corresponding input (arguments)
   width: 100%;
 }
 
-#jgvfcgqzma .gt_spanner_row {
+#tbtpppcpoa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jgvfcgqzma .gt_group_heading {
+#tbtpppcpoa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3001,7 +3048,7 @@ Corresponding input (arguments)
   text-align: left;
 }
 
-#jgvfcgqzma .gt_empty_group_heading {
+#tbtpppcpoa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3016,15 +3063,15 @@ Corresponding input (arguments)
   vertical-align: middle;
 }
 
-#jgvfcgqzma .gt_from_md > :first-child {
+#tbtpppcpoa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jgvfcgqzma .gt_from_md > :last-child {
+#tbtpppcpoa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jgvfcgqzma .gt_row {
+#tbtpppcpoa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3043,7 +3090,7 @@ Corresponding input (arguments)
   overflow-x: hidden;
 }
 
-#jgvfcgqzma .gt_stub {
+#tbtpppcpoa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3056,7 +3103,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#jgvfcgqzma .gt_stub_row_group {
+#tbtpppcpoa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3070,15 +3117,15 @@ Corresponding input (arguments)
   vertical-align: top;
 }
 
-#jgvfcgqzma .gt_row_group_first td {
+#tbtpppcpoa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jgvfcgqzma .gt_row_group_first th {
+#tbtpppcpoa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jgvfcgqzma .gt_summary_row {
+#tbtpppcpoa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3088,16 +3135,16 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#jgvfcgqzma .gt_first_summary_row {
+#tbtpppcpoa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_first_summary_row.thick {
+#tbtpppcpoa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jgvfcgqzma .gt_last_summary_row {
+#tbtpppcpoa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3107,7 +3154,7 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_grand_summary_row {
+#tbtpppcpoa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3117,7 +3164,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#jgvfcgqzma .gt_first_grand_summary_row {
+#tbtpppcpoa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3127,7 +3174,7 @@ Corresponding input (arguments)
   border-top-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_last_grand_summary_row_top {
+#tbtpppcpoa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3137,11 +3184,11 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_striped {
+#tbtpppcpoa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jgvfcgqzma .gt_table_body {
+#tbtpppcpoa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3150,7 +3197,7 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_footnotes {
+#tbtpppcpoa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3164,7 +3211,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_footnote {
+#tbtpppcpoa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3173,7 +3220,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#jgvfcgqzma .gt_sourcenotes {
+#tbtpppcpoa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3187,7 +3234,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#jgvfcgqzma .gt_sourcenote {
+#tbtpppcpoa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3195,72 +3242,72 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#jgvfcgqzma .gt_left {
+#tbtpppcpoa .gt_left {
   text-align: left;
 }
 
-#jgvfcgqzma .gt_center {
+#tbtpppcpoa .gt_center {
   text-align: center;
 }
 
-#jgvfcgqzma .gt_right {
+#tbtpppcpoa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jgvfcgqzma .gt_font_normal {
+#tbtpppcpoa .gt_font_normal {
   font-weight: normal;
 }
 
-#jgvfcgqzma .gt_font_bold {
+#tbtpppcpoa .gt_font_bold {
   font-weight: bold;
 }
 
-#jgvfcgqzma .gt_font_italic {
+#tbtpppcpoa .gt_font_italic {
   font-style: italic;
 }
 
-#jgvfcgqzma .gt_super {
+#tbtpppcpoa .gt_super {
   font-size: 65%;
 }
 
-#jgvfcgqzma .gt_footnote_marks {
+#tbtpppcpoa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jgvfcgqzma .gt_asterisk {
+#tbtpppcpoa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jgvfcgqzma .gt_indent_1 {
+#tbtpppcpoa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jgvfcgqzma .gt_indent_2 {
+#tbtpppcpoa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jgvfcgqzma .gt_indent_3 {
+#tbtpppcpoa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jgvfcgqzma .gt_indent_4 {
+#tbtpppcpoa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jgvfcgqzma .gt_indent_5 {
+#tbtpppcpoa .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jgvfcgqzma .katex-display {
+#tbtpppcpoa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jgvfcgqzma div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tbtpppcpoa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

@@ -230,7 +230,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <li>Class Imbalanced Data</li>
 <li>Competing Risks</li>
 <li>Multivariate Forests</li>
-<li>Missing data imputation</li>
+<li>Missing Data Imputation and OOD Scoring</li>
 </ol></section><section id="imbalanced-classification" class="slide level2 smaller"><h2>Imbalanced classification</h2>
 <p><br></p>
 <table class="table-striped border small table-sm caption-top">
@@ -649,23 +649,23 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </section><section id="competing-risk-example-pbc-mayo-clinic" class="slide level2 smaller"><h2>Competing risk example: PBC Mayo Clinic</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="mxarldcnsa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mxarldcnsa table {
+<div id="egdjvnvgtl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#egdjvnvgtl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mxarldcnsa thead, #mxarldcnsa tbody, #mxarldcnsa tfoot, #mxarldcnsa tr, #mxarldcnsa td, #mxarldcnsa th {
+#egdjvnvgtl thead, #egdjvnvgtl tbody, #egdjvnvgtl tfoot, #egdjvnvgtl tr, #egdjvnvgtl td, #egdjvnvgtl th {
   border-style: none;
 }
 
-#mxarldcnsa p {
+#egdjvnvgtl p {
   margin: 0;
   padding: 0;
 }
 
-#mxarldcnsa .gt_table {
+#egdjvnvgtl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -691,12 +691,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-left-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_caption {
+#egdjvnvgtl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mxarldcnsa .gt_title {
+#egdjvnvgtl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -708,7 +708,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-width: 0;
 }
 
-#mxarldcnsa .gt_subtitle {
+#egdjvnvgtl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -720,7 +720,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-width: 0;
 }
 
-#mxarldcnsa .gt_heading {
+#egdjvnvgtl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -732,13 +732,13 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_bottom_border {
+#egdjvnvgtl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_col_headings {
+#egdjvnvgtl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -753,7 +753,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_col_heading {
+#egdjvnvgtl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -773,7 +773,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#mxarldcnsa .gt_column_spanner_outer {
+#egdjvnvgtl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -785,15 +785,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 4px;
 }
 
-#mxarldcnsa .gt_column_spanner_outer:first-child {
+#egdjvnvgtl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mxarldcnsa .gt_column_spanner_outer:last-child {
+#egdjvnvgtl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mxarldcnsa .gt_column_spanner {
+#egdjvnvgtl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -805,11 +805,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   width: 100%;
 }
 
-#mxarldcnsa .gt_spanner_row {
+#egdjvnvgtl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mxarldcnsa .gt_group_heading {
+#egdjvnvgtl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -835,7 +835,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   text-align: left;
 }
 
-#mxarldcnsa .gt_empty_group_heading {
+#egdjvnvgtl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -850,15 +850,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: middle;
 }
 
-#mxarldcnsa .gt_from_md > :first-child {
+#egdjvnvgtl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mxarldcnsa .gt_from_md > :last-child {
+#egdjvnvgtl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mxarldcnsa .gt_row {
+#egdjvnvgtl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -877,7 +877,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#mxarldcnsa .gt_stub {
+#egdjvnvgtl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -890,7 +890,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#mxarldcnsa .gt_stub_row_group {
+#egdjvnvgtl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -904,15 +904,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: top;
 }
 
-#mxarldcnsa .gt_row_group_first td {
+#egdjvnvgtl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mxarldcnsa .gt_row_group_first th {
+#egdjvnvgtl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mxarldcnsa .gt_summary_row {
+#egdjvnvgtl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -922,16 +922,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#mxarldcnsa .gt_first_summary_row {
+#egdjvnvgtl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_first_summary_row.thick {
+#egdjvnvgtl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mxarldcnsa .gt_last_summary_row {
+#egdjvnvgtl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -941,7 +941,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_grand_summary_row {
+#egdjvnvgtl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -951,7 +951,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#mxarldcnsa .gt_first_grand_summary_row {
+#egdjvnvgtl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -961,7 +961,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_last_grand_summary_row_top {
+#egdjvnvgtl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -971,11 +971,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_striped {
+#egdjvnvgtl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mxarldcnsa .gt_table_body {
+#egdjvnvgtl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -984,7 +984,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_footnotes {
+#egdjvnvgtl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -998,7 +998,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_footnote {
+#egdjvnvgtl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1007,7 +1007,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#mxarldcnsa .gt_sourcenotes {
+#egdjvnvgtl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1021,7 +1021,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#mxarldcnsa .gt_sourcenote {
+#egdjvnvgtl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1029,72 +1029,72 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#mxarldcnsa .gt_left {
+#egdjvnvgtl .gt_left {
   text-align: left;
 }
 
-#mxarldcnsa .gt_center {
+#egdjvnvgtl .gt_center {
   text-align: center;
 }
 
-#mxarldcnsa .gt_right {
+#egdjvnvgtl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mxarldcnsa .gt_font_normal {
+#egdjvnvgtl .gt_font_normal {
   font-weight: normal;
 }
 
-#mxarldcnsa .gt_font_bold {
+#egdjvnvgtl .gt_font_bold {
   font-weight: bold;
 }
 
-#mxarldcnsa .gt_font_italic {
+#egdjvnvgtl .gt_font_italic {
   font-style: italic;
 }
 
-#mxarldcnsa .gt_super {
+#egdjvnvgtl .gt_super {
   font-size: 65%;
 }
 
-#mxarldcnsa .gt_footnote_marks {
+#egdjvnvgtl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mxarldcnsa .gt_asterisk {
+#egdjvnvgtl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mxarldcnsa .gt_indent_1 {
+#egdjvnvgtl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mxarldcnsa .gt_indent_2 {
+#egdjvnvgtl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mxarldcnsa .gt_indent_3 {
+#egdjvnvgtl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mxarldcnsa .gt_indent_4 {
+#egdjvnvgtl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mxarldcnsa .gt_indent_5 {
+#egdjvnvgtl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mxarldcnsa .katex-display {
+#egdjvnvgtl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mxarldcnsa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#egdjvnvgtl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1537,23 +1537,23 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <p>Study the effects of five diet treatments on 21 liver lipids and 120 hepatic gene expression in wild-type and PPAR-alpha deficient mice. We regress gene expression, diet and genotype (x-variables) on lipid expressions (multivariate y-responses) <span class="citation" data-cites="martin2007novel">[<a href="#/references" role="doc-biblioref" onclick="">4</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="vatqpgohit" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vatqpgohit table {
+<div id="mhovidxhkv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mhovidxhkv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vatqpgohit thead, #vatqpgohit tbody, #vatqpgohit tfoot, #vatqpgohit tr, #vatqpgohit td, #vatqpgohit th {
+#mhovidxhkv thead, #mhovidxhkv tbody, #mhovidxhkv tfoot, #mhovidxhkv tr, #mhovidxhkv td, #mhovidxhkv th {
   border-style: none;
 }
 
-#vatqpgohit p {
+#mhovidxhkv p {
   margin: 0;
   padding: 0;
 }
 
-#vatqpgohit .gt_table {
+#mhovidxhkv .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1579,12 +1579,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-left-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_caption {
+#mhovidxhkv .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vatqpgohit .gt_title {
+#mhovidxhkv .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1596,7 +1596,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-width: 0;
 }
 
-#vatqpgohit .gt_subtitle {
+#mhovidxhkv .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1608,7 +1608,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-width: 0;
 }
 
-#vatqpgohit .gt_heading {
+#mhovidxhkv .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1620,13 +1620,13 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_bottom_border {
+#mhovidxhkv .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_col_headings {
+#mhovidxhkv .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1641,7 +1641,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_col_heading {
+#mhovidxhkv .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1661,7 +1661,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#vatqpgohit .gt_column_spanner_outer {
+#mhovidxhkv .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1673,15 +1673,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 4px;
 }
 
-#vatqpgohit .gt_column_spanner_outer:first-child {
+#mhovidxhkv .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vatqpgohit .gt_column_spanner_outer:last-child {
+#mhovidxhkv .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vatqpgohit .gt_column_spanner {
+#mhovidxhkv .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1693,11 +1693,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   width: 100%;
 }
 
-#vatqpgohit .gt_spanner_row {
+#mhovidxhkv .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vatqpgohit .gt_group_heading {
+#mhovidxhkv .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1723,7 +1723,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   text-align: left;
 }
 
-#vatqpgohit .gt_empty_group_heading {
+#mhovidxhkv .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1738,15 +1738,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: middle;
 }
 
-#vatqpgohit .gt_from_md > :first-child {
+#mhovidxhkv .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vatqpgohit .gt_from_md > :last-child {
+#mhovidxhkv .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vatqpgohit .gt_row {
+#mhovidxhkv .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1765,7 +1765,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   overflow-x: hidden;
 }
 
-#vatqpgohit .gt_stub {
+#mhovidxhkv .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1778,7 +1778,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#vatqpgohit .gt_stub_row_group {
+#mhovidxhkv .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1792,15 +1792,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   vertical-align: top;
 }
 
-#vatqpgohit .gt_row_group_first td {
+#mhovidxhkv .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vatqpgohit .gt_row_group_first th {
+#mhovidxhkv .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vatqpgohit .gt_summary_row {
+#mhovidxhkv .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1810,16 +1810,16 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#vatqpgohit .gt_first_summary_row {
+#mhovidxhkv .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_first_summary_row.thick {
+#mhovidxhkv .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vatqpgohit .gt_last_summary_row {
+#mhovidxhkv .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1829,7 +1829,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_grand_summary_row {
+#mhovidxhkv .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1839,7 +1839,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#vatqpgohit .gt_first_grand_summary_row {
+#mhovidxhkv .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1849,7 +1849,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-top-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_last_grand_summary_row_top {
+#mhovidxhkv .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1859,11 +1859,11 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_striped {
+#mhovidxhkv .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vatqpgohit .gt_table_body {
+#mhovidxhkv .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1872,7 +1872,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-bottom-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_footnotes {
+#mhovidxhkv .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1886,7 +1886,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_footnote {
+#mhovidxhkv .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1895,7 +1895,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#vatqpgohit .gt_sourcenotes {
+#mhovidxhkv .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1909,7 +1909,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   border-right-color: #D3D3D3;
 }
 
-#vatqpgohit .gt_sourcenote {
+#mhovidxhkv .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1917,72 +1917,72 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
   padding-right: 5px;
 }
 
-#vatqpgohit .gt_left {
+#mhovidxhkv .gt_left {
   text-align: left;
 }
 
-#vatqpgohit .gt_center {
+#mhovidxhkv .gt_center {
   text-align: center;
 }
 
-#vatqpgohit .gt_right {
+#mhovidxhkv .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vatqpgohit .gt_font_normal {
+#mhovidxhkv .gt_font_normal {
   font-weight: normal;
 }
 
-#vatqpgohit .gt_font_bold {
+#mhovidxhkv .gt_font_bold {
   font-weight: bold;
 }
 
-#vatqpgohit .gt_font_italic {
+#mhovidxhkv .gt_font_italic {
   font-style: italic;
 }
 
-#vatqpgohit .gt_super {
+#mhovidxhkv .gt_super {
   font-size: 65%;
 }
 
-#vatqpgohit .gt_footnote_marks {
+#mhovidxhkv .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vatqpgohit .gt_asterisk {
+#mhovidxhkv .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vatqpgohit .gt_indent_1 {
+#mhovidxhkv .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vatqpgohit .gt_indent_2 {
+#mhovidxhkv .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vatqpgohit .gt_indent_3 {
+#mhovidxhkv .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vatqpgohit .gt_indent_4 {
+#mhovidxhkv .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vatqpgohit .gt_indent_5 {
+#mhovidxhkv .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vatqpgohit .katex-display {
+#mhovidxhkv .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vatqpgohit div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mhovidxhkv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2345,18 +2345,26 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </li>
 <li>When predicting data using <code>na.action="na.impute"</code> in <code>predict</code>
 </li>
-<li>Prior to any analysis using <code>impute</code>
+<li>
+<strong>Prior to any analysis using</strong> <code>impute</code>
+</li>
+<li>
+<strong>Prior to any analysis and at test time using</strong> <code>impute.learn</code>
 </li>
 </ol>
-<p>There are two methods used for imputing missing data</p>
+<p>Imputing missing training data with <code>impute</code> (and <code>impute.learn</code>)</p>
 <ol type="1">
 <li>OTFI (On the fly imputation): simultaneously impute data while growing a tree</li>
 <li>missForest: grow a forest using each variable as the <span class="math inline">\(y\)</span> outcome and predicting the missing values</li>
+</ol>
+<p>Imputing missing testing data with <code>impute.learn</code></p>
+<ol type="1">
+<li>Collection of banked trainings forests are used to predict missing<br> values at test time</li>
 </ol></section><section id="general-call-to-impute" class="slide level2"><h2>General call to impute</h2>
 <div class="fragment fade-left">
 <p><img data-src="pic/impute.png" style="width:80.0%"></p>
 </div>
-</section><section id="otfi" class="slide level2"><h2>OTFI</h2>
+</section><section id="otfi-for-training-data" class="slide level2"><h2>OTFI for training data</h2>
 <ol type="1">
 <li>Only non-missing data are used for split-statistics. Daughter node membership assignment for missing data is made by sampling from the non-missing inbag data</li>
 <li>Can be used for supervised settings</li>
@@ -2368,8 +2376,10 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </ol>
 <div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
 <span id="cb30-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section><section id="missforest-and-mforest" class="slide level2"><h2>missForest and mForest</h2>
-<h3 id="multivariate-missforest">(multivariate missForest)</h3>
+<div class="footer">
+
+</div>
+</section><section id="missforest-and-mforest-for-training-data" class="slide level2"><h2>missForest and mForest for training data</h2>
 <p>The imputation problem is turned into a series of regression problem</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
 <span id="cb31-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>pbc, <span class="at">mf.q=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2377,6 +2387,265 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="fu">data</span>(housing, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
 <span id="cb32-2"><a href=""></a>housing.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>housing, <span class="at">mf.q=</span>.<span class="dv">5</span>)</span>
 <span id="cb32-3"><a href=""></a>housing.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>housing, <span class="at">mf.q=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="test-time-imputation-using-impute.learn" class="slide level2 smaller"><h2>Test time imputation using <code>impute.learn</code>
+</h2>
+<p>There are four principal functions</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>fit         <span class="ot">&lt;-</span> <span class="fu">impute.learn</span>(...)</span>
+<span id="cb33-2"><a href=""></a>newdata.imp <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, <span class="at">newdata =</span> ...)</span>
+<span id="cb33-3"><a href=""></a><span class="fu">save.impute.learn</span>(fit, <span class="at">path =</span> ...)</span>
+<span id="cb33-4"><a href=""></a>load.fit    <span class="ot">&lt;-</span> <span class="fu">load.impute.learn</span>(<span class="at">path =</span> ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment fade-up">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img data-src="pic/train_test_time_imputation.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
+</figure>
+</div>
+</div>
+</section><section id="test-time-imputation" class="slide level2 smaller"><h2>Test time imputation</h2>
+<p>The following uses the <code>airquality</code> data as a toy example</p>
+<div class="sourceCode" id="cb34" data-code-line-numbers="1-3|5-12|13-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a>aq <span class="ot">&lt;-</span> airquality[, <span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>, <span class="st">"Month"</span>)]</span>
+<span id="cb34-2"><a href=""></a></span>
+<span id="cb34-3"><a href=""></a>id <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(aq)), <span class="dv">100</span>); train <span class="ot">&lt;-</span> aq[id, ]; test  <span class="ot">&lt;-</span> aq[<span class="sc">-</span>id, ]</span>
+<span id="cb34-4"><a href=""></a></span>
+<span id="cb34-5"><a href=""></a><span class="do">## imputation/training</span></span>
+<span id="cb34-6"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">impute.learn</span>(</span>
+<span id="cb34-7"><a href=""></a>  <span class="at">data =</span> train,</span>
+<span id="cb34-8"><a href=""></a>  <span class="at">mf.q =</span> <span class="dv">1</span>,</span>
+<span id="cb34-9"><a href=""></a>  <span class="at">max.iter =</span> <span class="dv">5</span>,</span>
+<span id="cb34-10"><a href=""></a>  <span class="at">full.sweep.options =</span> <span class="fu">list</span>(<span class="at">ntree =</span> <span class="dv">25</span>, <span class="at">nsplit =</span> <span class="dv">5</span>),</span>
+<span id="cb34-11"><a href=""></a>  <span class="at">target.mode =</span> <span class="st">"all"</span></span>
+<span id="cb34-12"><a href=""></a>)</span>
+<span id="cb34-13"><a href=""></a></span>
+<span id="cb34-14"><a href=""></a><span class="do">## test time imputation</span></span>
+<span id="cb34-15"><a href=""></a>test.imp <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, test, <span class="at">max.predict.iter =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment fade-up">
+<ul>
+<li>The fitting and prediction interfaces follow the <code>impute()</code> workflow, but several arguments play a special role for test-time use</li>
+<li>
+<code>target.mode = "all"</code> is recommended here because it makes the learned imputer robust to missingness that may occur later in variables that<br> happened to be complete in the particular training split</li>
+</ul>
+</div>
+</section><section id="test-time-ood-detection-and-scoring" class="slide level2 smaller"><h2>Test time OOD detection and scoring</h2>
+<p>OOD detection (anomaly detection) means several things, depending on the goals:</p>
+<ol type="1">
+<li class="fragment">Does <span class="math inline">\(X\)</span> look unusual?</li>
+<li class="fragment">Does <span class="math inline">\(X\)</span> look unusual along coordinates useful for prediction?</li>
+<li class="fragment">Does <span class="math inline">\(X\)</span> look unusual for prediction?</li>
+</ol>
+<div class="fragment fade-up">
+<p>We answer this by asking</p>
+<blockquote>
+<p><em>Can each observed part of the row be predicted from the other parts as well as it could be in training?</em></p>
+</blockquote>
+<p>This single question addresses all three goals above</p>
+</div>
+</section><section id="test-time-ood-scoring-schematic" class="slide level2 smaller"><h2>Test time OOD scoring schematic</h2>
+
+<img data-src="pic/test_time_ood_scoring.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section><section id="ood-scoring-example" class="slide level2 smaller"><h2>OOD scoring example</h2>
+<div class="sourceCode" id="cb35" data-code-line-numbers="1-3|5-13|14-16|17-18|19-20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a>aq <span class="ot">&lt;-</span> airquality[, <span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>, <span class="st">"Month"</span>)]</span>
+<span id="cb35-2"><a href=""></a></span>
+<span id="cb35-3"><a href=""></a>id <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(aq)), <span class="dv">100</span>); train <span class="ot">&lt;-</span> aq[id, ]; test  <span class="ot">&lt;-</span> aq[<span class="sc">-</span>id, ]</span>
+<span id="cb35-4"><a href=""></a></span>
+<span id="cb35-5"><a href=""></a><span class="do">## supervised training and imputation</span></span>
+<span id="cb35-6"><a href=""></a>sup.fit <span class="ot">&lt;-</span> <span class="fu">impute.learn</span>(</span>
+<span id="cb35-7"><a href=""></a>  <span class="at">data =</span> train,</span>
+<span id="cb35-8"><a href=""></a>  <span class="at">mf.q =</span> <span class="dv">1</span>,</span>
+<span id="cb35-9"><a href=""></a>  <span class="at">supervised.formula =</span> Solar.R <span class="sc">~</span> .,</span>
+<span id="cb35-10"><a href=""></a>  <span class="at">supervised.args =</span> <span class="fu">list</span>(<span class="at">ntree =</span> <span class="dv">50</span>, <span class="at">nsplit =</span> <span class="dv">5</span>),</span>
+<span id="cb35-11"><a href=""></a>  <span class="at">full.sweep.options =</span> <span class="fu">list</span>(<span class="at">ntree =</span> <span class="dv">25</span>, <span class="at">nsplit =</span> <span class="dv">5</span>),</span>
+<span id="cb35-12"><a href=""></a>  <span class="at">save.ood =</span> <span class="cn">TRUE</span></span>
+<span id="cb35-13"><a href=""></a>)</span>
+<span id="cb35-14"><a href=""></a></span>
+<span id="cb35-15"><a href=""></a><span class="do">## test time scoring and imputation</span></span>
+<span id="cb35-16"><a href=""></a>ood <span class="ot">&lt;-</span> <span class="fu">impute.ood</span>(sup.fit, test)</span>
+<span id="cb35-17"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(ood<span class="sc">$</span>score))</span>
+<span id="cb35-18"><a href=""></a>[<span class="dv">1</span>] <span class="fl">0.3426349</span> <span class="fl">0.1992188</span> <span class="fl">0.8819692</span> <span class="fl">0.7183163</span> <span class="fl">0.4520101</span> <span class="fl">0.6757812</span></span>
+<span id="cb35-19"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(ood<span class="sc">$</span>score.percentile))</span>
+<span id="cb35-20"><a href=""></a>[<span class="dv">1</span>] <span class="fl">0.2226562</span> <span class="fl">0.0546875</span> <span class="fl">0.9375000</span> <span class="fl">0.7148438</span> <span class="fl">0.3046875</span> <span class="fl">0.6445312</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="super-greedy-trees-sgts" class="slide level2 smaller"><h2>Super Greedy Trees (SGTs)</h2>
+<p>CART splits <strong>one variable at a time</strong> — a restriction that is often too coarse for biomedical data, where the outcome typically depends on combinations of variables</p>
+<div class="fragment fade-up">
+<p>To handle this, CART must stack many rectangular cuts, producing trees that are</p>
+<ul>
+<li>deep</li>
+<li>unstable</li>
+<li>hard to interpret</li>
+</ul>
+</div>
+<div class="fragment fade-up">
+<p><strong>SGTs</strong> use rich <em>geometric</em> cuts to directly estimate multivariate relationships</p>
+</div>
+</section><section id="lasso-geometric-split" class="slide level2 smaller"><h2>Lasso geometric split</h2>
+<p><strong>SGTs</strong> use rich <em>geometric</em> cuts to directly estimate multivariate relationships</p>
+<ol type="1">
+<li>At a tree node <span class="math inline">\(A\)</span>, the SGT builds a dictionary <span class="math inline">\(\phi_A(X)\)</span> from selected coordinates, nonlinear transforms, and interactions, then fits a lasso penalized problem</li>
+</ol>
+<p><span class="math display">\[
+\widehat\beta_A
+\;=\;
+\arg\min_{\beta}\;
+\sum_{i\in A} L\!\left\{Y_i,\beta^{T}\phi_A(X_i)\right\}
+\;+\;\lambda\,|\beta|_1
+\]</span></p>
+<div class="fragment fade-up">
+<ol start="2" type="1">
+<li>A candidate split of <span class="math inline">\(A\)</span> into left/right daughters <span class="math inline">\(A_L,A_R\)</span> comes from thresholding the fitted score <span class="math inline">\(s_A(x)=\widehat\beta_A^{T}\phi_A(x)\)</span>:</li>
+</ol>
+<p><span class="math display">\[
+A_L(c)=\{x\in A : s_A(x)\le c\},\qquad
+A_R(c)=A\setminus A_L(c)
+\]</span></p>
+<p>CART is a special case; SGT also allows much more general splits</p>
+</div>
+<div class="fragment fade-up">
+<ol start="3" type="1">
+<li>With main effects and interactions, the prediction takes the form <span class="math display">\[
+\widehat f(x)=\widehat\beta_0(x)+\sum_j\widehat\beta_j(x)\,x^{(j)}
++\sum_{j_1&lt;j_2}\widehat\beta_{j_1 j_2}(x)\,x^{(j_1)}x^{(j_2)}+\cdots
+\]</span>
+</li>
+</ol>
+</div>
+<div class="footer">
+
+</div>
+</section><section id="different-types-of-sgt-splits" class="slide level2 smaller"><h2>Different types of SGT splits</h2>
+
+<img data-src="pic/hyper_abcdef.png" class="quarto-figure quarto-figure-center r-stretch" style="width:82.0%"></section><section id="the-randomforestsgt-package" class="slide level2 smaller"><h2>The <code>randomForestSGT</code> package</h2>
+<p><code>rfsgt</code> fits SGT forests. Parametric models used for splitting are indexed by <code>hcut</code>:</p>
+<div class="fragment fade-up">
+<ul>
+<li>
+<code>hcut = 0</code> — CART splitting</li>
+<li>
+<code>hcut = 1</code> — (hyperplane) linear model using all variables</li>
+<li>
+<code>hcut = 2</code> — (ellipse) plus all quadratic terms</li>
+<li>
+<code>hcut = 3</code> — (oblique ellipse) plus all pairwise interactions</li>
+<li>
+<code>hcut = 4</code> — plus all polynomials of degree 3 of two variables</li>
+<li>
+<code>hcut = 5</code> — plus all polynomials of degree 4 of three variables</li>
+<li>
+<code>hcut = 6</code> — plus all three-way interactions</li>
+<li>
+<code>hcut = 7</code> — plus all four-way interactions</li>
+</ul>
+</div>
+<div class="fragment fade-up">
+<p>Other key parameters</p>
+<ul>
+<li>
+<code>treesize</code> and <code>nodesize</code> control tree complexity</li>
+<li>
+<code>filter</code> and <code>tune.hcut</code> for dimension reduction</li>
+<li>
+<code>pure.lasso</code> to over-ride CART</li>
+</ul>
+</div>
+<div class="footer">
+
+</div>
+</section><section id="sgt-surfaces-under-increasing-hcut" class="slide level2 smaller"><h2>SGT surfaces under increasing <code>hcut</code>
+</h2>
+
+<img data-src="pic/contours_rfsgt.jpg" class="quarto-figure quarto-figure-center r-stretch" style="width:58.0%"></section><section id="tuning-hcut" class="slide level2 smaller"><h2>Tuning <code>hcut</code>
+</h2>
+<p>Use <strong>Friedman 1</strong> simulation with noise variables to study <code>hcut</code></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="co"># Simulate data</span></span>
+<span id="cb36-2"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">2500</span></span>
+<span id="cb36-3"><a href=""></a>p <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb36-4"><a href=""></a>noise <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(n <span class="sc">*</span> p), <span class="at">ncol =</span> p)</span>
+<span id="cb36-5"><a href=""></a>dta   <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(mlbench<span class="sc">:::</span><span class="fu">mlbench.friedman1</span>(n, <span class="at">sd =</span> <span class="dv">0</span>), <span class="at">noise =</span> noise)</span>
+<span id="cb36-6"><a href=""></a></span>
+<span id="cb36-7"><a href=""></a><span class="co"># Tune hcut</span></span>
+<span id="cb36-8"><a href=""></a>filter <span class="ot">&lt;-</span> <span class="fu">tune.hcut</span>(y <span class="sc">~</span> ., dta, <span class="at">hcut =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment fade-up">
+<ul>
+<li>The <code>filter</code> object contains results from fitting shallow forests under different <code>hcut</code> values (here the maximum is set to 3)</li>
+<li>The object can be passed to <code>rfsgt</code> via the <code>filter</code> argument to use the optimized <code>hcut</code> with pre-selected basis functions</li>
+</ul>
+</div>
+</section><section id="using-the-tuned-hcut" class="slide level2 smaller"><h2>Using the tuned <code>hcut</code>
+</h2>
+<div class="sourceCode" id="cb37" data-code-line-numbers="1-2|4-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a><span class="co"># Use tuned hcut and pre-selected bases</span></span>
+<span id="cb37-2"><a href=""></a><span class="fu">print</span>(<span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">filter =</span> filter))</span>
+<span id="cb37-3"><a href=""></a></span>
+<span id="cb37-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">2500</span></span>
+<span id="cb37-5"><a href=""></a>                    Tree sample size<span class="sc">:</span> <span class="dv">1580</span></span>
+<span id="cb37-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">100</span></span>
+<span id="cb37-7"><a href=""></a>                   Average tree size<span class="sc">:</span> <span class="dv">100</span></span>
+<span id="cb37-8"><a href=""></a>                   Average node size<span class="sc">:</span> <span class="fl">15.8</span></span>
+<span id="cb37-9"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">5</span></span>
+<span id="cb37-10"><a href=""></a>                              Family<span class="sc">:</span> regr</span>
+<span id="cb37-11"><a href=""></a>                           Splitrule<span class="sc">:</span> sg.regr</span>
+<span id="cb37-12"><a href=""></a>                                hcut<span class="sc">:</span> <span class="dv">3</span></span>
+<span id="cb37-13"><a href=""></a>                      hcut<span class="sc">-</span>dimension<span class="sc">:</span> <span class="dv">14</span></span>
+<span id="cb37-14"><a href=""></a>                       OOB R<span class="sc">-</span>squared<span class="sc">:</span> <span class="fl">0.9813015</span></span>
+<span id="cb37-15"><a href=""></a>         OOB standardized error rate<span class="sc">:</span> <span class="fl">0.01869852</span></span>
+<span id="cb37-16"><a href=""></a>                      OOB error rate<span class="sc">:</span> <span class="fl">0.4244172</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="specific-hcut-families" class="slide level2 smaller"><h2>Specific <code>hcut</code> families</h2>
+<p>Random forests is obtained by setting <code>hcut = 0</code></p>
+<div class="sourceCode" id="cb38" data-code-line-numbers="1|2-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a><span class="fu">print</span>(<span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">filter =</span> <span class="fu">use.tune.hcut</span>(filter, <span class="at">hcut =</span> <span class="dv">0</span>)))</span>
+<span id="cb38-2"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">2500</span></span>
+<span id="cb38-3"><a href=""></a>                    Tree sample size<span class="sc">:</span> <span class="dv">1580</span></span>
+<span id="cb38-4"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">100</span></span>
+<span id="cb38-5"><a href=""></a>                   Average tree size<span class="sc">:</span> <span class="fl">317.33</span></span>
+<span id="cb38-6"><a href=""></a>                   Average node size<span class="sc">:</span> <span class="fl">4.982255</span></span>
+<span id="cb38-7"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">5</span></span>
+<span id="cb38-8"><a href=""></a>                              Family<span class="sc">:</span> regr</span>
+<span id="cb38-9"><a href=""></a>                           Splitrule<span class="sc">:</span> sg.regr</span>
+<span id="cb38-10"><a href=""></a>                                hcut<span class="sc">:</span> <span class="dv">0</span></span>
+<span id="cb38-11"><a href=""></a>                      hcut<span class="sc">-</span>dimension<span class="sc">:</span> <span class="dv">5</span></span>
+<span id="cb38-12"><a href=""></a>                       OOB R<span class="sc">-</span>squared<span class="sc">:</span> <span class="fl">0.9175811</span></span>
+<span id="cb38-13"><a href=""></a>         OOB standardized error rate<span class="sc">:</span> <span class="fl">0.0824189</span></span>
+<span id="cb38-14"><a href=""></a>                      OOB error rate<span class="sc">:</span> <span class="fl">1.870736</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment fade-up">
+<p><code>hcut = 1</code> gives hyperplanes (local linear forests, rotation forests, etc.)</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a><span class="fu">print</span>(<span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">filter =</span> <span class="fu">use.tune.hcut</span>(filter, <span class="at">hcut =</span> <span class="dv">1</span>)))</span>
+<span id="cb39-2"><a href=""></a>                                hcut<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb39-3"><a href=""></a>                      hcut<span class="sc">-</span>dimension<span class="sc">:</span> <span class="dv">5</span></span>
+<span id="cb39-4"><a href=""></a>                       OOB R<span class="sc">-</span>squared<span class="sc">:</span> <span class="fl">0.9233558</span></span>
+<span id="cb39-5"><a href=""></a>         OOB standardized error rate<span class="sc">:</span> <span class="fl">0.07664424</span></span>
+<span id="cb39-6"><a href=""></a>                      OOB error rate<span class="sc">:</span> <span class="fl">1.739664</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="sgts-as-model-explainers" class="slide level2 smaller"><h2>SGTs as model explainers</h2>
+<p>Predicted values arise from a local polynomial built from partial effects that we can extract</p>
+<p>Grow a shallow forest and enforce the lasso</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">pure.lasso =</span> <span class="cn">TRUE</span>, <span class="at">filter =</span> filter, <span class="at">treesize =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="fragment fade-up">
+<p>Obtain predicted values, <span class="math inline">\(\beta\)</span> coefficients, and partial-effect contributions</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>bo      <span class="ot">&lt;-</span> <span class="fu">get.beta</span>(o, <span class="at">bag =</span> <span class="st">"oob"</span>)</span>
+<span id="cb41-2"><a href=""></a>yhat    <span class="ot">&lt;-</span> bo<span class="sc">$</span>predicted</span>
+<span id="cb41-3"><a href=""></a>beta    <span class="ot">&lt;-</span> bo<span class="sc">$</span>beta[, <span class="sc">-</span><span class="dv">1</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb41-4"><a href=""></a>partial <span class="ot">&lt;-</span> bo<span class="sc">$</span>partial[, <span class="sc">-</span><span class="dv">1</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="sgt-beta-and-partial-effects" class="slide level2 smaller"><h2>SGT <span class="math inline">\(\beta\)</span> and partial effects</h2>
+<div class="sourceCode" id="cb42" data-code-line-numbers="1-5|7-15|17-25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="do">## compare yhat to OOB values from forest object</span></span>
+<span id="cb42-2"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(yhat))</span>
+<span id="cb42-3"><a href=""></a>[<span class="dv">1</span>] <span class="fl">18.141112</span> <span class="fl">15.241789</span> <span class="fl">21.836746</span>  <span class="fl">7.638041</span> <span class="fl">16.031982</span> <span class="fl">15.691202</span></span>
+<span id="cb42-4"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(o<span class="sc">$</span>predicted.oob))</span>
+<span id="cb42-5"><a href=""></a>[<span class="dv">1</span>] <span class="fl">18.141112</span> <span class="fl">15.241789</span> <span class="fl">21.836746</span>  <span class="fl">7.638041</span> <span class="fl">16.031982</span> <span class="fl">15.691202</span></span>
+<span id="cb42-6"><a href=""></a></span>
+<span id="cb42-7"><a href=""></a><span class="do">## beta values</span></span>
+<span id="cb42-8"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(beta[, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb42-9"><a href=""></a>       x<span class="fl">.1</span>    x<span class="fl">.2</span> x<span class="fl">.3</span>  x<span class="fl">.4</span> x<span class="fl">.5</span> x<span class="fl">.1</span>_SQ2_</span>
+<span id="cb42-10"><a href=""></a>[<span class="dv">1</span>,] <span class="fl">30.24</span> <span class="fl">29.644</span> <span class="sc">-</span><span class="dv">14</span> <span class="fl">10.5</span> <span class="fl">6.0</span>   <span class="sc">-</span><span class="fl">14.99</span></span>
+<span id="cb42-11"><a href=""></a>[<span class="dv">2</span>,] <span class="fl">31.31</span> <span class="fl">30.158</span> <span class="sc">-</span><span class="dv">15</span>  <span class="fl">9.8</span> <span class="fl">5.9</span>   <span class="sc">-</span><span class="fl">16.10</span></span>
+<span id="cb42-12"><a href=""></a>[<span class="dv">3</span>,] <span class="fl">42.54</span> <span class="fl">41.280</span> <span class="sc">-</span><span class="dv">18</span>  <span class="fl">6.7</span> <span class="fl">1.1</span>   <span class="sc">-</span><span class="fl">19.35</span></span>
+<span id="cb42-13"><a href=""></a>[<span class="dv">4</span>,]  <span class="fl">0.17</span>  <span class="fl">0.083</span> <span class="sc">-</span><span class="dv">19</span>  <span class="fl">9.2</span> <span class="fl">4.5</span>    <span class="sc">-</span><span class="fl">0.35</span></span>
+<span id="cb42-14"><a href=""></a>[<span class="dv">5</span>,] <span class="fl">31.51</span> <span class="fl">29.523</span> <span class="sc">-</span><span class="dv">15</span>  <span class="fl">9.8</span> <span class="fl">5.8</span>   <span class="sc">-</span><span class="fl">16.18</span></span>
+<span id="cb42-15"><a href=""></a>[<span class="dv">6</span>,] <span class="fl">32.50</span> <span class="fl">30.826</span> <span class="sc">-</span><span class="dv">15</span> <span class="fl">10.8</span> <span class="fl">6.2</span>   <span class="sc">-</span><span class="fl">16.63</span></span>
+<span id="cb42-16"><a href=""></a></span>
+<span id="cb42-17"><a href=""></a><span class="do">## partial effect values</span></span>
+<span id="cb42-18"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(partial[, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb42-19"><a href=""></a>        x<span class="fl">.1</span>    x<span class="fl">.2</span>   x<span class="fl">.3</span> x<span class="fl">.4</span>  x<span class="fl">.5</span> x<span class="fl">.1</span>_SQ2_</span>
+<span id="cb42-20"><a href=""></a>[<span class="dv">1</span>,] <span class="fl">17.724</span> <span class="fl">24.202</span>  <span class="sc">-</span><span class="fl">2.3</span> <span class="fl">2.9</span> <span class="fl">4.48</span>  <span class="sc">-</span><span class="fl">5.1484</span></span>
+<span id="cb42-21"><a href=""></a>[<span class="dv">2</span>,]  <span class="fl">9.697</span> <span class="fl">27.889</span> <span class="sc">-</span><span class="fl">11.1</span> <span class="fl">6.4</span> <span class="fl">1.36</span>  <span class="sc">-</span><span class="fl">1.5438</span></span>
+<span id="cb42-22"><a href=""></a>[<span class="dv">3</span>,] <span class="fl">32.519</span> <span class="fl">28.518</span>  <span class="sc">-</span><span class="fl">4.2</span> <span class="fl">5.1</span> <span class="fl">0.66</span> <span class="sc">-</span><span class="fl">11.3120</span></span>
+<span id="cb42-23"><a href=""></a>[<span class="dv">4</span>,]  <span class="fl">0.019</span>  <span class="fl">0.074</span>  <span class="sc">-</span><span class="fl">9.4</span> <span class="fl">1.5</span> <span class="fl">2.58</span>  <span class="sc">-</span><span class="fl">0.0046</span></span>
+<span id="cb42-24"><a href=""></a>[<span class="dv">5</span>,]  <span class="fl">2.405</span> <span class="fl">22.660</span>  <span class="sc">-</span><span class="fl">5.7</span> <span class="fl">9.1</span> <span class="fl">3.86</span>  <span class="sc">-</span><span class="fl">0.0943</span></span>
+<span id="cb42-25"><a href=""></a>[<span class="dv">6</span>,]  <span class="fl">2.958</span> <span class="fl">25.281</span> <span class="sc">-</span><span class="fl">15.2</span> <span class="fl">7.1</span> <span class="fl">1.66</span>  <span class="sc">-</span><span class="fl">0.1377</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="ecosystem" class="slide level2 smaller"><h2>Ecosystem</h2>
 <div style="display:flex; gap:3%; margin-top:0.5em; font-size:0.78em;">
 <div style="display:flex; flex-direction:column; gap:3%; width:48%;">
@@ -2517,7 +2786,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <li>Class Imbalanced Data</li>
 <li>Competing Risks</li>
 <li>Multivariate Forests</li>
-<li>Missing data imputation</li>
+<li>Missing Data Imputation and OOD Scoring</li>
 </ol>
 </div></div>
 </section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>
