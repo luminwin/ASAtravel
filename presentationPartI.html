@@ -226,42 +226,40 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 </div>
 </div>
 
-</section><section id="brief-overview-ecosystem" class="slide level2 smaller"><h2>Brief Overview: Ecosystem</h2>
-<div style="display:flex; gap:3%; margin-top:0.5em; font-size:0.78em;">
-<div style="display:flex; flex-direction:column; gap:3%; width:48%;">
-<div style="background:#2E86AB; color:white; padding:0.9em 1.2em; border-radius:8px;">
-<p><strong>RF-SRC</strong> — randomForestSRC</p>
+</section><section id="brief-overview-ecosystem" class="slide level2 smaller eco-white-code"><h2>Brief Overview: Ecosystem</h2>
+<style>
+.eco-white-code code { color: white; background: transparent; }
+</style>
+<div style="display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:1em; margin-top:0.5em; font-size:0.78em;">
+<div style="background:#2E86AB; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><strong>RF-SRC</strong> — <code>randomForestSRC</code></p>
 <ul>
 <li>Random Forests: classification, regression, survival (RSF &amp; competing risks)</li>
 <li>OOB error, permutation VIMP, partial dependence/effect, proximities, imputation</li>
 <li>OpenMP compute backend</li>
 </ul>
 </div>
-<div style="background:#E8A838; color:white; padding:0.9em 1.2em; border-radius:8px;">
-<p><strong>SGT</strong> — randomForestSGT</p>
+<div style="background:#6DBF67; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><strong>VarPro</strong> — <code>varPro</code></p>
+<ul>
+<li>Model-independent variable selection (Variable Priority)</li>
+<li>Calculates importance scores without artificial data or permutations</li>
+</ul>
+</div>
+<div style="background:#E8A838; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><strong>SGT</strong> — <code>randomForestSGT</code></p>
 <ul>
 <li>Super Greedy Trees with multivariate geometric splits</li>
 <li>Currently emphasizes regression</li>
 </ul>
 </div>
-</div>
-<div style="display:flex; flex-direction:column; gap:3%; width:48%;">
-<div style="background:#6DBF67; color:white; padding:0.9em 1.2em; border-radius:8px;">
-<p><strong>VarPro</strong> — varPro</p>
-<ul>
-<li>
-<strong>Supervised</strong> model-independent variable selection (Variable Priority)</li>
-<li>Produces VI scores under supervision; complements permutation VIMP</li>
-</ul>
-</div>
-<br><div style="background:#7B68EE; color:white; padding:0.9em 1.2em; border-radius:8px;">
-<p><strong>RHF</strong> — randomForestRHF</p>
+<div style="background:#7B68EE; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><strong>RHF</strong> — <code>randomForestRHF</code></p>
 <ul>
 <li>Random Hazard Forest for time-dependent hazard estimation</li>
 <li>Extends RSF to <strong>time-varying covariates</strong>
 </li>
 </ul>
-</div>
 </div>
 </div>
 <div class="footer">
@@ -271,10 +269,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <p>This course covers the following R packages</p>
 <ol type="1">
 <li>
-<code>randomForestSRC</code>: Fast Unified Random Forests for Survival, Regression, and Classification <a href="https://cran.r-project.org/package=randomForestSRC">(CRAN link)</a>
-</li>
-<li>
-<code>randomForestSRC.run</code>: Integrated visualization for the <code>randomForestSRC</code> package <a href="https://github.com/kogalur/randomForestSRC.run">(Github link)</a>
+<code>randomForestSRC</code>: Fast Unified Random Forests for Survival, Regression, and Classification <a href="https://cran.r-project.org/package=randomForestSRC">(CRAN link)</a> with integrated visualization using the <code>randomForestSRC.run</code> package <a href="https://github.com/kogalur/randomForestSRC.run">(Github link)</a>
 </li>
 <li>
 <code>varPro</code>: Model-Independent Variable Selection via the Rule-Based Variable Priority <a href="https://cran.r-project.org/package=varPro">(CRAN link)</a> <a href="https://github.com/kogalur/varPro">(Github link)</a>
@@ -285,16 +280,18 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <li>
 <code>randomForestRHF</code>: Random Hazard Forest for time-dependent hazard estimation <a href="https://cran.r-project.org/package=randomForestRHF">(CRAN link)</a> <a href="https://github.com/kogalur/randomForestRHF">(Github link)</a>
 </li>
-</ol></section><section id="outline" class="slide level2 smaller"><h2><a href="index.html">Outline</a></h2>
-<div class="columns">
-<div class="column" style="width:47.5%;">
-<h4 id="part-i-training"><a href="presentationPartI.html">Part I: Training</a></h4>
+</ol></section><section id="outline" class="slide level2 smaller" data-background-color="azure"><h2><a href="index.html">Outline</a></h2>
+<div style="display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:1em; margin-top:0.5em; font-size:0.78em;">
+<div style="background:#2E86AB; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><a href="presentationPartI.html" style="color:white;"><b>Part I: Training</b></a></p>
 <ol type="1">
 <li>Brief overview</li>
 <li>Quick start</li>
 <li>Training (grow) with examples <br>(regression, classification, survival)</li>
 </ol>
-<h4 id="part-ii-inference-and-prediction"><a href="presentationPartII.html">Part II: Inference and Prediction</a></h4>
+</div>
+<div style="background:#E8A838; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><a href="presentationPartII.html" style="color:white;"><b>Part II: Inference and Prediction</b></a></p>
 <ol type="1">
 <li>Inference (OOB)</li>
 <li>Prediction Error</li>
@@ -302,24 +299,26 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <li>Restore</li>
 <li>Partial Plots</li>
 </ol>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column fragment" style="width:47.5%;">
-<h4 id="part-iii-variable-selection"><a href="presentationPartIII.html">Part III: Variable Selection</a></h4>
+</div>
+<div class="fragment" data-fragment-index="1" style="background:#6DBF67; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><a href="presentationPartIII.html" style="color:white;"><b>Part III: Variable Selection</b></a></p>
 <ol type="1">
 <li>VIMP</li>
 <li>Subsampling (Confidence Intervals)</li>
 <li>Minimal Depth</li>
 <li>VarPro</li>
 </ol>
-<h4 id="part-iv-advanced-examples"><a href="presentationPartIV.html">Part IV: Advanced Examples</a></h4>
+</div>
+<div class="fragment" data-fragment-index="1" style="background:#7B68EE; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><a href="presentationPartIV.html" style="color:white;"><b>Part IV: Advanced Examples</b></a></p>
 <ol type="1">
 <li>Class Imbalanced Data</li>
 <li>Competing Risks</li>
 <li>Multivariate Forests</li>
 <li>Missing data imputation</li>
 </ol>
-</div></div>
+</div>
+</div>
 <div class="footer">
 
 </div>
@@ -391,23 +390,23 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <p>Data from the Ames Assessor’s Office used in assessing values of individual residential properties sold in Ames, Iowa from 2006 to 2010. This is a regression problem and the goal is to predict “SalePrice” which records the price of a home in thousands of dollars <span class="citation" data-cites="de2011ames">[<a href="#/references" role="doc-biblioref" onclick="">3</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="lhhvlvfbux" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lhhvlvfbux table {
+<div id="hpoenwrxse" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hpoenwrxse table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lhhvlvfbux thead, #lhhvlvfbux tbody, #lhhvlvfbux tfoot, #lhhvlvfbux tr, #lhhvlvfbux td, #lhhvlvfbux th {
+#hpoenwrxse thead, #hpoenwrxse tbody, #hpoenwrxse tfoot, #hpoenwrxse tr, #hpoenwrxse td, #hpoenwrxse th {
   border-style: none;
 }
 
-#lhhvlvfbux p {
+#hpoenwrxse p {
   margin: 0;
   padding: 0;
 }
 
-#lhhvlvfbux .gt_table {
+#hpoenwrxse .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -433,12 +432,12 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-left-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_caption {
+#hpoenwrxse .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lhhvlvfbux .gt_title {
+#hpoenwrxse .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -450,7 +449,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-bottom-width: 0;
 }
 
-#lhhvlvfbux .gt_subtitle {
+#hpoenwrxse .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -462,7 +461,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-top-width: 0;
 }
 
-#lhhvlvfbux .gt_heading {
+#hpoenwrxse .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -474,13 +473,13 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-right-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_bottom_border {
+#hpoenwrxse .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_col_headings {
+#hpoenwrxse .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -495,7 +494,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-right-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_col_heading {
+#hpoenwrxse .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -515,7 +514,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   overflow-x: hidden;
 }
 
-#lhhvlvfbux .gt_column_spanner_outer {
+#hpoenwrxse .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -527,15 +526,15 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 4px;
 }
 
-#lhhvlvfbux .gt_column_spanner_outer:first-child {
+#hpoenwrxse .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lhhvlvfbux .gt_column_spanner_outer:last-child {
+#hpoenwrxse .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lhhvlvfbux .gt_column_spanner {
+#hpoenwrxse .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -547,11 +546,11 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   width: 100%;
 }
 
-#lhhvlvfbux .gt_spanner_row {
+#hpoenwrxse .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lhhvlvfbux .gt_group_heading {
+#hpoenwrxse .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -577,7 +576,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   text-align: left;
 }
 
-#lhhvlvfbux .gt_empty_group_heading {
+#hpoenwrxse .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -592,15 +591,15 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   vertical-align: middle;
 }
 
-#lhhvlvfbux .gt_from_md > :first-child {
+#hpoenwrxse .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lhhvlvfbux .gt_from_md > :last-child {
+#hpoenwrxse .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lhhvlvfbux .gt_row {
+#hpoenwrxse .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -619,7 +618,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   overflow-x: hidden;
 }
 
-#lhhvlvfbux .gt_stub {
+#hpoenwrxse .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -632,7 +631,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 5px;
 }
 
-#lhhvlvfbux .gt_stub_row_group {
+#hpoenwrxse .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -646,15 +645,15 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   vertical-align: top;
 }
 
-#lhhvlvfbux .gt_row_group_first td {
+#hpoenwrxse .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lhhvlvfbux .gt_row_group_first th {
+#hpoenwrxse .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lhhvlvfbux .gt_summary_row {
+#hpoenwrxse .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -664,16 +663,16 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 5px;
 }
 
-#lhhvlvfbux .gt_first_summary_row {
+#hpoenwrxse .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_first_summary_row.thick {
+#hpoenwrxse .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lhhvlvfbux .gt_last_summary_row {
+#hpoenwrxse .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -683,7 +682,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-bottom-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_grand_summary_row {
+#hpoenwrxse .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -693,7 +692,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 5px;
 }
 
-#lhhvlvfbux .gt_first_grand_summary_row {
+#hpoenwrxse .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -703,7 +702,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-top-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_last_grand_summary_row_top {
+#hpoenwrxse .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -713,11 +712,11 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-bottom-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_striped {
+#hpoenwrxse .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lhhvlvfbux .gt_table_body {
+#hpoenwrxse .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -726,7 +725,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-bottom-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_footnotes {
+#hpoenwrxse .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -740,7 +739,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-right-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_footnote {
+#hpoenwrxse .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -749,7 +748,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 5px;
 }
 
-#lhhvlvfbux .gt_sourcenotes {
+#hpoenwrxse .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -763,7 +762,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   border-right-color: #D3D3D3;
 }
 
-#lhhvlvfbux .gt_sourcenote {
+#hpoenwrxse .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -771,72 +770,72 @@ Hemant Ishwaran and Min Lu <br> University of Miami
   padding-right: 5px;
 }
 
-#lhhvlvfbux .gt_left {
+#hpoenwrxse .gt_left {
   text-align: left;
 }
 
-#lhhvlvfbux .gt_center {
+#hpoenwrxse .gt_center {
   text-align: center;
 }
 
-#lhhvlvfbux .gt_right {
+#hpoenwrxse .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lhhvlvfbux .gt_font_normal {
+#hpoenwrxse .gt_font_normal {
   font-weight: normal;
 }
 
-#lhhvlvfbux .gt_font_bold {
+#hpoenwrxse .gt_font_bold {
   font-weight: bold;
 }
 
-#lhhvlvfbux .gt_font_italic {
+#hpoenwrxse .gt_font_italic {
   font-style: italic;
 }
 
-#lhhvlvfbux .gt_super {
+#hpoenwrxse .gt_super {
   font-size: 65%;
 }
 
-#lhhvlvfbux .gt_footnote_marks {
+#hpoenwrxse .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lhhvlvfbux .gt_asterisk {
+#hpoenwrxse .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lhhvlvfbux .gt_indent_1 {
+#hpoenwrxse .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lhhvlvfbux .gt_indent_2 {
+#hpoenwrxse .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lhhvlvfbux .gt_indent_3 {
+#hpoenwrxse .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lhhvlvfbux .gt_indent_4 {
+#hpoenwrxse .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lhhvlvfbux .gt_indent_5 {
+#hpoenwrxse .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lhhvlvfbux .katex-display {
+#hpoenwrxse .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lhhvlvfbux div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hpoenwrxse div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2025,23 +2024,23 @@ Corresponding input (arguments)
 <p>Subset of the data used in Ceccarelli et al.&nbsp;(2016) for molecular profiling of adult diffuse gliomas. It contains 1206 probes from 880 tissues, clinical data and other molecular data. The outcome has class labels: Classic-like, Codel, G-CIMP-high, G-CIMP-low, LGm6-GBM, Mesenchymal-like and PA-like <span class="citation" data-cites="ceccarelli2016molecular">[<a href="#/references" role="doc-biblioref" onclick="">4</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="arehpnuncy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#arehpnuncy table {
+<div id="hwojtgmcwt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hwojtgmcwt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#arehpnuncy thead, #arehpnuncy tbody, #arehpnuncy tfoot, #arehpnuncy tr, #arehpnuncy td, #arehpnuncy th {
+#hwojtgmcwt thead, #hwojtgmcwt tbody, #hwojtgmcwt tfoot, #hwojtgmcwt tr, #hwojtgmcwt td, #hwojtgmcwt th {
   border-style: none;
 }
 
-#arehpnuncy p {
+#hwojtgmcwt p {
   margin: 0;
   padding: 0;
 }
 
-#arehpnuncy .gt_table {
+#hwojtgmcwt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2067,12 +2066,12 @@ Corresponding input (arguments)
   border-left-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_caption {
+#hwojtgmcwt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#arehpnuncy .gt_title {
+#hwojtgmcwt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2084,7 +2083,7 @@ Corresponding input (arguments)
   border-bottom-width: 0;
 }
 
-#arehpnuncy .gt_subtitle {
+#hwojtgmcwt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2096,7 +2095,7 @@ Corresponding input (arguments)
   border-top-width: 0;
 }
 
-#arehpnuncy .gt_heading {
+#hwojtgmcwt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2108,13 +2107,13 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_bottom_border {
+#hwojtgmcwt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_col_headings {
+#hwojtgmcwt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2129,7 +2128,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_col_heading {
+#hwojtgmcwt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2149,7 +2148,7 @@ Corresponding input (arguments)
   overflow-x: hidden;
 }
 
-#arehpnuncy .gt_column_spanner_outer {
+#hwojtgmcwt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2161,15 +2160,15 @@ Corresponding input (arguments)
   padding-right: 4px;
 }
 
-#arehpnuncy .gt_column_spanner_outer:first-child {
+#hwojtgmcwt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#arehpnuncy .gt_column_spanner_outer:last-child {
+#hwojtgmcwt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#arehpnuncy .gt_column_spanner {
+#hwojtgmcwt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2181,11 +2180,11 @@ Corresponding input (arguments)
   width: 100%;
 }
 
-#arehpnuncy .gt_spanner_row {
+#hwojtgmcwt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#arehpnuncy .gt_group_heading {
+#hwojtgmcwt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2211,7 +2210,7 @@ Corresponding input (arguments)
   text-align: left;
 }
 
-#arehpnuncy .gt_empty_group_heading {
+#hwojtgmcwt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2226,15 +2225,15 @@ Corresponding input (arguments)
   vertical-align: middle;
 }
 
-#arehpnuncy .gt_from_md > :first-child {
+#hwojtgmcwt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#arehpnuncy .gt_from_md > :last-child {
+#hwojtgmcwt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#arehpnuncy .gt_row {
+#hwojtgmcwt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2253,7 +2252,7 @@ Corresponding input (arguments)
   overflow-x: hidden;
 }
 
-#arehpnuncy .gt_stub {
+#hwojtgmcwt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2266,7 +2265,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#arehpnuncy .gt_stub_row_group {
+#hwojtgmcwt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2280,15 +2279,15 @@ Corresponding input (arguments)
   vertical-align: top;
 }
 
-#arehpnuncy .gt_row_group_first td {
+#hwojtgmcwt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#arehpnuncy .gt_row_group_first th {
+#hwojtgmcwt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#arehpnuncy .gt_summary_row {
+#hwojtgmcwt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2298,16 +2297,16 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#arehpnuncy .gt_first_summary_row {
+#hwojtgmcwt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_first_summary_row.thick {
+#hwojtgmcwt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#arehpnuncy .gt_last_summary_row {
+#hwojtgmcwt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2317,7 +2316,7 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_grand_summary_row {
+#hwojtgmcwt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2327,7 +2326,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#arehpnuncy .gt_first_grand_summary_row {
+#hwojtgmcwt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2337,7 +2336,7 @@ Corresponding input (arguments)
   border-top-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_last_grand_summary_row_top {
+#hwojtgmcwt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2347,11 +2346,11 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_striped {
+#hwojtgmcwt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#arehpnuncy .gt_table_body {
+#hwojtgmcwt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2360,7 +2359,7 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_footnotes {
+#hwojtgmcwt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2374,7 +2373,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_footnote {
+#hwojtgmcwt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2383,7 +2382,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#arehpnuncy .gt_sourcenotes {
+#hwojtgmcwt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2397,7 +2396,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#arehpnuncy .gt_sourcenote {
+#hwojtgmcwt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2405,72 +2404,72 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#arehpnuncy .gt_left {
+#hwojtgmcwt .gt_left {
   text-align: left;
 }
 
-#arehpnuncy .gt_center {
+#hwojtgmcwt .gt_center {
   text-align: center;
 }
 
-#arehpnuncy .gt_right {
+#hwojtgmcwt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#arehpnuncy .gt_font_normal {
+#hwojtgmcwt .gt_font_normal {
   font-weight: normal;
 }
 
-#arehpnuncy .gt_font_bold {
+#hwojtgmcwt .gt_font_bold {
   font-weight: bold;
 }
 
-#arehpnuncy .gt_font_italic {
+#hwojtgmcwt .gt_font_italic {
   font-style: italic;
 }
 
-#arehpnuncy .gt_super {
+#hwojtgmcwt .gt_super {
   font-size: 65%;
 }
 
-#arehpnuncy .gt_footnote_marks {
+#hwojtgmcwt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#arehpnuncy .gt_asterisk {
+#hwojtgmcwt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#arehpnuncy .gt_indent_1 {
+#hwojtgmcwt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#arehpnuncy .gt_indent_2 {
+#hwojtgmcwt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#arehpnuncy .gt_indent_3 {
+#hwojtgmcwt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#arehpnuncy .gt_indent_4 {
+#hwojtgmcwt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#arehpnuncy .gt_indent_5 {
+#hwojtgmcwt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#arehpnuncy .katex-display {
+#hwojtgmcwt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#arehpnuncy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hwojtgmcwt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2862,23 +2861,23 @@ Corresponding input (arguments)
 <p>This data is from the Mayo Clinic trial in Primary Biliary Cirrhosis (PBC) conducted between 1974 and 1984. Among the total 424 PBC patients, the first 312 cases participated in a randomized placebo controlled trial of the drug D-penicillamine with largely complete data. The additional 112 cases did not participate in the clinical trial, but consented to have basic measurements and to be followed for survival <span class="citation" data-cites="Therneau2000modeling">[<a href="#/references" role="doc-biblioref" onclick="">8</a>]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="tbtpppcpoa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tbtpppcpoa table {
+<div id="jcsuirxiui" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jcsuirxiui table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tbtpppcpoa thead, #tbtpppcpoa tbody, #tbtpppcpoa tfoot, #tbtpppcpoa tr, #tbtpppcpoa td, #tbtpppcpoa th {
+#jcsuirxiui thead, #jcsuirxiui tbody, #jcsuirxiui tfoot, #jcsuirxiui tr, #jcsuirxiui td, #jcsuirxiui th {
   border-style: none;
 }
 
-#tbtpppcpoa p {
+#jcsuirxiui p {
   margin: 0;
   padding: 0;
 }
 
-#tbtpppcpoa .gt_table {
+#jcsuirxiui .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2904,12 +2903,12 @@ Corresponding input (arguments)
   border-left-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_caption {
+#jcsuirxiui .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tbtpppcpoa .gt_title {
+#jcsuirxiui .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2921,7 +2920,7 @@ Corresponding input (arguments)
   border-bottom-width: 0;
 }
 
-#tbtpppcpoa .gt_subtitle {
+#jcsuirxiui .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2933,7 +2932,7 @@ Corresponding input (arguments)
   border-top-width: 0;
 }
 
-#tbtpppcpoa .gt_heading {
+#jcsuirxiui .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2945,13 +2944,13 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_bottom_border {
+#jcsuirxiui .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_col_headings {
+#jcsuirxiui .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2966,7 +2965,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_col_heading {
+#jcsuirxiui .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2986,7 +2985,7 @@ Corresponding input (arguments)
   overflow-x: hidden;
 }
 
-#tbtpppcpoa .gt_column_spanner_outer {
+#jcsuirxiui .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2998,15 +2997,15 @@ Corresponding input (arguments)
   padding-right: 4px;
 }
 
-#tbtpppcpoa .gt_column_spanner_outer:first-child {
+#jcsuirxiui .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tbtpppcpoa .gt_column_spanner_outer:last-child {
+#jcsuirxiui .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tbtpppcpoa .gt_column_spanner {
+#jcsuirxiui .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3018,11 +3017,11 @@ Corresponding input (arguments)
   width: 100%;
 }
 
-#tbtpppcpoa .gt_spanner_row {
+#jcsuirxiui .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tbtpppcpoa .gt_group_heading {
+#jcsuirxiui .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3048,7 +3047,7 @@ Corresponding input (arguments)
   text-align: left;
 }
 
-#tbtpppcpoa .gt_empty_group_heading {
+#jcsuirxiui .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3063,15 +3062,15 @@ Corresponding input (arguments)
   vertical-align: middle;
 }
 
-#tbtpppcpoa .gt_from_md > :first-child {
+#jcsuirxiui .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tbtpppcpoa .gt_from_md > :last-child {
+#jcsuirxiui .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tbtpppcpoa .gt_row {
+#jcsuirxiui .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3090,7 +3089,7 @@ Corresponding input (arguments)
   overflow-x: hidden;
 }
 
-#tbtpppcpoa .gt_stub {
+#jcsuirxiui .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3103,7 +3102,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#tbtpppcpoa .gt_stub_row_group {
+#jcsuirxiui .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3117,15 +3116,15 @@ Corresponding input (arguments)
   vertical-align: top;
 }
 
-#tbtpppcpoa .gt_row_group_first td {
+#jcsuirxiui .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tbtpppcpoa .gt_row_group_first th {
+#jcsuirxiui .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tbtpppcpoa .gt_summary_row {
+#jcsuirxiui .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3135,16 +3134,16 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#tbtpppcpoa .gt_first_summary_row {
+#jcsuirxiui .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_first_summary_row.thick {
+#jcsuirxiui .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tbtpppcpoa .gt_last_summary_row {
+#jcsuirxiui .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3154,7 +3153,7 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_grand_summary_row {
+#jcsuirxiui .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3164,7 +3163,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#tbtpppcpoa .gt_first_grand_summary_row {
+#jcsuirxiui .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3174,7 +3173,7 @@ Corresponding input (arguments)
   border-top-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_last_grand_summary_row_top {
+#jcsuirxiui .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3184,11 +3183,11 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_striped {
+#jcsuirxiui .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tbtpppcpoa .gt_table_body {
+#jcsuirxiui .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3197,7 +3196,7 @@ Corresponding input (arguments)
   border-bottom-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_footnotes {
+#jcsuirxiui .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3211,7 +3210,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_footnote {
+#jcsuirxiui .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3220,7 +3219,7 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#tbtpppcpoa .gt_sourcenotes {
+#jcsuirxiui .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3234,7 +3233,7 @@ Corresponding input (arguments)
   border-right-color: #D3D3D3;
 }
 
-#tbtpppcpoa .gt_sourcenote {
+#jcsuirxiui .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3242,72 +3241,72 @@ Corresponding input (arguments)
   padding-right: 5px;
 }
 
-#tbtpppcpoa .gt_left {
+#jcsuirxiui .gt_left {
   text-align: left;
 }
 
-#tbtpppcpoa .gt_center {
+#jcsuirxiui .gt_center {
   text-align: center;
 }
 
-#tbtpppcpoa .gt_right {
+#jcsuirxiui .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tbtpppcpoa .gt_font_normal {
+#jcsuirxiui .gt_font_normal {
   font-weight: normal;
 }
 
-#tbtpppcpoa .gt_font_bold {
+#jcsuirxiui .gt_font_bold {
   font-weight: bold;
 }
 
-#tbtpppcpoa .gt_font_italic {
+#jcsuirxiui .gt_font_italic {
   font-style: italic;
 }
 
-#tbtpppcpoa .gt_super {
+#jcsuirxiui .gt_super {
   font-size: 65%;
 }
 
-#tbtpppcpoa .gt_footnote_marks {
+#jcsuirxiui .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tbtpppcpoa .gt_asterisk {
+#jcsuirxiui .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tbtpppcpoa .gt_indent_1 {
+#jcsuirxiui .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tbtpppcpoa .gt_indent_2 {
+#jcsuirxiui .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tbtpppcpoa .gt_indent_3 {
+#jcsuirxiui .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tbtpppcpoa .gt_indent_4 {
+#jcsuirxiui .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tbtpppcpoa .gt_indent_5 {
+#jcsuirxiui .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tbtpppcpoa .katex-display {
+#jcsuirxiui .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tbtpppcpoa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jcsuirxiui div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3637,15 +3636,17 @@ Corresponding input (arguments)
 
 </div>
 </section><section id="outline-1" class="slide level2 smaller" data-background-color="azure"><h2><a href="index.html">Outline</a></h2>
-<div class="columns">
-<div class="column" style="width:47.5%;">
-<h4 id="part-i-training-1"><a href="presentationPartI.html">Part I: Training</a></h4>
+<div style="display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:1em; margin-top:0.5em; font-size:0.78em;">
+<div style="background:#2E86AB; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><a href="presentationPartI.html" style="color:white;"><b>Part I: Training</b></a></p>
 <ol type="1">
 <li>Quick start</li>
 <li>Data structures allowed</li>
 <li>Training (grow) with examples <br>(regression, classification, survival)</li>
 </ol>
-<h4 id="part-ii-inference-and-prediction-1"><a href="presentationPartII.html">Part II: Inference and Prediction</a></h4>
+</div>
+<div style="background:#E8A838; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><a href="presentationPartII.html" style="color:white;"><b>Part II: Inference and Prediction</b></a></p>
 <ol type="1">
 <li>Inference (OOB)</li>
 <li>Prediction Error</li>
@@ -3653,24 +3654,26 @@ Corresponding input (arguments)
 <li>Restore</li>
 <li>Partial Plots</li>
 </ol>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column" style="width:47.5%;">
-<h4 id="part-iii-variable-selection-1"><a href="presentationPartIII.html">Part III: Variable Selection</a></h4>
+</div>
+<div style="background:#6DBF67; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><a href="presentationPartIII.html" style="color:white;"><b>Part III: Variable Selection</b></a></p>
 <ol type="1">
 <li>VIMP</li>
 <li>Subsampling (Confidence Intervals)</li>
 <li>Minimal Depth</li>
 <li>VarPro</li>
 </ol>
-<h4 id="part-iv-advanced-examples-1"><a href="presentationPartIV.html">Part IV: Advanced Examples</a></h4>
+</div>
+<div style="background:#7B68EE; color:white; padding:0.9em 1.2em; border-radius:8px; min-height:8em;">
+<p><a href="presentationPartIV.html" style="color:white;"><b>Part IV: Advanced Examples</b></a></p>
 <ol type="1">
 <li>Class Imbalanced Data</li>
-<li>Competing Risks</li>
-<li>Multivariate Forests</li>
-<li>Missing data imputation</li>
+<li>Missing Data Imputation and OOD Scoring</li>
+<li>Super Greedy Trees and Forests</li>
+<li>Random Hazard Forests</li>
 </ol>
-</div></div>
+</div>
+</div>
 </section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>
 
 <div id="refs" class="references csl-bib-body" role="list">
