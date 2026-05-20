@@ -1005,6 +1005,7 @@ A_R(c)=A\setminus A_L(c)
 <section id="time-static-setting" class="slide level2 smaller">
 <h2>Time-static setting</h2>
 <p><code>rhf</code> also works with <strong>standard survival data</strong> where each subject has a single observed time and predictors are fixed at baseline</p>
+<div class="fragment fade-up">
 <p>The helper <code>convert.counting()</code> converts this data into counting-process format</p>
 <div class="sourceCode" id="cb22" data-code-line-numbers="1-3|5-6|8-9|11-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">library</span>(<span class="st">"randomForestRHF"</span>)</span>
 <span id="cb22-2"><a href=""></a><span class="do">## load data</span></span>
@@ -1018,6 +1019,7 @@ A_R(c)=A\setminus A_L(c)
 <span id="cb22-10"><a href=""></a></span>
 <span id="cb22-11"><a href=""></a><span class="do">## canonical call</span></span>
 <span id="cb22-12"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rhf</span>(f, d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="time-static-results" class="slide level2 smaller">
 <h2>Time-static results</h2>
