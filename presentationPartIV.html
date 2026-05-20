@@ -904,8 +904,10 @@ A_R(c)=A\setminus A_L(c)
 <section id="sgts-as-model-explainers" class="slide level2 smaller">
 <h2>SGTs as model explainers</h2>
 <p>Predicted values arise from a local polynomial built from partial effects that we can extract</p>
+<div class="fragment fade-up">
 <p>Grow a shallow forest and enforce the lasso</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">pure.lasso =</span> <span class="cn">TRUE</span>, <span class="at">filter =</span> filter, <span class="at">treesize =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="fragment fade-up">
 <p>Obtain predicted values, <span class="math inline">\(\beta\)</span> coefficients, and partial-effect contributions</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>bo      <span class="ot">&lt;-</span> <span class="fu">get.beta</span>(o, <span class="at">bag =</span> <span class="st">"oob"</span>)</span>
