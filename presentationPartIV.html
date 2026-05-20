@@ -762,7 +762,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </ul>
 </div>
 <div class="fragment fade-up">
-<p><strong>SGTs</strong> use rich <em>geometric</em> cuts to directly estimate multivariate relationships</p>
+<p><strong>SGTs</strong> use rich <em>geometric</em> cuts to directly estimate multivariate relationships <span class="citation" data-cites="ishwaran2026sgt">[<a href="#/references" role="doc-biblioref" onclick="">2</a>]</span></p>
 </div>
 </section>
 <section id="lasso-geometric-split" class="slide level2 smaller">
@@ -1066,6 +1066,9 @@ A_R(c)=A\setminus A_L(c)
 <p><img data-src="pic/rhf.png" style="width:120.0%"></p>
 </div></div>
 </section>
+<section id="section-2" class="slide level2" data-background-image="pic/rhf.png" data-background-size="contain" data-background-color="white">
+<h2></h2>
+</section>
 <section id="hazard-plots" class="slide level2 smaller">
 <h2>Hazard plots</h2>
 <p>Display OOB case-specific hazard and a smoothed version for specific patients</p>
@@ -1087,6 +1090,9 @@ A_R(c)=A\setminus A_L(c)
 </div>
 </div>
 </section>
+<section id="section-3" class="slide level2" data-background-image="pic/oobHazard.png" data-background-size="contain" data-background-color="white">
+<h2></h2>
+</section>
 <section id="time-localized-varpro-importance" class="slide level2 smaller">
 <h2>Time-localized VarPro importance</h2>
 <p><code>importance.rhf</code> uses a running time-window to calculate time-dependent VarPro importance</p>
@@ -1105,151 +1111,21 @@ A_R(c)=A\setminus A_L(c)
 </div></div>
 </div>
 </section>
-<section id="ecosystem" class="slide level2 smaller">
-<h2>Ecosystem</h2>
-<div style="display:flex; gap:3%; margin-top:0.5em; font-size:0.78em;">
-<div style="display:flex; flex-direction:column; gap:3%; width:48%;">
-<div style="background:#2E86AB; color:white; padding:0.9em 1.2em; border-radius:8px;">
-<p><strong>RF-SRC</strong> — randomForestSRC</p>
-<ul>
-<li>Random Forests: classification, regression, survival (RSF &amp; competing risks)</li>
-<li>OOB error, permutation VIMP, partial dependence/effect, proximities, imputation</li>
-<li>OpenMP compute backend</li>
-</ul>
-</div>
-<div style="background:#E8A838; color:white; padding:0.9em 1.2em; border-radius:8px;">
-<p><strong>SGT</strong> — randomForestSGT</p>
-<ul>
-<li>Super Greedy Trees with multivariate geometric splits</li>
-<li>Currently emphasizes regression</li>
-</ul>
-</div>
-</div>
-<div style="display:flex; flex-direction:column; gap:3%; width:48%;">
-<div style="background:#6DBF67; color:white; padding:0.9em 1.2em; border-radius:8px;">
-<p><strong>VarPro</strong> — varPro</p>
-<ul>
-<li><strong>Supervised</strong> model-independent variable selection (Variable Priority)</li>
-<li>Produces VI scores under supervision; complements permutation VIMP</li>
-</ul>
-</div>
-<br>
-<div style="background:#7B68EE; color:white; padding:0.9em 1.2em; border-radius:8px;">
-<p><strong>RHF</strong> — randomForestRHF</p>
-<ul>
-<li>Random Hazard Forest for time-dependent hazard estimation</li>
-<li>Extends RSF to <strong>time-varying covariates</strong></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="footer">
-
-</div>
-</section>
-<section id="statistical-families-problem-types" class="slide level2 smaller">
-<h2>Statistical Families (Problem Types)</h2>
-<table class="table-striped border small table-sm caption-top">
-<colgroup>
-<col style="width: 24%">
-<col style="width: 6%">
-<col style="width: 29%">
-<col style="width: 16%">
-<col style="width: 23%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Family</th>
-<th style="text-align: center;">RF-SRC</th>
-<th style="text-align: left;">VarPro</th>
-<th style="text-align: left;">SGT</th>
-<th style="text-align: left;">RHF</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Binary / Multiclass Classification</td>
-<td style="text-align: center;">Yes</td>
-<td style="text-align: left;">Supervised VI for classification</td>
-<td style="text-align: left;">Planned<sup>1</sup></td>
-<td style="text-align: left;">Indirect (hazard focus)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Continuous Regression</td>
-<td style="text-align: center;">Yes</td>
-<td style="text-align: left;">Supervised VI for regression</td>
-<td style="text-align: left;">Yes (primary)</td>
-<td style="text-align: left;">Risk scores derived</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Right-censored Survival (RSF)</td>
-<td style="text-align: center;">Yes</td>
-<td style="text-align: left;">Supervised VI for survival</td>
-<td style="text-align: left;">Not primary</td>
-<td style="text-align: left;">Yes (via hazard forest)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Competing Risks</td>
-<td style="text-align: center;">Yes</td>
-<td style="text-align: left;">Supervised VI</td>
-<td style="text-align: left;">Not primary</td>
-<td style="text-align: left;">Per-cause hazards<sup>2</sup></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Time-varying Covariates</td>
-<td style="text-align: center;">Limited (baseline RSF)</td>
-<td style="text-align: left;">N/A</td>
-<td style="text-align: left;">Not primary</td>
-<td style="text-align: left;"><strong>Core capability</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Unsupervised Feature Selection / VI</td>
-<td style="text-align: center;">Heuristics (proximities)</td>
-<td style="text-align: left;"><strong>UVarPro</strong> (unsupervised VI via release-based workflow)</td>
-<td style="text-align: left;">Not core</td>
-<td style="text-align: left;">Not core</td>
-</tr>
-</tbody>
-</table>
-<div class="footer">
-
-</div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>SGT currently emphasizes regression; classification support is on the roadmap.</p></li><li id="fn2"><p>RHF focuses on time-dependent hazard estimation; competing risks support <br> depends on modeling hazards per cause.</p></li></ol></aside></section>
-<section id="outline" class="slide level2 smaller" data-background-color="azure">
-<h2><a href="index.html">Outline</a></h2>
+<section id="section-4" class="slide level2 smaller">
+<h2></h2>
 <div class="columns">
-<div class="column" style="width:47.5%;">
-<h4 id="part-i-training"><a href="presentationPartI.html">Part I: Training</a></h4>
-<ol type="1">
-<li>Quick start</li>
-<li>Data structures allowed</li>
-<li>Training (grow) with examples <br>(regression, classification, survival)</li>
-</ol>
-<h4 id="part-ii-inference-and-prediction"><a href="presentationPartII.html">Part II: Inference and Prediction</a></h4>
-<ol type="1">
-<li>Inference (OOB)</li>
-<li>Prediction Error</li>
-<li>Prediction</li>
-<li>Restore</li>
-<li>Partial Plots</li>
-</ol>
-</div><div class="column" style="width:5%;">
-
-</div><div class="column" style="width:47.5%;">
-<h4 id="part-iii-variable-selection"><a href="presentationPartIII.html">Part III: Variable Selection</a></h4>
-<ol type="1">
-<li>VIMP</li>
-<li>Subsampling (Confidence Intervals)</li>
-<li>Minimal Depth</li>
-<li>VarPro</li>
-</ol>
-<h4 id="part-iv-advanced-examples"><a href="presentationPartIV.html">Part IV: Advanced Examples</a></h4>
-<ol type="1">
-<li>Class Imbalanced Data</li>
-<li>Competing Risks</li>
-<li>Multivariate Forests</li>
-<li>Missing Data Imputation and OOD Scoring</li>
-</ol>
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="pic/imprhf1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="pic/imprhf2.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
 </div></div>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
@@ -1259,9 +1135,11 @@ A_R(c)=A\setminus A_L(c)
 <div id="ref-HemantRFQv" class="csl-entry" role="listitem">
 1. Ishwaran H, O’Brien R, Lu M, Kogalur UB. <span class="nocase">randomForestSRC</span>: Random forests quantile classifier <span>(RFQ)</span> vignette. 2021. <a href="http://randomforestsrc.org/articles/imbalance.html">http://randomforestsrc.org/articles/imbalance.html</a>.
 </div>
+<div id="ref-ishwaran2026sgt" class="csl-entry" role="listitem">
+2. Ishwaran H. Super greedy trees. To appear in Artificial Intelligence Review. 2026.
+</div>
 </div>
 </section>
-
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="images/rfsrc.svg" class="slide-logo"></p>
