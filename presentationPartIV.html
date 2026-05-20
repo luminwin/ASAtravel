@@ -635,30 +635,42 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </section>
 <section id="otfi-for-training-data" class="slide level2">
 <h2>OTFI for training data</h2>
+<div class="fragment fade-up">
 <ol type="1">
 <li>Only non-missing data are used for split-statistics. Daughter node membership assignment for missing data is made by sampling from the non-missing inbag data</li>
+</ol>
+</div>
+<div class="fragment fade-up">
+<ol start="2" type="1">
 <li>Can be used for supervised settings</li>
 </ol>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
 <span id="cb6-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="fu">Surv</span>(days, status)<span class="sc">~</span>.,pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment fade-up">
 <ol start="3" type="1">
 <li>Also applicable to unsupervised settings. In this case multivariate splitting is applied to <code>ytry</code> variables which act as pseudo-responses</li>
 </ol>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
 <span id="cb7-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="footer">
 
 </div>
 </section>
 <section id="missforest-and-mforest-for-training-data" class="slide level2">
 <h2>missForest and mForest for training data</h2>
+<div class="fragment fade-up">
 <p>The imputation problem is turned into a series of regression problem</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
 <span id="cb8-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>pbc, <span class="at">mf.q=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment fade-up">
 <p>For datasets with a large number of variables, instead of running <span class="math inline">\(p\)</span> regressions for each cycle, we can group variables into multivariate regressions</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">data</span>(housing, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
 <span id="cb9-2"><a href=""></a>housing.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>housing, <span class="at">mf.q=</span>.<span class="dv">5</span>)</span>
 <span id="cb9-3"><a href=""></a>housing.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>housing, <span class="at">mf.q=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="test-time-imputation-using-impute.learn" class="slide level2 smaller">
 <h2>Test time imputation using <code>impute.learn</code></h2>
@@ -667,13 +679,9 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb10-2"><a href=""></a>newdata.imp <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, <span class="at">newdata =</span> ...)</span>
 <span id="cb10-3"><a href=""></a><span class="fu">save.impute.learn</span>(fit, <span class="at">path =</span> ...)</span>
 <span id="cb10-4"><a href=""></a>load.fit    <span class="ot">&lt;-</span> <span class="fu">load.impute.learn</span>(<span class="at">path =</span> ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment fade-up">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="pic/train_test_time_imputation.png" class="quarto-figure quarto-figure-center" style="width:78.0%"></p>
-</figure>
-</div>
-</div>
+</section>
+<section id="section" class="slide level2" data-background-image="pic/train_test_time_imputation.png" data-background-size="contain" data-background-color="white">
+<h2></h2>
 </section>
 <section id="test-time-imputation" class="slide level2 smaller">
 <h2>Test time imputation</h2>
@@ -713,13 +721,12 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <blockquote>
 <p><em>Can each observed part of the row be predicted from the other parts as well as it could be in training?</em></p>
 </blockquote>
-<p>This single question addresses all three goals above</p>
+<p>We address all three goals using <code>impute.ood</code></p>
 </div>
 </section>
-<section id="test-time-ood-scoring-schematic" class="slide level2 smaller">
-<h2>Test time OOD scoring schematic</h2>
-
-<img data-src="pic/test_time_ood_scoring.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="section-1" class="slide level2" data-background-image="pic/test_time_ood_scoring.png" data-background-size="contain" data-background-color="white">
+<h2></h2>
+</section>
 <section id="ood-scoring-example" class="slide level2 smaller">
 <h2>OOD scoring example</h2>
 <div class="sourceCode" id="cb12" data-code-line-numbers="1-3|5-13|14-16|17-18|19-20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>aq <span class="ot">&lt;-</span> airquality[, <span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>, <span class="st">"Month"</span>)]</span>
@@ -842,12 +849,14 @@ A_R(c)=A\setminus A_L(c)
 <div class="fragment fade-up">
 <ul>
 <li>The <code>filter</code> object contains results from fitting shallow forests under different <code>hcut</code> values (here the maximum is set to 3)</li>
-<li>The object can be passed to <code>rfsgt</code> via the <code>filter</code> argument to use the optimized <code>hcut</code> with pre-selected basis functions</li>
 </ul>
 </div>
 </section>
 <section id="using-the-tuned-hcut" class="slide level2 smaller">
 <h2>Using the tuned <code>hcut</code></h2>
+<ul>
+<li>The object can be passed to <code>rfsgt</code> via the <code>filter</code> argument to use the optimized <code>hcut</code> with pre-selected basis functions</li>
+</ul>
 <div class="sourceCode" id="cb14" data-code-line-numbers="1-2|4-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="co"># Use tuned hcut and pre-selected bases</span></span>
 <span id="cb14-2"><a href=""></a><span class="fu">print</span>(<span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">filter =</span> filter))</span>
 <span id="cb14-3"><a href=""></a></span>
