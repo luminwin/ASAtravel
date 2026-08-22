@@ -47,17 +47,29 @@ This half-day virtual workshop gives a practical, code-centered introduction to 
 <h2 align="center">Software Ecosystem</h2>
 
 <table>
-<tr valign="middle">
-<td width="60" align="center"><img src="assets/logo-randomforestsrc.png" alt="randomForestSRC" width="60"></td>
-<td width="440"><b><a href="https://www.randomforestsrc.org/">randomForestSRC</a></b><br>Unified forests for regression, classification, survival, and competing risks.</td>
-<td width="60" align="center"><img src="assets/logo-varpro.png" alt="varPro" width="60"></td>
-<td width="440"><b><a href="https://www.randomforestsrc.org/">varPro</a></b><br>Rule-based variable priority for model-independent variable selection.</td>
+<tr align="center" valign="top">
+<td width="50%">
+<a href="https://www.randomforestsrc.org/"><img src="assets/logo-randomforestsrc.png" alt="randomForestSRC" width="110"></a><br><br>
+<b><a href="https://www.randomforestsrc.org/">randomForestSRC</a></b><br>
+Unified forests for regression, classification, survival, and competing risks.
+</td>
+<td width="50%">
+<a href="https://www.varprotools.org/"><img src="assets/logo-varpro.png" alt="varPro" width="110"></a><br><br>
+<b><a href="https://www.varprotools.org/">varPro</a></b><br>
+Rule-based variable priority for model-independent variable selection.
+</td>
 </tr>
-<tr valign="middle">
-<td align="center"><img src="assets/logo-rhf.png" alt="randomForestRHF" width="60"></td>
-<td><b><a href="https://www.randomforestsrc.org/">randomForestRHF (RHF)</a></b><br>Random hazard forests for time-varying covariates in survival analysis.</td>
-<td align="center"><img src="assets/logo-sgt.png" alt="randomForestSGT" width="60"></td>
-<td><b><a href="https://www.randomforestsrc.org/">randomForestSGT (SGT)</a></b><br>Super greedy trees and flexible split geometry.</td>
+<tr align="center" valign="top">
+<td width="50%">
+<a href="https://www.randomforestrhf.org/"><img src="assets/logo-rhf.png" alt="randomForestRHF" width="110"></a><br><br>
+<b><a href="https://www.randomforestrhf.org/">randomForestRHF (RHF)</a></b><br>
+Random hazard forests for time-varying covariates in survival analysis.
+</td>
+<td width="50%">
+<a href="https://www.randomforestsgt.org/"><img src="assets/logo-sgt.png" alt="randomForestSGT" width="110"></a><br><br>
+<b><a href="https://www.randomforestsgt.org/">randomForestSGT (SGT)</a></b><br>
+Super greedy trees and flexible split geometry.
+</td>
 </tr>
 </table>
 
@@ -71,7 +83,7 @@ This half-day virtual workshop gives a practical, code-centered introduction to 
 
 <table>
 <tr valign="top">
-<td width="180" align="center"><img src="assets/hemant-ishwaran.png" alt="Hemant Ishwaran" width="170"></td>
+<td width="25%" align="center"><img src="assets/hemant-ishwaran.png" alt="Hemant Ishwaran" width="190"></td>
 <td>
 
 ### Hemant Ishwaran
@@ -90,7 +102,7 @@ Hemant Ishwaran develops machine learning methods for complex biomedical and tim
 
 <table>
 <tr valign="top">
-<td width="180" align="center"><img src="assets/min-lu.png" alt="Min Lu" width="170"></td>
+<td width="25%" align="center"><img src="assets/min-lu.png" alt="Min Lu" width="190"></td>
 <td>
 
 ### Min Lu
@@ -110,28 +122,20 @@ Min Lu works on random forests and trees, causal inference, variable selection, 
 
 <h3 align="center">Workshop software ecosystem</h3>
 
-<p align="center">
-  <img src="assets/logo-randomforestsrc.png" alt="randomForestSRC" width="70">
-  &nbsp;&nbsp;&nbsp;
-  <img src="assets/logo-varpro.png" alt="varPro" width="70">
-  &nbsp;&nbsp;&nbsp;
-  <img src="assets/logo-rhf.png" alt="RHF" width="70">
-  &nbsp;&nbsp;&nbsp;
-  <img src="assets/logo-sgt.png" alt="SGT" width="70">
-</p>
-
-<p align="center">
-  randomForestSRC &nbsp;•&nbsp; varPro &nbsp;•&nbsp; randomForestRHF (RHF) &nbsp;•&nbsp; randomForestSGT (SGT)
-</p>
-
----
-
-# ASA 2026 Travel Course
-## Tree-Based Machine Learning Methods for Prediction and Variable Selection
-# [Part I](https://luminwin.github.io/ASAtravel/presentationPartI.html)
-# [Part II](https://luminwin.github.io/ASAtravel/presentationPartII.html)
-# [Part III](https://luminwin.github.io/ASAtravel/presentationPartIII.html)
-# [Part IV](https://luminwin.github.io/ASAtravel/presentationPartIV.html)
+<table>
+<tr align="center" valign="bottom">
+<td width="25%"><a href="https://www.randomforestsrc.org/"><img src="assets/logo-randomforestsrc.png" alt="randomForestSRC" width="100"></a></td>
+<td width="25%"><a href="https://www.varprotools.org/"><img src="assets/logo-varpro.png" alt="varPro" width="100"></a></td>
+<td width="25%"><a href="https://www.randomforestrhf.org/"><img src="assets/logo-rhf.png" alt="randomForestRHF" width="100"></a></td>
+<td width="25%"><a href="https://www.randomforestsgt.org/"><img src="assets/logo-sgt.png" alt="randomForestSGT" width="100"></a></td>
+</tr>
+<tr align="center" valign="top">
+<td><b>randomForestSRC</b></td>
+<td><b>varPro</b></td>
+<td><b>randomForestRHF (RHF)</b></td>
+<td><b>randomForestSGT (SGT)</b></td>
+</tr>
+</table>
 
 ---
 
