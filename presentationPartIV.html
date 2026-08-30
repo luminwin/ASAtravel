@@ -605,7 +605,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <section id="missing-data-imputation" class="slide level2 smaller">
 <h2>Missing data imputation</h2>
 <div class="fragment fade-in-then-semi-out">
-<p>Missing data can be imputed at various stages of the analysis</p>
+<p>Missing data can be imputed at various stages of the analysis <span class="citation" data-cites="tang2017random stekhoven2012missforest">[<a href="#/references" role="doc-biblioref" onclick="">2</a>, <a href="#/references" role="doc-biblioref" onclick="">3</a>]</span></p>
 <ol type="1">
 <li>During training using <code>na.action="na.impute"</code> in <code>rfsrc</code></li>
 <li>When predicting data using <code>na.action="na.impute"</code> in <code>predict</code></li>
@@ -762,7 +762,7 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </ul>
 </div>
 <div class="fragment fade-up">
-<p><strong>SGTs</strong> use rich <em>geometric</em> cuts to directly estimate multivariate relationships <span class="citation" data-cites="ishwaran2026sgt LuGettingStartedsgt">[<a href="#/references" role="doc-biblioref" onclick="">2</a>, <a href="#/references" role="doc-biblioref" onclick="">3</a>]</span></p>
+<p><strong>SGTs</strong> use rich <em>geometric</em> cuts to directly estimate multivariate relationships <span class="citation" data-cites="ishwaran2026sgt LuGettingStartedsgt">[<a href="#/references" role="doc-biblioref" onclick="">4</a>, <a href="#/references" role="doc-biblioref" onclick="">5</a>]</span></p>
 </div>
 </section>
 <section id="lasso-geometric-split" class="slide level2 smaller">
@@ -948,7 +948,7 @@ A_R(c)=A\setminus A_L(c)
 <h2>Random Hazard Forests (RHF)</h2>
 <p>Physiology, medications, laboratory values, device measurements, exposures, and symptoms can all evolve during a patient’s follow-up — a baseline-only model uses <strong>one snapshot</strong> of this information</p>
 <div class="fragment fade-up">
-<p>A <strong>dynamic hazard model</strong> uses the patient’s longitudinal covariate trajectory. The <code>randomForestRHF</code> (RHF) package <span class="citation" data-cites="LuGettingStartedrhf">[<a href="#/references" role="doc-biblioref" onclick="">4</a>]</span> is designed for this</p>
+<p>A <strong>dynamic hazard model</strong> uses the patient’s longitudinal covariate trajectory. The <code>randomForestRHF</code> (RHF) package <span class="citation" data-cites="LuGettingStartedrhf">[<a href="#/references" role="doc-biblioref" onclick="">6</a>]</span> is designed for this</p>
 </div>
 <div class="fragment fade-up">
 <p>The canonical training call is</p>
@@ -1176,14 +1176,20 @@ A_R(c)=A\setminus A_L(c)
 <div id="ref-HemantRFQv" class="csl-entry" role="listitem">
 1. Ishwaran H, O’Brien R, Lu M, Kogalur UB. <span class="nocase">randomForestSRC</span>: Random forests quantile classifier <span>(RFQ)</span> vignette. 2021. <a href="http://randomforestsrc.org/articles/imbalance.html">http://randomforestsrc.org/articles/imbalance.html</a>.
 </div>
+<div id="ref-tang2017random" class="csl-entry" role="listitem">
+2. Tang F, Ishwaran H. Random forest missing data algorithms. Statistical Analysis and Data Mining. 2017;10:363–77.
+</div>
+<div id="ref-stekhoven2012missforest" class="csl-entry" role="listitem">
+3. Stekhoven DJ, Bühlmann P. MissForest—non-parametric missing value imputation for mixed-type data. Bioinformatics. 2012;28:112–8.
+</div>
 <div id="ref-ishwaran2026sgt" class="csl-entry" role="listitem">
-2. Ishwaran H. Super greedy trees. To appear in Artificial Intelligence Review. 2026.
+4. Ishwaran H. Super greedy trees. To appear in Artificial Intelligence Review. 2026.
 </div>
 <div id="ref-LuGettingStartedsgt" class="csl-entry" role="listitem">
-3. Ishwaran H, Lu M, Kogalur UB. <span class="nocase">randomForestSGT</span>: Getting started with <span class="nocase">randomForestSGT</span> vignette. 2025. <a href="http://www.randomforestsgt.org/articles/getstarted.html">http://www.randomforestsgt.org/articles/getstarted.html</a>.
+5. Ishwaran H, Lu M, Kogalur UB. <span class="nocase">randomForestSGT</span>: Getting started with <span class="nocase">randomForestSGT</span> vignette. 2025. <a href="http://www.randomforestsgt.org/articles/getstarted.html">http://www.randomforestsgt.org/articles/getstarted.html</a>.
 </div>
 <div id="ref-LuGettingStartedrhf" class="csl-entry" role="listitem">
-4. Ishwaran H, Lu M, Kogalur UB. <span class="nocase">randomForestRHF</span>: Getting started with <span class="nocase">randomForestRHF</span> vignette. 2026. <a href="http://www.randomforestrhf.org/articles/getstarted.html">http://www.randomforestrhf.org/articles/getstarted.html</a>.
+6. Ishwaran H, Lu M, Kogalur UB. <span class="nocase">randomForestRHF</span>: Getting started with <span class="nocase">randomForestRHF</span> vignette. 2026. <a href="http://www.randomforestrhf.org/articles/getstarted.html">http://www.randomforestrhf.org/articles/getstarted.html</a>.
 </div>
 </div>
 </section>
