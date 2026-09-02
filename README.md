@@ -1,3 +1,5 @@
+**Slides: <https://luminwin.github.io/ASAtravel/>**
+
 <p align="center">
   <img src="assets/banner-course.png" alt="ASA Traveling Course — Tree-Based Machine Learning Methods: Prediction, Inference, and Variable Selection with the randomForestSRC Ecosystem. Half Day · 4 Hours · Virtual Only" width="100%">
 </p>
@@ -60,6 +62,4 @@
   <img src="assets/card-eco-strip.png" alt="Workshop software ecosystem — randomForestSRC · varPro · randomForestRHF (RHF) · randomForestSGT (SGT)" width="100%">
 </p>
 
-<p align="center">
-  <img src="assets/footer.png" alt="Slides and code: github.com/luminwin/ASAtravel — Software: randomForestSRC.org" width="100%">
-</p>
+<p align="center"><a href="https://github.com/luminwin/ASAtravel"><img src="assets/footer-left.png" alt="Slides and code: github.com/luminwin/ASAtravel" width="50%"></a><a href="https://www.randomforestsrc.org/"><img src="assets/footer-right.png" alt="Software: randomForestSRC.org" width="50%"></a></p>
