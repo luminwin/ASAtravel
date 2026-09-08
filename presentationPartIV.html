@@ -582,15 +582,15 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <ol start="2" type="1">
 <li>Can be used for supervised settings</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb6-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="fu">Surv</span>(days, status)<span class="sc">~</span>.,pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb4-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="fu">Surv</span>(days, status)<span class="sc">~</span>.,pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment fade-up">
 <ol start="3" type="1">
 <li>Also applicable to unsupervised settings. In this case multivariate splitting is applied to <code>ytry</code> variables which act as pseudo-responses</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb7-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb5-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="footer">
 
@@ -600,23 +600,23 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <h2>missForest and mForest for training data</h2>
 <div class="fragment fade-up">
 <p>The imputation problem is turned into a series of regression problem</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb8-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>pbc, <span class="at">mf.q=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="fu">data</span>(pbc, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb6-2"><a href=""></a>pbc.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>pbc, <span class="at">mf.q=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment fade-up">
 <p>For datasets with a large number of variables, instead of running <span class="math inline">\(p\)</span> regressions for each cycle, we can group variables into multivariate regressions</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">data</span>(housing, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb9-2"><a href=""></a>housing.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>housing, <span class="at">mf.q=</span>.<span class="dv">5</span>)</span>
-<span id="cb9-3"><a href=""></a>housing.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>housing, <span class="at">mf.q=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">data</span>(housing, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb7-2"><a href=""></a>housing.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>housing, <span class="at">mf.q=</span>.<span class="dv">5</span>)</span>
+<span id="cb7-3"><a href=""></a>housing.impute <span class="ot">&lt;-</span> <span class="fu">impute</span>(<span class="at">data=</span>housing, <span class="at">mf.q=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="test-time-imputation-using-impute.learn" class="slide level2 smaller">
 <h2>Test time imputation using <code>impute.learn</code></h2>
 <p>There are four principal functions</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>fit         <span class="ot">&lt;-</span> <span class="fu">impute.learn</span>(...)</span>
-<span id="cb10-2"><a href=""></a>newdata.imp <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, <span class="at">newdata =</span> ...)</span>
-<span id="cb10-3"><a href=""></a><span class="fu">save.impute.learn</span>(fit, <span class="at">path =</span> ...)</span>
-<span id="cb10-4"><a href=""></a>load.fit    <span class="ot">&lt;-</span> <span class="fu">load.impute.learn</span>(<span class="at">path =</span> ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>fit         <span class="ot">&lt;-</span> <span class="fu">impute.learn</span>(...)</span>
+<span id="cb8-2"><a href=""></a>newdata.imp <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, <span class="at">newdata =</span> ...)</span>
+<span id="cb8-3"><a href=""></a><span class="fu">save.impute.learn</span>(fit, <span class="at">path =</span> ...)</span>
+<span id="cb8-4"><a href=""></a>load.fit    <span class="ot">&lt;-</span> <span class="fu">load.impute.learn</span>(<span class="at">path =</span> ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="section" class="slide level2" data-background-image="pic/train_test_time_imputation.png" data-background-size="contain" data-background-color="white">
 <h2></h2>
@@ -624,21 +624,21 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <section id="test-time-imputation" class="slide level2 smaller">
 <h2>Test time imputation</h2>
 <p>The following uses the <code>airquality</code> data as a toy example</p>
-<div class="sourceCode" id="cb11" data-code-line-numbers="1-3|5-12|13-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>aq <span class="ot">&lt;-</span> airquality[, <span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>, <span class="st">"Month"</span>)]</span>
-<span id="cb11-2"><a href=""></a></span>
-<span id="cb11-3"><a href=""></a>id <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(aq)), <span class="dv">100</span>); train <span class="ot">&lt;-</span> aq[id, ]; test  <span class="ot">&lt;-</span> aq[<span class="sc">-</span>id, ]</span>
-<span id="cb11-4"><a href=""></a></span>
-<span id="cb11-5"><a href=""></a><span class="do">## imputation/training</span></span>
-<span id="cb11-6"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">impute.learn</span>(</span>
-<span id="cb11-7"><a href=""></a>  <span class="at">data =</span> train,</span>
-<span id="cb11-8"><a href=""></a>  <span class="at">mf.q =</span> <span class="dv">1</span>,</span>
-<span id="cb11-9"><a href=""></a>  <span class="at">max.iter =</span> <span class="dv">5</span>,</span>
-<span id="cb11-10"><a href=""></a>  <span class="at">full.sweep.options =</span> <span class="fu">list</span>(<span class="at">ntree =</span> <span class="dv">25</span>, <span class="at">nsplit =</span> <span class="dv">5</span>),</span>
-<span id="cb11-11"><a href=""></a>  <span class="at">target.mode =</span> <span class="st">"all"</span></span>
-<span id="cb11-12"><a href=""></a>)</span>
-<span id="cb11-13"><a href=""></a></span>
-<span id="cb11-14"><a href=""></a><span class="do">## test time imputation</span></span>
-<span id="cb11-15"><a href=""></a>test.imp <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, test, <span class="at">max.predict.iter =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-code-line-numbers="1-3|5-12|13-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>aq <span class="ot">&lt;-</span> airquality[, <span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>, <span class="st">"Month"</span>)]</span>
+<span id="cb9-2"><a href=""></a></span>
+<span id="cb9-3"><a href=""></a>id <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(aq)), <span class="dv">100</span>); train <span class="ot">&lt;-</span> aq[id, ]; test  <span class="ot">&lt;-</span> aq[<span class="sc">-</span>id, ]</span>
+<span id="cb9-4"><a href=""></a></span>
+<span id="cb9-5"><a href=""></a><span class="do">## imputation/training</span></span>
+<span id="cb9-6"><a href=""></a>fit <span class="ot">&lt;-</span> <span class="fu">impute.learn</span>(</span>
+<span id="cb9-7"><a href=""></a>  <span class="at">data =</span> train,</span>
+<span id="cb9-8"><a href=""></a>  <span class="at">mf.q =</span> <span class="dv">1</span>,</span>
+<span id="cb9-9"><a href=""></a>  <span class="at">max.iter =</span> <span class="dv">5</span>,</span>
+<span id="cb9-10"><a href=""></a>  <span class="at">full.sweep.options =</span> <span class="fu">list</span>(<span class="at">ntree =</span> <span class="dv">25</span>, <span class="at">nsplit =</span> <span class="dv">5</span>),</span>
+<span id="cb9-11"><a href=""></a>  <span class="at">target.mode =</span> <span class="st">"all"</span></span>
+<span id="cb9-12"><a href=""></a>)</span>
+<span id="cb9-13"><a href=""></a></span>
+<span id="cb9-14"><a href=""></a><span class="do">## test time imputation</span></span>
+<span id="cb9-15"><a href=""></a>test.imp <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, test, <span class="at">max.predict.iter =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-up">
 <ul>
 <li>The fitting and prediction interfaces follow the <code>impute()</code> workflow, but several arguments play a special role for test-time use</li>
@@ -667,26 +667,26 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 </section>
 <section id="ood-scoring-example" class="slide level2 smaller">
 <h2>OOD scoring example</h2>
-<div class="sourceCode" id="cb12" data-code-line-numbers="1-3|5-13|14-16|17-18|19-20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>aq <span class="ot">&lt;-</span> airquality[, <span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>, <span class="st">"Month"</span>)]</span>
-<span id="cb12-2"><a href=""></a></span>
-<span id="cb12-3"><a href=""></a>id <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(aq)), <span class="dv">100</span>); train <span class="ot">&lt;-</span> aq[id, ]; test  <span class="ot">&lt;-</span> aq[<span class="sc">-</span>id, ]</span>
-<span id="cb12-4"><a href=""></a></span>
-<span id="cb12-5"><a href=""></a><span class="do">## supervised training and imputation</span></span>
-<span id="cb12-6"><a href=""></a>sup.fit <span class="ot">&lt;-</span> <span class="fu">impute.learn</span>(</span>
-<span id="cb12-7"><a href=""></a>  <span class="at">data =</span> train,</span>
-<span id="cb12-8"><a href=""></a>  <span class="at">mf.q =</span> <span class="dv">1</span>,</span>
-<span id="cb12-9"><a href=""></a>  <span class="at">supervised.formula =</span> Solar.R <span class="sc">~</span> .,</span>
-<span id="cb12-10"><a href=""></a>  <span class="at">supervised.args =</span> <span class="fu">list</span>(<span class="at">ntree =</span> <span class="dv">50</span>, <span class="at">nsplit =</span> <span class="dv">5</span>),</span>
-<span id="cb12-11"><a href=""></a>  <span class="at">full.sweep.options =</span> <span class="fu">list</span>(<span class="at">ntree =</span> <span class="dv">25</span>, <span class="at">nsplit =</span> <span class="dv">5</span>),</span>
-<span id="cb12-12"><a href=""></a>  <span class="at">save.ood =</span> <span class="cn">TRUE</span></span>
-<span id="cb12-13"><a href=""></a>)</span>
-<span id="cb12-14"><a href=""></a></span>
-<span id="cb12-15"><a href=""></a><span class="do">## test time scoring and imputation</span></span>
-<span id="cb12-16"><a href=""></a>ood <span class="ot">&lt;-</span> <span class="fu">impute.ood</span>(sup.fit, test)</span>
-<span id="cb12-17"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(ood<span class="sc">$</span>score))</span>
-<span id="cb12-18"><a href=""></a>[<span class="dv">1</span>] <span class="fl">0.3426349</span> <span class="fl">0.1992188</span> <span class="fl">0.8819692</span> <span class="fl">0.7183163</span> <span class="fl">0.4520101</span> <span class="fl">0.6757812</span></span>
-<span id="cb12-19"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(ood<span class="sc">$</span>score.percentile))</span>
-<span id="cb12-20"><a href=""></a>[<span class="dv">1</span>] <span class="fl">0.2226562</span> <span class="fl">0.0546875</span> <span class="fl">0.9375000</span> <span class="fl">0.7148438</span> <span class="fl">0.3046875</span> <span class="fl">0.6445312</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10" data-code-line-numbers="1-3|5-13|14-16|17-18|19-20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>aq <span class="ot">&lt;-</span> airquality[, <span class="fu">c</span>(<span class="st">"Ozone"</span>, <span class="st">"Solar.R"</span>, <span class="st">"Wind"</span>, <span class="st">"Temp"</span>, <span class="st">"Month"</span>)]</span>
+<span id="cb10-2"><a href=""></a></span>
+<span id="cb10-3"><a href=""></a>id <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(aq)), <span class="dv">100</span>); train <span class="ot">&lt;-</span> aq[id, ]; test  <span class="ot">&lt;-</span> aq[<span class="sc">-</span>id, ]</span>
+<span id="cb10-4"><a href=""></a></span>
+<span id="cb10-5"><a href=""></a><span class="do">## supervised training and imputation</span></span>
+<span id="cb10-6"><a href=""></a>sup.fit <span class="ot">&lt;-</span> <span class="fu">impute.learn</span>(</span>
+<span id="cb10-7"><a href=""></a>  <span class="at">data =</span> train,</span>
+<span id="cb10-8"><a href=""></a>  <span class="at">mf.q =</span> <span class="dv">1</span>,</span>
+<span id="cb10-9"><a href=""></a>  <span class="at">supervised.formula =</span> Solar.R <span class="sc">~</span> .,</span>
+<span id="cb10-10"><a href=""></a>  <span class="at">supervised.args =</span> <span class="fu">list</span>(<span class="at">ntree =</span> <span class="dv">50</span>, <span class="at">nsplit =</span> <span class="dv">5</span>),</span>
+<span id="cb10-11"><a href=""></a>  <span class="at">full.sweep.options =</span> <span class="fu">list</span>(<span class="at">ntree =</span> <span class="dv">25</span>, <span class="at">nsplit =</span> <span class="dv">5</span>),</span>
+<span id="cb10-12"><a href=""></a>  <span class="at">save.ood =</span> <span class="cn">TRUE</span></span>
+<span id="cb10-13"><a href=""></a>)</span>
+<span id="cb10-14"><a href=""></a></span>
+<span id="cb10-15"><a href=""></a><span class="do">## test time scoring and imputation</span></span>
+<span id="cb10-16"><a href=""></a>ood <span class="ot">&lt;-</span> <span class="fu">impute.ood</span>(sup.fit, test)</span>
+<span id="cb10-17"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(ood<span class="sc">$</span>score))</span>
+<span id="cb10-18"><a href=""></a>[<span class="dv">1</span>] <span class="fl">0.3426349</span> <span class="fl">0.1992188</span> <span class="fl">0.8819692</span> <span class="fl">0.7183163</span> <span class="fl">0.4520101</span> <span class="fl">0.6757812</span></span>
+<span id="cb10-19"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(ood<span class="sc">$</span>score.percentile))</span>
+<span id="cb10-20"><a href=""></a>[<span class="dv">1</span>] <span class="fl">0.2226562</span> <span class="fl">0.0546875</span> <span class="fl">0.9375000</span> <span class="fl">0.7148438</span> <span class="fl">0.3046875</span> <span class="fl">0.6445312</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="super-greedy-trees-sgts" class="slide level2 smaller">
 <h2>Super Greedy Trees (SGTs)</h2>
@@ -776,14 +776,14 @@ A_R(c)=A\setminus A_L(c)
 <section id="tuning-hcut" class="slide level2 smaller">
 <h2>Tuning <code>hcut</code></h2>
 <p>Use <strong>Friedman 1</strong> simulation with noise variables to study <code>hcut</code></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="co"># Simulate data</span></span>
-<span id="cb13-2"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">2500</span></span>
-<span id="cb13-3"><a href=""></a>p <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb13-4"><a href=""></a>noise <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(n <span class="sc">*</span> p), <span class="at">ncol =</span> p)</span>
-<span id="cb13-5"><a href=""></a>dta   <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(mlbench<span class="sc">:::</span><span class="fu">mlbench.friedman1</span>(n, <span class="at">sd =</span> <span class="dv">0</span>), <span class="at">noise =</span> noise)</span>
-<span id="cb13-6"><a href=""></a></span>
-<span id="cb13-7"><a href=""></a><span class="co"># Tune hcut</span></span>
-<span id="cb13-8"><a href=""></a>filter <span class="ot">&lt;-</span> <span class="fu">tune.hcut</span>(y <span class="sc">~</span> ., dta, <span class="at">hcut =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a><span class="co"># Simulate data</span></span>
+<span id="cb11-2"><a href=""></a>n <span class="ot">&lt;-</span> <span class="dv">2500</span></span>
+<span id="cb11-3"><a href=""></a>p <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb11-4"><a href=""></a>noise <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(n <span class="sc">*</span> p), <span class="at">ncol =</span> p)</span>
+<span id="cb11-5"><a href=""></a>dta   <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(mlbench<span class="sc">:::</span><span class="fu">mlbench.friedman1</span>(n, <span class="at">sd =</span> <span class="dv">0</span>), <span class="at">noise =</span> noise)</span>
+<span id="cb11-6"><a href=""></a></span>
+<span id="cb11-7"><a href=""></a><span class="co"># Tune hcut</span></span>
+<span id="cb11-8"><a href=""></a>filter <span class="ot">&lt;-</span> <span class="fu">tune.hcut</span>(y <span class="sc">~</span> ., dta, <span class="at">hcut =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-up">
 <ul>
 <li>The <code>filter</code> object contains results from fitting shallow forests under different <code>hcut</code> values (here the maximum is set to 3)</li>
@@ -795,48 +795,48 @@ A_R(c)=A\setminus A_L(c)
 <ul>
 <li>The object can be passed to <code>rfsgt</code> via the <code>filter</code> argument to use the optimized <code>hcut</code> with pre-selected basis functions</li>
 </ul>
-<div class="sourceCode" id="cb14" data-code-line-numbers="1-2|4-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="co"># Use tuned hcut and pre-selected bases</span></span>
-<span id="cb14-2"><a href=""></a><span class="fu">print</span>(<span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">filter =</span> filter))</span>
-<span id="cb14-3"><a href=""></a></span>
-<span id="cb14-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">2500</span></span>
-<span id="cb14-5"><a href=""></a>                    Tree sample size<span class="sc">:</span> <span class="dv">1580</span></span>
-<span id="cb14-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">100</span></span>
-<span id="cb14-7"><a href=""></a>                   Average tree size<span class="sc">:</span> <span class="dv">100</span></span>
-<span id="cb14-8"><a href=""></a>                   Average node size<span class="sc">:</span> <span class="fl">15.8</span></span>
-<span id="cb14-9"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb14-10"><a href=""></a>                              Family<span class="sc">:</span> regr</span>
-<span id="cb14-11"><a href=""></a>                           Splitrule<span class="sc">:</span> sg.regr</span>
-<span id="cb14-12"><a href=""></a>                                hcut<span class="sc">:</span> <span class="dv">3</span></span>
-<span id="cb14-13"><a href=""></a>                      hcut<span class="sc">-</span>dimension<span class="sc">:</span> <span class="dv">14</span></span>
-<span id="cb14-14"><a href=""></a>                       OOB R<span class="sc">-</span>squared<span class="sc">:</span> <span class="fl">0.9813015</span></span>
-<span id="cb14-15"><a href=""></a>         OOB standardized error rate<span class="sc">:</span> <span class="fl">0.01869852</span></span>
-<span id="cb14-16"><a href=""></a>                      OOB error rate<span class="sc">:</span> <span class="fl">0.4244172</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12" data-code-line-numbers="1-2|4-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a><span class="co"># Use tuned hcut and pre-selected bases</span></span>
+<span id="cb12-2"><a href=""></a><span class="fu">print</span>(<span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">filter =</span> filter))</span>
+<span id="cb12-3"><a href=""></a></span>
+<span id="cb12-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">2500</span></span>
+<span id="cb12-5"><a href=""></a>                    Tree sample size<span class="sc">:</span> <span class="dv">1580</span></span>
+<span id="cb12-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">100</span></span>
+<span id="cb12-7"><a href=""></a>                   Average tree size<span class="sc">:</span> <span class="dv">100</span></span>
+<span id="cb12-8"><a href=""></a>                   Average node size<span class="sc">:</span> <span class="fl">15.8</span></span>
+<span id="cb12-9"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">5</span></span>
+<span id="cb12-10"><a href=""></a>                              Family<span class="sc">:</span> regr</span>
+<span id="cb12-11"><a href=""></a>                           Splitrule<span class="sc">:</span> sg.regr</span>
+<span id="cb12-12"><a href=""></a>                                hcut<span class="sc">:</span> <span class="dv">3</span></span>
+<span id="cb12-13"><a href=""></a>                      hcut<span class="sc">-</span>dimension<span class="sc">:</span> <span class="dv">14</span></span>
+<span id="cb12-14"><a href=""></a>                       OOB R<span class="sc">-</span>squared<span class="sc">:</span> <span class="fl">0.9813015</span></span>
+<span id="cb12-15"><a href=""></a>         OOB standardized error rate<span class="sc">:</span> <span class="fl">0.01869852</span></span>
+<span id="cb12-16"><a href=""></a>                      OOB error rate<span class="sc">:</span> <span class="fl">0.4244172</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="specific-hcut-families" class="slide level2 smaller">
 <h2>Specific <code>hcut</code> families</h2>
 <p>Random forests is obtained by setting <code>hcut = 0</code></p>
-<div class="sourceCode" id="cb15" data-code-line-numbers="1|2-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a><span class="fu">print</span>(<span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">filter =</span> <span class="fu">use.tune.hcut</span>(filter, <span class="at">hcut =</span> <span class="dv">0</span>)))</span>
-<span id="cb15-2"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">2500</span></span>
-<span id="cb15-3"><a href=""></a>                    Tree sample size<span class="sc">:</span> <span class="dv">1580</span></span>
-<span id="cb15-4"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">100</span></span>
-<span id="cb15-5"><a href=""></a>                   Average tree size<span class="sc">:</span> <span class="fl">317.33</span></span>
-<span id="cb15-6"><a href=""></a>                   Average node size<span class="sc">:</span> <span class="fl">4.982255</span></span>
-<span id="cb15-7"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb15-8"><a href=""></a>                              Family<span class="sc">:</span> regr</span>
-<span id="cb15-9"><a href=""></a>                           Splitrule<span class="sc">:</span> sg.regr</span>
-<span id="cb15-10"><a href=""></a>                                hcut<span class="sc">:</span> <span class="dv">0</span></span>
-<span id="cb15-11"><a href=""></a>                      hcut<span class="sc">-</span>dimension<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb15-12"><a href=""></a>                       OOB R<span class="sc">-</span>squared<span class="sc">:</span> <span class="fl">0.9175811</span></span>
-<span id="cb15-13"><a href=""></a>         OOB standardized error rate<span class="sc">:</span> <span class="fl">0.0824189</span></span>
-<span id="cb15-14"><a href=""></a>                      OOB error rate<span class="sc">:</span> <span class="fl">1.870736</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13" data-code-line-numbers="1|2-15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">print</span>(<span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">filter =</span> <span class="fu">use.tune.hcut</span>(filter, <span class="at">hcut =</span> <span class="dv">0</span>)))</span>
+<span id="cb13-2"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">2500</span></span>
+<span id="cb13-3"><a href=""></a>                    Tree sample size<span class="sc">:</span> <span class="dv">1580</span></span>
+<span id="cb13-4"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">100</span></span>
+<span id="cb13-5"><a href=""></a>                   Average tree size<span class="sc">:</span> <span class="fl">317.33</span></span>
+<span id="cb13-6"><a href=""></a>                   Average node size<span class="sc">:</span> <span class="fl">4.982255</span></span>
+<span id="cb13-7"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">5</span></span>
+<span id="cb13-8"><a href=""></a>                              Family<span class="sc">:</span> regr</span>
+<span id="cb13-9"><a href=""></a>                           Splitrule<span class="sc">:</span> sg.regr</span>
+<span id="cb13-10"><a href=""></a>                                hcut<span class="sc">:</span> <span class="dv">0</span></span>
+<span id="cb13-11"><a href=""></a>                      hcut<span class="sc">-</span>dimension<span class="sc">:</span> <span class="dv">5</span></span>
+<span id="cb13-12"><a href=""></a>                       OOB R<span class="sc">-</span>squared<span class="sc">:</span> <span class="fl">0.9175811</span></span>
+<span id="cb13-13"><a href=""></a>         OOB standardized error rate<span class="sc">:</span> <span class="fl">0.0824189</span></span>
+<span id="cb13-14"><a href=""></a>                      OOB error rate<span class="sc">:</span> <span class="fl">1.870736</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-up">
 <p><code>hcut = 1</code> gives hyperplanes (local linear forests, rotation forests, etc.)</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a><span class="fu">print</span>(<span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">filter =</span> <span class="fu">use.tune.hcut</span>(filter, <span class="at">hcut =</span> <span class="dv">1</span>)))</span>
-<span id="cb16-2"><a href=""></a>                                hcut<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb16-3"><a href=""></a>                      hcut<span class="sc">-</span>dimension<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb16-4"><a href=""></a>                       OOB R<span class="sc">-</span>squared<span class="sc">:</span> <span class="fl">0.9233558</span></span>
-<span id="cb16-5"><a href=""></a>         OOB standardized error rate<span class="sc">:</span> <span class="fl">0.07664424</span></span>
-<span id="cb16-6"><a href=""></a>                      OOB error rate<span class="sc">:</span> <span class="fl">1.739664</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">print</span>(<span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">filter =</span> <span class="fu">use.tune.hcut</span>(filter, <span class="at">hcut =</span> <span class="dv">1</span>)))</span>
+<span id="cb14-2"><a href=""></a>                                hcut<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb14-3"><a href=""></a>                      hcut<span class="sc">-</span>dimension<span class="sc">:</span> <span class="dv">5</span></span>
+<span id="cb14-4"><a href=""></a>                       OOB R<span class="sc">-</span>squared<span class="sc">:</span> <span class="fl">0.9233558</span></span>
+<span id="cb14-5"><a href=""></a>         OOB standardized error rate<span class="sc">:</span> <span class="fl">0.07664424</span></span>
+<span id="cb14-6"><a href=""></a>                      OOB error rate<span class="sc">:</span> <span class="fl">1.739664</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sgts-as-model-explainers" class="slide level2 smaller">
@@ -844,43 +844,43 @@ A_R(c)=A\setminus A_L(c)
 <p>Predicted values arise from a local polynomial built from partial effects that we can extract</p>
 <div class="fragment fade-up">
 <p>Grow a shallow forest and enforce the lasso</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">pure.lasso =</span> <span class="cn">TRUE</span>, <span class="at">filter =</span> filter, <span class="at">treesize =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsgt</span>(y <span class="sc">~</span> ., dta, <span class="at">pure.lasso =</span> <span class="cn">TRUE</span>, <span class="at">filter =</span> filter, <span class="at">treesize =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment fade-up">
 <p>Obtain predicted values, <span class="math inline">\(\beta\)</span> coefficients, and partial-effect contributions</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>bo      <span class="ot">&lt;-</span> <span class="fu">get.beta</span>(o, <span class="at">bag =</span> <span class="st">"oob"</span>)</span>
-<span id="cb18-2"><a href=""></a>yhat    <span class="ot">&lt;-</span> bo<span class="sc">$</span>predicted</span>
-<span id="cb18-3"><a href=""></a>beta    <span class="ot">&lt;-</span> bo<span class="sc">$</span>beta[, <span class="sc">-</span><span class="dv">1</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
-<span id="cb18-4"><a href=""></a>partial <span class="ot">&lt;-</span> bo<span class="sc">$</span>partial[, <span class="sc">-</span><span class="dv">1</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>bo      <span class="ot">&lt;-</span> <span class="fu">get.beta</span>(o, <span class="at">bag =</span> <span class="st">"oob"</span>)</span>
+<span id="cb16-2"><a href=""></a>yhat    <span class="ot">&lt;-</span> bo<span class="sc">$</span>predicted</span>
+<span id="cb16-3"><a href=""></a>beta    <span class="ot">&lt;-</span> bo<span class="sc">$</span>beta[, <span class="sc">-</span><span class="dv">1</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span>
+<span id="cb16-4"><a href=""></a>partial <span class="ot">&lt;-</span> bo<span class="sc">$</span>partial[, <span class="sc">-</span><span class="dv">1</span>, drop <span class="ot">=</span> <span class="cn">FALSE</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sgt-beta-and-partial-effects" class="slide level2 smaller">
 <h2>SGT <span class="math inline">\(\beta\)</span> and partial effects</h2>
-<div class="sourceCode" id="cb19" data-code-line-numbers="1-5|7-15|17-25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a><span class="do">## compare yhat to OOB values from forest object</span></span>
-<span id="cb19-2"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(yhat))</span>
-<span id="cb19-3"><a href=""></a>[<span class="dv">1</span>] <span class="fl">18.141112</span> <span class="fl">15.241789</span> <span class="fl">21.836746</span>  <span class="fl">7.638041</span> <span class="fl">16.031982</span> <span class="fl">15.691202</span></span>
-<span id="cb19-4"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(o<span class="sc">$</span>predicted.oob))</span>
-<span id="cb19-5"><a href=""></a>[<span class="dv">1</span>] <span class="fl">18.141112</span> <span class="fl">15.241789</span> <span class="fl">21.836746</span>  <span class="fl">7.638041</span> <span class="fl">16.031982</span> <span class="fl">15.691202</span></span>
-<span id="cb19-6"><a href=""></a></span>
-<span id="cb19-7"><a href=""></a><span class="do">## beta values</span></span>
-<span id="cb19-8"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(beta[, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb19-9"><a href=""></a>       x<span class="fl">.1</span>    x<span class="fl">.2</span> x<span class="fl">.3</span>  x<span class="fl">.4</span> x<span class="fl">.5</span> x<span class="fl">.1</span>_SQ2_</span>
-<span id="cb19-10"><a href=""></a>[<span class="dv">1</span>,] <span class="fl">30.24</span> <span class="fl">29.644</span> <span class="sc">-</span><span class="dv">14</span> <span class="fl">10.5</span> <span class="fl">6.0</span>   <span class="sc">-</span><span class="fl">14.99</span></span>
-<span id="cb19-11"><a href=""></a>[<span class="dv">2</span>,] <span class="fl">31.31</span> <span class="fl">30.158</span> <span class="sc">-</span><span class="dv">15</span>  <span class="fl">9.8</span> <span class="fl">5.9</span>   <span class="sc">-</span><span class="fl">16.10</span></span>
-<span id="cb19-12"><a href=""></a>[<span class="dv">3</span>,] <span class="fl">42.54</span> <span class="fl">41.280</span> <span class="sc">-</span><span class="dv">18</span>  <span class="fl">6.7</span> <span class="fl">1.1</span>   <span class="sc">-</span><span class="fl">19.35</span></span>
-<span id="cb19-13"><a href=""></a>[<span class="dv">4</span>,]  <span class="fl">0.17</span>  <span class="fl">0.083</span> <span class="sc">-</span><span class="dv">19</span>  <span class="fl">9.2</span> <span class="fl">4.5</span>    <span class="sc">-</span><span class="fl">0.35</span></span>
-<span id="cb19-14"><a href=""></a>[<span class="dv">5</span>,] <span class="fl">31.51</span> <span class="fl">29.523</span> <span class="sc">-</span><span class="dv">15</span>  <span class="fl">9.8</span> <span class="fl">5.8</span>   <span class="sc">-</span><span class="fl">16.18</span></span>
-<span id="cb19-15"><a href=""></a>[<span class="dv">6</span>,] <span class="fl">32.50</span> <span class="fl">30.826</span> <span class="sc">-</span><span class="dv">15</span> <span class="fl">10.8</span> <span class="fl">6.2</span>   <span class="sc">-</span><span class="fl">16.63</span></span>
-<span id="cb19-16"><a href=""></a></span>
-<span id="cb19-17"><a href=""></a><span class="do">## partial effect values</span></span>
-<span id="cb19-18"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(partial[, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]), <span class="at">digits =</span> <span class="dv">2</span>)</span>
-<span id="cb19-19"><a href=""></a>        x<span class="fl">.1</span>    x<span class="fl">.2</span>   x<span class="fl">.3</span> x<span class="fl">.4</span>  x<span class="fl">.5</span> x<span class="fl">.1</span>_SQ2_</span>
-<span id="cb19-20"><a href=""></a>[<span class="dv">1</span>,] <span class="fl">17.724</span> <span class="fl">24.202</span>  <span class="sc">-</span><span class="fl">2.3</span> <span class="fl">2.9</span> <span class="fl">4.48</span>  <span class="sc">-</span><span class="fl">5.1484</span></span>
-<span id="cb19-21"><a href=""></a>[<span class="dv">2</span>,]  <span class="fl">9.697</span> <span class="fl">27.889</span> <span class="sc">-</span><span class="fl">11.1</span> <span class="fl">6.4</span> <span class="fl">1.36</span>  <span class="sc">-</span><span class="fl">1.5438</span></span>
-<span id="cb19-22"><a href=""></a>[<span class="dv">3</span>,] <span class="fl">32.519</span> <span class="fl">28.518</span>  <span class="sc">-</span><span class="fl">4.2</span> <span class="fl">5.1</span> <span class="fl">0.66</span> <span class="sc">-</span><span class="fl">11.3120</span></span>
-<span id="cb19-23"><a href=""></a>[<span class="dv">4</span>,]  <span class="fl">0.019</span>  <span class="fl">0.074</span>  <span class="sc">-</span><span class="fl">9.4</span> <span class="fl">1.5</span> <span class="fl">2.58</span>  <span class="sc">-</span><span class="fl">0.0046</span></span>
-<span id="cb19-24"><a href=""></a>[<span class="dv">5</span>,]  <span class="fl">2.405</span> <span class="fl">22.660</span>  <span class="sc">-</span><span class="fl">5.7</span> <span class="fl">9.1</span> <span class="fl">3.86</span>  <span class="sc">-</span><span class="fl">0.0943</span></span>
-<span id="cb19-25"><a href=""></a>[<span class="dv">6</span>,]  <span class="fl">2.958</span> <span class="fl">25.281</span> <span class="sc">-</span><span class="fl">15.2</span> <span class="fl">7.1</span> <span class="fl">1.66</span>  <span class="sc">-</span><span class="fl">0.1377</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17" data-code-line-numbers="1-5|7-15|17-25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href=""></a><span class="do">## compare yhat to OOB values from forest object</span></span>
+<span id="cb17-2"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(yhat))</span>
+<span id="cb17-3"><a href=""></a>[<span class="dv">1</span>] <span class="fl">18.141112</span> <span class="fl">15.241789</span> <span class="fl">21.836746</span>  <span class="fl">7.638041</span> <span class="fl">16.031982</span> <span class="fl">15.691202</span></span>
+<span id="cb17-4"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(o<span class="sc">$</span>predicted.oob))</span>
+<span id="cb17-5"><a href=""></a>[<span class="dv">1</span>] <span class="fl">18.141112</span> <span class="fl">15.241789</span> <span class="fl">21.836746</span>  <span class="fl">7.638041</span> <span class="fl">16.031982</span> <span class="fl">15.691202</span></span>
+<span id="cb17-6"><a href=""></a></span>
+<span id="cb17-7"><a href=""></a><span class="do">## beta values</span></span>
+<span id="cb17-8"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(beta[, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb17-9"><a href=""></a>       x<span class="fl">.1</span>    x<span class="fl">.2</span> x<span class="fl">.3</span>  x<span class="fl">.4</span> x<span class="fl">.5</span> x<span class="fl">.1</span>_SQ2_</span>
+<span id="cb17-10"><a href=""></a>[<span class="dv">1</span>,] <span class="fl">30.24</span> <span class="fl">29.644</span> <span class="sc">-</span><span class="dv">14</span> <span class="fl">10.5</span> <span class="fl">6.0</span>   <span class="sc">-</span><span class="fl">14.99</span></span>
+<span id="cb17-11"><a href=""></a>[<span class="dv">2</span>,] <span class="fl">31.31</span> <span class="fl">30.158</span> <span class="sc">-</span><span class="dv">15</span>  <span class="fl">9.8</span> <span class="fl">5.9</span>   <span class="sc">-</span><span class="fl">16.10</span></span>
+<span id="cb17-12"><a href=""></a>[<span class="dv">3</span>,] <span class="fl">42.54</span> <span class="fl">41.280</span> <span class="sc">-</span><span class="dv">18</span>  <span class="fl">6.7</span> <span class="fl">1.1</span>   <span class="sc">-</span><span class="fl">19.35</span></span>
+<span id="cb17-13"><a href=""></a>[<span class="dv">4</span>,]  <span class="fl">0.17</span>  <span class="fl">0.083</span> <span class="sc">-</span><span class="dv">19</span>  <span class="fl">9.2</span> <span class="fl">4.5</span>    <span class="sc">-</span><span class="fl">0.35</span></span>
+<span id="cb17-14"><a href=""></a>[<span class="dv">5</span>,] <span class="fl">31.51</span> <span class="fl">29.523</span> <span class="sc">-</span><span class="dv">15</span>  <span class="fl">9.8</span> <span class="fl">5.8</span>   <span class="sc">-</span><span class="fl">16.18</span></span>
+<span id="cb17-15"><a href=""></a>[<span class="dv">6</span>,] <span class="fl">32.50</span> <span class="fl">30.826</span> <span class="sc">-</span><span class="dv">15</span> <span class="fl">10.8</span> <span class="fl">6.2</span>   <span class="sc">-</span><span class="fl">16.63</span></span>
+<span id="cb17-16"><a href=""></a></span>
+<span id="cb17-17"><a href=""></a><span class="do">## partial effect values</span></span>
+<span id="cb17-18"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(partial[, <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>]), <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb17-19"><a href=""></a>        x<span class="fl">.1</span>    x<span class="fl">.2</span>   x<span class="fl">.3</span> x<span class="fl">.4</span>  x<span class="fl">.5</span> x<span class="fl">.1</span>_SQ2_</span>
+<span id="cb17-20"><a href=""></a>[<span class="dv">1</span>,] <span class="fl">17.724</span> <span class="fl">24.202</span>  <span class="sc">-</span><span class="fl">2.3</span> <span class="fl">2.9</span> <span class="fl">4.48</span>  <span class="sc">-</span><span class="fl">5.1484</span></span>
+<span id="cb17-21"><a href=""></a>[<span class="dv">2</span>,]  <span class="fl">9.697</span> <span class="fl">27.889</span> <span class="sc">-</span><span class="fl">11.1</span> <span class="fl">6.4</span> <span class="fl">1.36</span>  <span class="sc">-</span><span class="fl">1.5438</span></span>
+<span id="cb17-22"><a href=""></a>[<span class="dv">3</span>,] <span class="fl">32.519</span> <span class="fl">28.518</span>  <span class="sc">-</span><span class="fl">4.2</span> <span class="fl">5.1</span> <span class="fl">0.66</span> <span class="sc">-</span><span class="fl">11.3120</span></span>
+<span id="cb17-23"><a href=""></a>[<span class="dv">4</span>,]  <span class="fl">0.019</span>  <span class="fl">0.074</span>  <span class="sc">-</span><span class="fl">9.4</span> <span class="fl">1.5</span> <span class="fl">2.58</span>  <span class="sc">-</span><span class="fl">0.0046</span></span>
+<span id="cb17-24"><a href=""></a>[<span class="dv">5</span>,]  <span class="fl">2.405</span> <span class="fl">22.660</span>  <span class="sc">-</span><span class="fl">5.7</span> <span class="fl">9.1</span> <span class="fl">3.86</span>  <span class="sc">-</span><span class="fl">0.0943</span></span>
+<span id="cb17-25"><a href=""></a>[<span class="dv">6</span>,]  <span class="fl">2.958</span> <span class="fl">25.281</span> <span class="sc">-</span><span class="fl">15.2</span> <span class="fl">7.1</span> <span class="fl">1.66</span>  <span class="sc">-</span><span class="fl">0.1377</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="random-hazard-forests-rhf" class="slide level2 smaller">
 <h2>Random Hazard Forests (RHF)</h2>
@@ -890,7 +890,7 @@ A_R(c)=A\setminus A_L(c)
 </div>
 <div class="fragment fade-up">
 <p>The canonical training call is</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">rhf</span>(<span class="fu">Surv</span>(id, start, stop, event) <span class="sc">~</span> ., data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="fu">rhf</span>(<span class="fu">Surv</span>(id, start, stop, event) <span class="sc">~</span> ., data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="rhf-data-format" class="slide level2 smaller">
@@ -927,17 +927,17 @@ A_R(c)=A\setminus A_L(c)
 </tbody>
 </table>
 <div class="fragment fade-up">
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a> id start  stop event iv_biltc bili_tc iv_cretc crea_tc cardin_l</span>
-<span id="cb21-2"><a href=""></a>  <span class="dv">6</span> <span class="fl">0.000</span> <span class="fl">0.003</span>     <span class="dv">0</span>     <span class="fl">0.00</span>     <span class="fl">1.9</span>    <span class="fl">0.000</span>       <span class="dv">1</span>        <span class="dv">4</span></span>
-<span id="cb21-3"><a href=""></a>  <span class="dv">6</span> <span class="fl">0.003</span> <span class="fl">0.005</span>     <span class="dv">0</span>     <span class="fl">0.00</span>     <span class="fl">1.9</span>    <span class="fl">0.003</span>       <span class="dv">1</span>        <span class="dv">4</span></span>
-<span id="cb21-4"><a href=""></a>  <span class="dv">6</span> <span class="fl">0.005</span> <span class="fl">0.008</span>     <span class="dv">0</span>     <span class="fl">0.00</span>     <span class="fl">1.9</span>    <span class="fl">0.005</span>       <span class="dv">1</span>        <span class="dv">4</span></span>
-<span id="cb21-5"><a href=""></a>  <span class="dv">6</span> <span class="fl">0.008</span> <span class="fl">0.011</span>     <span class="dv">0</span>     <span class="fl">0.00</span>     <span class="fl">1.9</span>    <span class="fl">0.008</span>       <span class="dv">2</span>        <span class="dv">4</span></span>
-<span id="cb21-6"><a href=""></a>  <span class="dv">6</span> <span class="fl">0.011</span> <span class="fl">0.014</span>     <span class="dv">0</span>     <span class="fl">0.01</span>     <span class="fl">1.3</span>    <span class="fl">0.011</span>       <span class="dv">2</span>        <span class="dv">4</span></span>
-<span id="cb21-7"><a href=""></a>  <span class="dv">7</span> <span class="fl">0.000</span> <span class="fl">0.287</span>     <span class="dv">0</span>     <span class="fl">0.00</span>     <span class="fl">0.6</span>    <span class="fl">0.000</span>       <span class="dv">2</span>        <span class="dv">7</span></span>
-<span id="cb21-8"><a href=""></a>  <span class="dv">7</span> <span class="fl">0.287</span> <span class="fl">0.517</span>     <span class="dv">0</span>     <span class="fl">0.29</span>     <span class="fl">0.7</span>    <span class="fl">0.287</span>       <span class="dv">1</span>        <span class="dv">7</span></span>
-<span id="cb21-9"><a href=""></a>  <span class="dv">7</span> <span class="fl">0.517</span> <span class="fl">0.767</span>     <span class="dv">0</span>     <span class="fl">0.52</span>     <span class="fl">0.6</span>    <span class="fl">0.517</span>       <span class="dv">1</span>        <span class="dv">7</span></span>
-<span id="cb21-10"><a href=""></a>  <span class="dv">7</span> <span class="fl">0.767</span> <span class="fl">1.016</span>     <span class="dv">0</span>     <span class="fl">0.77</span>     <span class="fl">0.8</span>    <span class="fl">0.767</span>       <span class="dv">1</span>        <span class="dv">7</span></span>
-<span id="cb21-11"><a href=""></a>  <span class="dv">7</span> <span class="fl">1.016</span> <span class="fl">1.448</span>     <span class="dv">0</span>     <span class="fl">1.02</span>     <span class="fl">0.5</span>    <span class="fl">1.016</span>       <span class="dv">1</span>        <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a> id start  stop event iv_biltc bili_tc iv_cretc crea_tc cardin_l</span>
+<span id="cb19-2"><a href=""></a>  <span class="dv">6</span> <span class="fl">0.000</span> <span class="fl">0.003</span>     <span class="dv">0</span>     <span class="fl">0.00</span>     <span class="fl">1.9</span>    <span class="fl">0.000</span>       <span class="dv">1</span>        <span class="dv">4</span></span>
+<span id="cb19-3"><a href=""></a>  <span class="dv">6</span> <span class="fl">0.003</span> <span class="fl">0.005</span>     <span class="dv">0</span>     <span class="fl">0.00</span>     <span class="fl">1.9</span>    <span class="fl">0.003</span>       <span class="dv">1</span>        <span class="dv">4</span></span>
+<span id="cb19-4"><a href=""></a>  <span class="dv">6</span> <span class="fl">0.005</span> <span class="fl">0.008</span>     <span class="dv">0</span>     <span class="fl">0.00</span>     <span class="fl">1.9</span>    <span class="fl">0.005</span>       <span class="dv">1</span>        <span class="dv">4</span></span>
+<span id="cb19-5"><a href=""></a>  <span class="dv">6</span> <span class="fl">0.008</span> <span class="fl">0.011</span>     <span class="dv">0</span>     <span class="fl">0.00</span>     <span class="fl">1.9</span>    <span class="fl">0.008</span>       <span class="dv">2</span>        <span class="dv">4</span></span>
+<span id="cb19-6"><a href=""></a>  <span class="dv">6</span> <span class="fl">0.011</span> <span class="fl">0.014</span>     <span class="dv">0</span>     <span class="fl">0.01</span>     <span class="fl">1.3</span>    <span class="fl">0.011</span>       <span class="dv">2</span>        <span class="dv">4</span></span>
+<span id="cb19-7"><a href=""></a>  <span class="dv">7</span> <span class="fl">0.000</span> <span class="fl">0.287</span>     <span class="dv">0</span>     <span class="fl">0.00</span>     <span class="fl">0.6</span>    <span class="fl">0.000</span>       <span class="dv">2</span>        <span class="dv">7</span></span>
+<span id="cb19-8"><a href=""></a>  <span class="dv">7</span> <span class="fl">0.287</span> <span class="fl">0.517</span>     <span class="dv">0</span>     <span class="fl">0.29</span>     <span class="fl">0.7</span>    <span class="fl">0.287</span>       <span class="dv">1</span>        <span class="dv">7</span></span>
+<span id="cb19-9"><a href=""></a>  <span class="dv">7</span> <span class="fl">0.517</span> <span class="fl">0.767</span>     <span class="dv">0</span>     <span class="fl">0.52</span>     <span class="fl">0.6</span>    <span class="fl">0.517</span>       <span class="dv">1</span>        <span class="dv">7</span></span>
+<span id="cb19-10"><a href=""></a>  <span class="dv">7</span> <span class="fl">0.767</span> <span class="fl">1.016</span>     <span class="dv">0</span>     <span class="fl">0.77</span>     <span class="fl">0.8</span>    <span class="fl">0.767</span>       <span class="dv">1</span>        <span class="dv">7</span></span>
+<span id="cb19-11"><a href=""></a>  <span class="dv">7</span> <span class="fl">1.016</span> <span class="fl">1.448</span>     <span class="dv">0</span>     <span class="fl">1.02</span>     <span class="fl">0.5</span>    <span class="fl">1.016</span>       <span class="dv">1</span>        <span class="dv">7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="time-static-setting" class="slide level2 smaller">
@@ -945,48 +945,48 @@ A_R(c)=A\setminus A_L(c)
 <p><code>rhf</code> also works with <strong>standard survival data</strong> where each subject has a single observed time and predictors are fixed at baseline</p>
 <div class="fragment fade-up">
 <p>The helper <code>convert.counting()</code> converts this data into counting-process format</p>
-<div class="sourceCode" id="cb22" data-code-line-numbers="1-3|5-6|8-9|11-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">library</span>(<span class="st">"randomForestRHF"</span>)</span>
-<span id="cb22-2"><a href=""></a><span class="do">## load data</span></span>
-<span id="cb22-3"><a href=""></a><span class="fu">data</span>(peakVO2, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb22-4"><a href=""></a></span>
-<span id="cb22-5"><a href=""></a><span class="do">## convert to counting-process format</span></span>
-<span id="cb22-6"><a href=""></a>d <span class="ot">&lt;-</span> <span class="fu">convert.counting</span>(<span class="fu">Surv</span>(ttodead, died) <span class="sc">~</span> ., peakVO2)</span>
-<span id="cb22-7"><a href=""></a></span>
-<span id="cb22-8"><a href=""></a><span class="do">## set the formula</span></span>
-<span id="cb22-9"><a href=""></a>f <span class="ot">&lt;-</span> <span class="st">"Surv(id, start, stop, event) ~ ."</span></span>
-<span id="cb22-10"><a href=""></a></span>
-<span id="cb22-11"><a href=""></a><span class="do">## canonical call</span></span>
-<span id="cb22-12"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rhf</span>(f, d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20" data-code-line-numbers="1-3|5-6|8-9|11-12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">library</span>(<span class="st">"randomForestRHF"</span>)</span>
+<span id="cb20-2"><a href=""></a><span class="do">## load data</span></span>
+<span id="cb20-3"><a href=""></a><span class="fu">data</span>(peakVO2, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb20-4"><a href=""></a></span>
+<span id="cb20-5"><a href=""></a><span class="do">## convert to counting-process format</span></span>
+<span id="cb20-6"><a href=""></a>d <span class="ot">&lt;-</span> <span class="fu">convert.counting</span>(<span class="fu">Surv</span>(ttodead, died) <span class="sc">~</span> ., peakVO2)</span>
+<span id="cb20-7"><a href=""></a></span>
+<span id="cb20-8"><a href=""></a><span class="do">## set the formula</span></span>
+<span id="cb20-9"><a href=""></a>f <span class="ot">&lt;-</span> <span class="st">"Surv(id, start, stop, event) ~ ."</span></span>
+<span id="cb20-10"><a href=""></a></span>
+<span id="cb20-11"><a href=""></a><span class="do">## canonical call</span></span>
+<span id="cb20-12"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rhf</span>(f, d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="time-static-results" class="slide level2 smaller">
 <h2>Time-static results</h2>
 <p>Print the results to check that everything is fine</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>                Number of records<span class="sc">:</span> <span class="dv">2</span>,<span class="dv">231</span></span>
-<span id="cb23-2"><a href=""></a>          Sample <span class="fu">size</span> (unique IDs)<span class="sc">:</span> <span class="dv">2</span>,<span class="dv">231</span></span>
-<span id="cb23-3"><a href=""></a>            Average records per ID<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb23-4"><a href=""></a>           Number of deaths<span class="sc">/</span>events<span class="sc">:</span> <span class="dv">726</span></span>
-<span id="cb23-5"><a href=""></a>                   Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb23-6"><a href=""></a>        Average tree <span class="fu">size</span> (leaves)<span class="sc">:</span> <span class="fl">89.234</span></span>
-<span id="cb23-7"><a href=""></a>                 Average node size<span class="sc">:</span> <span class="fl">15.845</span></span>
-<span id="cb23-8"><a href=""></a>  No. features tried at each split<span class="sc">:</span> <span class="dv">7</span></span>
-<span id="cb23-9"><a href=""></a>   Total no. time<span class="sc">-</span>varying features<span class="sc">:</span> <span class="dv">0</span></span>
-<span id="cb23-10"><a href=""></a>                Total no. features<span class="sc">:</span> <span class="dv">39</span></span>
-<span id="cb23-11"><a href=""></a>                            Family<span class="sc">:</span> surv<span class="sc">-</span>tdc</span>
-<span id="cb23-12"><a href=""></a>                         Splitrule<span class="sc">:</span> sg.tdc</span>
-<span id="cb23-13"><a href=""></a>              No. of random splits<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb23-14"><a href=""></a>                          OOB risk<span class="sc">:</span> <span class="fl">0.151</span></span>
-<span id="cb23-15"><a href=""></a>                      TDC analysis<span class="sc">:</span> <span class="fu">NO</span> (records per <span class="at">ID =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>                 Number of records<span class="sc">:</span> <span class="dv">2</span>,<span class="dv">231</span></span>
+<span id="cb21-2"><a href=""></a>          Sample <span class="fu">size</span> (unique IDs)<span class="sc">:</span> <span class="dv">2</span>,<span class="dv">231</span></span>
+<span id="cb21-3"><a href=""></a>            Average records per ID<span class="sc">:</span> <span class="dv">1</span></span>
+<span id="cb21-4"><a href=""></a>           Number of deaths<span class="sc">/</span>events<span class="sc">:</span> <span class="dv">726</span></span>
+<span id="cb21-5"><a href=""></a>                   Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
+<span id="cb21-6"><a href=""></a>        Average tree <span class="fu">size</span> (leaves)<span class="sc">:</span> <span class="dv">15</span></span>
+<span id="cb21-7"><a href=""></a>                 Average node size<span class="sc">:</span> <span class="dv">94</span></span>
+<span id="cb21-8"><a href=""></a>  No. features tried at each split<span class="sc">:</span> <span class="dv">7</span></span>
+<span id="cb21-9"><a href=""></a>   Total no. time<span class="sc">-</span>varying features<span class="sc">:</span> <span class="dv">0</span></span>
+<span id="cb21-10"><a href=""></a>                Total no. features<span class="sc">:</span> <span class="dv">39</span></span>
+<span id="cb21-11"><a href=""></a>                            Family<span class="sc">:</span> surv<span class="sc">-</span>tdc</span>
+<span id="cb21-12"><a href=""></a>                         Splitrule<span class="sc">:</span> hazard.loglik <span class="sc">*</span>random<span class="sc">*</span></span>
+<span id="cb21-13"><a href=""></a>              No. of random splits<span class="sc">:</span> <span class="dv">10</span></span>
+<span id="cb21-14"><a href=""></a>                          OOB risk<span class="sc">:</span> <span class="fl">0.163</span></span>
+<span id="cb21-15"><a href=""></a>                      TDC analysis<span class="sc">:</span> <span class="fu">NO</span> (records per <span class="at">ID =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="time-localized-varpro-importance" class="slide level2 smaller">
 <h2>Time-localized VarPro importance</h2>
 <p><code>importance.rhf</code> uses a running time-window to calculate time-dependent VarPro importance</p>
-<div class="sourceCode" id="cb26" data-code-line-numbers="1-2|4-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="do">## time-localized RHF importance (across the full time grid)</span></span>
-<span id="cb26-2"><a href=""></a>imp.t <span class="ot">&lt;-</span> <span class="fu">importance.rhf</span>(fit.n15)</span>
-<span id="cb26-3"><a href=""></a></span>
-<span id="cb26-4"><a href=""></a><span class="do">## different ways to visualize time-dependent importance</span></span>
-<span id="cb26-5"><a href=""></a><span class="fu">plot</span>(imp.t, <span class="at">type =</span> <span class="st">"dotmatrix"</span>)</span>
-<span id="cb26-6"><a href=""></a><span class="fu">plot</span>(imp.t, <span class="at">type =</span> <span class="st">"lines"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22" data-code-line-numbers="1-2|4-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="do">## time-localized RHF importance (across the full time grid)</span></span>
+<span id="cb22-2"><a href=""></a>imp.t <span class="ot">&lt;-</span> <span class="fu">importance.rhf</span>(fit.n15)</span>
+<span id="cb22-3"><a href=""></a></span>
+<span id="cb22-4"><a href=""></a><span class="do">## different ways to visualize time-dependent importance</span></span>
+<span id="cb22-5"><a href=""></a><span class="fu">plot</span>(imp.t, <span class="at">type =</span> <span class="st">"dotmatrix"</span>)</span>
+<span id="cb22-6"><a href=""></a><span class="fu">plot</span>(imp.t, <span class="at">type =</span> <span class="st">"lines"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-up">
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -996,7 +996,7 @@ A_R(c)=A\setminus A_L(c)
 </div></div>
 </div>
 </section>
-<section id="section-4" class="slide level2 smaller">
+<section id="section-2" class="slide level2 smaller">
 <h2></h2>
 <div class="columns">
 <div class="column" style="width:50%;">
