@@ -1827,26 +1827,6 @@ Corresponding input (arguments)
 <div class="fragment fade-left">
 <p><img data-src="pic/formula.png" style="width:75.0%"></p>
 </div>
-</section><section id="general-call-to-rfsrc.cart" class="slide level2 smaller"><h2>General call to rfsrc.cart</h2>
-<p>rfsrc.cart(formula, data, ntree = 1, mtry = ncol(data), bootstrap = “none”, …)</p>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip: convenient interface for growing a Classification And Regression Tree (CART)</strong></p>
-</div>
-<div class="callout-content">
-<p><code>rfsrc.cart()</code> is useful for growing single trees of almost any type</p>
-</div>
-</div>
-</div>
-<center>
-<img data-src="pic/five_models.png" style="width:50.0%">
-</center>
-</div>
 </section><section id="nonparametric-regression" class="slide level2 smaller"><h2>Nonparametric regression</h2>
 <p><br></p>
 <table class="table-striped border small table-sm caption-top">
@@ -1940,13 +1920,6 @@ Corresponding input (arguments)
 </section><section id="section" class="slide level2"><h2></h2>
 <center>
 <img data-src="pic/housQuantil2.png" height="680">
-</center>
-<div class="footer">
-
-</div>
-</section><section id="section-1" class="slide level2"><h2></h2>
-<center>
-<img data-src="pic/housRrfsrcnull.png" height="700">
 </center>
 <div class="footer">
 
@@ -2553,8 +2526,8 @@ Corresponding input (arguments)
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb26" data-code-line-numbers="1-2|3|4-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="co"># install.packages("varPro") # if you have not installed the "varPro" package</span></span>
-<span id="cb26-2"><a href=""></a><span class="fu">library</span>(varPro)</span>
+<div class="sourceCode" id="cb26" data-code-line-numbers="1-2|3|4-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="co"># install.packages("devtools") # if you have not installed "devtools" package</span></span>
+<span id="cb26-2"><a href=""></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"kogalur/varPro"</span>)</span>
 <span id="cb26-3"><a href=""></a><span class="fu">data</span>(glioma, <span class="at">package =</span> <span class="st">"varPro"</span>) </span>
 <span id="cb26-4"><a href=""></a><span class="fu">dim</span>(glioma)</span>
 <span id="cb26-5"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">880</span> <span class="dv">1242</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2609,185 +2582,6 @@ Corresponding input (arguments)
 </div>
 </div>
 </div>
-<div class="footer">
-
-</div>
-</section><section id="classification-example-glioma-2" class="slide level2 smaller"><h2>Classification example: Glioma</h2>
-<h3 id="split-rules">Split rules</h3>
-<table class="table-striped border small table-sm caption-top">
-<colgroup>
-<col style="width: 52%">
-<col style="width: 47%">
-</colgroup>
-<thead><tr class="header">
-<th>Family</th>
-<th><code>splitrule</code></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Regression <br> Quantile Regression</td>
-<td>
-<code>mse</code> <br><code>la.quantile.regr, quantile.regr, mse</code>
-</td>
-</tr>
-<tr class="even">
-<td>
-<span style="color:#00589b; font-weight: bold;">Classification</span> <br> Imbalanced Two-Class</td>
-<td>
-<span style="color:#00589b; font-weight: bold;">gini, auc, entropy</span> <br><code>gini, auc, entropy</code>
-</td>
-</tr>
-<tr class="odd">
-<td>Survival</td>
-<td><code>logrank, bs.gradient, logrankscore</code></td>
-</tr>
-<tr class="even">
-<td>Competing Risk</td>
-<td><code>logrankCR, logrank</code></td>
-</tr>
-<tr class="odd">
-<td>Multivariate Regression <br> Multivariate Classification <br> Multivariate Mixed Regression <br> Multivariate Quantile Regression <br> Multivariate Mixed Quantile Regression</td>
-<td>
-<code>mv.mse, mahalanobis</code> <br><code>mv.gini</code> <br><code>mv.mix</code> <br><code>mv.mse</code> <br><code>mv.mix</code>
-</td>
-</tr>
-<tr class="even">
-<td>Unsupervised <br> sidClustering <br> Breiman (Shi-Horvath)</td>
-<td>
-<code>unsupv</code> <br><span class="math inline">\(\{\)</span><code>mv.mse, mv.gini, mv.mix</code><span class="math inline">\(\}\)</span>, <code>mahalanobis</code> <br><code>gini, auc, entropy</code>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="footer">
-<p>Learn more <span class="citation" data-cites="HemantAUCsplit">[<a href="#/references" role="doc-biblioref" onclick="">5</a>]</span>: <a href="https://www.randomforestsrc.org/articles/aucsplit.html">https://www.randomforestsrc.org/articles/aucsplit.html</a></p>
-</div>
-</section><section id="classification-example-glioma-3" class="slide level2 smaller"><h2>Classification example: Glioma</h2>
-<h3 id="split-rules-gini-index-splitting-default">Split rules: Gini index splitting (default)</h3>
-<div class="sourceCode" id="cb28" data-code-line-numbers="2|14-15|16-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>., <span class="at">data =</span> glioma,</span>
-<span id="cb28-2"><a href=""></a>           <span class="at">splitrule=</span><span class="st">"gini"</span>) <span class="do">## default splitrule as in the previous slide</span></span>
-<span id="cb28-3"><a href=""></a>o</span>
-<span id="cb28-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">878</span></span>
-<span id="cb28-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> Classic<span class="sc">-</span>like<span class="ot">=</span><span class="dv">148</span>, Codel<span class="ot">=</span><span class="dv">174</span>, G<span class="sc">-</span>CIMP<span class="sc">-</span>high<span class="ot">=</span><span class="dv">249</span>, G<span class="sc">-</span>CIMP<span class="sc">-</span>low<span class="ot">=</span><span class="dv">25</span>, LGm6<span class="sc">-</span>GBM<span class="ot">=</span><span class="dv">41</span>, Mesenchymal<span class="sc">-</span>like<span class="ot">=</span><span class="dv">215</span>, PA<span class="sc">-</span>like<span class="ot">=</span><span class="dv">26</span></span>
-<span id="cb28-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb28-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb28-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">73.636</span></span>
-<span id="cb28-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
-<span id="cb28-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
-<span id="cb28-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb28-12"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">555</span></span>
-<span id="cb28-13"><a href=""></a>                            Analysis<span class="sc">:</span> RF<span class="sc">-</span>C</span>
-<span id="cb28-14"><a href=""></a>                              Family<span class="sc">:</span> class</span>
-<span id="cb28-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> gini <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb28-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb28-17"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02300423</span></span>
-<span id="cb28-18"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.18786787</span></span>
-<span id="cb28-19"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99356381</span></span>
-<span id="cb28-20"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.3398169</span></span>
-<span id="cb28-21"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.07061503</span>, <span class="fl">0.06081081</span>, <span class="fl">0.00574713</span>, <span class="fl">0.01204819</span>, <span class="fl">0.56</span>, <span class="fl">0.46341463</span>, <span class="fl">0.05116279</span>, <span class="fl">0.19230769</span></span>
-<span id="cb28-22"><a href=""></a></span>
-<span id="cb28-23"><a href=""></a>Confusion matrix<span class="sc">:</span></span>
-<span id="cb28-24"><a href=""></a></span>
-<span id="cb28-25"><a href=""></a>                  predicted</span>
-<span id="cb28-26"><a href=""></a>  observed         Classic<span class="sc">-</span>like Codel G<span class="sc">-</span>CIMP<span class="sc">-</span>high G<span class="sc">-</span>CIMP<span class="sc">-</span>low LGm6<span class="sc">-</span>GBM Mesenchymal<span class="sc">-</span>like PA<span class="sc">-</span>like class.error</span>
-<span id="cb28-27"><a href=""></a>  Classic<span class="sc">-</span>like              <span class="dv">140</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">8</span>       <span class="dv">0</span>      <span class="fl">0.0541</span></span>
-<span id="cb28-28"><a href=""></a>  Codel                       <span class="dv">0</span>   <span class="dv">173</span>           <span class="dv">1</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">0</span>       <span class="dv">0</span>      <span class="fl">0.0057</span></span>
-<span id="cb28-29"><a href=""></a>  G<span class="sc">-</span>CIMP<span class="sc">-</span>high                 <span class="dv">0</span>     <span class="dv">3</span>         <span class="dv">246</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">0</span>       <span class="dv">0</span>      <span class="fl">0.0120</span></span>
-<span id="cb28-30"><a href=""></a>  G<span class="sc">-</span>CIMP<span class="sc">-</span>low                  <span class="dv">0</span>     <span class="dv">0</span>          <span class="dv">14</span>         <span class="dv">11</span>        <span class="dv">0</span>                <span class="dv">0</span>       <span class="dv">0</span>      <span class="fl">0.5600</span></span>
-<span id="cb28-31"><a href=""></a>  LGm6<span class="sc">-</span>GBM                    <span class="dv">0</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">1</span>       <span class="dv">22</span>               <span class="dv">18</span>       <span class="dv">0</span>      <span class="fl">0.4634</span></span>
-<span id="cb28-32"><a href=""></a>  Mesenchymal<span class="sc">-</span>like           <span class="dv">11</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">0</span>        <span class="dv">0</span>              <span class="dv">204</span>       <span class="dv">0</span>      <span class="fl">0.0512</span></span>
-<span id="cb28-33"><a href=""></a>  PA<span class="sc">-</span>like                     <span class="dv">0</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">0</span>        <span class="dv">1</span>                <span class="dv">4</span>      <span class="dv">21</span>      <span class="fl">0.1923</span></span>
-<span id="cb28-34"><a href=""></a></span>
-<span id="cb28-35"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.06947608</span></span>
-<span id="cb28-36"><a href=""></a></span>
-<span id="cb28-37"><a href=""></a>Random<span class="sc">-</span>classifier <span class="fu">baselines</span> (uniform)<span class="sc">:</span></span>
-<span id="cb28-38"><a href=""></a>   Brier<span class="sc">:</span> <span class="fl">0.12244898</span>   Normalized Brier<span class="sc">:</span> <span class="dv">1</span>   Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">1.94591015</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>See Chapter 4.3 in Breiman et al.&nbsp;1984 <span class="citation" data-cites="Breiman1984">[<a href="#/references" role="doc-biblioref" onclick="">6</a>]</span></p>
-<div class="footer">
-
-</div>
-</section><section id="classification-example-glioma-4" class="slide level2 smaller"><h2>Classification example: Glioma</h2>
-<h4 id="split-rules-auc-area-under-the-roc-curve">Split rules: AUC (area under the ROC curve)</h4>
-<div class="sourceCode" id="cb29" data-code-line-numbers="2|14-15|16-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>., <span class="at">data =</span> glioma,</span>
-<span id="cb29-2"><a href=""></a>           <span class="at">splitrule=</span><span class="st">"auc"</span>)</span>
-<span id="cb29-3"><a href=""></a>o</span>
-<span id="cb29-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">878</span></span>
-<span id="cb29-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> Classic<span class="sc">-</span>like<span class="ot">=</span><span class="dv">148</span>, Codel<span class="ot">=</span><span class="dv">174</span>, G<span class="sc">-</span>CIMP<span class="sc">-</span>high<span class="ot">=</span><span class="dv">249</span>, G<span class="sc">-</span>CIMP<span class="sc">-</span>low<span class="ot">=</span><span class="dv">25</span>, LGm6<span class="sc">-</span>GBM<span class="ot">=</span><span class="dv">41</span>, Mesenchymal<span class="sc">-</span>like<span class="ot">=</span><span class="dv">215</span>, PA<span class="sc">-</span>like<span class="ot">=</span><span class="dv">26</span></span>
-<span id="cb29-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb29-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb29-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">433.12</span></span>
-<span id="cb29-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
-<span id="cb29-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
-<span id="cb29-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb29-12"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">555</span></span>
-<span id="cb29-13"><a href=""></a>                            Analysis<span class="sc">:</span> RF<span class="sc">-</span>C</span>
-<span id="cb29-14"><a href=""></a>                              Family<span class="sc">:</span> class</span>
-<span id="cb29-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> auc <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb29-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb29-17"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.04718235</span></span>
-<span id="cb29-18"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.38532251</span></span>
-<span id="cb29-19"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.97729984</span></span>
-<span id="cb29-20"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.61612302</span></span>
-<span id="cb29-21"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.16287016</span>, <span class="fl">0.29054054</span>, <span class="fl">0.06321839</span>, <span class="fl">0.02409639</span>, <span class="fl">0.8</span>, <span class="fl">0.95121951</span>, <span class="fl">0.02325581</span>, <span class="fl">0.73076923</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment fade-up">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p>AUC splitting is appropriate for imbalanced data</p>
-</div>
-</div>
-</div>
-</div>
-<div class="footer">
-
-</div>
-</section><section id="classification-example-glioma-5" class="slide level2 smaller"><h2>Classification example: Glioma</h2>
-<h3 id="split-rules-entropy-splitting">Split rules: entropy splitting</h3>
-<div class="sourceCode" id="cb30" data-code-line-numbers="2|14-15|16-21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>., <span class="at">data =</span> glioma,</span>
-<span id="cb30-2"><a href=""></a>           <span class="at">splitrule=</span><span class="st">"entropy"</span>)</span>
-<span id="cb30-3"><a href=""></a>o</span>
-<span id="cb30-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">878</span></span>
-<span id="cb30-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> Classic<span class="sc">-</span>like<span class="ot">=</span><span class="dv">148</span>, Codel<span class="ot">=</span><span class="dv">174</span>, G<span class="sc">-</span>CIMP<span class="sc">-</span>high<span class="ot">=</span><span class="dv">249</span>, G<span class="sc">-</span>CIMP<span class="sc">-</span>low<span class="ot">=</span><span class="dv">25</span>, LGm6<span class="sc">-</span>GBM<span class="ot">=</span><span class="dv">41</span>, Mesenchymal<span class="sc">-</span>like<span class="ot">=</span><span class="dv">215</span>, PA<span class="sc">-</span>like<span class="ot">=</span><span class="dv">26</span></span>
-<span id="cb30-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb30-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb30-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">286.726</span></span>
-<span id="cb30-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
-<span id="cb30-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
-<span id="cb30-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb30-12"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">555</span></span>
-<span id="cb30-13"><a href=""></a>                            Analysis<span class="sc">:</span> RF<span class="sc">-</span>C</span>
-<span id="cb30-14"><a href=""></a>                              Family<span class="sc">:</span> class</span>
-<span id="cb30-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> entropy <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb30-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb30-17"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.04477743</span></span>
-<span id="cb30-18"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.3656823</span></span>
-<span id="cb30-19"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.95964316</span></span>
-<span id="cb30-20"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.64452045</span></span>
-<span id="cb30-21"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.14920273</span>, <span class="fl">0.14864865</span>, <span class="fl">0.02873563</span>, <span class="fl">0.01606426</span>, <span class="fl">0.76</span>, <span class="dv">1</span>, <span class="fl">0.09767442</span>, <span class="fl">0.73076923</span></span>
-<span id="cb30-22"><a href=""></a></span>
-<span id="cb30-23"><a href=""></a>Confusion matrix<span class="sc">:</span></span>
-<span id="cb30-24"><a href=""></a></span>
-<span id="cb30-25"><a href=""></a>                  predicted</span>
-<span id="cb30-26"><a href=""></a>  observed         Classic<span class="sc">-</span>like Codel G<span class="sc">-</span>CIMP<span class="sc">-</span>high G<span class="sc">-</span>CIMP<span class="sc">-</span>low LGm6<span class="sc">-</span>GBM Mesenchymal<span class="sc">-</span>like PA<span class="sc">-</span>like class.error</span>
-<span id="cb30-27"><a href=""></a>  Classic<span class="sc">-</span>like              <span class="dv">127</span>     <span class="dv">0</span>           <span class="dv">1</span>          <span class="dv">0</span>        <span class="dv">0</span>               <span class="dv">20</span>       <span class="dv">0</span>      <span class="fl">0.1419</span></span>
-<span id="cb30-28"><a href=""></a>  Codel                       <span class="dv">1</span>   <span class="dv">169</span>           <span class="dv">4</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">0</span>       <span class="dv">0</span>      <span class="fl">0.0287</span></span>
-<span id="cb30-29"><a href=""></a>  G<span class="sc">-</span>CIMP<span class="sc">-</span>high                 <span class="dv">0</span>     <span class="dv">2</span>         <span class="dv">245</span>          <span class="dv">1</span>        <span class="dv">0</span>                <span class="dv">1</span>       <span class="dv">0</span>      <span class="fl">0.0161</span></span>
-<span id="cb30-30"><a href=""></a>  G<span class="sc">-</span>CIMP<span class="sc">-</span>low                  <span class="dv">0</span>     <span class="dv">1</span>          <span class="dv">15</span>          <span class="dv">6</span>        <span class="dv">0</span>                <span class="dv">3</span>       <span class="dv">0</span>      <span class="fl">0.7600</span></span>
-<span id="cb30-31"><a href=""></a>  LGm6<span class="sc">-</span>GBM                    <span class="dv">0</span>     <span class="dv">1</span>           <span class="dv">0</span>          <span class="dv">0</span>        <span class="dv">0</span>               <span class="dv">40</span>       <span class="dv">0</span>      <span class="fl">1.0000</span></span>
-<span id="cb30-32"><a href=""></a>  Mesenchymal<span class="sc">-</span>like           <span class="dv">19</span>     <span class="dv">1</span>           <span class="dv">1</span>          <span class="dv">0</span>        <span class="dv">0</span>              <span class="dv">194</span>       <span class="dv">0</span>      <span class="fl">0.0977</span></span>
-<span id="cb30-33"><a href=""></a>  PA<span class="sc">-</span>like                     <span class="dv">0</span>     <span class="dv">1</span>           <span class="dv">4</span>          <span class="dv">0</span>        <span class="dv">0</span>               <span class="dv">14</span>       <span class="dv">7</span>      <span class="fl">0.7308</span></span>
-<span id="cb30-34"><a href=""></a></span>
-<span id="cb30-35"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.1480638</span></span>
-<span id="cb30-36"><a href=""></a></span>
-<span id="cb30-37"><a href=""></a>Random<span class="sc">-</span>classifier <span class="fu">baselines</span> (uniform)<span class="sc">:</span></span>
-<span id="cb30-38"><a href=""></a>   Brier<span class="sc">:</span> <span class="fl">0.12244898</span>   Normalized Brier<span class="sc">:</span> <span class="dv">1</span>   Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">1.94591015</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>See Chapters 2.5 and 4.3 in Breiman et al.&nbsp;1984 <span class="citation" data-cites="Breiman1984">[<a href="#/references" role="doc-biblioref" onclick="">6</a>]</span></p>
 <div class="footer">
 
 </div>
@@ -3495,131 +3289,6 @@ Corresponding input (arguments)
 <span id="cb33-23"><a href=""></a>                          (OOB) CRPS<span class="sc">:</span> <span class="fl">553.15107271</span></span>
 <span id="cb33-24"><a href=""></a>                   (OOB) stand. CRPS<span class="sc">:</span> <span class="fl">0.13198546</span></span>
 <span id="cb33-25"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.18814768</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section><section id="survival-example-pbc-mayo-clinic-2" class="slide level2 smaller"><h2>Survival example: PBC Mayo Clinic</h2>
-<h3 id="split-rules-1">Split rules</h3>
-<table class="table-striped border small table-sm caption-top">
-<colgroup>
-<col style="width: 52%">
-<col style="width: 47%">
-</colgroup>
-<thead><tr class="header">
-<th>Family</th>
-<th><code>splitrule</code></th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td>Regression <br> Quantile Regression</td>
-<td>
-<code>mse</code> <br><code>la.quantile.regr, quantile.regr, mse</code>
-</td>
-</tr>
-<tr class="even">
-<td>Classification <br> Imbalanced Two-Class</td>
-<td>gini, auc, entropy <br> gini, auc, entropy</td>
-</tr>
-<tr class="odd">
-<td><span style="color:#00589b; font-weight: bold;">Survival</span></td>
-<td><span style="color:#00589b; font-weight: bold;">logrank, bs.gradient, logrankscore</span></td>
-</tr>
-<tr class="even">
-<td>Competing Risk</td>
-<td><code>logrankCR, logrank</code></td>
-</tr>
-<tr class="odd">
-<td>Multivariate Regression <br> Multivariate Classification <br> Multivariate Mixed Regression <br> Multivariate Quantile Regression <br> Multivariate Mixed Quantile Regression</td>
-<td>
-<code>mv.mse, mahalanobis</code> <br><code>mv.gini</code> <br><code>mv.mix</code> <br><code>mv.mse</code> <br><code>mv.mix</code>
-</td>
-</tr>
-<tr class="even">
-<td>Unsupervised <br> sidClustering <br> Breiman (Shi-Horvath)</td>
-<td>
-<code>unsupv</code> <br><span class="math inline">\(\{\)</span><code>mv.mse, mv.gini, mv.mix</code><span class="math inline">\(\}\)</span>, <code>mahalanobis</code> <br><code>gini, auc, entropy</code>
-</td>
-</tr>
-</tbody>
-</table></section><section id="split-rules-2" class="slide level2 smaller"><h2>Split rules</h2>
-<h4 id="log-rank-splitting-segal1988-default">log-rank splitting <span class="citation" data-cites="Segal1988">[<a href="#/references" role="doc-biblioref" onclick="">9</a>]</span> (default)</h4>
-<div class="sourceCode" id="cb34" data-code-line-numbers="2|15|17-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> ., <span class="at">data =</span> pbc, </span>
-<span id="cb34-2"><a href=""></a>                  <span class="at">splitrule=</span><span class="st">"logrank"</span>) <span class="do">## default splitrule</span></span>
-<span id="cb34-3"><a href=""></a>o</span>
-<span id="cb34-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">276</span></span>
-<span id="cb34-5"><a href=""></a>                    Number of deaths<span class="sc">:</span> <span class="dv">129</span></span>
-<span id="cb34-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb34-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">15</span></span>
-<span id="cb34-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">14.326</span></span>
-<span id="cb34-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb34-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">17</span></span>
-<span id="cb34-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb34-12"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">174</span></span>
-<span id="cb34-13"><a href=""></a>                            Analysis<span class="sc">:</span> RSF</span>
-<span id="cb34-14"><a href=""></a>                              Family<span class="sc">:</span> surv</span>
-<span id="cb34-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> logrank <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb34-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb34-17"><a href=""></a>                          (OOB) CRPS<span class="sc">:</span> <span class="fl">553.15107271</span></span>
-<span id="cb34-18"><a href=""></a>                   (OOB) stand. CRPS<span class="sc">:</span> <span class="fl">0.13198546</span></span>
-<span id="cb34-19"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.18814768</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section><section id="split-rules-3" class="slide level2 smaller"><h2>Split rules</h2>
-<h4 id="gradient-based-brier-score-splitting">Gradient-based brier score splitting</h4>
-<div class="sourceCode" id="cb35" data-code-line-numbers="2|15|17-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> ., <span class="at">data =</span> pbc, </span>
-<span id="cb35-2"><a href=""></a>                  <span class="at">splitrule=</span><span class="st">"bs.gradient"</span>)</span>
-<span id="cb35-3"><a href=""></a>o</span>
-<span id="cb35-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">276</span></span>
-<span id="cb35-5"><a href=""></a>                    Number of deaths<span class="sc">:</span> <span class="dv">129</span></span>
-<span id="cb35-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb35-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">15</span></span>
-<span id="cb35-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">13.226</span></span>
-<span id="cb35-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb35-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">17</span></span>
-<span id="cb35-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb35-12"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">174</span></span>
-<span id="cb35-13"><a href=""></a>                            Analysis<span class="sc">:</span> RSF</span>
-<span id="cb35-14"><a href=""></a>                              Family<span class="sc">:</span> surv</span>
-<span id="cb35-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> bs.gradient <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb35-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb35-17"><a href=""></a>                          (OOB) CRPS<span class="sc">:</span> <span class="fl">570.11311519</span></span>
-<span id="cb35-18"><a href=""></a>                   (OOB) stand. CRPS<span class="sc">:</span> <span class="fl">0.13603272</span></span>
-<span id="cb35-19"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.19299269</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment fade-up">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<p>The time horizon used for the Brier score is set to the 90th percentile of the observed event times. This can be over-ridden by the option prob, which must be a value between 0 and 1 (set to .90 by default)</p>
-</div>
-</div>
-</div>
-</div>
-<div class="footer">
-
-</div>
-</section><section id="split-rules-4" class="slide level2 smaller"><h2>Split rules</h2>
-<h4 id="log-rank-score-splitting-hothorn2003exact">log-rank score splitting <span class="citation" data-cites="hothorn2003exact">[<a href="#/references" role="doc-biblioref" onclick="">10</a>]</span>
-</h4>
-<div class="sourceCode" id="cb36" data-code-line-numbers="2|15|17-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> ., <span class="at">data =</span> pbc, </span>
-<span id="cb36-2"><a href=""></a>                  <span class="at">splitrule=</span><span class="st">"logrankscore"</span>)</span>
-<span id="cb36-3"><a href=""></a>o</span>
-<span id="cb36-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">276</span></span>
-<span id="cb36-5"><a href=""></a>                    Number of deaths<span class="sc">:</span> <span class="dv">129</span></span>
-<span id="cb36-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
-<span id="cb36-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">15</span></span>
-<span id="cb36-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">13.46</span></span>
-<span id="cb36-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb36-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">17</span></span>
-<span id="cb36-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
-<span id="cb36-12"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">174</span></span>
-<span id="cb36-13"><a href=""></a>                            Analysis<span class="sc">:</span> RSF</span>
-<span id="cb36-14"><a href=""></a>                              Family<span class="sc">:</span> surv</span>
-<span id="cb36-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> logrankscore <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb36-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb36-17"><a href=""></a>                          (OOB) CRPS<span class="sc">:</span> <span class="fl">626.32256755</span></span>
-<span id="cb36-18"><a href=""></a>                   (OOB) stand. CRPS<span class="sc">:</span> <span class="fl">0.14944466</span></span>
-<span id="cb36-19"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.19231977</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="using-run.rfsrc-for-an-integrated-analysis-1" class="slide level2 smaller"><h2>Using run.rfsrc for an integrated analysis</h2>
 <div class="sourceCode" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a><span class="fu">run.rfsrc</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> ., <span class="at">data =</span> pbc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">

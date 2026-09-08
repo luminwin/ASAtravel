@@ -3389,43 +3389,15 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 <li class="fragment">We want sensitivity: “how much does a tiny nudge in <span class="math inline">\(x^{(s)}\)</span> change my outcome?”</li>
 </ul>
 
-<img data-src="pic/global_vs_local.jpg" style="width:70.0%" alt="Global vs individual importance schematic" class="r-stretch"></section><section id="ivarpro-individual-variable-priority" class="slide level2 smaller"><h2>
-<code>ivarpro()</code> — Individual Variable Priority</h2>
-<div class="columns">
-<div class="column" style="width:47%;">
-<p><strong>Case-specific importance matrix</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="fu">data</span>(peakVO2, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
-<span id="cb25-2"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">varpro</span>(<span class="fu">Surv</span>(ttodead, died) <span class="sc">~</span> .,</span>
-<span id="cb25-3"><a href=""></a>            peakVO2, <span class="at">ntree =</span> <span class="dv">50</span>)</span>
-<span id="cb25-4"><a href=""></a>ivp <span class="ot">&lt;-</span> <span class="fu">ivarpro</span>(o)</span>
-<span id="cb25-5"><a href=""></a><span class="fu">print</span>(ivp[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<pre><code>##      age    gender bmi   peak.vo2 chemo  
-## [1,]  0.041  NA  0.028   0.312   NA    
-## [2,]  NA     NA  0.011   0.284   0.022  
-## [3,]  0.014  0.031  NA   0.271   NA    
-## [4,]  0.033  NA  0.019   0.290   0.017  </code></pre>
-<div style="font-size: 0.80em; color: #555; margin-top: 0.4em;">
-<p>Returns an <span class="math inline">\(N \times p\)</span> matrix of case-specific importance values. <code>NA</code> = variable not important for that case.</p>
-</div>
-</div><div class="column fragment" style="width:53%;">
-<p><strong><code>shap.ivarpro()</code> — SHAP-like summary</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>imp <span class="ot">&lt;-</span> <span class="fu">ivarpro</span>(o, <span class="at">cut.max =</span> <span class="dv">2</span>, <span class="at">adaptive =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb27-2"><a href=""></a><span class="fu">shap.ivarpro</span>(imp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img data-src="figs/fig--core-ivarpro-shap.jpg" style="width:96.0%"></p>
-<div style="font-size: 0.72em; color: #555; text-align: center;">
-<p>SHAP-like beeswarm plot: each dot = one case, color = feature value, x-axis = individualized importance.</p>
-</div>
-</div></div>
-</section><section id="plot.ivarpro" class="slide level2 smaller"><h2>plot.ivarpro()</h2>
+<img data-src="pic/global_vs_local.jpg" style="width:70.0%" alt="Global vs individual importance schematic" class="r-stretch"></section><section id="plot.ivarpro" class="slide level2 smaller"><h2>plot.ivarpro()</h2>
 <p><strong><code>plot.ivarpro()</code> — case-level partial plot</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="fu">plot</span>(imp, <span class="at">var =</span> <span class="st">"peak.vo2"</span>,</span>
-<span id="cb28-2"><a href=""></a>                <span class="at">col.var =</span> <span class="st">"interval"</span>,</span>
-<span id="cb28-3"><a href=""></a>                <span class="at">size.var =</span> <span class="st">"y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="fu">data</span>(peakVO2, <span class="at">package =</span> <span class="st">"randomForestSRC"</span>)</span>
+<span id="cb28-2"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">varpro</span>(<span class="fu">Surv</span>(ttodead, died) <span class="sc">~</span> .,  peakVO2)</span>
+<span id="cb28-3"><a href=""></a>imp <span class="ot">&lt;-</span> <span class="fu">ivarpro</span>(o)</span>
+<span id="cb28-4"><a href=""></a><span class="fu">plot</span>(imp, <span class="at">var =</span> <span class="st">"peak.vo2"</span>,</span>
+<span id="cb28-5"><a href=""></a>                <span class="at">col.var =</span> <span class="st">"interval"</span>,</span>
+<span id="cb28-6"><a href=""></a>                <span class="at">size.var =</span> <span class="st">"y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 <img data-src="figs/fig--core-ivarpro-partial.jpg" style="width:90.0%" class="r-stretch"><div style="font-size: 0.72em; color: #555;">
@@ -3440,96 +3412,6 @@ m=\sqrt{n}=\sqrt{2231}\approx 48\ll n=2231
 </div>
 <div style="font-size: 0.72em; color: #555; margin-top: 0.2em; text-align: left;">
 <p><strong>(A)</strong> Random forest grows trees with terminal-node rules → <strong>(B)</strong> Four-step rule-and-release ensemble: Grow · Extract · Compute statistic · Aggregate → <strong>(C–D)</strong> Analysis modes: Supervised VarPro · Unsupervised UVarPro · Individual iVarPro</p>
-</div>
-</section><section id="core-functions" class="slide level2 smaller"><h2>Core Functions</h2>
-<div style="font-size: 0.80em;">
-<table class="caption-top">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 32%">
-<col style="width: 28%">
-<col style="width: 24%">
-</colgroup>
-<thead><tr class="header">
-<th>Function</th>
-<th>Description</th>
-<th>Visualization</th>
-<th>Helpers</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>varpro()</code></td>
-<td>Supervised global variable importance (regression, classification, survival)</td>
-<td>
-<code>partialpro()</code>, <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code>
-</td>
-<td><code>importance()</code></td>
-</tr>
-<tr class="even">
-<td><code>cv.varpro()</code></td>
-<td>Supervised importance with cross-validated cutoff selection</td>
-<td>—</td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td><code>uvarpro()</code></td>
-<td>Unsupervised global variable importance</td>
-<td><code>sdependent()</code></td>
-<td>
-<code>importance()</code>, <code>get.beta.entropy()</code>
-</td>
-</tr>
-<tr class="even">
-<td><code>ivarpro()</code></td>
-<td>Supervised individual (case-specific) variable importance</td>
-<td>
-<code>shap.ivarpro()</code>, <code>partial.ivarpro()</code>
-</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section><section id="uvarpro-unsupervised-variable-priority-zhu2026variable" class="slide level2 smaller"><h2>
-<code>uvarpro()</code> <br>— Unsupervised Variable Priority <span class="citation" data-cites="zhu2026variable">[<a href="#/references" role="doc-biblioref" onclick="">7</a>]</span>
-</h2>
-<div class="columns">
-<div class="column" style="width:56%;">
-<p><strong>Fit, extract importance scores</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>uvp <span class="ot">&lt;-</span> <span class="fu">uvarpro</span>(BostonHousing[<span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), ])</span>
-<span id="cb29-2"><a href=""></a><span class="fu">print</span>(<span class="fu">head</span>(<span class="fu">importance</span>(uvp)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<pre><code>##      names   zscores
-## 1    lstat  8.341252
-## 2       rm  7.916084
-## 3      dis  6.204817
-## 4      nox  5.983761
-## 5      age  4.742198
-## 6  ptratio  4.210573</code></pre>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>beta <span class="ot">&lt;-</span> <span class="fu">get.beta.entropy</span>(uvp)</span>
-<span id="cb31-2"><a href=""></a><span class="fu">print</span>(beta[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<pre><code>              crim         zn     indus         nox        
-crim  0.0000000000 0.10040957 1.0045794  3.79113503 
-zn    0.2941171442 0.00000000 1.2070505 11.04463518 
-indus 0.3386272960 1.13606934 0.0000000  7.88050758 
-nox   0.9156186492 0.64743152 1.5504832  0.00000000 </code></pre>
-</div>
-</div><div class="column fragment" style="width:44%;">
-<p><strong><code>sdependent()</code> — S-dependence visualization</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="fu">sdependent</span>(beta)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><img data-src="figs/fig--core-uvarpro-sdependent.jpg" style="width:68.0%"></p>
-<div style="font-size: 0.72em; color: #555; text-align: left;">
-<p>S-dependence heatmap of the <span class="math inline">\(\ell_1\)</span>-logistic coefficient matrix — reveals variable dependence structure without labels.</p>
-</div>
-</div></div>
-<div class="footer">
-
 </div>
 </section><section id="outline" class="slide level2 smaller" data-background-color="azure"><h2><a href="index.html">Outline</a></h2>
 <div style="display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:1em; margin-top:0.5em; font-size:0.78em;">

@@ -540,68 +540,6 @@ P\{Y = 1 \mid \mathbf{X} = \mathbf{x}\}
 <span id="cb3-35"><a href=""></a>Random<span class="sc">-</span>classifier <span class="fu">baselines</span> (uniform)<span class="sc">:</span></span>
 <span id="cb3-36"><a href=""></a>   Brier<span class="sc">:</span> <span class="fl">0.25</span>   Normalized Brier<span class="sc">:</span> <span class="dv">1</span>   Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.69314718</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="imbalanced-classification-glioma-2" class="slide level2">
-<h2>Imbalanced classification: Glioma</h2>
-<h4 id="balanced-rf-brf">Balanced RF (BRF)</h4>
-<ol type="1">
-<li>BRF under-samples the majority class to balance the frequencies</li>
-<li>This is an example of a data-level method</li>
-<li>Surprisingly, BRF is actually an example of a quantile classifier and is <em>theoretically</em> equivalent to RFQ</li>
-<li>However, in finite samples it is less efficient</li>
-</ol>
-</section>
-<section id="imbalanced-classification-glioma-3" class="slide level2 smaller">
-<h2>Imbalanced classification: Glioma</h2>
-<div class="sourceCode" id="cb4" data-code-line-numbers="1-3|13-14|17|18-24|26-36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="do">## BRF classifier</span></span>
-<span id="cb4-2"><a href=""></a>o3 <span class="ot">&lt;-</span> <span class="fu">imbalanced</span>(y<span class="sc">~</span>.,glioma2, <span class="at">method =</span> <span class="st">"brf"</span>)</span>
-<span id="cb4-3"><a href=""></a><span class="fu">print</span>(o3)</span>
-<span id="cb4-4"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">880</span></span>
-<span id="cb4-5"><a href=""></a>           Frequency of class labels<span class="sc">:</span> <span class="dv">0</span><span class="ot">=</span><span class="dv">786</span>, <span class="dv">1</span><span class="ot">=</span><span class="dv">94</span></span>
-<span id="cb4-6"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">3000</span></span>
-<span id="cb4-7"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb4-8"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">15.208</span></span>
-<span id="cb4-9"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
-<span id="cb4-10"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
-<span id="cb4-11"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swr</span>
-<span id="cb4-12"><a href=""></a>    Resample size used to grow trees<span class="sc">:</span> <span class="dv">188</span></span>
-<span id="cb4-13"><a href=""></a>                            Analysis<span class="sc">:</span> RF<span class="sc">-</span>C</span>
-<span id="cb4-14"><a href=""></a>                              Family<span class="sc">:</span> class</span>
-<span id="cb4-15"><a href=""></a>                      Splitting rule<span class="sc">:</span> auc <span class="sc">*</span>random<span class="sc">*</span></span>
-<span id="cb4-16"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb4-17"><a href=""></a>                    Imbalanced ratio<span class="sc">:</span> <span class="fl">8.3617</span></span>
-<span id="cb4-18"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.04790004</span></span>
-<span id="cb4-19"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.19160015</span></span>
-<span id="cb4-20"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.9861269</span></span>
-<span id="cb4-21"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.1954276</span></span>
-<span id="cb4-22"><a href=""></a>                        (OOB) PR<span class="sc">-</span>AUC<span class="sc">:</span> <span class="fl">0.91991245</span></span>
-<span id="cb4-23"><a href=""></a>                        (OOB) G<span class="sc">-</span>mean<span class="sc">:</span> <span class="fl">0.91159495</span></span>
-<span id="cb4-24"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.08840505</span></span>
-<span id="cb4-25"><a href=""></a></span>
-<span id="cb4-26"><a href=""></a>Confusion matrix<span class="sc">:</span></span>
-<span id="cb4-27"><a href=""></a></span>
-<span id="cb4-28"><a href=""></a>          predicted</span>
-<span id="cb4-29"><a href=""></a>  observed   <span class="dv">0</span>  <span class="dv">1</span> class.error</span>
-<span id="cb4-30"><a href=""></a>         <span class="dv">0</span> <span class="dv">758</span> <span class="dv">28</span>      <span class="fl">0.0356</span></span>
-<span id="cb4-31"><a href=""></a>         <span class="dv">1</span>  <span class="dv">13</span> <span class="dv">81</span>      <span class="fl">0.1383</span></span>
-<span id="cb4-32"><a href=""></a></span>
-<span id="cb4-33"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.04659091</span></span>
-<span id="cb4-34"><a href=""></a></span>
-<span id="cb4-35"><a href=""></a>Random<span class="sc">-</span>classifier <span class="fu">baselines</span> (uniform)<span class="sc">:</span></span>
-<span id="cb4-36"><a href=""></a>   Brier<span class="sc">:</span> <span class="fl">0.25</span>   Normalized Brier<span class="sc">:</span> <span class="dv">1</span>   Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.69314718</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="imbalanced-classification-glioma-5" class="slide level2 smaller">
-<h2>Imbalanced classification: Glioma</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="do">## gmean variable importance with ci</span></span>
-<span id="cb5-2"><a href=""></a>o2 <span class="ot">&lt;-</span> <span class="fu">imbalanced</span>(y<span class="sc">~</span>.,glioma2, <span class="at">importance=</span><span class="st">"permute"</span>, <span class="at">block.size=</span><span class="dv">20</span>)</span>
-<span id="cb5-3"><a href=""></a>oo2 <span class="ot">&lt;-</span> <span class="fu">subsample</span>(o2)</span>
-<span id="cb5-4"><a href=""></a><span class="fu">plot.subsample</span>(oo2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment fade-left">
-<p><img data-src="pic/rfq_gmean_vs_varpro.png" style="width:82.0%"></p>
-</div>
-<div class="footer">
-
-</div>
-</section>
 <section id="missing-data-imputation" class="slide level2 smaller">
 <h2>Missing data imputation</h2>
 <div class="fragment fade-in-then-semi-out">
@@ -1039,59 +977,6 @@ A_R(c)=A\setminus A_L(c)
 <span id="cb23-13"><a href=""></a>              No. of random splits<span class="sc">:</span> <span class="dv">10</span></span>
 <span id="cb23-14"><a href=""></a>                          OOB risk<span class="sc">:</span> <span class="fl">0.151</span></span>
 <span id="cb23-15"><a href=""></a>                      TDC analysis<span class="sc">:</span> <span class="fu">NO</span> (records per <span class="at">ID =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="time-dependent-auc" class="slide level2 smaller">
-<h2>Time-dependent AUC</h2>
-<p>RHF supports time-dependent AUC-<span class="math inline">\(t\)</span> via <code>auct.rhf()</code> with CHF or hazard markers</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div class="sourceCode" id="cb24" data-code-line-numbers="1-3|5-9|11-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a><span class="do">## try different nodesizes</span></span>
-<span id="cb24-2"><a href=""></a>fit.n1   <span class="ot">&lt;-</span> <span class="fu">rhf</span>(f, d, <span class="at">nodesize =</span> <span class="dv">1</span>)</span>
-<span id="cb24-3"><a href=""></a>fit.n15  <span class="ot">&lt;-</span> <span class="fu">rhf</span>(f, d, <span class="at">nodesize =</span> <span class="dv">15</span>)</span>
-<span id="cb24-4"><a href=""></a></span>
-<span id="cb24-5"><a href=""></a><span class="do">## AUC-t with chf/hazard markers</span></span>
-<span id="cb24-6"><a href=""></a>auc.n1.chf  <span class="ot">&lt;-</span> <span class="fu">auct.rhf</span>(fit.n1)</span>
-<span id="cb24-7"><a href=""></a>auc.n1.haz  <span class="ot">&lt;-</span> <span class="fu">auct.rhf</span>(fit.n1,  <span class="at">marker =</span> <span class="st">"haz"</span>)</span>
-<span id="cb24-8"><a href=""></a>auc.n15.chf <span class="ot">&lt;-</span> <span class="fu">auct.rhf</span>(fit.n15)</span>
-<span id="cb24-9"><a href=""></a>auc.n15.haz <span class="ot">&lt;-</span> <span class="fu">auct.rhf</span>(fit.n15, <span class="at">marker =</span> <span class="st">"haz"</span>)</span>
-<span id="cb24-10"><a href=""></a></span>
-<span id="cb24-11"><a href=""></a><span class="do">## plot AUC-t curves</span></span>
-<span id="cb24-12"><a href=""></a>ylim <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.6</span>, <span class="fl">0.85</span>)</span>
-<span id="cb24-13"><a href=""></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb24-14"><a href=""></a><span class="fu">plot</span>(auc.n1.chf,  <span class="at">ylim =</span> ylim, <span class="at">main =</span> <span class="st">"nodesize 1, CHF marker"</span>)</span>
-<span id="cb24-15"><a href=""></a><span class="fu">plot</span>(auc.n1.haz,  <span class="at">ylim =</span> ylim, <span class="at">main =</span> <span class="st">"nodesize 1, hazard marker"</span>)</span>
-<span id="cb24-16"><a href=""></a><span class="fu">plot</span>(auc.n15.chf, <span class="at">ylim =</span> ylim, <span class="at">main =</span> <span class="st">"nodesize 15, CHF marker"</span>)</span>
-<span id="cb24-17"><a href=""></a><span class="fu">plot</span>(auc.n15.haz, <span class="at">ylim =</span> ylim, <span class="at">main =</span> <span class="st">"nodesize 15, hazard marker"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column fragment fade-left" style="width:40%;">
-<p><img data-src="pic/rhf.png" style="width:120.0%"></p>
-</div></div>
-</section>
-<section id="section-2" class="slide level2" data-background-image="pic/rhf.png" data-background-size="contain" data-background-color="white">
-<h2></h2>
-</section>
-<section id="hazard-plots" class="slide level2 smaller">
-<h2>Hazard plots</h2>
-<p>Display OOB case-specific hazard and a smoothed version for specific patients</p>
-<div class="sourceCode" id="cb25" data-code-line-numbers="1-2|4-5|7-10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a><span class="do">## smoothed hazard</span></span>
-<span id="cb25-2"><a href=""></a>shaz.n15 <span class="ot">&lt;-</span> <span class="fu">smoothed.hazard</span>(fit.n15)</span>
-<span id="cb25-3"><a href=""></a></span>
-<span id="cb25-4"><a href=""></a><span class="do">## pull ids for first 3 patients</span></span>
-<span id="cb25-5"><a href=""></a>id <span class="ot">&lt;-</span> fit.n15<span class="sc">$</span>ensemble.id[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]</span>
-<span id="cb25-6"><a href=""></a></span>
-<span id="cb25-7"><a href=""></a><span class="do">## display OOB/smoothed hazards</span></span>
-<span id="cb25-8"><a href=""></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb25-9"><a href=""></a><span class="fu">plot</span>(fit.n15, <span class="at">idx =</span> id, <span class="at">main =</span> <span class="st">"OOB Hazard"</span>)</span>
-<span id="cb25-10"><a href=""></a><span class="fu">plot</span>(shaz.n15, <span class="at">idx =</span> id, <span class="at">main =</span> <span class="st">"Smoothed Hazard"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment fade-up">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="pic/oobHazard.png" class="quarto-figure quarto-figure-center" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</section>
-<section id="section-3" class="slide level2" data-background-image="pic/oobHazard.png" data-background-size="contain" data-background-color="white">
-<h2></h2>
 </section>
 <section id="time-localized-varpro-importance" class="slide level2 smaller">
 <h2>Time-localized VarPro importance</h2>

@@ -967,42 +967,6 @@ F_{\!\text{ens}}^{(i)}
 <div class="footer">
 
 </div>
-</section><section id="key-quantities-1" class="slide level2 smaller"><h2>Key quantities</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb8-1"><a href=""></a>o$time.interest ---&gt;   event times (everything keys off this)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>o<span class="sc">$</span>time.interest[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb9-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">41</span>  <span class="dv">51</span>  <span class="dv">71</span>  <span class="dv">77</span> <span class="dv">110</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p><br></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb10-1"><a href=""></a>o$predicted     ---&gt;   inbag estimated mortality</span>
-<span id="cb10-2"><a href=""></a>o$predicted.oob ---&gt;   OOB estimated mortality</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<div class="sourceCode" id="cb11" data-code-line-numbers="1-2|4-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>o<span class="sc">$</span>predicted[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb11-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">200.83450</span>  <span class="fl">17.07501</span>  <span class="fl">76.31131</span>  <span class="fl">57.77577</span>  <span class="fl">79.27206</span></span>
-<span id="cb11-3"><a href=""></a></span>
-<span id="cb11-4"><a href=""></a>o<span class="sc">$</span>predicted.oob[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
-<span id="cb11-5"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="fl">190.04590</span>  <span class="fl">28.05044</span>  <span class="fl">66.25447</span>  <span class="fl">55.03181</span>  <span class="fl">72.55308</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p><br></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href=""></a>o$survival      ---&gt;   inbag survival estimator for each case</span>
-<span id="cb12-2"><a href=""></a>o$survival.oob  ---&gt;   OOB survival estimator for each case</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<div class="sourceCode" id="cb13" data-code-line-numbers="1-4|5-8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>yvar) <span class="do">## sample size (complete cases) n = 276</span></span>
-<span id="cb13-2"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span>   <span class="dv">2</span></span>
-<span id="cb13-3"><a href=""></a><span class="fu">length</span>(o<span class="sc">$</span>time.interest)</span>
-<span id="cb13-4"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">127</span></span>
-<span id="cb13-5"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>survival)      <span class="co"># ---&gt;   inbag survival estimator for each case</span></span>
-<span id="cb13-6"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span>
-<span id="cb13-7"><a href=""></a><span class="fu">dim</span>(o<span class="sc">$</span>survival.oob)  <span class="co"># ---&gt;   OOB survival estimator for each case</span></span>
-<span id="cb13-8"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>] <span class="dv">276</span> <span class="dv">127</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="footer">
-
-</div>
-</div>
 </section><section id="prediction-error" class="slide level2 smaller"><h2>Prediction error</h2>
 <hr style="margin: 10px; visibility:hidden;">
 <table class="table-striped border small table-sm caption-top">
@@ -3090,48 +3054,6 @@ i=1,\ldots,n\Bigg\}
 <span id="cb31-5"><a href=""></a>              <span class="at">partial =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment fade-left">
 <p><img data-src="pic/peakPartialAgMs.png" style="width:50.0%"></p>
-</div>
-</section><section id="survival-example-peakvo2-4" class="slide level2 smaller"><h2>Survival example: peakVO2</h2>
-<p>We can use <code>partial</code> and <code>get.partial.plot.data</code> to obtain values of <span class="math inline">\(F_j(x)\)</span></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="sourceCode" id="cb32" data-code-line-numbers="1-3|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="do">## partial effect of peak V02 on mortality</span></span>
-<span id="cb32-2"><a href=""></a></span>
-<span id="cb32-3"><a href=""></a>partial.o <span class="ot">&lt;-</span> <span class="fu">partial</span>(o,</span>
-<span id="cb32-4"><a href=""></a>                     <span class="at">partial.type =</span> <span class="st">"mort"</span>,</span>
-<span id="cb32-5"><a href=""></a>                     <span class="at">partial.xvar =</span> <span class="st">"peak.vo2"</span>,</span>
-<span id="cb32-6"><a href=""></a>                     <span class="at">partial.values =</span> o<span class="sc">$</span>xvar<span class="sc">$</span>peak.vo2,</span>
-<span id="cb32-7"><a href=""></a>                     <span class="at">partial.time =</span> o<span class="sc">$</span>time.interest)</span>
-<span id="cb32-8"><a href=""></a>pdta.m <span class="ot">&lt;-</span> <span class="fu">get.partial.plot.data</span>(partial.o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column fragment" style="width:50%;">
-<div class="sourceCode" id="cb33" data-code-line-numbers="1-2|3|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="do">## partial effect of peak V02 on survival</span></span>
-<span id="cb33-2"><a href=""></a>pvo2 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(o<span class="sc">$</span>xvar<span class="sc">$</span>peak.vo2)</span>
-<span id="cb33-3"><a href=""></a>partial.o <span class="ot">&lt;-</span> <span class="fu">partial</span>(o,</span>
-<span id="cb33-4"><a href=""></a>                     <span class="at">partial.type =</span> <span class="st">"surv"</span>,</span>
-<span id="cb33-5"><a href=""></a>                     <span class="at">partial.xvar =</span> <span class="st">"peak.vo2"</span>,</span>
-<span id="cb33-6"><a href=""></a>                     <span class="at">partial.values =</span> pvo2,</span>
-<span id="cb33-7"><a href=""></a>                     <span class="at">partial.time =</span> o<span class="sc">$</span>time.interest)</span>
-<span id="cb33-8"><a href=""></a>pdta.s <span class="ot">&lt;-</span> <span class="fu">get.partial.plot.data</span>(partial.o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<p><br></p>
-<div class="columns">
-<div class="column fragment fade-left" style="width:45%;">
-<div class="sourceCode" id="cb34" data-code-line-numbers="4,8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="do">## compare the two plots</span></span>
-<span id="cb34-2"><a href=""></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))    </span>
-<span id="cb34-3"><a href=""></a></span>
-<span id="cb34-4"><a href=""></a><span class="fu">plot</span>(<span class="fu">lowess</span>(pdta.m<span class="sc">$</span>x, pdta.m<span class="sc">$</span>yhat, <span class="at">f =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>),</span>
-<span id="cb34-5"><a href=""></a>     <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">xlab =</span> <span class="st">"peak VO2"</span>, <span class="at">ylab =</span> <span class="st">"adjusted mortality"</span>)</span>
-<span id="cb34-6"><a href=""></a><span class="fu">rug</span>(o<span class="sc">$</span>xvar<span class="sc">$</span>peak.vo2)</span>
-<span id="cb34-7"><a href=""></a></span>
-<span id="cb34-8"><a href=""></a><span class="fu">matplot</span>(pdta.s<span class="sc">$</span>partial.time, <span class="fu">t</span>(pdta.s<span class="sc">$</span>yhat), <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lty =</span> <span class="dv">1</span>,</span>
-<span id="cb34-9"><a href=""></a>        <span class="at">xlab =</span> <span class="st">"years"</span>, <span class="at">ylab =</span> <span class="st">"peak VO2 adjusted survival"</span>)</span>
-<span id="cb34-10"><a href=""></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>, <span class="at">legend =</span> <span class="fu">paste0</span>(<span class="st">"peak VO2 = "</span>, pvo2),</span>
-<span id="cb34-11"><a href=""></a>       <span class="at">bty =</span> <span class="st">"n"</span>, <span class="at">cex =</span> .<span class="dv">75</span>, <span class="at">fill =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column fragment fade-left" style="width:55%;">
-<p><img data-src="pic/peakPartialPKV2.png" style="width:105.0%"></p>
-</div></div>
-<div class="footer">
-
 </div>
 </section><section id="outline" class="slide level2 smaller" data-background-color="azure"><h2><a href="index.html">Outline</a></h2>
 <div style="display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:1em; margin-top:0.5em; font-size:0.78em;">
