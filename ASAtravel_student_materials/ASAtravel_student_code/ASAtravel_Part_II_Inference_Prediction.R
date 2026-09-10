@@ -1,17 +1,16 @@
 ###############################################################################
+# PART II: INFERENCE AND PREDICTION
 # ASA Traveling Course: Tree-Based Machine Learning Methods
-# Part II: Inference and Prediction
-#
 # Student R-code companion
-# Code is organized in slide order for use during and after the workshop.
-# Required packages and data are identified near their first use.
 #
-# Console output has been removed. Display-only syntax and incomplete calls
-# are retained as comments. Run examples in slide order; the presentations
-# intentionally reuse short object names such as o, fit, and pred.
+# Run sections in slide order. Later examples can reuse earlier objects.
+# The short names o, fit, and pred are reused for different analyses.
+# Run installation commands separately, once, when a package is needed.
+# Sampling and forest randomization mean numerical results may vary.
 ###############################################################################
 
-# Core package used throughout this module.
+# Required packages: randomForestSRC, survival; varPro supplies glioma.
+# install.packages(c("randomForestSRC", "survival", "varPro"))
 library(randomForestSRC)
 library(survival)
 
@@ -32,13 +31,17 @@ library(survival)
 # Topic: OOB inference and returned quantities
 ###############################################################################
 
+# Grow the multiclass classifier and inspect its performance.
 data(glioma, package = "varPro")
 o <- rfsrc(y ~ ., data = glioma)
 print(o)
 
-mean(o$class != o$yvar)
-# Inbag misclassification is zero in the displayed example.
-mean(o$class.oob != o$yvar)
+# Compare inbag and OOB misclassification.
+print(mean(o$class != o$yvar))
+print(mean(o$class.oob != o$yvar))
+
+# Retain the classifier for Slide 12; o is reused for survival below.
+o.glioma <- o
 
 
 ###############################################################################
@@ -46,13 +49,13 @@ mean(o$class.oob != o$yvar)
 # Topic: OOB inference and returned quantities
 ###############################################################################
 
-# Inbag and OOB class-probability estimates
-o$predicted[1:5, ]
-o$predicted.oob[1:5, ]
+# Compare inbag and OOB probability estimates for five cases.
+print(o$predicted[1:5, ])
+print(o$predicted.oob[1:5, ])
 
-# Inbag and OOB class predictions
-o$class[1:5]
-o$class.oob[1:5]
+# Compare the corresponding class labels.
+print(o$class[1:5])
+print(o$class.oob[1:5])
 
 
 ###############################################################################
@@ -74,73 +77,58 @@ o$class.oob[1:5]
 # Topic: OOB inference and returned quantities
 ###############################################################################
 
-# Code example 1
-# o$survival      --->   inbag survival estimator for each case
-# o$survival.oob  --->   OOB survival estimator for each case
-
-# Code example 2
-## load the PBC data
-data(pbc, package="survival")
-
-## remove the ID
+# Load PBC and collapse positive endpoint codes to a single event indicator.
+data(pbc, package = "survival")
 pbc$id <- NULL
-
-## convert to right-censoring with death as the event
 pbc$status[pbc$status > 0] <- 1
 
-## default RSF call
-o <- rfsrc(Surv(time, status)~., pbc)
+# Grow a random survival forest.
+o <- rfsrc(Surv(time, status) ~ ., pbc)
 
-## choose some cases
-idx <- c(11,34,60)
-
-## plot the curves
+# Compare inbag and OOB survival curves for three cases.
+idx <- c(11, 34, 60)
 matplot(o$time.interest,
-        t(o$survival[idx,]), type = "l", col=4, lwd=3,
+        t(o$survival[idx, ]), type = "l", col = 4, lwd = 3,
         xlab = "Days", ylab = "Survival")
 matlines(o$time.interest,
-        t(o$survival.oob[idx,]), type = "l", col=2, lwd=3)
-legend("bottomleft", legend = c("inbag", "oob"), fill = c(4,2))
+         t(o$survival.oob[idx, ]), type = "l", col = 2, lwd = 3)
+legend("bottomleft", legend = c("inbag", "oob"), fill = c(4, 2))
 
 
 ###############################################################################
-# Slide 10: Key quantities
-# Topic: OOB inference and returned quantities
-###############################################################################
-
-o$time.interest[1:5]
-o$predicted[1:5]
-o$predicted.oob[1:5]
-
-dim(o$yvar)
-length(o$time.interest)
-dim(o$survival)
-dim(o$survival.oob)
-
-
-###############################################################################
-# Slide 12: Prediction error for classification
+# Slide 11: Prediction error for classification
 # Topic: Prediction error
 ###############################################################################
 
-# Classification performance helpers discussed on the slide:
-# get.misclass.error(object)
-# get.brier.error(object)
-# get.logloss(object)
-# get.auc(object)
-# The same quantities can also be calculated from object$yvar and
-# object$predicted.oob or object$class.oob.
+# Classification performance helpers:
+# get.misclass.error
+# get.brier.error
+# get.logloss
+# get.auc
+# The relevant inputs include observed outcomes and OOB predictions.
 
 
 ###############################################################################
-# Slide 13: Classification example: Glioma
+# Slide 12: Classification example: Glioma
 # Topic: Prediction error
 ###############################################################################
 
-# Recreate the classification fit from Slide 6 because the short object
-# name o was subsequently reused for the PBC survival example.
-o.glioma <- rfsrc(y ~ ., data = glioma)
-tail(o.glioma$err.rate, 1)
+# Return to the glioma classifier retained on Slide 6.
+print(o.glioma)
+
+# The last row reports the final tree-wise error values.
+print(tail(o.glioma$err.rate, 1))
+
+
+###############################################################################
+# Slide 13: Prediction error for survival
+# Topic: Prediction error
+###############################################################################
+
+# Survival performance reference:
+# Harrell C-error: $err.rate; get.cindex
+# Time-varying Brier score: get.brier.survival
+# Time-varying AUC: get.auct.survival
 
 
 ###############################################################################
@@ -148,14 +136,13 @@ tail(o.glioma$err.rate, 1)
 # Topic: Prediction error
 ###############################################################################
 
-# Survival performance helpers discussed on the slide:
-# object$err.rate or get.cindex(object)       # Harrell C-error
-# get.brier.survival(object)                 # time-varying Brier score
-# plot.brier.auc(object)                     # workshop helper for Brier/AUC-t
+# Combined Brier-score and AUC-t plotting interfaces:
+# plot.brier.auc   (randomForestSRC.run)
+# plotBrierAUC     (randomForestSRC)
 
 
 ###############################################################################
-# Slide 16: Prediction
+# Slide 15: Prediction
 # Topic: Prediction on new data
 ###############################################################################
 
@@ -165,12 +152,31 @@ tail(o.glioma$err.rate, 1)
 
 
 ###############################################################################
+# Slide 17: Prediction: canonical example
+# Topic: Prediction on new data
+###############################################################################
+
+# Load the veteran survival data and inspect its dimensions.
+data(veteran, package = "randomForestSRC")
+print(dim(veteran))
+
+
+###############################################################################
 # Slide 18: Prediction: canonical example
 # Topic: Prediction on new data
 ###############################################################################
 
+# Convert predictors to factors, retaining numeric survival time and status.
 data(veteran, package = "randomForestSRC")
-dim(veteran)
+veteran2 <- data.frame(lapply(veteran, factor))
+veteran2$time <- veteran$time
+veteran2$status <- veteran$status
+
+# Use an unequal 25/75 train/test split.
+# Subsetting preserves factor-level definitions in both samples.
+train <- sample(1:nrow(veteran2), round(nrow(veteran2) * .25))
+print(summary(veteran2[train, ]))
+print(summary(veteran2[-train, ]))
 
 
 ###############################################################################
@@ -178,22 +184,13 @@ dim(veteran)
 # Topic: Prediction on new data
 ###############################################################################
 
-# Code example 1
-## veteran data (with factors)
-data(veteran, package = "randomForestSRC")
-veteran2 <- data.frame(lapply(veteran, factor))
-veteran2$time <- veteran$time
-veteran2$status <- veteran$status
+# Grow on the training rows and score the test rows.
+o <- rfsrc(Surv(time, status) ~ ., veteran2[train, ])
+pred <- predict(o, veteran2[-train, ])
 
-## split the data into unbalanced train/test data (25/75)
-## the train/test data have the same levels, but different labels
-train <- sample(1:nrow(veteran2), round(nrow(veteran2) * .25))
-
-# Code example 2
-summary(veteran2[train,])
-
-# Code example 3
-summary(veteran2[-train,])
+# Distinguish OOB training performance from test-data performance.
+print(o)
+print(pred)
 
 
 ###############################################################################
@@ -201,35 +198,18 @@ summary(veteran2[-train,])
 # Topic: Prediction on new data
 ###############################################################################
 
-# Code example 1
-## train the forest and use this to predict on test data
-o <- rfsrc(Surv(time, status) ~ ., veteran2[train, ])
-pred <- predict(o, veteran2[-train , ])
-
-# Code example 2
-print(o)
-
-# Code example 3
-print(pred)
-
-
-###############################################################################
-# Slide 21: Prediction: canonical example
-# Topic: Prediction on new data
-###############################################################################
-
-## even harder ... factor level not previously encountered in training
+# Introduce a factor level not encountered during training.
 veteran3 <- veteran2[1:3, ]
 veteran3$celltype <- factor(c("newlevel", "1", "3"))
 pred2 <- predict(o, veteran3)
 print(pred2)
 
-## the unusual level is treated like a missing value but is not removed
+# Inspect how the unrecognized level is represented in the test predictors.
 print(pred2$xvar)
 
 
 ###############################################################################
-# Slide 22: Restore
+# Slide 21: Restore
 # Topic: Restore mode
 ###############################################################################
 
@@ -238,36 +218,52 @@ print(pred2$xvar)
 
 
 ###############################################################################
+# Slide 22: Restore
+# Topic: Restore mode
+###############################################################################
+
+# Grow a glioma classifier, then restore it with a Brier performance target.
+o <- rfsrc(y ~ ., data = glioma)
+print(o)
+p <- predict(o, perf.type = "brier")
+print(p)
+
+
+###############################################################################
 # Slide 23: Restore
 # Topic: Restore mode
 ###############################################################################
 
-# Code example 1
-o <- rfsrc(y~., data = glioma)
-o
-
-# Code example 2
-p <- predict(o, perf.type = "brier")
-p
-
-
-###############################################################################
-# Slide 24: Restore
-# Topic: Restore mode
-###############################################################################
-
-## create your own estimator for regression
-o <- rfsrc(mpg~.,mtcars)
-fwt <- predict(o, forest.wt="oob")$forest.wt
+# Express OOB regression predictions using forest weights.
+o <- rfsrc(mpg ~ ., mtcars)
+fwt <- predict(o, forest.wt = "oob")$forest.wt
 yhat <- c(fwt %*% o$yvar)
 
-## compare to the OOB ensemble
+# Compare the reconstructed predictions and errors with the forest output.
 print(summary(yhat - o$predicted.oob))
-
-## compare prediction error to OOB ensemble
 print(o)
-
 print(mean((yhat - o$yvar)^2))
+
+
+###############################################################################
+# Slide 26: Survival example: peakVO2
+# Topic: Partial plots and peakVO2
+###############################################################################
+
+# Load the heart-failure survival data.
+data(peakVO2, package = "randomForestSRC")
+print(dim(peakVO2))
+
+
+###############################################################################
+# Slide 27: Survival example: peakVO2
+# Topic: Partial plots and peakVO2
+###############################################################################
+
+# Grow a survival forest and examine the age partial effect at two years.
+o <- rfsrc(Surv(ttodead, died) ~ ., peakVO2)
+plot.variable(o, surv.type = "surv", xvar.names = "age",
+              time = 2, partial = TRUE)
 
 
 ###############################################################################
@@ -275,8 +271,9 @@ print(mean((yhat - o$yvar)^2))
 # Topic: Partial plots and peakVO2
 ###############################################################################
 
-data(peakVO2, package = "randomForestSRC")
-dim(peakVO2)
+# Smooth the age partial-effect display.
+plot.variable(o, surv.type = "surv", xvar.names = "age",
+              smooth.lines = TRUE, time = 2, partial = TRUE)
 
 
 ###############################################################################
@@ -284,68 +281,6 @@ dim(peakVO2)
 # Topic: Partial plots and peakVO2
 ###############################################################################
 
-o <- rfsrc(Surv(ttodead,died)~., peakVO2)
-## partial effect for age
-plot.variable(o, surv.type = "surv", xvar.names = "age",
-              time = 2, partial = TRUE)
-
-
-###############################################################################
-# Slide 30: Survival example: peakVO2
-# Topic: Partial plots and peakVO2
-###############################################################################
-
-## partial effect for age
-plot.variable(o, surv.type = "surv", xvar.names = "age",
-              smooth.lines = TRUE,
-              time = 2, partial = TRUE)
-
-
-###############################################################################
-# Slide 31: Survival example: peakVO2
-# Topic: Partial plots and peakVO2
-###############################################################################
-
-## partial effect for age
+# Request the relative-frequency survival output scale.
 plot.variable(o, surv.type = "rel.freq", xvar.names = "age",
-              smooth.lines = TRUE,
-              partial = TRUE)
-
-
-###############################################################################
-# Slide 32: Survival example: peakVO2
-# Topic: Partial plots and peakVO2
-###############################################################################
-
-# Code example 1
-## partial effect of peak V02 on mortality
-
-partial.o <- partial(o,
-                     partial.type = "mort",
-                     partial.xvar = "peak.vo2",
-                     partial.values = o$xvar$peak.vo2,
-                     partial.time = o$time.interest)
-pdta.m <- get.partial.plot.data(partial.o)
-
-# Code example 2
-## partial effect of peak V02 on survival
-pvo2 <- quantile(o$xvar$peak.vo2)
-partial.o <- partial(o,
-                     partial.type = "surv",
-                     partial.xvar = "peak.vo2",
-                     partial.values = pvo2,
-                     partial.time = o$time.interest)
-pdta.s <- get.partial.plot.data(partial.o)
-
-# Code example 3
-## compare the two plots
-par(mfrow=c(1,2))
-
-plot(lowess(pdta.m$x, pdta.m$yhat, f = 2/3),
-     type = "l", xlab = "peak VO2", ylab = "adjusted mortality")
-rug(o$xvar$peak.vo2)
-
-matplot(pdta.s$partial.time, t(pdta.s$yhat), type = "l", lty = 1,
-        xlab = "years", ylab = "peak VO2 adjusted survival")
-legend("bottomleft", legend = paste0("peak VO2 = ", pvo2),
-       bty = "n", cex = .75, fill = 1:5)
+              smooth.lines = TRUE, partial = TRUE)

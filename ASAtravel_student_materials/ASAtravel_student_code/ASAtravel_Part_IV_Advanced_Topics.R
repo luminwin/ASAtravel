@@ -1,22 +1,19 @@
 ###############################################################################
+# PART IV: ADVANCED TOPICS
 # ASA Traveling Course: Tree-Based Machine Learning Methods
-# Part IV: Advanced Topics
-#
 # Student R-code companion
-# Code is organized in slide order for use during and after the workshop.
-# Required packages and data are identified near their first use.
 #
-# Console output has been removed. Display-only syntax and incomplete calls
-# are retained as comments. Run examples in slide order; the presentations
-# intentionally reuse short object names such as o, fit, and pred.
+# Run sections in slide order. Later examples can reuse earlier objects.
+# The short names o, fit, and pred are reused for different analyses.
+# Run installation commands separately, once, when a package is needed.
+# Sampling and forest randomization mean numerical results may vary.
 ###############################################################################
 
-# Core packages used in the first half of this module.
+# Core packages; additional packages are loaded near their examples.
+# install.packages(c("randomForestSRC", "survival", "varPro",
+#                    "randomForestSGT", "randomForestRHF", "mlbench"))
 library(randomForestSRC)
 library(survival)
-
-# Optional installation steps (run once, as needed):
-# install.packages(c("varPro", "randomForestSGT", "randomForestRHF", "mlbench"))
 
 
 ###############################################################################
@@ -24,13 +21,13 @@ library(survival)
 # Topic: Class-imbalanced classification
 ###############################################################################
 
-# Family-specific grow calls shown on the slide:
+# Family-specific formula reference:
+# rfsrc(Surv(time, status) ~ ., data = veteran)
+# rfsrc(Surv(time, status) ~ ., data = wihs)
 # rfsrc(Ozone ~ ., data = airquality)
 # quantreg(mpg ~ ., data = mtcars)
 # rfsrc(Species ~ ., data = iris)
 # imbalanced(status ~ ., data = breast)
-# rfsrc(Surv(time, status) ~ ., data = veteran)
-# rfsrc(Surv(time, status) ~ ., data = wihs)
 # rfsrc(Multivar(mpg, cyl) ~ ., data = mtcars)
 # rfsrc(cbind(Species, Sepal.Length) ~ ., data = iris)
 # quantreg(cbind(mpg, cyl) ~ ., data = mtcars)
@@ -45,20 +42,19 @@ library(survival)
 # Topic: Class-imbalanced classification
 ###############################################################################
 
+# Load the multiclass data and inspect the original subtype frequencies.
 library(varPro)
 data(glioma, package = "varPro")
-table(glioma$y)
+print(table(glioma$y))
 
-# Combine four original labels into a super-majority class.
-class.combine <- c(
-  "Classic-like", "Codel", "G-CIMP-high", "Mesenchymal-like"
-)
+# Combine four common subtypes into a super-majority class.
+class.combine <- c("Classic-like", "Codel", "G-CIMP-high", "Mesenchymal-like")
 ynew <- factor(1 * !is.element(glioma$y, class.combine))
 
-# Replace the original multiclass outcome by the new binary outcome.
+# Replace the response with the binary outcome.
 glioma2 <- glioma
 glioma2$y <- ynew
-table(glioma2$y)
+print(table(glioma2$y))
 
 
 ###############################################################################
@@ -82,31 +78,19 @@ print(o2)
 
 
 ###############################################################################
-# Slide 15: Imbalanced classification: Glioma
-# Topic: Class-imbalanced classification
+# Slide 14: Missing data imputation
+# Topic: Missing-data imputation and OOD scoring
 ###############################################################################
 
-# Balanced random forest (BRF).
-o3 <- imbalanced(y ~ ., data = glioma2, method = "brf")
-print(o3)
-
-
-###############################################################################
-# Slide 16: Imbalanced classification: Glioma
-# Topic: Class-imbalanced classification
-###############################################################################
-
-# G-mean variable importance with subsampling confidence intervals.
-o2 <- imbalanced(
-  y ~ ., data = glioma2,
-  importance = "permute", block.size = 20
-)
-oo2 <- subsample(o2)
-plot.subsample(oo2)
+# Imputation at different stages; interface references:
+# rfsrc(..., na.action = "na.impute")
+# predict(..., na.action = "na.impute")
+# impute(...)
+# impute.learn(...)
 
 
 ###############################################################################
-# Slide 18: General call to impute
+# Slide 15: General call to impute
 # Topic: Missing-data imputation and OOD scoring
 ###############################################################################
 
@@ -116,7 +100,7 @@ plot.subsample(oo2)
 
 
 ###############################################################################
-# Slide 19: OTFI for training data
+# Slide 16: OTFI for training data
 # Topic: Missing-data imputation and OOD scoring
 ###############################################################################
 
@@ -129,7 +113,7 @@ pbc.impute <- impute(data = pbc)
 
 
 ###############################################################################
-# Slide 20: missForest and mForest for training data
+# Slide 17: missForest and mForest for training data
 # Topic: Missing-data imputation and OOD scoring
 ###############################################################################
 
@@ -144,11 +128,11 @@ housing.impute <- impute(data = housing, mf.q = 40)
 
 
 ###############################################################################
-# Slide 21: Test time imputation using impute.learn
+# Slide 18: Test time imputation using impute.learn
 # Topic: Missing-data imputation and OOD scoring
 ###############################################################################
 
-# Display-only interface summary; ellipses denote user-supplied arguments.
+# Interface reference; replace the ellipses with appropriate arguments.
 # fit         <- impute.learn(...)
 # newdata.imp <- predict(fit, newdata = ...)
 # save.impute.learn(fit, path = ...)
@@ -156,7 +140,7 @@ housing.impute <- impute(data = housing, mf.q = 40)
 
 
 ###############################################################################
-# Slide 23: Test time imputation
+# Slide 20: Test time imputation
 # Topic: Missing-data imputation and OOD scoring
 ###############################################################################
 
@@ -180,7 +164,7 @@ test.imp <- predict(fit, test, max.predict.iter = 2)
 
 
 ###############################################################################
-# Slide 26: OOD scoring example
+# Slide 23: OOD scoring example
 # Topic: Missing-data imputation and OOD scoring
 ###############################################################################
 
@@ -207,68 +191,58 @@ print(head(ood$score.percentile))
 
 
 ###############################################################################
-# Slide 30: The randomForestSGT package
+# Slide 27: The randomForestSGT package
 # Topic: Super Greedy Trees
 ###############################################################################
 
+# Load the SGT package for the geometric-splitting examples.
 library(randomForestSGT)
 
-# Canonical SGT forest interface:
+# SGT forest interface reference:
 # rfsgt(formula, data, ...)
-# hcut = 0 gives CART splits; larger hcut values enlarge the geometric
-# dictionary used to define candidate splits.
+# hcut = 0 gives CART splits; larger values expand the geometric dictionary.
 
 
 ###############################################################################
-# Slide 32: Tuning hcut
+# Slide 29: Tuning hcut
 # Topic: Super Greedy Trees
 ###############################################################################
 
-# Simulate Friedman-1 signal and append noise variables.
+# Simulate the Friedman-1 signal and add 50 independent noise variables.
 n <- 2500
 p <- 50
 noise <- matrix(runif(n * p), ncol = p)
-dta <- data.frame(
-  mlbench:::mlbench.friedman1(n, sd = 0),
-  noise = noise
-)
+dta <- data.frame(mlbench:::mlbench.friedman1(n, sd = 0), noise = noise)
 
-# Tune hcut over values up to 3.
-filter <- tune.hcut(y ~ ., data = dta, hcut = 3)
+# Tune hcut over candidate values up to 3.
+filter <- tune.hcut(y ~ ., dta, hcut = 3)
 
 
 ###############################################################################
-# Slide 33: Using the tuned hcut
+# Slide 30: Using the tuned hcut
 # Topic: Super Greedy Trees
 ###############################################################################
 
-# Use the tuned hcut and the preselected basis functions.
-o.sgt <- rfsgt(y ~ ., data = dta, filter = filter)
+# Use the tuned hcut and its preselected basis functions.
+o.sgt <- rfsgt(y ~ ., dta, filter = filter)
 print(o.sgt)
 
 
 ###############################################################################
-# Slide 34: Specific hcut families
+# Slide 31: Specific hcut families
 # Topic: Super Greedy Trees
 ###############################################################################
 
-# hcut = 0 recovers axis-aligned CART/random-forest splitting.
-o.hcut0 <- rfsgt(
-  y ~ ., data = dta,
-  filter = use.tune.hcut(filter, hcut = 0)
-)
+# Compare CART-style and hyperplane splitting with the same filter.
+o.hcut0 <- rfsgt(y ~ ., dta, filter = use.tune.hcut(filter, hcut = 0))
 print(o.hcut0)
 
-# hcut = 1 gives hyperplane splits.
-o.hcut1 <- rfsgt(
-  y ~ ., data = dta,
-  filter = use.tune.hcut(filter, hcut = 1)
-)
+o.hcut1 <- rfsgt(y ~ ., dta, filter = use.tune.hcut(filter, hcut = 1))
 print(o.hcut1)
 
 
 ###############################################################################
-# Slide 35: SGTs as model explainers
+# Slide 32: SGTs as model explainers
 # Topic: Super Greedy Trees
 ###############################################################################
 
@@ -286,7 +260,7 @@ partial <- bo$partial[, -1, drop = FALSE]
 
 
 ###############################################################################
-# Slide 36: SGT beta and partial effects
+# Slide 33: SGT beta and partial effects
 # Topic: Super Greedy Trees
 ###############################################################################
 
@@ -300,104 +274,63 @@ print(head(partial[, 1:6]), digits = 2)
 
 
 ###############################################################################
-# Slide 37: Random Hazard Forests (RHF)
+# Slide 34: Random Hazard Forests (RHF)
 # Topic: Random Hazard Forests
 ###############################################################################
 
+# Longitudinal counting-process interface reference:
+# rhf(Surv(id, start, stop, event) ~ ., data)
+
+
+###############################################################################
+# Slide 35: RHF data format
+# Topic: Random Hazard Forests
+###############################################################################
+
+# Counting-process response columns:
+#   id     Subject identifier; repeated rows belong to the same subject.
+#   start  Beginning of an observation interval.
+#   stop   End of the interval, with stop > start.
+#   event  Event indicator at stop: 1 = event, 0 = no event.
+
+
+###############################################################################
+# Slide 36: Time-static setting
+# Topic: Random Hazard Forests
+###############################################################################
+
+# Load the RHF package and an ordinary baseline survival dataset.
 library(randomForestRHF)
-
-# Canonical RHF syntax for longitudinal counting-process data:
-# rhf(Surv(id, start, stop, event) ~ ., data = data)
-
-
-###############################################################################
-# Slide 38: RHF data format
-# Topic: Random Hazard Forests
-###############################################################################
-
-# Required response columns in long form:
-#   id     subject identifier; repeated rows belong to the same subject
-#   start  beginning of the interval
-#   stop   end of the interval, with stop > start
-#   event  event indicator at stop (1 = event, 0 = no event)
-# A typical inspection command is:
-# head(data[, c("id", "start", "stop", "event")])
-
-
-###############################################################################
-# Slide 39: Time-static setting
-# Topic: Random Hazard Forests
-###############################################################################
-
-# Load ordinary baseline survival data.
 data(peakVO2, package = "randomForestSRC")
 
-# Convert one-row-per-subject survival data to counting-process form.
-d <- convert.counting(Surv(ttodead, died) ~ ., data = peakVO2)
-
-# Set the RHF formula and grow the forest.
+# Convert one-row-per-subject data to counting-process form.
+d <- convert.counting(Surv(ttodead, died) ~ ., peakVO2)
 f <- "Surv(id, start, stop, event) ~ ."
-o <- rhf(f, data = d)
+
+# Grow the time-static RHF.
+o <- rhf(f, d)
 
 
 ###############################################################################
-# Slide 40: Time-static results
+# Slide 37: Time-static results
 # Topic: Random Hazard Forests
 ###############################################################################
 
-# Display the summary shown on the slide.
+# Inspect the number of records, unique subjects, events, and forest settings.
 print(o)
 
 
 ###############################################################################
-# Slide 41: Time-dependent AUC
+# Slide 38: Time-localized VarPro importance
 # Topic: Random Hazard Forests
 ###############################################################################
 
-# Compare two terminal-node sizes.
-fit.n1 <- rhf(f, data = d, nodesize = 1)
-fit.n15 <- rhf(f, data = d, nodesize = 15)
+# Grow the nodesize = 15 forest used in the time-localized importance example.
+fit.n15 <- rhf(f, d, nodesize = 15)
 
-# AUC-t using cumulative-hazard and hazard markers.
-auc.n1.chf <- auct.rhf(fit.n1)
-auc.n1.haz <- auct.rhf(fit.n1, marker = "haz")
-auc.n15.chf <- auct.rhf(fit.n15)
-auc.n15.haz <- auct.rhf(fit.n15, marker = "haz")
-
-# Plot the four AUC-t curves.
-ylim <- c(0.6, 0.85)
-par(mfrow = c(2, 2))
-plot(auc.n1.chf, ylim = ylim, main = "nodesize 1, CHF marker")
-plot(auc.n1.haz, ylim = ylim, main = "nodesize 1, hazard marker")
-plot(auc.n15.chf, ylim = ylim, main = "nodesize 15, CHF marker")
-plot(auc.n15.haz, ylim = ylim, main = "nodesize 15, hazard marker")
-
-
-###############################################################################
-# Slide 43: Hazard plots
-# Topic: Random Hazard Forests
-###############################################################################
-
-# Smooth the fitted case-specific hazards.
-shaz.n15 <- smoothed.hazard(fit.n15)
-
-# Select the first three subject IDs represented in the ensemble.
-id <- fit.n15$ensemble.id[1:3]
-
-# Compare OOB and smoothed hazard curves.
-par(mfrow = c(1, 2))
-plot(fit.n15, idx = id, main = "OOB Hazard")
-plot(shaz.n15, idx = id, main = "Smoothed Hazard")
-
-
-###############################################################################
-# Slide 45: Time-localized VarPro importance
-# Topic: Random Hazard Forests
-###############################################################################
-
-# Estimate time-localized RHF variable importance over the full time grid.
+# Calculate importance over the full follow-up grid.
 imp.t <- importance.rhf(fit.n15)
 
-# Two complementary displays of time-dependent importance.
+# Compare dot-matrix and line displays of time-dependent variable priority.
 plot(imp.t, type = "dotmatrix")
 plot(imp.t, type = "lines")

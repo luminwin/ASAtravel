@@ -1,23 +1,19 @@
 ###############################################################################
+# PART III: VARIABLE SELECTION
 # ASA Traveling Course: Tree-Based Machine Learning Methods
-# Part III: Variable Selection
-#
 # Student R-code companion
-# Code is organized in slide order for use during and after the workshop.
-# Required packages and data are identified near their first use.
 #
-# Console output has been removed. Display-only syntax and incomplete calls
-# are retained as comments. Run examples in slide order; the presentations
-# intentionally reuse short object names such as o, fit, and pred.
+# Run sections in slide order. Later examples can reuse earlier objects.
+# The short names o, fit, and pred are reused for different analyses.
+# Run installation commands separately, once, when a package is needed.
+# Sampling and forest randomization mean numerical results may vary.
 ###############################################################################
 
-# Core package used throughout this module.
+# Required packages: randomForestSRC, survival, varPro.
+# install.packages(c("randomForestSRC", "survival", "varPro"))
 library(randomForestSRC)
 library(survival)
 library(varPro)
-
-# Optional installation step for the Boston Housing example on Slide 38:
-# install.packages("mlbench")
 
 
 ###############################################################################
@@ -36,29 +32,33 @@ library(varPro)
 # Topic: Permutation VIMP and subsampling inference
 ###############################################################################
 
+# Use mtcars for the mpg formula examples.
 # Request permutation VIMP while growing the forest.
 vimp.grow <- rfsrc(mpg ~ ., data = mtcars,
                    importance = "permute")$importance
+print(vimp.grow)
 vimp.grow.block <- rfsrc(mpg ~ ., data = mtcars,
-                         importance = "permute",
-                         block.size = 10)$importance
+                         importance = "permute", block.size = 10)$importance
+print(vimp.grow.block)
 
-# Restore an existing forest and request VIMP.
+# Request VIMP from an existing forest through restore mode.
 obj <- rfsrc(mpg ~ ., data = mtcars)
 vimp.restore <- predict(obj, importance = "permute")$importance
+print(vimp.restore)
 vimp.restore.block <- predict(obj, importance = "permute",
                               block.size = 10)$importance
+print(vimp.restore.block)
 
-# Use the dedicated vimp() interface.
-vimp(obj, importance = "permute")
-vimp(obj, importance = "permute", block.size = 10)$importance
+# Use the dedicated vimp interface.
+print(vimp(obj, importance = "permute"))
+print(vimp(obj, importance = "permute", block.size = 10)$importance)
 
-# Joint permutation VIMP for pairs of iris variables.
-iris.obj <- rfsrc(Species ~ ., data = iris)
-vimp(iris.obj, iris.obj$xvar.names[1:2],
-     importance = "permute", joint = TRUE)$importance
-vimp(iris.obj, iris.obj$xvar.names[3:4],
-     importance = "permute", joint = TRUE)$importance
+# Perturb pairs of iris predictors jointly.
+obj <- rfsrc(Species ~ ., data = iris)
+print(vimp(obj, obj$xvar.names[1:2],
+           importance = "permute", joint = TRUE)$importance)
+print(vimp(obj, obj$xvar.names[3:4],
+           importance = "permute", joint = TRUE)$importance)
 
 
 ###############################################################################
@@ -66,14 +66,13 @@ vimp(iris.obj, iris.obj$xvar.names[3:4],
 # Topic: Permutation VIMP and subsampling inference
 ###############################################################################
 
-# Code example 1
-## VIMP for all variables
+# Individual permutation importance, including class-specific values.
 iris.obj <- rfsrc(Species ~ ., data = iris)
 print(vimp(iris.obj, importance = "permute")$importance)
 
-# Code example 2
-## joint VIMP
-print(vimp(iris.obj, c("Petal.Length", "Petal.Width"), joint = TRUE, importance = "permute")$importance)
+# Joint permutation importance for petal length and petal width.
+print(vimp(iris.obj, c("Petal.Length", "Petal.Width"),
+           joint = TRUE, importance = "permute")$importance)
 
 
 ###############################################################################
@@ -81,11 +80,11 @@ print(vimp(iris.obj, c("Petal.Length", "Petal.Width"), joint = TRUE, importance 
 # Topic: Permutation VIMP and subsampling inference
 ###############################################################################
 
-## example using peakVO2
+# Grow a survival forest with permutation VIMP and estimate uncertainty.
 data(peakVO2, package = "randomForestSRC")
-o <- rfsrc(Surv(ttodead, died)~., peakVO2, importance="permute")
+o <- rfsrc(Surv(ttodead, died) ~ ., peakVO2, importance = "permute")
 oo <- subsample(o)
-plot.vimp.ci(oo, alpha=.05)
+plot.subsample(oo, alpha = .05)
 
 
 ###############################################################################
@@ -93,9 +92,9 @@ plot.vimp.ci(oo, alpha=.05)
 # Topic: Minimal depth
 ###############################################################################
 
+# Extract and sort the first-order minimal depths; smaller means earlier splits.
 md <- max.subtree(o)$order[, 1]
-barplot(sort(md),
-        las=2, horiz = TRUE, col = "cadetblue3")
+barplot(sort(md), las = 2, horiz = TRUE, col = "cadetblue3")
 
 
 ###############################################################################
@@ -103,13 +102,11 @@ barplot(sort(md),
 # Topic: Minimal depth
 ###############################################################################
 
-## guide random feature selection with number of times variable splits
-xvar.used <- predict(o,
-               var.used="all.trees")$var.used
-os <- rfsrc(Surv(ttodead, died)~., peakVO2, xvar.wt = xvar.used)
+# Guide candidate-variable selection using the original forest's split counts.
+xvar.used <- predict(o, var.used = "all.trees")$var.used
+os <- rfsrc(Surv(ttodead, died) ~ ., peakVO2, xvar.wt = xvar.used)
 mds <- max.subtree(os)$order[, 1]
-barplot(sort(mds),
-        las=2, horiz = TRUE, col = "cadetblue3")
+barplot(sort(mds), las = 2, horiz = TRUE, col = "cadetblue3")
 
 
 ###############################################################################
@@ -117,7 +114,8 @@ barplot(sort(mds),
 # Topic: VarPro motivation and interface
 ###############################################################################
 
-summary(peakVO2[,c("bun","interval", "peak.vo2")])
+# Inspect the ranges of the clinical variables used in the permutation example.
+print(summary(peakVO2[, c("bun", "interval", "peak.vo2")]))
 
 
 ###############################################################################
@@ -125,13 +123,9 @@ summary(peakVO2[,c("bun","interval", "peak.vo2")])
 # Topic: VarPro examples
 ###############################################################################
 
-# Canonical VarPro fit.
+# Compute supervised variable priority for the survival outcome.
 o <- varpro(Surv(ttodead, died) ~ ., peakVO2)
-importance(o)
-
-# Cross-validated cutoff selection.
-o.cv <- cv.varpro(Surv(ttodead, died) ~ ., peakVO2)
-print(o.cv)
+print(importance(o))
 
 
 ###############################################################################
@@ -139,12 +133,18 @@ print(o.cv)
 # Topic: VarPro examples
 ###############################################################################
 
-# Examine the cross-validated VarPro result from Slide 26.
-o.cv$imp
-o.cv$imp.conserve
-o.cv$imp.liberal
-o.cv$err
-o.cv$zcut
+# Select a VarPro cutoff by cross-validation and inspect the complete result.
+o.cv <- cv.varpro(Surv(ttodead, died) ~ ., peakVO2)
+print(o.cv)
+
+# Components for individual inspection:
+# print(o.cv$imp)
+# print(o.cv$imp.conserve)
+# print(o.cv$imp.liberal)
+# print(o.cv$err)
+# print(o.cv$zcut)
+# print(o.cv$zcut.conserve)
+# print(o.cv$zcut.liberal)
 
 
 ###############################################################################
@@ -152,15 +152,15 @@ o.cv$zcut
 # Topic: VarPro examples
 ###############################################################################
 
-# Code example 1
-o <- rfsrc(Surv(ttodead, died)~., peakVO2, importance="permute")
+# Permutation VIMP with subsampling confidence intervals.
+o <- rfsrc(Surv(ttodead, died) ~ ., peakVO2, importance = "permute")
 oo <- subsample(o)
-plot.vimp.ci(oo, alpha=.05)
+plot.subsample(oo, alpha = .05)
 
-# Code example 2
-o.cv <- cv.varpro(Surv(ttodead, died)~., peakVO2)
-barplot(o.cv$imp.liberal$z, names.arg=o.cv$imp.liberal$variable,
-        las=2, horiz = TRUE, col = "coral2")
+# Compare with cross-validated VarPro's liberal selection.
+o.cv <- cv.varpro(Surv(ttodead, died) ~ ., peakVO2)
+barplot(o.cv$imp.liberal$z, names.arg = o.cv$imp.liberal$variable,
+        las = 2, horiz = TRUE, col = "coral2")
 
 
 ###############################################################################
@@ -168,9 +168,10 @@ barplot(o.cv$imp.liberal$z, names.arg=o.cv$imp.liberal$variable,
 # Topic: VarPro examples
 ###############################################################################
 
-# This is an incremental/zoomed continuation of Slide 28 and reuses the same
-# VIMP and cross-validated VarPro plotting code. Run the Slide 28 block again
-# when reproducing this display independently.
+# Revisit the VIMP/VarPro comparison using the results from Slide 28.
+plot.subsample(oo, alpha = .05)
+barplot(o.cv$imp.liberal$z, names.arg = o.cv$imp.liberal$variable,
+        las = 2, horiz = TRUE, col = "coral2")
 
 
 ###############################################################################
@@ -178,8 +179,9 @@ barplot(o.cv$imp.liberal$z, names.arg=o.cv$imp.liberal$variable,
 # Topic: VarPro examples
 ###############################################################################
 
+# Load the high-dimensional microarray survival example.
 data(vdv, package = "randomForestSRC")
-dim(vdv)
+print(dim(vdv))
 
 
 ###############################################################################
@@ -187,35 +189,38 @@ dim(vdv)
 # Topic: VarPro examples
 ###############################################################################
 
-## van de Vijver Microarray Breast Cancer
-## high dimensional survival example using different split-weights
-## illustrates guided trees
-
+# Compare three ways of guiding rule generation in high dimensions.
+# These analyses can require substantial computation.
 data(vdv, package = "randomForestSRC")
-f <- as.formula(Surv(Time, Censoring)~.)
+f <- as.formula(Surv(Time, Censoring) ~ .)
 
-## lasso only
-importance(varpro(f, vdv, split.weight.method = "lasso"))
+# Lasso guidance.
+print(importance(varpro(f, vdv, split.weight.method = "lasso")))
 
-## lasso and vimp
-importance(varpro(f, vdv, split.weight.method = "lasso vimp"))
+# Combined lasso and VIMP guidance.
+print(importance(varpro(f, vdv, split.weight.method = "lasso vimp")))
 
-## lasso, vimp and shallow trees
-importance(varpro(f, vdv, split.weight.method = "lasso vimp tree"))
+# Add shallow-tree split information.
+print(importance(varpro(f, vdv, split.weight.method = "lasso vimp tree")))
 
-## store the original vdv 70 gene signature in object nms
-## compare methods using 25 runs:
-rO <- lapply(1:25, function(b) {
-  cat("replication:", b, "\n")
-  o1 <- varpro(f, vdv, split.weight.method = "lasso")
-  o2 <- varpro(f, vdv, split.weight.method = "lasso vimp")
-  o3 <- varpro(f, vdv, split.weight.method = "lasso vimp tree")
-  o4 <- varpro(f, vdv, split.weight.method = "lasso vimp", sparse = FALSE)
-  list("lasso"=intersect(nms,get.orgvimp(o1)$variable),
-       "lasso.vimp"=intersect(nms,get.orgvimp(o2)$variable),
-       "lasso.vimp.tree"=intersect(nms,get.orgvimp(o3)$variable),
-       "lasso.vimp.sparseoff"=intersect(nms,get.orgvimp(o4)$variable))
-})
+# Optional reference-signature comparison: 25 runs of four methods.
+# First define nms as the character vector of the original 70-gene signature
+# and make get.orgvimp() available. The signature vector and helper definition
+# are not included with these examples. Uncomment the block after setup.
+#
+# rO <- lapply(1:25, function(b) {
+#   cat("replication:", b, "\n")
+#   o1 <- varpro(f, vdv, split.weight.method = "lasso")
+#   o2 <- varpro(f, vdv, split.weight.method = "lasso vimp")
+#   o3 <- varpro(f, vdv, split.weight.method = "lasso vimp tree")
+#   o4 <- varpro(f, vdv, split.weight.method = "lasso vimp", sparse = FALSE)
+#   list(
+#     "lasso" = intersect(nms, get.orgvimp(o1)$variable),
+#     "lasso.vimp" = intersect(nms, get.orgvimp(o2)$variable),
+#     "lasso.vimp.tree" = intersect(nms, get.orgvimp(o3)$variable),
+#     "lasso.vimp.sparseoff" = intersect(nms, get.orgvimp(o4)$variable)
+#   )
+# })
 
 
 ###############################################################################
@@ -223,99 +228,21 @@ rO <- lapply(1:25, function(b) {
 # Topic: VarPro examples
 ###############################################################################
 
-# Reuse rO from Slide 31 to inspect overlap with the reference signature.
-# The character vector nms must contain the names in the reference
-# 70-gene signature before running the repeated comparison on Slide 31.
-rO[[1]]
+# Inspect the reference-signature overlap from the optional Slide 31 analysis.
+# Run this only after creating rO with nms and get.orgvimp() available.
+# print(rO[[1]])
 
 
 ###############################################################################
-# Slide 34: ivarpro() — Individual Variable Priority
-# Topic: Individual and unsupervised VarPro
+# Slide 34: plot.ivarpro()
+# Topic: Individual variable priority
 ###############################################################################
 
-# Code example 1
+# Compute case-specific variable priority for the peakVO2 survival outcome.
 data(peakVO2, package = "randomForestSRC")
-o <- varpro(Surv(ttodead, died) ~ .,
-            peakVO2, ntree = 50)
-ivp <- ivarpro(o)
-print(ivp[1:5, 1:8])
+o <- varpro(Surv(ttodead, died) ~ ., peakVO2)
+imp <- ivarpro(o)
 
-# Code example 2
-##      age    gender bmi   peak.vo2 chemo
-## [1,]  0.041  NA  0.028   0.312   NA
-## [2,]  NA     NA  0.011   0.284   0.022
-## [3,]  0.014  0.031  NA   0.271   NA
-## [4,]  0.033  NA  0.019   0.290   0.017
-
-# Code example 3
-imp <- ivarpro(o, cut.max = 2, adaptive = FALSE)
-shap.ivarpro(imp)
-
-
-###############################################################################
-# Slide 35: plot.ivarpro()
-# Topic: Individual and unsupervised VarPro
-###############################################################################
-
-plot(imp, var = "peak.vo2",
-                col.var = "interval",
-                size.var = "y")
-
-
-###############################################################################
-# Slide 37: Core Functions
-# Topic: Individual and unsupervised VarPro
-###############################################################################
-
-# Syntax shown on the slide: varpro()
-# Syntax shown on the slide: partialpro()
-# Syntax shown on the slide: plot()
-# Syntax shown on the slide: importance()
-# Syntax shown on the slide: cv.varpro()
-# Syntax shown on the slide: uvarpro()
-# Syntax shown on the slide: sdependent()
-# Syntax shown on the slide: get.beta.entropy()
-# Syntax shown on the slide: ivarpro()
-# Syntax shown on the slide: shap.ivarpro()
-# Syntax shown on the slide: partial.ivarpro()
-
-
-###############################################################################
-# Slide 38: uvarpro() — Unsupervised Variable Priority [ 7 ]
-# Topic: Individual and unsupervised VarPro
-###############################################################################
-
-# Code example 1
-data(BostonHousing, package = "mlbench")
-uvp <- uvarpro(BostonHousing[-(1:5), ])
-print(head(importance(uvp)))
-
-# Code example 2
-##      names   zscores
-## 1    lstat  8.341252
-## 2       rm  7.916084
-## 3      dis  6.204817
-## 4      nox  5.983761
-## 5      age  4.742198
-## 6  ptratio  4.210573
-
-# Code example 3
-beta <- get.beta.entropy(uvp)
-print(beta[1:4, 1:4])
-
-# Code example 4
-sdependent(beta)
-
-
-###############################################################################
-# Slide 39: Summary
-# Topic: Closing
-###############################################################################
-
-# Syntax shown on the slide: varpro()
-# Syntax shown on the slide: cv.varpro()
-# Syntax shown on the slide: uvarpro()
-# Syntax shown on the slide: ivarpro()
-# Syntax shown on the slide: outpro()
-# Syntax shown on the slide: isopro()
+# Relate peak-VO2 importance to its value, with exercise-interval color
+# and outcome-dependent point size.
+plot(imp, var = "peak.vo2", col.var = "interval", size.var = "y")

@@ -1,17 +1,17 @@
 ###############################################################################
+# PART I: TRAINING
 # ASA Traveling Course: Tree-Based Machine Learning Methods
-# Part I: Training
-#
 # Student R-code companion
-# Code is organized in slide order for use during and after the workshop.
-# Required packages and data are identified near their first use.
 #
-# Console output has been removed. Display-only syntax and incomplete calls
-# are retained as comments. Run examples in slide order; the presentations
-# intentionally reuse short object names such as o, fit, and pred.
+# Run sections in slide order. Later examples can reuse earlier objects.
+# The short names o, fit, and pred are reused for different analyses.
+# Run installation commands separately, once, when a package is needed.
+# Sampling and forest randomization mean numerical results may vary.
 ###############################################################################
 
-# Core package used throughout this module.
+# Required packages: randomForestSRC, survival.
+# Additional examples use varPro and randomForestSRC.run.
+# install.packages(c("randomForestSRC", "survival"))
 library(randomForestSRC)
 library(survival)
 
@@ -21,19 +21,20 @@ library(survival)
 # Topic: Workshop overview and random-forest ecosystem
 ###############################################################################
 
-# Syntax shown on the slide: rfsrc(Surv(time, status)~., data = veteran)
-# Syntax shown on the slide: rfsrc(Surv(time, status)~., data = wihs)
-# Syntax shown on the slide: rfsrc(Ozone~., data = airquality)
-# Syntax shown on the slide: quantreg(mpg~., data = mtcars)
-# Syntax shown on the slide: rfsrc(Species~., data = iris)
-# Syntax shown on the slide: imbalanced(status~., data = breast)
-# Syntax shown on the slide: rfsrc(Multivar(mpg, cyl)~., data = mtcars)
-# Syntax shown on the slide: rfsrc(cbind(Species,Sepal.Length)~.,data=iris)
-# Syntax shown on the slide: quantreg(cbind(mpg, cyl)~., data = mtcars)
-# Syntax shown on the slide: quantreg(cbind(Species,Sepal.Length)~.,data=iris)
-# Syntax shown on the slide: rfsrc(data = mtcars)
-# Syntax shown on the slide: sidClustering(data = mtcars)
-# Syntax shown on the slide: sidClustering(data = mtcars, method = "sh")
+# Family-specific formula reference:
+# rfsrc(Surv(time, status) ~ ., data = veteran)
+# rfsrc(Surv(time, status) ~ ., data = wihs)
+# rfsrc(Ozone ~ ., data = airquality)
+# quantreg(mpg ~ ., data = mtcars)
+# rfsrc(Species ~ ., data = iris)
+# imbalanced(status ~ ., data = breast)
+# rfsrc(Multivar(mpg, cyl) ~ ., data = mtcars)
+# rfsrc(cbind(Species, Sepal.Length) ~ ., data = iris)
+# quantreg(cbind(mpg, cyl) ~ ., data = mtcars)
+# quantreg(cbind(Species, Sepal.Length) ~ ., data = iris)
+# rfsrc(data = mtcars)
+# sidClustering(data = mtcars)
+# sidClustering(data = mtcars, method = "sh")
 
 
 ###############################################################################
@@ -41,8 +42,9 @@ library(survival)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
+# Load the housing data and inspect its dimensions.
 data(housing, package = "randomForestSRC")
-dim(housing)
+print(dim(housing))
 
 
 ###############################################################################
@@ -50,7 +52,7 @@ dim(housing)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-library(randomForestSRC)
+# Grow a regression forest to predict home sale price.
 o <- rfsrc(SalePrice ~ ., data = housing)
 
 
@@ -59,8 +61,7 @@ o <- rfsrc(SalePrice ~ ., data = housing)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-library(randomForestSRC)
-o <- rfsrc(SalePrice ~ ., data = housing)
+# Inspect the forest settings and OOB performance.
 print(o)
 
 
@@ -69,8 +70,7 @@ print(o)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-# This slide isolates the OOB R-squared and performance-error lines from
-# the forest summary produced on Slide 10.
+# Locate OOB R-squared and requested performance error in the summary.
 print(o)
 
 
@@ -79,14 +79,15 @@ print(o)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-# Code example 1
+# Compare the original price scale with the logarithmic scale.
+# Reload the data so rerunning this example does not take a second logarithm.
+data(housing, package = "randomForestSRC")
 o <- rfsrc(SalePrice ~ ., data = housing)
-o
+print(o)
 
-# Code example 2
 housing$SalePrice <- log(housing$SalePrice)
 o <- rfsrc(SalePrice ~ ., data = housing)
-o
+print(o)
 
 
 ###############################################################################
@@ -94,14 +95,14 @@ o
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-# Code example 1
+# Use log-price data for the remaining housing examples.
 data(housing, package = "randomForestSRC")
 housing$SalePrice <- log(housing$SalePrice)
 o <- rfsrc(SalePrice ~ ., data = housing)
 print(o)
 
-# Code example 2
-# Illustrative syntax shown on the slide: rfsrc(..., ntree = 500)
+# Number of trees; interface reference:
+# rfsrc(..., ntree = 500)
 
 
 ###############################################################################
@@ -109,7 +110,8 @@ print(o)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-# Illustrative syntax shown on the slide: rfsrc(..., nodesize = 5)
+# Minimum terminal-node size; interface reference:
+# rfsrc(..., nodesize = 5)
 
 
 ###############################################################################
@@ -117,7 +119,9 @@ print(o)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-# Illustrative syntax shown on the slide: rfsrc(..., mtry = NULL)
+# Number of candidate variables at each split; interface reference:
+# rfsrc(..., mtry = NULL)
+# The regression default uses about one third of the predictor variables.
 
 
 ###############################################################################
@@ -125,7 +129,8 @@ print(o)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-# Illustrative syntax shown on the slide: rfsrc(..., samptype = "swor")
+# Sampling without replacement; interface reference:
+# rfsrc(..., samptype = "swor")
 
 
 ###############################################################################
@@ -133,11 +138,7 @@ print(o)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-# The slide repeats the basic fit to emphasize the resampling method and
-# resample size reported in the printed forest summary.
-data(housing, package = "randomForestSRC")
-housing$SalePrice <- log(housing$SalePrice)
-o <- rfsrc(SalePrice ~ ., data = housing)
+# Inspect the resampling method, resample size, analysis, and family labels.
 print(o)
 
 
@@ -146,7 +147,8 @@ print(o)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-# Illustrative syntax shown on the slide: rfsrc(..., splitrule = "mse")
+# Mean-squared-error splitting; interface reference:
+# rfsrc(..., splitrule = "mse")
 
 
 ###############################################################################
@@ -154,7 +156,8 @@ print(o)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-# Illustrative syntax shown on the slide: rfsrc(..., nsplit = 10)
+# Number of random candidate split points; interface reference:
+# rfsrc(..., nsplit = 10)
 
 
 ###############################################################################
@@ -162,230 +165,174 @@ print(o)
 # Topic: Iowa housing quick start and forest output
 ###############################################################################
 
-o.pred <- predict(o, newdata = housing[c(1:10),])
-head(o.pred$predicted)
+# Demonstrate the prediction interface on the first ten housing records.
+# These rows come from the training data; this is not a held-out assessment.
+o.pred <- predict(o, newdata = housing[1:10, ])
+print(head(o.pred$predicted))
 
 
 ###############################################################################
-# Slide 22: General call to rfsrc.cart
-# Topic: Iowa housing quick start and forest output
-###############################################################################
-
-# CART-style single-tree interface shown on the slide:
-# rfsrc.cart(formula, data, ntree = 1, mtry = ncol(data),
-#            bootstrap = "none", ...)
-
-
-###############################################################################
-# Slide 23: Nonparametric regression
+# Slide 22: Nonparametric regression
 # Topic: Regression and quantile regression
 ###############################################################################
 
-# Syntax shown on the slide: rfsrc(Ozone~., data = airquality)
-# Syntax shown on the slide: rfsrc(Species~., data = iris)
-# Syntax shown on the slide: imbalanced(status~., data = breast)
-# Syntax shown on the slide: rfsrc(Surv(time, status)~., data = veteran)
-# Syntax shown on the slide: rfsrc(Surv(time, status)~., data = wihs)
-# Syntax shown on the slide: rfsrc(Multivar(mpg, cyl)~., data = mtcars)
-# Syntax shown on the slide: rfsrc(cbind(Species,Sepal.Length)~.,data=iris)
-# Syntax shown on the slide: quantreg(cbind(mpg, cyl)~., data = mtcars)
-# Syntax shown on the slide: quantreg(cbind(Species,Sepal.Length)~.,data=iris)
-# Syntax shown on the slide: rfsrc(data = mtcars)
-# Syntax shown on the slide: sidClustering(data = mtcars)
-# Syntax shown on the slide: sidClustering(data = mtcars, method = "sh")
+# Family-specific formula reference:
+# rfsrc(Surv(time, status) ~ ., data = veteran)
+# rfsrc(Surv(time, status) ~ ., data = wihs)
+# rfsrc(Ozone ~ ., data = airquality)
+# quantreg(mpg ~ ., data = mtcars)
+# rfsrc(Species ~ ., data = iris)
+# imbalanced(status ~ ., data = breast)
+# rfsrc(Multivar(mpg, cyl) ~ ., data = mtcars)
+# rfsrc(cbind(Species, Sepal.Length) ~ ., data = iris)
+# quantreg(cbind(mpg, cyl) ~ ., data = mtcars)
+# quantreg(cbind(Species, Sepal.Length) ~ ., data = iris)
+# rfsrc(data = mtcars)
+# sidClustering(data = mtcars)
+# sidClustering(data = mtcars, method = "sh")
 
 
 ###############################################################################
-# Slide 25: Regression example: Iowa housing
+# Slide 24: Regression example: Iowa housing
 # Topic: Regression and quantile regression
 ###############################################################################
 
-# Code example 1
+# Compare the three quantile-regression split rules on log-price data.
 o <- quantreg(SalePrice ~ ., housing, splitrule = "mse", ntree = 250)
 o <- quantreg(SalePrice ~ ., housing, splitrule = "quantile.regr", ntree = 250)
-o <- quantreg(SalePrice ~ ., housing, splitrule = "la.quantile.regr", ntree = 250) # (default)
+o <- quantreg(SalePrice ~ ., housing, splitrule = "la.quantile.regr", ntree = 250)
 
-# Code example 2
-o
-
-# Code example 3
+# Inspect and plot the final quantile forest.
+print(o)
 plot.quantreg(o)
 
 
 ###############################################################################
-# Slide 28: Regression example: Iowa housing
+# Slide 26: Regression example: Iowa housing
 # Topic: Regression and quantile regression
 ###############################################################################
 
-# Optional installation step (run once, not every session):
+# Install the integrated-analysis companion once, as needed.
 # install.packages("devtools")
 # devtools::install_github("kogalur/randomForestSRC.run")
 
 
 ###############################################################################
-# Slide 29: Regression example: Iowa housing
+# Slide 27: Regression example: Iowa housing
 # Topic: Regression and quantile regression
 ###############################################################################
 
+# Run the integrated regression analysis and visualizations.
 library(randomForestSRC.run)
 run.rfsrc(SalePrice ~ ., housing, ntree = 500)
 
 
 ###############################################################################
-# Slide 31: Classification
+# Slide 29: Classification
 # Topic: Classification and glioma
 ###############################################################################
 
-# Syntax shown on the slide: rfsrc(Ozone~., data = airquality)
-# Syntax shown on the slide: quantreg(mpg~., data = mtcars)
-# Syntax shown on the slide: imbalanced(status~., data = breast)
-# Syntax shown on the slide: rfsrc(Surv(time, status)~., data = veteran)
-# Syntax shown on the slide: rfsrc(Surv(time, status)~., data = wihs)
-# Syntax shown on the slide: rfsrc(Multivar(mpg, cyl)~., data = mtcars)
-# Syntax shown on the slide: rfsrc(cbind(Species,Sepal.Length)~.,data=iris)
-# Syntax shown on the slide: quantreg(cbind(mpg, cyl)~., data = mtcars)
-# Syntax shown on the slide: quantreg(cbind(Species,Sepal.Length)~.,data=iris)
-# Syntax shown on the slide: rfsrc(data = mtcars)
-# Syntax shown on the slide: sidClustering(data = mtcars)
-# Syntax shown on the slide: sidClustering(data = mtcars, method = "sh")
+# Family-specific formula reference:
+# rfsrc(Surv(time, status) ~ ., data = veteran)
+# rfsrc(Surv(time, status) ~ ., data = wihs)
+# rfsrc(Ozone ~ ., data = airquality)
+# quantreg(mpg ~ ., data = mtcars)
+# rfsrc(Species ~ ., data = iris)
+# imbalanced(status ~ ., data = breast)
+# rfsrc(Multivar(mpg, cyl) ~ ., data = mtcars)
+# rfsrc(cbind(Species, Sepal.Length) ~ ., data = iris)
+# quantreg(cbind(mpg, cyl) ~ ., data = mtcars)
+# quantreg(cbind(Species, Sepal.Length) ~ ., data = iris)
+# rfsrc(data = mtcars)
+# sidClustering(data = mtcars)
+# sidClustering(data = mtcars, method = "sh")
 
 
 ###############################################################################
-# Slide 32: Classification example: Glioma
+# Slide 30: Classification example: Glioma
 # Topic: Classification and glioma
 ###############################################################################
 
-# Optional installation step (run once):
-# install.packages("varPro")
+# Install varPro once, as needed, using the workshop's GitHub installation.
+# install.packages("devtools")
+# devtools::install_github("kogalur/varPro")
 library(varPro)
+
+# Load the multiclass glioma data.
 data(glioma, package = "varPro")
-dim(glioma)
+print(dim(glioma))
 
 
 ###############################################################################
-# Slide 33: Classification example: Glioma
+# Slide 31: Classification example: Glioma
 # Topic: Classification and glioma
 ###############################################################################
 
+# A factor response selects classification; inspect the OOB confusion matrix.
 o <- rfsrc(y ~ ., data = glioma)
-o
+print(o)
 
 
 ###############################################################################
-# Slide 35: Classification example: Glioma
+# Slide 32: Using run.rfsrc for an integrated analysis
 # Topic: Classification and glioma
 ###############################################################################
 
-o <- rfsrc(y ~ ., data = glioma,
-           splitrule = "gini") ## default splitrule as in the previous slide
-o
-
-
-###############################################################################
-# Slide 36: Classification example: Glioma
-# Topic: Classification and glioma
-###############################################################################
-
-o <- rfsrc(y ~ ., data = glioma,
-           splitrule = "auc")
-o
-
-
-###############################################################################
-# Slide 37: Classification example: Glioma
-# Topic: Classification and glioma
-###############################################################################
-
-o <- rfsrc(y ~ ., data = glioma,
-           splitrule = "entropy")
-o
-
-
-###############################################################################
-# Slide 38: Using run.rfsrc for an integrated analysis
-# Topic: Classification and glioma
-###############################################################################
-
+# Run the integrated multiclass analysis and visualizations.
 run.rfsrc(y ~ ., data = glioma)
 
 
 ###############################################################################
-# Slide 40: Survival
+# Slide 34: Survival
 # Topic: Survival and PBC
 ###############################################################################
 
-# Syntax shown on the slide: rfsrc(Ozone~., data = airquality)
-# Syntax shown on the slide: quantreg(mpg~., data = mtcars)
-# Syntax shown on the slide: rfsrc(Species~., data = iris)
-# Syntax shown on the slide: imbalanced(status~., data = breast)
-# Syntax shown on the slide: rfsrc(Surv(time, status)~., data = wihs)
-# Syntax shown on the slide: rfsrc(Multivar(mpg, cyl)~., data = mtcars)
-# Syntax shown on the slide: rfsrc(cbind(Species,Sepal.Length)~.,data=iris)
-# Syntax shown on the slide: quantreg(cbind(mpg, cyl)~., data = mtcars)
-# Syntax shown on the slide: quantreg(cbind(Species,Sepal.Length)~.,data=iris)
-# Syntax shown on the slide: rfsrc(data = mtcars)
-# Syntax shown on the slide: sidClustering(data = mtcars)
-# Syntax shown on the slide: sidClustering(data = mtcars, method = "sh")
+# Family-specific formula reference:
+# rfsrc(Surv(time, status) ~ ., data = veteran)
+# rfsrc(Surv(time, status) ~ ., data = wihs)
+# rfsrc(Ozone ~ ., data = airquality)
+# quantreg(mpg ~ ., data = mtcars)
+# rfsrc(Species ~ ., data = iris)
+# imbalanced(status ~ ., data = breast)
+# rfsrc(Multivar(mpg, cyl) ~ ., data = mtcars)
+# rfsrc(cbind(Species, Sepal.Length) ~ ., data = iris)
+# quantreg(cbind(mpg, cyl) ~ ., data = mtcars)
+# quantreg(cbind(Species, Sepal.Length) ~ ., data = iris)
+# rfsrc(data = mtcars)
+# sidClustering(data = mtcars)
+# sidClustering(data = mtcars, method = "sh")
 
 
 ###############################################################################
-# Slide 41: Survival example: PBC Mayo Clinic
+# Slide 35: Survival example: PBC Mayo Clinic
 # Topic: Survival and PBC
 ###############################################################################
 
+# Load the survival-package version of PBC, which uses the variable time.
 data(pbc, package = "survival")
-dim(pbc)
+print(dim(pbc))
 
 
 ###############################################################################
-# Slide 42: Survival example: PBC Mayo Clinic
+# Slide 36: Survival example: PBC Mayo Clinic
 # Topic: Survival and PBC
 ###############################################################################
 
-pbc$id <- NULL ## remove the ID
-## keep the original competing risk framework for later
-## status at endpoint, 0/1/2 for censored, transplant, dead
+# Remove the identifier and retain the original endpoint codes.
+pbc$id <- NULL
+# status: 0 = censored, 1 = transplant, 2 = death.
 pbc.cr <- pbc
 
-## convert to right-censoring with death as the event
+# Collapse positive endpoint codes to a single event indicator.
 pbc$status[pbc$status > 0] <- 1
 o <- rfsrc(Surv(time, status) ~ ., data = pbc)
-o
+print(o)
 
 
 ###############################################################################
-# Slide 44: Split rules
+# Slide 37: Using run.rfsrc for an integrated analysis
 # Topic: Survival and PBC
 ###############################################################################
 
-o <- rfsrc(Surv(time, status) ~ ., data = pbc,
-                  splitrule = "logrank") ## default splitrule
-o
-
-
-###############################################################################
-# Slide 45: Split rules
-# Topic: Survival and PBC
-###############################################################################
-
-o <- rfsrc(Surv(time, status) ~ ., data = pbc,
-                  splitrule = "bs.gradient")
-o
-
-
-###############################################################################
-# Slide 46: Split rules
-# Topic: Survival and PBC
-###############################################################################
-
-o <- rfsrc(Surv(time, status) ~ ., data = pbc,
-                  splitrule = "logrankscore")
-o
-
-
-###############################################################################
-# Slide 47: Using run.rfsrc for an integrated analysis
-# Topic: Survival and PBC
-###############################################################################
-
+# Run the integrated survival analysis and visualizations.
 run.rfsrc(Surv(time, status) ~ ., data = pbc)
