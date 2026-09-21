@@ -1902,7 +1902,7 @@ Corresponding input (arguments)
 <span id="cb22-2"><a href=""></a>                         Sample size<span class="sc">:</span> <span class="dv">2274</span></span>
 <span id="cb22-3"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">250</span></span>
 <span id="cb22-4"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">5</span></span>
-<span id="cb22-5"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">263.86</span></span>
+<span id="cb22-5"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">264.148</span></span>
 <span id="cb22-6"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">27</span></span>
 <span id="cb22-7"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">80</span></span>
 <span id="cb22-8"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
@@ -1911,8 +1911,11 @@ Corresponding input (arguments)
 <span id="cb22-11"><a href=""></a>                              Family<span class="sc">:</span> regr</span>
 <span id="cb22-12"><a href=""></a>                      Splitting rule<span class="sc">:</span> la.quantile.regr <span class="sc">*</span>random<span class="sc">*</span></span>
 <span id="cb22-13"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb22-14"><a href=""></a>                     (OOB) R squared<span class="sc">:</span> <span class="fl">0.85752024</span></span>
-<span id="cb22-15"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.02367652</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-14"><a href=""></a>                     (OOB) R squared<span class="sc">:</span> <span class="fl">0.85584778</span></span>
+<span id="cb22-15"><a href=""></a>                 (OOB) Quantile<span class="sc">-</span>CRPS<span class="sc">:</span> <span class="fl">0.07394833</span></span>
+<span id="cb22-16"><a href=""></a>           (OOB) Quantile<span class="sc">-</span><span class="fu">CRPS</span> (std)<span class="sc">:</span> <span class="fl">0.01813289</span></span>
+<span id="cb22-17"><a href=""></a>           (OOB) Pinball loss by tau<span class="sc">:</span> <span class="fl">0.02832308</span>, <span class="fl">0.04842496</span>, <span class="fl">0.02512405</span> (<span class="at">tau =</span> <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span>
+<span id="cb22-18"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.02395445</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment" style="width:44%;">
 <div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">plot.quantreg</span>(o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><img data-src="pic/housQuantil2.png" class="fragment" style="width:100.0%"></p>
@@ -2526,11 +2529,10 @@ Corresponding input (arguments)
 </div>
 </div>
 </div>
-<div class="sourceCode" id="cb26" data-code-line-numbers="1-2|3|4-5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="co"># install.packages("devtools") # if you have not installed "devtools" package</span></span>
-<span id="cb26-2"><a href=""></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"kogalur/varPro"</span>)</span>
-<span id="cb26-3"><a href=""></a><span class="fu">data</span>(glioma, <span class="at">package =</span> <span class="st">"varPro"</span>) </span>
-<span id="cb26-4"><a href=""></a><span class="fu">dim</span>(glioma)</span>
-<span id="cb26-5"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">880</span> <span class="dv">1242</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26" data-code-line-numbers="1|2|3-4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a><span class="fu">library</span>(varPro)</span>
+<span id="cb26-2"><a href=""></a><span class="fu">data</span>(glioma, <span class="at">package =</span> <span class="st">"varPro"</span>) </span>
+<span id="cb26-3"><a href=""></a><span class="fu">dim</span>(glioma)</span>
+<span id="cb26-4"><a href=""></a><span class="sc">&gt;</span> [<span class="dv">1</span>]  <span class="dv">880</span> <span class="dv">1242</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="classification-example-glioma-1" class="slide level2 smaller"><h2>Classification example: Glioma</h2>
 <div class="sourceCode" id="cb27" data-code-line-numbers="1|13-14|16-20|22-35|36-37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">rfsrc</span>(y<span class="sc">~</span>., <span class="at">data =</span> glioma)</span>
 <span id="cb27-2"><a href=""></a>o</span>
@@ -2538,7 +2540,7 @@ Corresponding input (arguments)
 <span id="cb27-4"><a href=""></a>           Frequency of class labels<span class="sc">:</span> Classic<span class="sc">-</span>like<span class="ot">=</span><span class="dv">148</span>, Codel<span class="ot">=</span><span class="dv">174</span>, G<span class="sc">-</span>CIMP<span class="sc">-</span>high<span class="ot">=</span><span class="dv">249</span>, G<span class="sc">-</span>CIMP<span class="sc">-</span>low<span class="ot">=</span><span class="dv">25</span>, LGm6<span class="sc">-</span>GBM<span class="ot">=</span><span class="dv">41</span>, Mesenchymal<span class="sc">-</span>like<span class="ot">=</span><span class="dv">215</span>, PA<span class="sc">-</span>like<span class="ot">=</span><span class="dv">26</span></span>
 <span id="cb27-5"><a href=""></a>                     Number of trees<span class="sc">:</span> <span class="dv">500</span></span>
 <span id="cb27-6"><a href=""></a>           Forest terminal node size<span class="sc">:</span> <span class="dv">1</span></span>
-<span id="cb27-7"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">73.896</span></span>
+<span id="cb27-7"><a href=""></a>       Average no. of terminal nodes<span class="sc">:</span> <span class="fl">74.06</span></span>
 <span id="cb27-8"><a href=""></a>No. of variables tried at each split<span class="sc">:</span> <span class="dv">36</span></span>
 <span id="cb27-9"><a href=""></a>              Total no. of variables<span class="sc">:</span> <span class="dv">1241</span></span>
 <span id="cb27-10"><a href=""></a>       Resampling used to grow trees<span class="sc">:</span> swor</span>
@@ -2547,25 +2549,25 @@ Corresponding input (arguments)
 <span id="cb27-13"><a href=""></a>                              Family<span class="sc">:</span> class</span>
 <span id="cb27-14"><a href=""></a>                      Splitting rule<span class="sc">:</span> gini <span class="sc">*</span>random<span class="sc">*</span></span>
 <span id="cb27-15"><a href=""></a>       Number of random split points<span class="sc">:</span> <span class="dv">10</span></span>
-<span id="cb27-16"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02292715</span></span>
-<span id="cb27-17"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.18723839</span></span>
-<span id="cb27-18"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99338879</span></span>
-<span id="cb27-19"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.33872539</span></span>
-<span id="cb27-20"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.07061503</span>, <span class="fl">0.05405405</span>, <span class="fl">0.01149425</span>, <span class="fl">0.00803213</span>, <span class="fl">0.52</span>, <span class="fl">0.51219512</span>, <span class="fl">0.06046512</span>, <span class="fl">0.11538462</span></span>
+<span id="cb27-16"><a href=""></a>                   (OOB) Brier score<span class="sc">:</span> <span class="fl">0.02309762</span></span>
+<span id="cb27-17"><a href=""></a>        (OOB) Normalized Brier score<span class="sc">:</span> <span class="fl">0.18863057</span></span>
+<span id="cb27-18"><a href=""></a>                           (OOB) AUC<span class="sc">:</span> <span class="fl">0.99333287</span></span>
+<span id="cb27-19"><a href=""></a>                      (OOB) Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">0.33951657</span></span>
+<span id="cb27-20"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.07289294</span>, <span class="fl">0.06081081</span>, <span class="fl">0.01724138</span>, <span class="fl">0.01204819</span>, <span class="fl">0.52</span>, <span class="fl">0.51219512</span>, <span class="fl">0.05116279</span>, <span class="fl">0.15384615</span></span>
 <span id="cb27-21"><a href=""></a></span>
 <span id="cb27-22"><a href=""></a>Confusion matrix<span class="sc">:</span></span>
 <span id="cb27-23"><a href=""></a></span>
 <span id="cb27-24"><a href=""></a>                  predicted</span>
-<span id="cb27-25"><a href=""></a>  observed         Classic<span class="sc">-</span>like Codel G<span class="sc">-</span>CIMP<span class="sc">-</span>high G<span class="sc">-</span>CIMP<span class="sc">-</span>low LGm6<span class="sc">-</span>GBM Mesenchymal<span class="sc">-</span>like PA<span class="sc">-</span>like class.error</span>
-<span id="cb27-26"><a href=""></a>  Classic<span class="sc">-</span>like              <span class="dv">140</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">8</span>       <span class="dv">0</span>      <span class="fl">0.0541</span></span>
-<span id="cb27-27"><a href=""></a>  Codel                       <span class="dv">0</span>   <span class="dv">172</span>           <span class="dv">2</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">0</span>       <span class="dv">0</span>      <span class="fl">0.0115</span></span>
-<span id="cb27-28"><a href=""></a>  G<span class="sc">-</span>CIMP<span class="sc">-</span>high                 <span class="dv">0</span>     <span class="dv">2</span>         <span class="dv">247</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">0</span>       <span class="dv">0</span>      <span class="fl">0.0080</span></span>
-<span id="cb27-29"><a href=""></a>  G<span class="sc">-</span>CIMP<span class="sc">-</span>low                  <span class="dv">0</span>     <span class="dv">0</span>          <span class="dv">13</span>         <span class="dv">12</span>        <span class="dv">0</span>                <span class="dv">0</span>       <span class="dv">0</span>      <span class="fl">0.5200</span></span>
-<span id="cb27-30"><a href=""></a>  LGm6<span class="sc">-</span>GBM                    <span class="dv">0</span>     <span class="dv">1</span>           <span class="dv">0</span>          <span class="dv">0</span>       <span class="dv">20</span>               <span class="dv">20</span>       <span class="dv">0</span>      <span class="fl">0.5122</span></span>
-<span id="cb27-31"><a href=""></a>  Mesenchymal<span class="sc">-</span>like           <span class="dv">13</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">0</span>        <span class="dv">0</span>              <span class="dv">202</span>       <span class="dv">0</span>      <span class="fl">0.0605</span></span>
-<span id="cb27-32"><a href=""></a>  PA<span class="sc">-</span>like                     <span class="dv">0</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">3</span>      <span class="dv">23</span>      <span class="fl">0.1154</span></span>
+<span id="cb27-25"><a href=""></a>  observed         Classic<span class="sc">-</span>like Codel G<span class="sc">-</span>CIMP<span class="sc">-</span>high G<span class="sc">-</span>CIMP<span class="sc">-</span>low LGm6<span class="sc">-</span>GBM Mesenchymal<span class="sc">-</span>like PA<span class="sc">-</span>like class.error class.freq</span>
+<span id="cb27-26"><a href=""></a>  Classic<span class="sc">-</span>like              <span class="dv">139</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">9</span>       <span class="dv">0</span>      <span class="fl">0.0608</span>        <span class="dv">148</span></span>
+<span id="cb27-27"><a href=""></a>  Codel                       <span class="dv">0</span>   <span class="dv">171</span>           <span class="dv">3</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">0</span>       <span class="dv">0</span>      <span class="fl">0.0172</span>        <span class="dv">174</span></span>
+<span id="cb27-28"><a href=""></a>  G<span class="sc">-</span>CIMP<span class="sc">-</span>high                 <span class="dv">0</span>     <span class="dv">3</span>         <span class="dv">246</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">0</span>       <span class="dv">0</span>      <span class="fl">0.0120</span>        <span class="dv">249</span></span>
+<span id="cb27-29"><a href=""></a>  G<span class="sc">-</span>CIMP<span class="sc">-</span>low                  <span class="dv">0</span>     <span class="dv">0</span>          <span class="dv">13</span>         <span class="dv">12</span>        <span class="dv">0</span>                <span class="dv">0</span>       <span class="dv">0</span>      <span class="fl">0.5200</span>         <span class="dv">25</span></span>
+<span id="cb27-30"><a href=""></a>  LGm6<span class="sc">-</span>GBM                    <span class="dv">0</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">1</span>       <span class="dv">20</span>               <span class="dv">20</span>       <span class="dv">0</span>      <span class="fl">0.5122</span>         <span class="dv">41</span></span>
+<span id="cb27-31"><a href=""></a>  Mesenchymal<span class="sc">-</span>like           <span class="dv">11</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">0</span>        <span class="dv">0</span>              <span class="dv">204</span>       <span class="dv">0</span>      <span class="fl">0.0512</span>        <span class="dv">215</span></span>
+<span id="cb27-32"><a href=""></a>  PA<span class="sc">-</span>like                     <span class="dv">0</span>     <span class="dv">0</span>           <span class="dv">0</span>          <span class="dv">0</span>        <span class="dv">0</span>                <span class="dv">4</span>      <span class="dv">22</span>      <span class="fl">0.1538</span>         <span class="dv">26</span></span>
 <span id="cb27-33"><a href=""></a></span>
-<span id="cb27-34"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.07061503</span></span>
+<span id="cb27-34"><a href=""></a>      (OOB) Misclassification rate<span class="sc">:</span> <span class="fl">0.07289294</span></span>
 <span id="cb27-35"><a href=""></a></span>
 <span id="cb27-36"><a href=""></a>Random<span class="sc">-</span>classifier <span class="fu">baselines</span> (uniform)<span class="sc">:</span></span>
 <span id="cb27-37"><a href=""></a>   Brier<span class="sc">:</span> <span class="fl">0.12244898</span>   Normalized Brier<span class="sc">:</span> <span class="dv">1</span>   Log<span class="sc">-</span>loss<span class="sc">:</span> <span class="fl">1.94591015</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
