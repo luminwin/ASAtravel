@@ -330,7 +330,7 @@ Hemant Ishwaran and Min Lu <br> University of Miami
 <p>Typically, <span class="math inline">\({{\bf\Theta}_b}\)</span> encode the instructions for bootstrapping the data and for random feature selection used for tree splitting</p>
 </div>
 </section><section id="brief-overview-1" class="slide level2 smaller"><h2>Brief Overview</h2>
-<p><span style="color:#00589b; font-size:50px;font-weight: bold;">rfsrc(<span class="fragment highlight-blue">formula</span>, data, ntree, mtry, nodesize)</span></p>
+<p><span style="color:#00589b; font-size:50px;font-weight: bold;">rfsrc(<span class="fragment highlight-blue">formula</span>, data, ntree, mtry, nsplit, nodesize)</span></p>
 <div class="fragment">
 <table class="table-striped border small table-sm caption-top">
 <colgroup>
@@ -1887,15 +1887,16 @@ Corresponding input (arguments)
 <p><strong>randomForestSRC quantreg</strong></p>
 <ul>
 <li><p>Splitting rule: <strong>Pinball loss</strong><br><code>splitrule = "la.quant.reg"</code></p></li>
-<li><p>Conditional CDF: <strong>Local estimator</strong><br><code>method = "local"</code></p></li>
+<li><p>Conditional CDF: <strong>Local estimator</strong><br><code>method = "exchangeable"</code></p></li>
 </ul>
 </div>
 </div>
 </section><section id="regression-example-iowa-housing" class="slide level2 smaller"><h2>Regression example: Iowa housing</h2>
 <h3 id="quantile-regression">Quantile regression</h3>
-<div class="sourceCode" id="cb21" data-code-line-numbers="1|2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">quantreg</span>(SalePrice <span class="sc">~</span> ., housing, <span class="at">splitrule =</span> <span class="st">"mse"</span>, <span class="at">ntree =</span> <span class="dv">250</span>)</span>
-<span id="cb21-2"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">quantreg</span>(SalePrice <span class="sc">~</span> ., housing, <span class="at">splitrule =</span> <span class="st">"quantile.regr"</span>, <span class="at">ntree =</span> <span class="dv">250</span>)</span>
-<span id="cb21-3"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">quantreg</span>(SalePrice <span class="sc">~</span> ., housing, <span class="at">splitrule =</span> <span class="st">"la.quantile.regr"</span>, <span class="at">ntree =</span> <span class="dv">250</span>) <span class="co"># (default)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21" data-code-line-numbers="2|3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a><span class="co"># Compare different splitting rules and methods for estimating the CDF</span></span>
+<span id="cb21-2"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">quantreg</span>(SalePrice <span class="sc">~</span> ., housing, <span class="at">method =</span> <span class="st">"forest"</span>, <span class="at">ntree =</span> <span class="dv">250</span>)</span>
+<span id="cb21-3"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">quantreg</span>(SalePrice <span class="sc">~</span> ., housing, <span class="at">splitrule =</span> <span class="st">"mse"</span>, <span class="at">method =</span> <span class="st">"forest"</span>, <span class="at">ntree =</span> <span class="dv">250</span>)</span>
+<span id="cb21-4"><a href=""></a>o <span class="ot">&lt;-</span> <span class="fu">quantreg</span>(SalePrice <span class="sc">~</span> ., housing, <span class="at">method =</span> <span class="st">"exchangeable"</span>, <span class="at">ntree =</span> <span class="dv">250</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="columns">
 <div class="column fragment" style="width:56%;">
 <div class="sourceCode" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="sc">&gt;</span> o</span>
@@ -1917,12 +1918,12 @@ Corresponding input (arguments)
 <span id="cb22-17"><a href=""></a>           (OOB) Pinball loss by tau<span class="sc">:</span> <span class="fl">0.02832308</span>, <span class="fl">0.04842496</span>, <span class="fl">0.02512405</span> (<span class="at">tau =</span> <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span>
 <span id="cb22-18"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.02395445</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment" style="width:44%;">
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">plot.quantreg</span>(o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img data-src="pic/housQuantil2.png" class="fragment" style="width:100.0%"></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">plot.quantreg</span>(o, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">10.5</span>, <span class="fl">13.6</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">10.5</span>, <span class="fl">13.6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="pic/housQuantil3.png" class="fragment" style="width:100.0%"></p>
 </div></div>
 </section><section id="section" class="slide level2"><h2></h2>
 <center>
-<img data-src="pic/housQuantil2.png" height="680">
+<img data-src="pic/housQuantil3.png" height="680">
 </center>
 <div class="footer">
 
