@@ -1918,12 +1918,14 @@ Corresponding input (arguments)
 <span id="cb22-17"><a href=""></a>           (OOB) Pinball loss by tau<span class="sc">:</span> <span class="fl">0.02832308</span>, <span class="fl">0.04842496</span>, <span class="fl">0.02512405</span> (<span class="at">tau =</span> <span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>)</span>
 <span id="cb22-18"><a href=""></a>   (OOB) Requested performance error<span class="sc">:</span> <span class="fl">0.02395445</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column fragment" style="width:44%;">
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">plot.quantreg</span>(o, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">10.5</span>, <span class="fl">13.6</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">10.5</span>, <span class="fl">13.6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><img data-src="pic/housQuantil3.png" class="fragment" style="width:100.0%"></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a><span class="fu">plot.quantreg</span>(o, <span class="at">prbL =</span> <span class="fl">.05</span>, <span class="at">prbU =</span> <span class="fl">.95</span>,</span>
+<span id="cb23-2"><a href=""></a>              <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">10.5</span>, <span class="fl">13.6</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">10.5</span>, <span class="fl">13.6</span>),</span>
+<span id="cb23-3"><a href=""></a>              <span class="at">quantreg.tau =</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>)<span class="sc">/</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><img data-src="pic/housQuantil_q05q95_slide.png" class="fragment" style="width:92%; margin-top:-10px;"></p>
 </div></div>
 </section><section id="section" class="slide level2"><h2></h2>
 <center>
-<img data-src="pic/housQuantil3.png" height="680">
+<img data-src="pic/housQuantil_q05q95.png" height="680">
 </center>
 <div class="footer">
 
