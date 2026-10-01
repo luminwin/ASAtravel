@@ -2,11 +2,11 @@
 # ASA Traveling Course: Tree-Based Machine Learning Methods
 # Complete student R-code companion: Parts I-IV
 #
-# Run examples in module and slide order, or use the separate module files.
-# The code index gives line ranges in both this file and each module file.
+# Use the module and slide headings to find each example.
+# Run examples in order within a module; later examples can reuse earlier objects.
+# Install required packages separately using the commented installation commands.
+# Some examples fit many forests and can require substantial computation.
 ###############################################################################
-
-
 
 ###############################################################################
 # PART I: TRAINING
@@ -203,18 +203,35 @@ print(head(o.pred$predicted))
 
 
 ###############################################################################
+# Slide 23: Quantile Regression: randomForestSRC vs Meinshausen
+# Topic: Regression and quantile regression
+###############################################################################
+
+# Conditional-CDF estimation methods; interface references:
+# quantreg(..., method = "forest")
+# quantreg(..., method = "exchangeable")
+# The splitrule argument controls tree construction; method controls CDF estimation.
+
+
+###############################################################################
 # Slide 24: Regression example: Iowa housing
 # Topic: Regression and quantile regression
 ###############################################################################
 
-# Compare the three quantile-regression split rules on log-price data.
-o <- quantreg(SalePrice ~ ., housing, splitrule = "mse", ntree = 250)
-o <- quantreg(SalePrice ~ ., housing, splitrule = "quantile.regr", ntree = 250)
-o <- quantreg(SalePrice ~ ., housing, splitrule = "la.quantile.regr", ntree = 250)
+# Compare split rules and conditional-CDF estimation methods on log-price data.
+# Each call replaces o; the final fit is used for the printed summary and plot.
+o <- quantreg(SalePrice ~ ., housing, method = "forest", ntree = 250)
+o <- quantreg(SalePrice ~ ., housing, splitrule = "mse",
+              method = "forest", ntree = 250)
+o <- quantreg(SalePrice ~ ., housing, method = "exchangeable", ntree = 250)
 
-# Inspect and plot the final quantile forest.
+# Inspect the final quantile forest, including its OOB quantile diagnostics.
 print(o)
-plot.quantreg(o)
+
+# Plot the 5th-95th percentile interval and the requested quantile levels.
+plot.quantreg(o, prbL = .05, prbU = .95,
+              xlim = c(10.5, 13.6), ylim = c(10.5, 13.6),
+              quantreg.tau = (1:9)/10)
 
 
 ###############################################################################
@@ -263,12 +280,8 @@ run.rfsrc(SalePrice ~ ., housing, ntree = 500)
 # Topic: Classification and glioma
 ###############################################################################
 
-# Install varPro once, as needed, using the workshop's GitHub installation.
-# install.packages("devtools")
-# devtools::install_github("kogalur/varPro")
+# Load the package and the multiclass glioma data.
 library(varPro)
-
-# Load the multiclass glioma data.
 data(glioma, package = "varPro")
 print(dim(glioma))
 
@@ -284,7 +297,7 @@ print(o)
 
 
 ###############################################################################
-# Slide 32: Using run.rfsrc for an integrated analysis
+# Slide 34: Using run.rfsrc for an integrated analysis
 # Topic: Classification and glioma
 ###############################################################################
 
@@ -293,7 +306,7 @@ run.rfsrc(y ~ ., data = glioma)
 
 
 ###############################################################################
-# Slide 34: Survival
+# Slide 36: Survival
 # Topic: Survival and PBC
 ###############################################################################
 
@@ -314,7 +327,7 @@ run.rfsrc(y ~ ., data = glioma)
 
 
 ###############################################################################
-# Slide 35: Survival example: PBC Mayo Clinic
+# Slide 37: Survival example: PBC Mayo Clinic
 # Topic: Survival and PBC
 ###############################################################################
 
@@ -324,7 +337,7 @@ print(dim(pbc))
 
 
 ###############################################################################
-# Slide 36: Survival example: PBC Mayo Clinic
+# Slide 38: Survival example: PBC Mayo Clinic
 # Topic: Survival and PBC
 ###############################################################################
 
@@ -340,7 +353,7 @@ print(o)
 
 
 ###############################################################################
-# Slide 37: Using run.rfsrc for an integrated analysis
+# Slide 39: Using run.rfsrc for an integrated analysis
 # Topic: Survival and PBC
 ###############################################################################
 
@@ -486,9 +499,14 @@ print(tail(o.glioma$err.rate, 1))
 # Topic: Prediction error
 ###############################################################################
 
-# Combined Brier-score and AUC-t plotting interfaces:
-# plot.brier.auc   (randomForestSRC.run)
-# plotBrierAUC     (randomForestSRC)
+# Use the PBC survival forest o from Slide 9.
+# Slide 12 inspects the separately stored o.glioma classifier, leaving o unchanged.
+
+# Time-varying Brier score.
+plotBrierAUC(o, plots = "brier", xlim = c(50, 4200))
+
+# Time-varying AUC, with the display limits used in the workshop.
+plotBrierAUC(o, plots = "auct", xlim = c(50, 4200), ylim = c(0.6, 1))
 
 
 ###############################################################################
@@ -1222,3 +1240,5 @@ imp.t <- importance.rhf(fit.n15)
 # Compare dot-matrix and line displays of time-dependent variable priority.
 plot(imp.t, type = "dotmatrix")
 plot(imp.t, type = "lines")
+
+

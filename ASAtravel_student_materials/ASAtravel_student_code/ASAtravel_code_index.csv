@@ -14,72 +14,73 @@ I,Training,18,Quick Start,Iowa housing quick start and forest output,ASAtravel_P
 I,Training,19,Quick Start,Iowa housing quick start and forest output,ASAtravel_Part_I_Training.R,154,160,164,170,randomForestSRC,housing,rfsrc,reference
 I,Training,20,Quick Start,Iowa housing quick start and forest output,ASAtravel_Part_I_Training.R,163,171,173,181,randomForestSRC,housing,head; predict,runnable
 I,Training,22,Nonparametric regression,Regression and quantile regression,ASAtravel_Part_I_Training.R,174,192,184,202,randomForestSRC; survival,mtcars; iris; airquality; veteran; wihs; breast,Multivar; Surv; imbalanced; quantreg; rfsrc; sidClustering,reference
-I,Training,24,Regression example: Iowa housing,Regression and quantile regression,ASAtravel_Part_I_Training.R,195,207,205,217,randomForestSRC,housing,plot.quantreg; quantreg,runnable
-I,Training,26,Regression example: Iowa housing,Regression and quantile regression,ASAtravel_Part_I_Training.R,210,217,220,227,randomForestSRC,housing,,installation reference
-I,Training,27,Regression example: Iowa housing,Regression and quantile regression,ASAtravel_Part_I_Training.R,220,227,230,237,randomForestSRC; randomForestSRC.run,housing,run.rfsrc,runnable
-I,Training,29,Classification,Classification and glioma,ASAtravel_Part_I_Training.R,230,248,240,258,randomForestSRC; survival,mtcars; iris; airquality; veteran; wihs; breast,Multivar; Surv; imbalanced; quantreg; rfsrc; sidClustering,reference
-I,Training,30,Classification example: Glioma,Classification and glioma,ASAtravel_Part_I_Training.R,251,263,261,273,randomForestSRC; varPro,glioma,dim,runnable
-I,Training,31,Classification example: Glioma,Classification and glioma,ASAtravel_Part_I_Training.R,266,273,276,283,randomForestSRC; varPro,glioma,rfsrc,runnable
-I,Training,32,Using run.rfsrc for an integrated analysis,Classification and glioma,ASAtravel_Part_I_Training.R,276,282,286,292,randomForestSRC; randomForestSRC.run; varPro,glioma,run.rfsrc,runnable
-I,Training,34,Survival,Survival and PBC,ASAtravel_Part_I_Training.R,285,303,295,313,randomForestSRC; survival,mtcars; iris; airquality; veteran; wihs; breast,Multivar; Surv; imbalanced; quantreg; rfsrc; sidClustering,reference
-I,Training,35,Survival example: PBC Mayo Clinic,Survival and PBC,ASAtravel_Part_I_Training.R,306,313,316,323,randomForestSRC; survival,pbc,dim,runnable
-I,Training,36,Survival example: PBC Mayo Clinic,Survival and PBC,ASAtravel_Part_I_Training.R,316,329,326,339,randomForestSRC; survival,pbc; pbc.cr,Surv; rfsrc,runnable
-I,Training,37,Using run.rfsrc for an integrated analysis,Survival and PBC,ASAtravel_Part_I_Training.R,332,338,342,348,randomForestSRC; randomForestSRC.run; survival,pbc,Surv; run.rfsrc,runnable
-II,Inference and Prediction,5,Key quantities for classification,OOB inference and returned quantities,ASAtravel_Part_II_Inference_Prediction.R,18,26,368,376,,,,reference
-II,Inference and Prediction,6,OOB classification example: Glioma,OOB inference and returned quantities,ASAtravel_Part_II_Inference_Prediction.R,29,44,379,394,randomForestSRC; varPro,glioma,mean; rfsrc,runnable
-II,Inference and Prediction,7,Key quantities,OOB inference and returned quantities,ASAtravel_Part_II_Inference_Prediction.R,47,58,397,408,randomForestSRC; varPro,glioma,,runnable
-II,Inference and Prediction,8,Key quantities for survival,OOB inference and returned quantities,ASAtravel_Part_II_Inference_Prediction.R,61,72,411,422,,,,reference
-II,Inference and Prediction,9,OOB survival example: PBC Mayo Clinic,OOB inference and returned quantities,ASAtravel_Part_II_Inference_Prediction.R,75,95,425,445,randomForestSRC; survival,pbc,Surv; matlines; matplot; rfsrc,runnable
-II,Inference and Prediction,11,Prediction error for classification,Prediction error,ASAtravel_Part_II_Inference_Prediction.R,98,108,448,458,randomForestSRC,,get.auc; get.brier.error; get.logloss; get.misclass.error,reference
-II,Inference and Prediction,12,Classification example: Glioma,Prediction error,ASAtravel_Part_II_Inference_Prediction.R,111,120,461,470,randomForestSRC; varPro,glioma,tail,runnable
-II,Inference and Prediction,13,Prediction error for survival,Prediction error,ASAtravel_Part_II_Inference_Prediction.R,123,131,473,481,randomForestSRC,,get.auct.survival; get.brier.survival; get.cindex,reference
-II,Inference and Prediction,14,Prediction error for survival,Prediction error,ASAtravel_Part_II_Inference_Prediction.R,134,141,484,491,randomForestSRC; randomForestSRC.run,,plot.brier.auc; plotBrierAUC,reference
-II,Inference and Prediction,15,Prediction,Prediction on new data,ASAtravel_Part_II_Inference_Prediction.R,144,151,494,501,,,predict,reference
-II,Inference and Prediction,17,Prediction: canonical example,Prediction on new data,ASAtravel_Part_II_Inference_Prediction.R,154,161,504,511,randomForestSRC; survival,veteran,dim,runnable
-II,Inference and Prediction,18,Prediction: canonical example,Prediction on new data,ASAtravel_Part_II_Inference_Prediction.R,164,179,514,529,randomForestSRC; survival,veteran; veteran2,summary,runnable
-II,Inference and Prediction,19,Prediction: canonical example,Prediction on new data,ASAtravel_Part_II_Inference_Prediction.R,182,193,532,543,randomForestSRC; survival,veteran; veteran2,Surv; predict; rfsrc,runnable
-II,Inference and Prediction,20,Prediction: canonical example,Prediction on new data,ASAtravel_Part_II_Inference_Prediction.R,196,208,546,558,randomForestSRC; survival,veteran; veteran2; veteran3,predict,runnable
-II,Inference and Prediction,21,Restore,Restore mode,ASAtravel_Part_II_Inference_Prediction.R,211,217,561,567,,,predict,reference
-II,Inference and Prediction,22,Restore,Restore mode,ASAtravel_Part_II_Inference_Prediction.R,220,229,570,579,randomForestSRC; varPro,glioma,predict; rfsrc,runnable
-II,Inference and Prediction,23,Restore,Restore mode,ASAtravel_Part_II_Inference_Prediction.R,232,245,582,595,randomForestSRC,mtcars,mean; predict; rfsrc; summary,runnable
-II,Inference and Prediction,26,Survival example: peakVO2,Partial plots and peakVO2,ASAtravel_Part_II_Inference_Prediction.R,248,255,598,605,randomForestSRC; survival,peakVO2,dim,runnable
-II,Inference and Prediction,27,Survival example: peakVO2,Partial plots and peakVO2,ASAtravel_Part_II_Inference_Prediction.R,258,266,608,616,randomForestSRC; survival,peakVO2,Surv; plot.variable; rfsrc,runnable
-II,Inference and Prediction,28,Survival example: peakVO2,Partial plots and peakVO2,ASAtravel_Part_II_Inference_Prediction.R,269,276,619,626,randomForestSRC; survival,peakVO2,plot.variable,runnable
-II,Inference and Prediction,29,Survival example: peakVO2,Partial plots and peakVO2,ASAtravel_Part_II_Inference_Prediction.R,279,286,629,636,randomForestSRC; survival,peakVO2,plot.variable,runnable
-III,Variable Selection,6,Different VIMP in the package,Permutation VIMP and subsampling inference,ASAtravel_Part_III_Variable_Selection.R,19,27,657,665,,,,reference
-III,Variable Selection,7,Obtaining VIMP using the package,Permutation VIMP and subsampling inference,ASAtravel_Part_III_Variable_Selection.R,30,61,668,699,randomForestSRC,mtcars; iris,predict; rfsrc; vimp,runnable
-III,Variable Selection,8,General call to vimp,Permutation VIMP and subsampling inference,ASAtravel_Part_III_Variable_Selection.R,64,75,702,713,randomForestSRC,iris,rfsrc; vimp,runnable
-III,Variable Selection,11,Confidence intervals for VIMP,Permutation VIMP and subsampling inference,ASAtravel_Part_III_Variable_Selection.R,78,87,716,725,randomForestSRC; survival,peakVO2,Surv; plot.subsample; rfsrc; subsample,runnable
-III,Variable Selection,18,Minimal depth illustration using peakVO2,Minimal depth,ASAtravel_Part_III_Variable_Selection.R,90,97,728,735,randomForestSRC,peakVO2,barplot; max.subtree,runnable
-III,Variable Selection,19,Minimal depth illustration using peakVO2,Minimal depth,ASAtravel_Part_III_Variable_Selection.R,100,109,738,747,randomForestSRC; survival,peakVO2,Surv; barplot; max.subtree; predict; rfsrc,runnable
-III,Variable Selection,21,VarPro,VarPro motivation and interface,ASAtravel_Part_III_Variable_Selection.R,112,118,750,756,randomForestSRC,peakVO2,summary,runnable
-III,Variable Selection,26,VarPro canonical illustration,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,121,128,759,766,randomForestSRC; survival; varPro,peakVO2,Surv; importance; varpro,runnable
-III,Variable Selection,27,VarPro canonical illustration,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,131,147,769,785,randomForestSRC; survival; varPro,peakVO2,Surv; cv.varpro,runnable
-III,Variable Selection,28,VarPro canonical illustration,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,150,163,788,801,randomForestSRC; survival; varPro,peakVO2,Surv; barplot; cv.varpro; plot.subsample; rfsrc; subsample,runnable
-III,Variable Selection,29,VarPro canonical illustration,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,166,174,804,812,randomForestSRC; varPro,peakVO2,barplot; plot.subsample,continuation
-III,Variable Selection,30,VarPro high-dimensional example,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,177,184,815,822,randomForestSRC,vdv,dim,runnable
-III,Variable Selection,31,VarPro high-dimensional example,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,187,223,825,861,randomForestSRC; survival; varPro,vdv,Surv; get.orgvimp; importance; varpro; vimp,runnable; optional signature comparison
-III,Variable Selection,32,VarPro high-dimensional example,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,226,233,864,871,randomForestSRC; varPro,vdv,get.orgvimp,optional; requires reference-signature comparison
-III,Variable Selection,34,plot.ivarpro(),Individual variable priority,ASAtravel_Part_III_Variable_Selection.R,236,248,874,886,randomForestSRC; survival; varPro,peakVO2,Surv; ivarpro; plot; varpro,runnable
-IV,Advanced Topics,3,Imbalanced classification,Class-imbalanced classification,ASAtravel_Part_IV_Advanced_Topics.R,19,37,907,925,randomForestSRC; survival,mtcars; iris; airquality; veteran; wihs; breast,Multivar; Surv; imbalanced; quantreg; rfsrc; sidClustering,reference
-IV,Advanced Topics,11,Classification example: Glioma,Class-imbalanced classification,ASAtravel_Part_IV_Advanced_Topics.R,40,57,928,945,randomForestSRC; varPro,glioma; glioma2,table,runnable
-IV,Advanced Topics,12,Imbalanced classification: Glioma,Class-imbalanced classification,ASAtravel_Part_IV_Advanced_Topics.R,60,67,948,955,randomForestSRC; varPro,glioma; glioma2,rfsrc,runnable
-IV,Advanced Topics,13,Imbalanced classification: Glioma,Class-imbalanced classification,ASAtravel_Part_IV_Advanced_Topics.R,70,77,958,965,randomForestSRC; varPro,glioma; glioma2,imbalanced,runnable
-IV,Advanced Topics,14,Missing data imputation,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,80,89,968,977,randomForestSRC,,impute; impute.learn; predict; rfsrc,reference
-IV,Advanced Topics,15,General call to impute,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,92,99,980,987,randomForestSRC,,impute,reference
-IV,Advanced Topics,16,OTFI for training data,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,102,112,990,1000,randomForestSRC; survival,pbc,Surv; impute,runnable
-IV,Advanced Topics,17,missForest and mForest for training data,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,115,127,1003,1015,randomForestSRC,housing; pbc,impute,runnable
-IV,Advanced Topics,18,Test time imputation using impute.learn,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,130,139,1018,1027,randomForestSRC,,impute.learn; load.impute.learn; predict; save.impute.learn,reference
-IV,Advanced Topics,20,Test time imputation,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,142,163,1030,1051,randomForestSRC,airquality,impute.learn; predict,runnable
-IV,Advanced Topics,23,OOD scoring example,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,166,190,1054,1078,randomForestSRC,airquality,head; impute; impute.learn; impute.ood,runnable
-IV,Advanced Topics,27,The randomForestSGT package,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,193,203,1081,1091,randomForestSGT,,rfsgt,runnable
-IV,Advanced Topics,29,Tuning hcut,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,206,218,1094,1106,mlbench; randomForestSGT,Friedman-1 simulation,mlbench.friedman1; tune.hcut,runnable
-IV,Advanced Topics,30,Using the tuned hcut,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,221,228,1109,1116,mlbench; randomForestSGT,Friedman-1 simulation,rfsgt,runnable
-IV,Advanced Topics,31,Specific hcut families,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,231,241,1119,1129,mlbench; randomForestSGT,Friedman-1 simulation,rfsgt; use.tune.hcut,runnable
-IV,Advanced Topics,32,SGTs as model explainers,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,244,259,1132,1147,mlbench; randomForestSGT,Friedman-1 simulation,get.beta; rfsgt,runnable
-IV,Advanced Topics,33,SGT beta and partial effects,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,262,273,1150,1161,mlbench; randomForestSGT,Friedman-1 simulation,head,runnable
-IV,Advanced Topics,34,Random Hazard Forests (RHF),Random Hazard Forests,ASAtravel_Part_IV_Advanced_Topics.R,276,282,1164,1170,randomForestRHF; survival,,Surv; rhf,reference
-IV,Advanced Topics,35,RHF data format,Random Hazard Forests,ASAtravel_Part_IV_Advanced_Topics.R,285,294,1173,1182,,,,reference
-IV,Advanced Topics,36,Time-static setting,Random Hazard Forests,ASAtravel_Part_IV_Advanced_Topics.R,297,311,1185,1199,randomForestRHF; randomForestSRC; survival,peakVO2,Surv; convert.counting; rhf,runnable
-IV,Advanced Topics,37,Time-static results,Random Hazard Forests,ASAtravel_Part_IV_Advanced_Topics.R,314,320,1202,1208,randomForestRHF; randomForestSRC,peakVO2,,runnable
-IV,Advanced Topics,38,Time-localized VarPro importance,Random Hazard Forests,ASAtravel_Part_IV_Advanced_Topics.R,323,336,1211,1224,randomForestRHF; randomForestSRC,peakVO2,importance.rhf; plot; rhf,runnable
+I,Training,23,Quantile Regression: randomForestSRC vs Meinshausen,Regression and quantile regression,ASAtravel_Part_I_Training.R,195,203,205,213,randomForestSRC,housing,quantreg,reference
+I,Training,24,Regression example: Iowa housing,Regression and quantile regression,ASAtravel_Part_I_Training.R,206,224,216,234,randomForestSRC,housing,plot.quantreg; quantreg,runnable
+I,Training,26,Regression example: Iowa housing,Regression and quantile regression,ASAtravel_Part_I_Training.R,227,234,237,244,randomForestSRC,housing,,installation reference
+I,Training,27,Regression example: Iowa housing,Regression and quantile regression,ASAtravel_Part_I_Training.R,237,244,247,254,randomForestSRC; randomForestSRC.run,housing,run.rfsrc,runnable
+I,Training,29,Classification,Classification and glioma,ASAtravel_Part_I_Training.R,247,265,257,275,randomForestSRC; survival,mtcars; iris; airquality; veteran; wihs; breast,Multivar; Surv; imbalanced; quantreg; rfsrc; sidClustering,reference
+I,Training,30,Classification example: Glioma,Classification and glioma,ASAtravel_Part_I_Training.R,268,276,278,286,randomForestSRC; varPro,glioma,dim,runnable
+I,Training,31,Classification example: Glioma,Classification and glioma,ASAtravel_Part_I_Training.R,279,286,289,296,randomForestSRC; varPro,glioma,rfsrc,runnable
+I,Training,34,Using run.rfsrc for an integrated analysis,Classification and glioma,ASAtravel_Part_I_Training.R,289,295,299,305,randomForestSRC; randomForestSRC.run; varPro,glioma,run.rfsrc,runnable
+I,Training,36,Survival,Survival and PBC,ASAtravel_Part_I_Training.R,298,316,308,326,randomForestSRC; survival,mtcars; iris; airquality; veteran; wihs; breast,Multivar; Surv; imbalanced; quantreg; rfsrc; sidClustering,reference
+I,Training,37,Survival example: PBC Mayo Clinic,Survival and PBC,ASAtravel_Part_I_Training.R,319,326,329,336,randomForestSRC; survival,pbc,dim,runnable
+I,Training,38,Survival example: PBC Mayo Clinic,Survival and PBC,ASAtravel_Part_I_Training.R,329,342,339,352,randomForestSRC; survival,pbc; pbc.cr,Surv; rfsrc,runnable
+I,Training,39,Using run.rfsrc for an integrated analysis,Survival and PBC,ASAtravel_Part_I_Training.R,345,351,355,361,randomForestSRC; randomForestSRC.run; survival,pbc,Surv; run.rfsrc,runnable
+II,Inference and Prediction,5,Key quantities for classification,OOB inference and returned quantities,ASAtravel_Part_II_Inference_Prediction.R,18,26,381,389,,,,reference
+II,Inference and Prediction,6,OOB classification example: Glioma,OOB inference and returned quantities,ASAtravel_Part_II_Inference_Prediction.R,29,44,392,407,randomForestSRC; varPro,glioma,mean; rfsrc,runnable
+II,Inference and Prediction,7,Key quantities,OOB inference and returned quantities,ASAtravel_Part_II_Inference_Prediction.R,47,58,410,421,randomForestSRC; varPro,glioma,,runnable
+II,Inference and Prediction,8,Key quantities for survival,OOB inference and returned quantities,ASAtravel_Part_II_Inference_Prediction.R,61,72,424,435,,,,reference
+II,Inference and Prediction,9,OOB survival example: PBC Mayo Clinic,OOB inference and returned quantities,ASAtravel_Part_II_Inference_Prediction.R,75,95,438,458,randomForestSRC; survival,pbc,Surv; rfsrc,runnable
+II,Inference and Prediction,11,Prediction error for classification,Prediction error,ASAtravel_Part_II_Inference_Prediction.R,98,108,461,471,randomForestSRC,,get.auc; get.brier.error; get.logloss; get.misclass.error,reference
+II,Inference and Prediction,12,Classification example: Glioma,Prediction error,ASAtravel_Part_II_Inference_Prediction.R,111,120,474,483,randomForestSRC; varPro,glioma,tail,runnable
+II,Inference and Prediction,13,Prediction error for survival,Prediction error,ASAtravel_Part_II_Inference_Prediction.R,123,131,486,494,randomForestSRC,,get.auct.survival; get.brier.survival; get.cindex,reference
+II,Inference and Prediction,14,Prediction error for survival,Prediction error,ASAtravel_Part_II_Inference_Prediction.R,134,146,497,509,randomForestSRC; survival,pbc,plotBrierAUC,runnable
+II,Inference and Prediction,15,Prediction,Prediction on new data,ASAtravel_Part_II_Inference_Prediction.R,149,156,512,519,,,predict,reference
+II,Inference and Prediction,17,Prediction: canonical example,Prediction on new data,ASAtravel_Part_II_Inference_Prediction.R,159,166,522,529,randomForestSRC; survival,veteran,dim,runnable
+II,Inference and Prediction,18,Prediction: canonical example,Prediction on new data,ASAtravel_Part_II_Inference_Prediction.R,169,184,532,547,randomForestSRC; survival,veteran; veteran2,summary,runnable
+II,Inference and Prediction,19,Prediction: canonical example,Prediction on new data,ASAtravel_Part_II_Inference_Prediction.R,187,198,550,561,randomForestSRC; survival,veteran; veteran2,Surv; predict; rfsrc,runnable
+II,Inference and Prediction,20,Prediction: canonical example,Prediction on new data,ASAtravel_Part_II_Inference_Prediction.R,201,213,564,576,randomForestSRC; survival,veteran; veteran2; veteran3,predict,runnable
+II,Inference and Prediction,21,Restore,Restore mode,ASAtravel_Part_II_Inference_Prediction.R,216,222,579,585,,,predict,reference
+II,Inference and Prediction,22,Restore,Restore mode,ASAtravel_Part_II_Inference_Prediction.R,225,234,588,597,randomForestSRC; varPro,glioma,predict; rfsrc,runnable
+II,Inference and Prediction,23,Restore,Restore mode,ASAtravel_Part_II_Inference_Prediction.R,237,250,600,613,randomForestSRC,mtcars,mean; predict; rfsrc; summary,runnable
+II,Inference and Prediction,26,Survival example: peakVO2,Partial plots and peakVO2,ASAtravel_Part_II_Inference_Prediction.R,253,260,616,623,randomForestSRC; survival,peakVO2,dim,runnable
+II,Inference and Prediction,27,Survival example: peakVO2,Partial plots and peakVO2,ASAtravel_Part_II_Inference_Prediction.R,263,271,626,634,randomForestSRC; survival,peakVO2,Surv; plot.variable; rfsrc,runnable
+II,Inference and Prediction,28,Survival example: peakVO2,Partial plots and peakVO2,ASAtravel_Part_II_Inference_Prediction.R,274,281,637,644,randomForestSRC; survival,peakVO2,plot.variable,runnable
+II,Inference and Prediction,29,Survival example: peakVO2,Partial plots and peakVO2,ASAtravel_Part_II_Inference_Prediction.R,284,291,647,654,randomForestSRC; survival,peakVO2,plot.variable,runnable
+III,Variable Selection,6,Different VIMP in the package,Permutation VIMP and subsampling inference,ASAtravel_Part_III_Variable_Selection.R,19,27,675,683,,,importance,reference
+III,Variable Selection,7,Obtaining VIMP using the package,Permutation VIMP and subsampling inference,ASAtravel_Part_III_Variable_Selection.R,30,61,686,717,randomForestSRC,mtcars; iris,predict; rfsrc; vimp,runnable
+III,Variable Selection,8,General call to vimp,Permutation VIMP and subsampling inference,ASAtravel_Part_III_Variable_Selection.R,64,75,720,731,randomForestSRC,iris,rfsrc; vimp,runnable
+III,Variable Selection,11,Confidence intervals for VIMP,Permutation VIMP and subsampling inference,ASAtravel_Part_III_Variable_Selection.R,78,87,734,743,randomForestSRC; survival,peakVO2,Surv; plot.subsample; rfsrc; subsample,runnable
+III,Variable Selection,18,Minimal depth illustration using peakVO2,Minimal depth,ASAtravel_Part_III_Variable_Selection.R,90,97,746,753,randomForestSRC,peakVO2,barplot; max.subtree,runnable
+III,Variable Selection,19,Minimal depth illustration using peakVO2,Minimal depth,ASAtravel_Part_III_Variable_Selection.R,100,109,756,765,randomForestSRC; survival,peakVO2,Surv; barplot; max.subtree; predict; rfsrc,runnable
+III,Variable Selection,21,VarPro,VarPro motivation and interface,ASAtravel_Part_III_Variable_Selection.R,112,118,768,774,randomForestSRC,peakVO2,summary,runnable
+III,Variable Selection,26,VarPro canonical illustration,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,121,128,777,784,randomForestSRC; survival; varPro,peakVO2,Surv; importance; varpro,runnable
+III,Variable Selection,27,VarPro canonical illustration,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,131,147,787,803,randomForestSRC; survival; varPro,peakVO2,Surv; cv.varpro,runnable
+III,Variable Selection,28,VarPro canonical illustration,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,150,163,806,819,randomForestSRC; survival; varPro,peakVO2,Surv; barplot; cv.varpro; plot.subsample; rfsrc; subsample,runnable
+III,Variable Selection,29,VarPro canonical illustration,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,166,174,822,830,randomForestSRC; varPro,peakVO2,barplot; plot.subsample,continuation
+III,Variable Selection,30,VarPro high-dimensional example,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,177,184,833,840,randomForestSRC,vdv,dim,runnable
+III,Variable Selection,31,VarPro high-dimensional example,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,187,223,843,879,randomForestSRC; survival; varPro,vdv,Surv; get.orgvimp; importance; varpro,runnable; optional signature comparison
+III,Variable Selection,32,VarPro high-dimensional example,VarPro examples,ASAtravel_Part_III_Variable_Selection.R,226,233,882,889,randomForestSRC; varPro,vdv,get.orgvimp,optional; requires reference-signature comparison
+III,Variable Selection,34,plot.ivarpro(),Individual variable priority,ASAtravel_Part_III_Variable_Selection.R,236,248,892,904,randomForestSRC; survival; varPro,peakVO2,Surv; ivarpro; plot; varpro,runnable
+IV,Advanced Topics,3,Imbalanced classification,Class-imbalanced classification,ASAtravel_Part_IV_Advanced_Topics.R,19,37,925,943,randomForestSRC; survival,mtcars; iris; airquality; veteran; wihs; breast,Multivar; Surv; imbalanced; quantreg; rfsrc; sidClustering,reference
+IV,Advanced Topics,11,Classification example: Glioma,Class-imbalanced classification,ASAtravel_Part_IV_Advanced_Topics.R,40,57,946,963,randomForestSRC; varPro,glioma; glioma2,table,runnable
+IV,Advanced Topics,12,Imbalanced classification: Glioma,Class-imbalanced classification,ASAtravel_Part_IV_Advanced_Topics.R,60,67,966,973,randomForestSRC; varPro,glioma; glioma2,rfsrc,runnable
+IV,Advanced Topics,13,Imbalanced classification: Glioma,Class-imbalanced classification,ASAtravel_Part_IV_Advanced_Topics.R,70,77,976,983,randomForestSRC; varPro,glioma; glioma2,imbalanced,runnable
+IV,Advanced Topics,14,Missing data imputation,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,80,89,986,995,randomForestSRC,,impute; impute.learn; predict; rfsrc,reference
+IV,Advanced Topics,15,General call to impute,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,92,99,998,1005,randomForestSRC,,impute,reference
+IV,Advanced Topics,16,OTFI for training data,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,102,112,1008,1018,randomForestSRC; survival,pbc,Surv; impute,runnable
+IV,Advanced Topics,17,missForest and mForest for training data,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,115,127,1021,1033,randomForestSRC,housing; pbc,impute,runnable
+IV,Advanced Topics,18,Test time imputation using impute.learn,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,130,139,1036,1045,randomForestSRC,,impute.learn; load.impute.learn; predict; save.impute.learn,reference
+IV,Advanced Topics,20,Test time imputation,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,142,163,1048,1069,randomForestSRC,airquality,impute.learn; predict,runnable
+IV,Advanced Topics,23,OOD scoring example,Missing-data imputation and OOD scoring,ASAtravel_Part_IV_Advanced_Topics.R,166,190,1072,1096,randomForestSRC,airquality,head; impute.learn; impute.ood,runnable
+IV,Advanced Topics,27,The randomForestSGT package,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,193,203,1099,1109,randomForestSGT,,rfsgt,runnable
+IV,Advanced Topics,29,Tuning hcut,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,206,218,1112,1124,mlbench; randomForestSGT,Friedman-1 simulation,mlbench.friedman1; tune.hcut,runnable
+IV,Advanced Topics,30,Using the tuned hcut,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,221,228,1127,1134,mlbench; randomForestSGT,Friedman-1 simulation,rfsgt,runnable
+IV,Advanced Topics,31,Specific hcut families,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,231,241,1137,1147,mlbench; randomForestSGT,Friedman-1 simulation,rfsgt; use.tune.hcut,runnable
+IV,Advanced Topics,32,SGTs as model explainers,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,244,259,1150,1165,mlbench; randomForestSGT,Friedman-1 simulation,get.beta; rfsgt,runnable
+IV,Advanced Topics,33,SGT beta and partial effects,Super Greedy Trees,ASAtravel_Part_IV_Advanced_Topics.R,262,273,1168,1179,mlbench; randomForestSGT,Friedman-1 simulation,head,runnable
+IV,Advanced Topics,34,Random Hazard Forests (RHF),Random Hazard Forests,ASAtravel_Part_IV_Advanced_Topics.R,276,282,1182,1188,randomForestRHF; survival,,Surv; rhf,reference
+IV,Advanced Topics,35,RHF data format,Random Hazard Forests,ASAtravel_Part_IV_Advanced_Topics.R,285,294,1191,1200,,,,reference
+IV,Advanced Topics,36,Time-static setting,Random Hazard Forests,ASAtravel_Part_IV_Advanced_Topics.R,297,311,1203,1217,randomForestRHF; randomForestSRC; survival,peakVO2,Surv; convert.counting; rhf,runnable
+IV,Advanced Topics,37,Time-static results,Random Hazard Forests,ASAtravel_Part_IV_Advanced_Topics.R,314,320,1220,1226,randomForestRHF; randomForestSRC,peakVO2,,runnable
+IV,Advanced Topics,38,Time-localized VarPro importance,Random Hazard Forests,ASAtravel_Part_IV_Advanced_Topics.R,323,336,1229,1242,randomForestRHF; randomForestSRC,peakVO2,importance.rhf; plot; rhf,runnable

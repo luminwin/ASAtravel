@@ -1,27 +1,26 @@
 ASA TRAVELING COURSE
 Tree-Based Machine Learning Methods
-Hemant Ishwaran and Min Lu | University of Miami
+Student materials
 
 SLIDE GUIDE
-ASAtravel_Slide_Guide.pdf and ASAtravel_Slide_Guide.docx contain the same
-module-by-module guide, organized by slide number and topic.
+ASAtravel_Slide_Guide.pdf is the reading copy.
+ASAtravel_Slide_Guide.docx is the editable copy.
 
-STUDENT CODE
-Open ASAtravel_student_code/ASAtravel_AllModules.R for all four modules,
-or open the individual module file for the part you are studying.
-Use either the master or the module files; there is no need to run both.
+R CODE
+Open the script for the module you are studying, or use ASAtravel_AllModules.R.
+Run sections in slide order within each module. Some examples reuse fitted
+objects from earlier sections. Package installation commands are commented;
+run them separately when needed. Sampling and forest randomization mean that
+numerical results can differ from the examples shown in the workshop.
 
-Run examples in slide order. Later examples sometimes use earlier objects,
-and short object names are reused for different analyses. Read the comments
-at the beginning of each section before running it. Package installation
-commands are commented out and can be run separately, once, as needed.
-Numerical results can vary because of random sampling and forest construction.
+The code index identifies each section by module, slide, topic, package,
+dataset, and principal function. It also gives the section's line range in the
+module script and in the master script. A runnable section contains R commands
+and may depend on earlier setup. A reference section contains interface syntax
+or optional commands that should be adapted before use.
 
-The code index links each code section to its module, slide, and topic.
-It also identifies packages, datasets, functions, and inclusive, one-based
-line ranges in both the module script and the master script.
-
-Some sections contain interface references rather than complete examples.
-The optional 70-gene signature comparison in Part III, Slides 31-32, requires
-the reference gene-name vector nms and the get.orgvimp() helper. Follow the
-setup comments before uncommenting that comparison.
+Some analyses, including repeated high-dimensional fits, cross-validation,
+subsampling, and time-localized importance, can require substantial computation.
+The optional 70-gene signature comparison in Part III requires the reference
+vector nms and the get.orgvimp() helper; its setup instructions accompany the
+commented comparison block.

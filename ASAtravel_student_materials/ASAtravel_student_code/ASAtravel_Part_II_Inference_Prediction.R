@@ -136,9 +136,14 @@ print(tail(o.glioma$err.rate, 1))
 # Topic: Prediction error
 ###############################################################################
 
-# Combined Brier-score and AUC-t plotting interfaces:
-# plot.brier.auc   (randomForestSRC.run)
-# plotBrierAUC     (randomForestSRC)
+# Use the PBC survival forest o from Slide 9.
+# Slide 12 inspects the separately stored o.glioma classifier, leaving o unchanged.
+
+# Time-varying Brier score.
+plotBrierAUC(o, plots = "brier", xlim = c(50, 4200))
+
+# Time-varying AUC, with the display limits used in the workshop.
+plotBrierAUC(o, plots = "auct", xlim = c(50, 4200), ylim = c(0.6, 1))
 
 
 ###############################################################################
